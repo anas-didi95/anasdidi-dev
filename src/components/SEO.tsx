@@ -1,17 +1,18 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-const SEO: React.FC<{ title: string; description: string; author: string }> = ({
-  title,
-  description,
-  author,
-}) => (
+const SEO: React.FC<{
+  title: string
+  description: string
+  author: string
+  siteTitle: string
+}> = ({ title, description, author, siteTitle }) => (
   <Helmet
     htmlAttributes={{
       lang: "en",
     }}
     title={title}
-    titleTemplate={`${description} | %s`}
+    titleTemplate={`%s | ${siteTitle}`}
     meta={[
       {
         name: `description`,

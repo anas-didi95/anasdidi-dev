@@ -1,13 +1,13 @@
 import React, { useState, ReactNode } from "react"
 import Header from "../components/Header"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
-import Helmet from "react-helmet"
 import SEO from "../components/SEO"
 
-const AppLayout: React.FC<{ children: ReactNode; description: string }> = ({
-  children,
-  description,
-}) => {
+const AppLayout: React.FC<{
+  children: ReactNode
+  description: string
+  title: string
+}> = ({ children, description, title }) => {
   const [isActive, setActive] = useState(false)
   const metadata = useQueryMetadata()
 
@@ -18,9 +18,10 @@ const AppLayout: React.FC<{ children: ReactNode; description: string }> = ({
   return (
     <>
       <SEO
-        title={metadata.title}
+        title={title}
         author={metadata.author}
         description={description || metadata.description}
+        siteTitle={metadata.title}
       />
       <Header
         isActive={isActive}
