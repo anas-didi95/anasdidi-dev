@@ -3,7 +3,7 @@ import AppLayout from "../layouts/AppLayout"
 
 const IndexPage: React.FC<{}> = () => {
   return (
-    <AppLayout>
+    <AppLayout description="Home page" title="Home">
       <div>Hello world</div>
     </AppLayout>
   )

@@ -2462,5 +2462,11 @@ export type MetadataQuery = (
         & GatsbyImageSharpFixedFragment
       )> }
     )> }
+  )>, site: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
+    )> }
   )> }
 );
