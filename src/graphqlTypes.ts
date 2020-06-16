@@ -1924,6 +1924,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
   pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
   pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
+  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
   pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
   pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
   pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
@@ -2122,6 +2123,7 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
+  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -2167,6 +2169,7 @@ export type SitePluginPackageJson = {
   description?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
   main?: Maybe<Scalars['String']>,
+  author?: Maybe<Scalars['String']>,
   license?: Maybe<Scalars['String']>,
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>,
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>,
@@ -2209,6 +2212,7 @@ export type SitePluginPackageJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>,
   version?: Maybe<StringQueryOperatorInput>,
   main?: Maybe<StringQueryOperatorInput>,
+  author?: Maybe<StringQueryOperatorInput>,
   license?: Maybe<StringQueryOperatorInput>,
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>,
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>,
@@ -2292,6 +2296,7 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>,
   glob?: Maybe<Scalars['String']>,
 };
+
 export type GatsbyImageSharpFixedFragment = (
   { __typename?: 'ImageSharpFixed' }
   & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
@@ -2421,9 +2426,10 @@ export type ImageQueryQuery = (
     { __typename?: 'File' }
     & { childImageSharp: Maybe<(
       { __typename?: 'ImageSharp' }
-      & { fluid: Maybe<{ __typename?: 'ImageSharpFluid' }
+      & { fluid: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
         & GatsbyImageSharpFluidFragment
-      > }
+      )> }
     )> }
   )> }
 );
@@ -2452,6 +2458,23 @@ export type SiteMetadataQueryQuery = (
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
+    )> }
+  )> }
+);
+
+export type IndexPageQueryQueryVariables = {};
+
+
+export type IndexPageQueryQuery = (
+  { __typename?: 'Query' }
+  & { file: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
     )> }
   )> }
 );

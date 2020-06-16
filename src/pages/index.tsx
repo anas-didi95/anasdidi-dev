@@ -1,22 +1,36 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import GatsbyImage, { FixedObject } from "gatsby-image"
+import { IndexPageQueryQuery } from "../graphqlTypes"
+import { oc } from "ts-optchain"
 
 const IndexPage: React.FC<{}> = () => {
+  const data: IndexPageQueryQuery = useStaticQuery(graphql`
+    query IndexPageQuery {
+      file(relativePath: { eq: "header-brand.png" }) {
+        childImageSharp {
+          fixed(height: 32) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <nav
       className="navbar is-dark"
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="navbar-brand m-2">
+      <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"
-            width="112"
-            height="28"
+          <GatsbyImage
+            fixed={
+              (oc(data).file.childImageSharp.fixed() as FixedObject) || null
+            }
           />
         </a>
-
         <a
           role="button"
           className="navbar-burger"
