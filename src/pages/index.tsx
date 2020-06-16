@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { IndexPageQueryQuery } from "../graphqlTypes"
 import { oc } from "ts-optchain"
 
 const IndexPage: React.FC<{}> = () => {
+  const [isActive, setActive] = useState(false)
   const data: IndexPageQueryQuery = useStaticQuery(graphql`
     query IndexPageQuery {
       file(relativePath: { eq: "header-brand.png" }) {
@@ -16,6 +17,17 @@ const IndexPage: React.FC<{}> = () => {
       }
     }
   `)
+
+  const handler = {
+    toggleMenu: () => setActive(prev => !prev),
+    getMenuActive: () => {
+      if (isActive) {
+        return "is-active"
+      } else {
+        return ""
+      }
+    },
+  }
 
   return (
     <nav
@@ -33,16 +45,20 @@ const IndexPage: React.FC<{}> = () => {
         </a>
         <a
           role="button"
-          className="navbar-burger"
+          className={`navbar-burger ${handler.getMenuActive()}`}
           aria-label="menu"
           aria-expanded="false"
+          onClick={handler.toggleMenu}
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id="navbarBasicExample" className="navbar-menu">
+      <div
+        id="navbarBasicExample"
+        className={`navbar-menu ${handler.getMenuActive()}`}
+      >
         <div className="navbar-start">
           <a className="navbar-item">Home</a>
 
