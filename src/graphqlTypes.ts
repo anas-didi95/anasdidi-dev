@@ -2434,20 +2434,6 @@ export type ImageQueryQuery = (
   )> }
 );
 
-export type SiteTitleQueryQueryVariables = {};
-
-
-export type SiteTitleQueryQuery = (
-  { __typename?: 'Query' }
-  & { site: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )> }
-);
-
 export type SiteMetadataQueryQueryVariables = {};
 
 
@@ -2462,10 +2448,10 @@ export type SiteMetadataQueryQuery = (
   )> }
 );
 
-export type IndexPageQueryQueryVariables = {};
+export type MetadataQueryVariables = {};
 
 
-export type IndexPageQueryQuery = (
+export type MetadataQuery = (
   { __typename?: 'Query' }
   & { file: Maybe<(
     { __typename?: 'File' }
