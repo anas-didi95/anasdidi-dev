@@ -29,6 +29,7 @@ Ensure VSCode plugin 'Remote Development' `ms-vscode-remote.vscode-remote-extens
 ```
 yarn install
 ```
+4. Open browser and open `http://localhost:8000' to view the page.
 
 ---
 
