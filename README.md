@@ -44,6 +44,7 @@ To-do list:
 ## Credits
 * Gatsby starter [gatsby-starter-default-typescript](https://www.gatsbyjs.org/starters/andykenward/gatsby-starter-default-typescript/) by andykenward.
 * Bulma theme '[Pulse](https://jenil.github.io/bulmaswatch/pulse/)' by Jenil Gogari.
+* Header image from <a href="http://cooltext.com" target="_top"><img src="https://cooltext.com/images/ct_button.gif" width="88" height="31" alt="Cool Text: Logo and Graphics Generator" /></a>
 
 ---
 

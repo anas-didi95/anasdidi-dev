@@ -1,19 +1,43 @@
-import React from "react"
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { FixedObject } from "gatsby-image"
+import { IndexPageQueryQuery } from "../graphqlTypes"
+import { oc } from "ts-optchain"
+import Header from "../components/Header"
 
 const IndexPage: React.FC<{}> = () => {
+  const [isActive, setActive] = useState(false)
+  const data: IndexPageQueryQuery = useStaticQuery(graphql`
+    query IndexPageQuery {
+      file(relativePath: { eq: "header-brand.png" }) {
+        childImageSharp {
+          fixed(height: 32) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
+  const handler = {
+    toggleMenu: () => setActive(prev => !prev),
+    getMenuActive: () => {
+      if (isActive) {
+        return "is-active"
+      } else {
+        return ""
+      }
+    },
+  }
+
   return (
-    <div className="container">
-      <div className="columns">
-        <div className="column">
-          <h2 className="title is-2 has-text-primary">Level 2 heading</h2>
-          <p className="content">Cool content. Using Bulma!</p>
-        </div>
-        <div className="column is-four-fifths">
-          <h2 className="title is-2 has-text-warning">Level 2 heading</h2>
-          <p className="content">This column is cool too!</p>
-        </div>
-      </div>
-    </div>
+    <>
+      <Header
+        isActive={isActive}
+        toggleMenu={handler.toggleMenu}
+        headerImage={oc(data).file.childImageSharp.fixed() as FixedObject}
+      />
+    </>
   )
 }
 
