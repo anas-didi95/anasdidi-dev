@@ -40,6 +40,30 @@ const AppLayout: React.FC<{
         </section>
         <footer className="footer">
           <div className="content has-text-centered">
+            <div className="columns">
+              <div className="column" />
+              <div className="buttons column">
+                <a
+                  className="button is-text"
+                  target="_blank"
+                  href="mailto:anas.didi95@gmail.com">
+                  Email
+                </a>
+                <a
+                  className="button is-text"
+                  target="_blank"
+                  href="https://github.com/anas-didi95">
+                  Github
+                </a>
+                <a
+                  className="button is-text"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry">
+                  LinkedIn
+                </a>
+              </div>
+              <div className="column" />
+            </div>
             <p>All rights reserved &copy; {new Date().getFullYear()}</p>
             <p>
               Built with <a href="https://bulma.io/">Bulma</a> and{" "}
