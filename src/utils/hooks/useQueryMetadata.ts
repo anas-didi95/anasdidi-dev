@@ -5,6 +5,9 @@ import { MetadataQuery } from "../../graphqlTypes"
 
 export type IQueryMetadata = {
   headerImage: FixedObject
+  title: string
+  description: string
+  author: string
 }
 
 export const useQueryMetadata = (): IQueryMetadata => {
@@ -17,10 +20,20 @@ export const useQueryMetadata = (): IQueryMetadata => {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+          description
+          author
+        }
+      }
     }
   `)
 
   return {
     headerImage: oc(data).file.childImageSharp.fixed() as FixedObject,
+    author: oc(data).site.siteMetadata.author(""),
+    description: oc(data).site.siteMetadata.description(""),
+    title: oc(data).site.siteMetadata.title(""),
   }
 }

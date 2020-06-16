@@ -13,6 +13,47 @@ const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <>
+      <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+        title={metadata.title}
+        titleTemplate={`%s | Home`}
+        meta={[
+          {
+            name: `description`,
+            content: metadata.description,
+          },
+          {
+            property: `og:title`,
+            content: metadata.title,
+          },
+          {
+            property: `og:description`,
+            content: metadata.description,
+          },
+          {
+            property: `og:type`,
+            content: `website`,
+          },
+          {
+            name: `twitter:card`,
+            content: `summary`,
+          },
+          {
+            name: `twitter:creator`,
+            content: metadata.author,
+          },
+          {
+            name: `twitter:title`,
+            content: metadata.title,
+          },
+          {
+            name: `twitter:description`,
+            content: metadata.description,
+          },
+        ].concat([])}
+      />
       <Header
         isActive={isActive}
         toggleMenu={handler.toggleMenu}

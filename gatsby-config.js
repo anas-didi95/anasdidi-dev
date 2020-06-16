@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Anas Didi's Personal Blog`,
+    title: `Anas Juwaidi's Blog`,
     description: `My personal blog developed using Gatsby and TypeScript.`,
     author: `@anasdidi95`,
   },
