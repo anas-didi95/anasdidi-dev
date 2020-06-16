@@ -2,8 +2,12 @@ import React, { useState, ReactNode } from "react"
 import Header from "../components/Header"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import Helmet from "react-helmet"
+import SEO from "../components/SEO"
 
-const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+const AppLayout: React.FC<{ children: ReactNode; description: string }> = ({
+  children,
+  description,
+}) => {
   const [isActive, setActive] = useState(false)
   const metadata = useQueryMetadata()
 
@@ -13,46 +17,10 @@ const AppLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <>
-      <Helmet
-        htmlAttributes={{
-          lang: "en",
-        }}
+      <SEO
         title={metadata.title}
-        titleTemplate={`%s | Home`}
-        meta={[
-          {
-            name: `description`,
-            content: metadata.description,
-          },
-          {
-            property: `og:title`,
-            content: metadata.title,
-          },
-          {
-            property: `og:description`,
-            content: metadata.description,
-          },
-          {
-            property: `og:type`,
-            content: `website`,
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:creator`,
-            content: metadata.author,
-          },
-          {
-            name: `twitter:title`,
-            content: metadata.title,
-          },
-          {
-            name: `twitter:description`,
-            content: metadata.description,
-          },
-        ].concat([])}
+        author={metadata.author}
+        description={description || metadata.description}
       />
       <Header
         isActive={isActive}
