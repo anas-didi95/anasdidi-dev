@@ -16,6 +16,7 @@
 * Gatsby - version 2.15.36
 * React - version 6.10.2
 * TypeScript - version 3.6.4
+* Bulma - version 0.9.0
 
 ---
 
@@ -29,6 +30,7 @@ Ensure VSCode plugin 'Remote Development' `ms-vscode-remote.vscode-remote-extens
 ```
 yarn install
 ```
+4. Open browser and open `http://localhost:8000' to view the page.
 
 ---
 
@@ -41,6 +43,7 @@ To-do list:
 
 ## Credits
 * Gatsby starter [gatsby-starter-default-typescript](https://www.gatsbyjs.org/starters/andykenward/gatsby-starter-default-typescript/) by andykenward.
+* Bulma theme '[Pulse](https://jenil.github.io/bulmaswatch/pulse/)' by Jenil Gogari.
 
 ---
 
