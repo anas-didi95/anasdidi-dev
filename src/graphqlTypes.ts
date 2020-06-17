@@ -2870,6 +2870,23 @@ export type IndexQuery = (
   ) }
 );
 
+export type BlogTemplateQueryVariables = {
+  slug: Scalars['String']
+};
+
+
+export type BlogTemplateQuery = (
+  { __typename?: 'Query' }
+  & { markdownRemark: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'html'>
+    & { frontmatter: Maybe<(
+      { __typename?: 'MarkdownRemarkFrontmatter' }
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'slug'>
+    )> }
+  )> }
+);
+
 export type MetadataQueryVariables = {};
 
 
