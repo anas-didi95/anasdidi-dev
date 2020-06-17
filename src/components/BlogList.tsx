@@ -19,7 +19,7 @@ const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
             </div>
           </div>
         </div>
-        <p className="mb-5">{blog.description}</p>
+        <p className="mb-5">{blog.excerpt}</p>
         <br />
         <div className="tags are-medium">
           {blog.tags.map((tag, ii) => (
