@@ -8,6 +8,18 @@ export type IQueryMetadata = {
   title: string
   description: string
   author: string
+  email: {
+    value: string
+    link: string
+  }
+  github: {
+    value: string
+    link: string
+  }
+  linkedin: {
+    value: string
+    link: string
+  }
 }
 
 export const useQueryMetadata = (): IQueryMetadata => {
@@ -25,6 +37,20 @@ export const useQueryMetadata = (): IQueryMetadata => {
           title
           description
           author
+          social {
+            email {
+              value
+              link
+            }
+            github {
+              value
+              link
+            }
+            linkedin {
+              value
+              link
+            }
+          }
         }
       }
     }
@@ -35,5 +61,17 @@ export const useQueryMetadata = (): IQueryMetadata => {
     author: oc(data).site.siteMetadata.author(""),
     description: oc(data).site.siteMetadata.description(""),
     title: oc(data).site.siteMetadata.title(""),
+    email: {
+      link: oc(data).site.siteMetadata.social.email.link(""),
+      value: oc(data).site.siteMetadata.social.email.value(""),
+    },
+    github: {
+      link: oc(data).site.siteMetadata.social.github.link(""),
+      value: oc(data).site.siteMetadata.social.github.value(""),
+    },
+    linkedin: {
+      link: oc(data).site.siteMetadata.social.linkedin.link(""),
+      value: oc(data).site.siteMetadata.social.linkedin.value(""),
+    },
   }
 }

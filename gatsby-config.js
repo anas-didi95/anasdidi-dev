@@ -3,6 +3,20 @@ module.exports = {
     title: `Anas Juwaidi's Blog`,
     description: `My personal blog developed using Gatsby and TypeScript.`,
     author: `@anasdidi95`,
+    social: {
+      email: {
+        value: "Email",
+        link: "mailto:anas.didi95@gmail.com",
+      },
+      github: {
+        value: "Github",
+        link: "https://github.com/anas-didi95",
+      },
+      linkedin: {
+        value: "LinkedIn",
+        link: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
+      },
+    },
   },
   plugins: [
     `gatsby-plugin-sass`,

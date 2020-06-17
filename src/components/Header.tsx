@@ -10,7 +10,8 @@ const Header: React.FC<{
   <nav
     className="navbar is-dark"
     role="navigation"
-    aria-label="main navigation">
+    aria-label="main navigation"
+    style={{ padding: "0.5rem" }}>
     <div className="navbar-brand">
       <Link className="navbar-item" to="/">
         <GatsbyImage fixed={headerImage} />
