@@ -4,7 +4,6 @@ description: "Sample page to display Markdown rendering."
 author: "Anas Juwaidi"
 date: "2020-06-17"
 tags: ["markdown"]
-slug: "200617-hello-world"
 ---
 
 Quick example on some markdown-formatted text rendered.

@@ -20,7 +20,7 @@ const Footer: React.FC<{ email: string; github: string; linkedin: string }> = ({
       <p>All rights reserved &copy; {new Date().getFullYear()}</p>
       <p>
         Built with <a href="https://bulma.io/">Bulma</a> and{" "}
-        <a href="https://www.gatsbyjs.org/">GatsbyJS</a>{" "}
+        <a href="https://www.gatsbyjs.org/">Gatsby</a>{" "}
       </p>
     </div>
   </footer>

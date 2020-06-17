@@ -61,11 +61,10 @@ const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
 
 export const PageQuery = graphql`
   query BlogTemplate($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description
-        slug
         tags
         author
         date(formatString: "MMMM DD, YYYY")

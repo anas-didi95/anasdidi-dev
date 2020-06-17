@@ -4,7 +4,6 @@ description: "Introduction to Markdown with the basic syntax and examples."
 author: "Anas Juwaidi"
 date: "2020-06-18"
 tags: ["markdown"]
-slug: "200618-mastering-markdown"
 ---
 
 Markdown is a lightweight and plain-text-formatting syntax markup language for styling documents such as README files and writing message in discussion forums.
