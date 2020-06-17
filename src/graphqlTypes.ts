@@ -1699,6 +1699,9 @@ export enum SiteFieldsEnum {
   siteMetadata___title = 'siteMetadata___title',
   siteMetadata___description = 'siteMetadata___description',
   siteMetadata___author = 'siteMetadata___author',
+  siteMetadata___social___email = 'siteMetadata___social___email',
+  siteMetadata___social___github = 'siteMetadata___social___github',
+  siteMetadata___social___linkedin = 'siteMetadata___social___linkedin',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -2270,12 +2273,27 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   author?: Maybe<Scalars['String']>,
+  social?: Maybe<SiteSiteMetadataSocial>,
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   description?: Maybe<StringQueryOperatorInput>,
   author?: Maybe<StringQueryOperatorInput>,
+  social?: Maybe<SiteSiteMetadataSocialFilterInput>,
+};
+
+export type SiteSiteMetadataSocial = {
+   __typename?: 'SiteSiteMetadataSocial',
+  email?: Maybe<Scalars['String']>,
+  github?: Maybe<Scalars['String']>,
+  linkedin?: Maybe<Scalars['String']>,
+};
+
+export type SiteSiteMetadataSocialFilterInput = {
+  email?: Maybe<StringQueryOperatorInput>,
+  github?: Maybe<StringQueryOperatorInput>,
+  linkedin?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSortInput = {
@@ -2434,20 +2452,6 @@ export type ImageQueryQuery = (
   )> }
 );
 
-export type SiteMetadataQueryQueryVariables = {};
-
-
-export type SiteMetadataQueryQuery = (
-  { __typename?: 'Query' }
-  & { site: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
-    )> }
-  )> }
-);
-
 export type MetadataQueryVariables = {};
 
 
@@ -2467,6 +2471,10 @@ export type MetadataQuery = (
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
+      & { social: Maybe<(
+        { __typename?: 'SiteSiteMetadataSocial' }
+        & Pick<SiteSiteMetadataSocial, 'email' | 'github' | 'linkedin'>
+      )> }
     )> }
   )> }
 );

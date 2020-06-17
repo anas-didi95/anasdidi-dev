@@ -2,6 +2,7 @@ import React, { useState, ReactNode } from "react"
 import Header from "../components/Header"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import SEO from "../components/SEO"
+import Footer from "../components/Footer"
 
 const AppLayout: React.FC<{
   children: ReactNode
@@ -23,12 +24,26 @@ const AppLayout: React.FC<{
         description={description || metadata.description}
         siteTitle={metadata.title}
       />
-      <Header
-        isActive={isActive}
-        toggleMenu={handler.toggleMenu}
-        headerImage={metadata.headerImage}
-      />
-      {children}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+        }}>
+        <Header
+          isActive={isActive}
+          toggleMenu={handler.toggleMenu}
+          headerImage={metadata.headerImage}
+        />
+        <section className="section" style={{ flex: 1 }}>
+          <div className="container">{children}</div>
+        </section>
+        <Footer
+          email={metadata.social.email}
+          github={metadata.social.github}
+          linkedin={metadata.social.linkedin}
+        />
+      </div>
     </>
   )
 }

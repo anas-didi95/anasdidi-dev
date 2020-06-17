@@ -8,6 +8,11 @@ export type IQueryMetadata = {
   title: string
   description: string
   author: string
+  social: {
+    email: string
+    github: string
+    linkedin: string
+  }
 }
 
 export const useQueryMetadata = (): IQueryMetadata => {
@@ -25,6 +30,11 @@ export const useQueryMetadata = (): IQueryMetadata => {
           title
           description
           author
+          social {
+            email
+            github
+            linkedin
+          }
         }
       }
     }
@@ -35,5 +45,10 @@ export const useQueryMetadata = (): IQueryMetadata => {
     author: oc(data).site.siteMetadata.author(""),
     description: oc(data).site.siteMetadata.description(""),
     title: oc(data).site.siteMetadata.title(""),
+    social: {
+      email: oc(data).site.siteMetadata.social.email(""),
+      github: oc(data).site.siteMetadata.social.github(""),
+      linkedin: oc(data).site.siteMetadata.social.linkedin(""),
+    },
   }
 }
