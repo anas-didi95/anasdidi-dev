@@ -7,4 +7,5 @@ export type Blog = {
   date: string
   tags: Maybe<string>[]
   excerpt: string
+  slug: string
 }

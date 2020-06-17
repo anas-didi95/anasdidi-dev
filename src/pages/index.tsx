@@ -20,6 +20,7 @@ const IndexPage: React.FC<{}> = () => {
               author
               date(formatString: "MMMM DD, YYYY")
               tags
+              slug
             }
             excerpt
           }
@@ -37,6 +38,7 @@ const IndexPage: React.FC<{}> = () => {
       description: oc(edge).node.frontmatter.description(""),
       tags: oc(edge).node.frontmatter.tags([]),
       excerpt: oc(edge).node.excerpt(""),
+      slug: oc(edge).node.frontmatter.slug(""),
     }))
 
   return (

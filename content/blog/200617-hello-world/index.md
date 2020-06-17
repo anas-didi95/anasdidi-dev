@@ -63,14 +63,14 @@ define foobar() {
 (which makes copying & pasting easier). You can optionally mark the
 delimited block for Pandoc to syntax highlight it:
 
-~~~python
+```python
 import time
 # Quick, count to ten!
 for i in range(10):
     # (but not *too* quick)
     time.sleep(0.5)
     print(i)
-~~~
+```
 
 
 
@@ -110,11 +110,11 @@ doc](#an-h2-header). Here's a footnote [^1].
 
 Tables can look like this:
 
-Name           Size  Material      Color
-------------- -----  ------------  ------------
-All Business      9  leather       brown
-Roundabout       10  hemp canvas   natural
-Cinderella       11  glass         transparent
+|Name         |  Size | Material    |  Color
+|-------------| ----- | ------------|  ------------
+|All Business |     9 | leather     |  brown
+|Roundabout   |    10 | hemp canvas |  natural
+|Cinderella   |    11 | glass       |  transparent
 
 Table: Shoes sizes, materials, and colors.
 
