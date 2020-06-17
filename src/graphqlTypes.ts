@@ -1699,12 +1699,9 @@ export enum SiteFieldsEnum {
   siteMetadata___title = 'siteMetadata___title',
   siteMetadata___description = 'siteMetadata___description',
   siteMetadata___author = 'siteMetadata___author',
-  siteMetadata___social___email___value = 'siteMetadata___social___email___value',
-  siteMetadata___social___email___link = 'siteMetadata___social___email___link',
-  siteMetadata___social___github___value = 'siteMetadata___social___github___value',
-  siteMetadata___social___github___link = 'siteMetadata___social___github___link',
-  siteMetadata___social___linkedin___value = 'siteMetadata___social___linkedin___value',
-  siteMetadata___social___linkedin___link = 'siteMetadata___social___linkedin___link',
+  siteMetadata___social___email = 'siteMetadata___social___email',
+  siteMetadata___social___github = 'siteMetadata___social___github',
+  siteMetadata___social___linkedin = 'siteMetadata___social___linkedin',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -2288,48 +2285,15 @@ export type SiteSiteMetadataFilterInput = {
 
 export type SiteSiteMetadataSocial = {
    __typename?: 'SiteSiteMetadataSocial',
-  email?: Maybe<SiteSiteMetadataSocialEmail>,
-  github?: Maybe<SiteSiteMetadataSocialGithub>,
-  linkedin?: Maybe<SiteSiteMetadataSocialLinkedin>,
-};
-
-export type SiteSiteMetadataSocialEmail = {
-   __typename?: 'SiteSiteMetadataSocialEmail',
-  value?: Maybe<Scalars['String']>,
-  link?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataSocialEmailFilterInput = {
-  value?: Maybe<StringQueryOperatorInput>,
-  link?: Maybe<StringQueryOperatorInput>,
+  email?: Maybe<Scalars['String']>,
+  github?: Maybe<Scalars['String']>,
+  linkedin?: Maybe<Scalars['String']>,
 };
 
 export type SiteSiteMetadataSocialFilterInput = {
-  email?: Maybe<SiteSiteMetadataSocialEmailFilterInput>,
-  github?: Maybe<SiteSiteMetadataSocialGithubFilterInput>,
-  linkedin?: Maybe<SiteSiteMetadataSocialLinkedinFilterInput>,
-};
-
-export type SiteSiteMetadataSocialGithub = {
-   __typename?: 'SiteSiteMetadataSocialGithub',
-  value?: Maybe<Scalars['String']>,
-  link?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataSocialGithubFilterInput = {
-  value?: Maybe<StringQueryOperatorInput>,
-  link?: Maybe<StringQueryOperatorInput>,
-};
-
-export type SiteSiteMetadataSocialLinkedin = {
-   __typename?: 'SiteSiteMetadataSocialLinkedin',
-  value?: Maybe<Scalars['String']>,
-  link?: Maybe<Scalars['String']>,
-};
-
-export type SiteSiteMetadataSocialLinkedinFilterInput = {
-  value?: Maybe<StringQueryOperatorInput>,
-  link?: Maybe<StringQueryOperatorInput>,
+  email?: Maybe<StringQueryOperatorInput>,
+  github?: Maybe<StringQueryOperatorInput>,
+  linkedin?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SiteSortInput = {
@@ -2509,16 +2473,7 @@ export type MetadataQuery = (
       & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
       & { social: Maybe<(
         { __typename?: 'SiteSiteMetadataSocial' }
-        & { email: Maybe<(
-          { __typename?: 'SiteSiteMetadataSocialEmail' }
-          & Pick<SiteSiteMetadataSocialEmail, 'value' | 'link'>
-        )>, github: Maybe<(
-          { __typename?: 'SiteSiteMetadataSocialGithub' }
-          & Pick<SiteSiteMetadataSocialGithub, 'value' | 'link'>
-        )>, linkedin: Maybe<(
-          { __typename?: 'SiteSiteMetadataSocialLinkedin' }
-          & Pick<SiteSiteMetadataSocialLinkedin, 'value' | 'link'>
-        )> }
+        & Pick<SiteSiteMetadataSocial, 'email' | 'github' | 'linkedin'>
       )> }
     )> }
   )> }

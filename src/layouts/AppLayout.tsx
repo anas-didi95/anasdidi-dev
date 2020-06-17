@@ -39,9 +39,9 @@ const AppLayout: React.FC<{
           <div className="container">{children}</div>
         </section>
         <Footer
-          email={metadata.email.link}
-          github={metadata.github.link}
-          linkedin={metadata.linkedin.link}
+          email={metadata.social.email}
+          github={metadata.social.github}
+          linkedin={metadata.social.linkedin}
         />
       </div>
     </>
