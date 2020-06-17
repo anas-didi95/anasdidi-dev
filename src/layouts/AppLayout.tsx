@@ -2,7 +2,7 @@ import React, { useState, ReactNode } from "react"
 import Header from "../components/Header"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import SEO from "../components/SEO"
-import { Link } from "gatsby"
+import { GrMail, GrGithub, GrLinkedin } from "react-icons/gr"
 
 const AppLayout: React.FC<{
   children: ReactNode
@@ -47,19 +47,25 @@ const AppLayout: React.FC<{
                   className="button is-text"
                   target="_blank"
                   href="mailto:anas.didi95@gmail.com">
-                  Email
+                  <span className="is-size-3">
+                    <GrMail />
+                  </span>
                 </a>
                 <a
                   className="button is-text"
                   target="_blank"
                   href="https://github.com/anas-didi95">
-                  Github
+                  <span className="is-size-3">
+                    <GrGithub />
+                  </span>
                 </a>
                 <a
                   className="button is-text"
                   target="_blank"
                   href="https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry">
-                  LinkedIn
+                  <span className="is-size-3">
+                    <GrLinkedin />
+                  </span>
                 </a>
               </div>
               <div className="column" />
