@@ -2,25 +2,42 @@ import React from "react"
 import AppLayout from "../layouts/AppLayout"
 import BlogList from "../components/BlogList"
 import * as Types from "../utils/types"
+import { useStaticQuery, graphql } from "gatsby"
+import { IndexQuery } from "../graphqlTypes"
+import { oc } from "ts-optchain"
 
 const IndexPage: React.FC<{}> = () => {
-  const blogList: Types.Blog[] = [
-    {
-      title: "Introduction to Algorithm: Insertion Sort",
-      author: "Anas Juwaidi",
-      date: "June 17, 2020",
-      description:
-        "Introduction to Insertion Sort, analysis and implementation on various programming languages.",
-      tags: ["algorithm"],
-    },
-    {
-      title: "Hello World",
-      author: "Anas Juwaidi",
-      date: "June 17, 2020",
-      description: "Sample page to display Markdown rendering.",
-      tags: ["markdown"],
-    },
-  ]
+  const data: IndexQuery = useStaticQuery(graphql`
+    query Index {
+      blogList: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              description
+              author
+              date(formatString: "MMMM DD, YYYY")
+              tags
+            }
+            excerpt
+          }
+        }
+      }
+    }
+  `)
+
+  const blogList: Types.Blog[] = oc(data)
+    .blogList.edges([])
+    .map(edge => ({
+      title: oc(edge).node.frontmatter.title(""),
+      author: oc(edge).node.frontmatter.author(""),
+      date: oc(edge).node.frontmatter.date(""),
+      description: oc(edge).node.frontmatter.description(""),
+      tags: oc(edge).node.frontmatter.tags([]),
+      excerpt: oc(edge).node.excerpt(""),
+    }))
 
   return (
     <AppLayout description="Home page" title="Home">
