@@ -402,8 +402,8 @@ export type File = Node & {
   birthtime?: Maybe<Scalars['Date']>,
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>,
-  childImageSharp?: Maybe<ImageSharp>,
   childMarkdownRemark?: Maybe<MarkdownRemark>,
+  childImageSharp?: Maybe<ImageSharp>,
 };
 
 
@@ -620,6 +620,65 @@ export enum FileFieldsEnum {
   ctime = 'ctime',
   birthtime = 'birthtime',
   publicURL = 'publicURL',
+  childMarkdownRemark___id = 'childMarkdownRemark___id',
+  childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
+  childMarkdownRemark___frontmatter___description = 'childMarkdownRemark___frontmatter___description',
+  childMarkdownRemark___frontmatter___author = 'childMarkdownRemark___frontmatter___author',
+  childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
+  childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark___frontmatter___tags',
+  childMarkdownRemark___frontmatter___slug = 'childMarkdownRemark___frontmatter___slug',
+  childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
+  childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
+  childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
+  childMarkdownRemark___html = 'childMarkdownRemark___html',
+  childMarkdownRemark___htmlAst = 'childMarkdownRemark___htmlAst',
+  childMarkdownRemark___excerptAst = 'childMarkdownRemark___excerptAst',
+  childMarkdownRemark___headings = 'childMarkdownRemark___headings',
+  childMarkdownRemark___headings___id = 'childMarkdownRemark___headings___id',
+  childMarkdownRemark___headings___value = 'childMarkdownRemark___headings___value',
+  childMarkdownRemark___headings___depth = 'childMarkdownRemark___headings___depth',
+  childMarkdownRemark___timeToRead = 'childMarkdownRemark___timeToRead',
+  childMarkdownRemark___tableOfContents = 'childMarkdownRemark___tableOfContents',
+  childMarkdownRemark___wordCount___paragraphs = 'childMarkdownRemark___wordCount___paragraphs',
+  childMarkdownRemark___wordCount___sentences = 'childMarkdownRemark___wordCount___sentences',
+  childMarkdownRemark___wordCount___words = 'childMarkdownRemark___wordCount___words',
+  childMarkdownRemark___parent___id = 'childMarkdownRemark___parent___id',
+  childMarkdownRemark___parent___parent___id = 'childMarkdownRemark___parent___parent___id',
+  childMarkdownRemark___parent___parent___children = 'childMarkdownRemark___parent___parent___children',
+  childMarkdownRemark___parent___children = 'childMarkdownRemark___parent___children',
+  childMarkdownRemark___parent___children___id = 'childMarkdownRemark___parent___children___id',
+  childMarkdownRemark___parent___children___children = 'childMarkdownRemark___parent___children___children',
+  childMarkdownRemark___parent___internal___content = 'childMarkdownRemark___parent___internal___content',
+  childMarkdownRemark___parent___internal___contentDigest = 'childMarkdownRemark___parent___internal___contentDigest',
+  childMarkdownRemark___parent___internal___description = 'childMarkdownRemark___parent___internal___description',
+  childMarkdownRemark___parent___internal___fieldOwners = 'childMarkdownRemark___parent___internal___fieldOwners',
+  childMarkdownRemark___parent___internal___ignoreType = 'childMarkdownRemark___parent___internal___ignoreType',
+  childMarkdownRemark___parent___internal___mediaType = 'childMarkdownRemark___parent___internal___mediaType',
+  childMarkdownRemark___parent___internal___owner = 'childMarkdownRemark___parent___internal___owner',
+  childMarkdownRemark___parent___internal___type = 'childMarkdownRemark___parent___internal___type',
+  childMarkdownRemark___children = 'childMarkdownRemark___children',
+  childMarkdownRemark___children___id = 'childMarkdownRemark___children___id',
+  childMarkdownRemark___children___parent___id = 'childMarkdownRemark___children___parent___id',
+  childMarkdownRemark___children___parent___children = 'childMarkdownRemark___children___parent___children',
+  childMarkdownRemark___children___children = 'childMarkdownRemark___children___children',
+  childMarkdownRemark___children___children___id = 'childMarkdownRemark___children___children___id',
+  childMarkdownRemark___children___children___children = 'childMarkdownRemark___children___children___children',
+  childMarkdownRemark___children___internal___content = 'childMarkdownRemark___children___internal___content',
+  childMarkdownRemark___children___internal___contentDigest = 'childMarkdownRemark___children___internal___contentDigest',
+  childMarkdownRemark___children___internal___description = 'childMarkdownRemark___children___internal___description',
+  childMarkdownRemark___children___internal___fieldOwners = 'childMarkdownRemark___children___internal___fieldOwners',
+  childMarkdownRemark___children___internal___ignoreType = 'childMarkdownRemark___children___internal___ignoreType',
+  childMarkdownRemark___children___internal___mediaType = 'childMarkdownRemark___children___internal___mediaType',
+  childMarkdownRemark___children___internal___owner = 'childMarkdownRemark___children___internal___owner',
+  childMarkdownRemark___children___internal___type = 'childMarkdownRemark___children___internal___type',
+  childMarkdownRemark___internal___content = 'childMarkdownRemark___internal___content',
+  childMarkdownRemark___internal___contentDigest = 'childMarkdownRemark___internal___contentDigest',
+  childMarkdownRemark___internal___description = 'childMarkdownRemark___internal___description',
+  childMarkdownRemark___internal___fieldOwners = 'childMarkdownRemark___internal___fieldOwners',
+  childMarkdownRemark___internal___ignoreType = 'childMarkdownRemark___internal___ignoreType',
+  childMarkdownRemark___internal___mediaType = 'childMarkdownRemark___internal___mediaType',
+  childMarkdownRemark___internal___owner = 'childMarkdownRemark___internal___owner',
+  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type',
   childImageSharp___id = 'childImageSharp___id',
   childImageSharp___fixed___base64 = 'childImageSharp___fixed___base64',
   childImageSharp___fixed___tracedSVG = 'childImageSharp___fixed___tracedSVG',
@@ -710,66 +769,7 @@ export enum FileFieldsEnum {
   childImageSharp___internal___ignoreType = 'childImageSharp___internal___ignoreType',
   childImageSharp___internal___mediaType = 'childImageSharp___internal___mediaType',
   childImageSharp___internal___owner = 'childImageSharp___internal___owner',
-  childImageSharp___internal___type = 'childImageSharp___internal___type',
-  childMarkdownRemark___id = 'childMarkdownRemark___id',
-  childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
-  childMarkdownRemark___frontmatter___description = 'childMarkdownRemark___frontmatter___description',
-  childMarkdownRemark___frontmatter___author = 'childMarkdownRemark___frontmatter___author',
-  childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
-  childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark___frontmatter___tags',
-  childMarkdownRemark___frontmatter___slug = 'childMarkdownRemark___frontmatter___slug',
-  childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
-  childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
-  childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
-  childMarkdownRemark___html = 'childMarkdownRemark___html',
-  childMarkdownRemark___htmlAst = 'childMarkdownRemark___htmlAst',
-  childMarkdownRemark___excerptAst = 'childMarkdownRemark___excerptAst',
-  childMarkdownRemark___headings = 'childMarkdownRemark___headings',
-  childMarkdownRemark___headings___id = 'childMarkdownRemark___headings___id',
-  childMarkdownRemark___headings___value = 'childMarkdownRemark___headings___value',
-  childMarkdownRemark___headings___depth = 'childMarkdownRemark___headings___depth',
-  childMarkdownRemark___timeToRead = 'childMarkdownRemark___timeToRead',
-  childMarkdownRemark___tableOfContents = 'childMarkdownRemark___tableOfContents',
-  childMarkdownRemark___wordCount___paragraphs = 'childMarkdownRemark___wordCount___paragraphs',
-  childMarkdownRemark___wordCount___sentences = 'childMarkdownRemark___wordCount___sentences',
-  childMarkdownRemark___wordCount___words = 'childMarkdownRemark___wordCount___words',
-  childMarkdownRemark___parent___id = 'childMarkdownRemark___parent___id',
-  childMarkdownRemark___parent___parent___id = 'childMarkdownRemark___parent___parent___id',
-  childMarkdownRemark___parent___parent___children = 'childMarkdownRemark___parent___parent___children',
-  childMarkdownRemark___parent___children = 'childMarkdownRemark___parent___children',
-  childMarkdownRemark___parent___children___id = 'childMarkdownRemark___parent___children___id',
-  childMarkdownRemark___parent___children___children = 'childMarkdownRemark___parent___children___children',
-  childMarkdownRemark___parent___internal___content = 'childMarkdownRemark___parent___internal___content',
-  childMarkdownRemark___parent___internal___contentDigest = 'childMarkdownRemark___parent___internal___contentDigest',
-  childMarkdownRemark___parent___internal___description = 'childMarkdownRemark___parent___internal___description',
-  childMarkdownRemark___parent___internal___fieldOwners = 'childMarkdownRemark___parent___internal___fieldOwners',
-  childMarkdownRemark___parent___internal___ignoreType = 'childMarkdownRemark___parent___internal___ignoreType',
-  childMarkdownRemark___parent___internal___mediaType = 'childMarkdownRemark___parent___internal___mediaType',
-  childMarkdownRemark___parent___internal___owner = 'childMarkdownRemark___parent___internal___owner',
-  childMarkdownRemark___parent___internal___type = 'childMarkdownRemark___parent___internal___type',
-  childMarkdownRemark___children = 'childMarkdownRemark___children',
-  childMarkdownRemark___children___id = 'childMarkdownRemark___children___id',
-  childMarkdownRemark___children___parent___id = 'childMarkdownRemark___children___parent___id',
-  childMarkdownRemark___children___parent___children = 'childMarkdownRemark___children___parent___children',
-  childMarkdownRemark___children___children = 'childMarkdownRemark___children___children',
-  childMarkdownRemark___children___children___id = 'childMarkdownRemark___children___children___id',
-  childMarkdownRemark___children___children___children = 'childMarkdownRemark___children___children___children',
-  childMarkdownRemark___children___internal___content = 'childMarkdownRemark___children___internal___content',
-  childMarkdownRemark___children___internal___contentDigest = 'childMarkdownRemark___children___internal___contentDigest',
-  childMarkdownRemark___children___internal___description = 'childMarkdownRemark___children___internal___description',
-  childMarkdownRemark___children___internal___fieldOwners = 'childMarkdownRemark___children___internal___fieldOwners',
-  childMarkdownRemark___children___internal___ignoreType = 'childMarkdownRemark___children___internal___ignoreType',
-  childMarkdownRemark___children___internal___mediaType = 'childMarkdownRemark___children___internal___mediaType',
-  childMarkdownRemark___children___internal___owner = 'childMarkdownRemark___children___internal___owner',
-  childMarkdownRemark___children___internal___type = 'childMarkdownRemark___children___internal___type',
-  childMarkdownRemark___internal___content = 'childMarkdownRemark___internal___content',
-  childMarkdownRemark___internal___contentDigest = 'childMarkdownRemark___internal___contentDigest',
-  childMarkdownRemark___internal___description = 'childMarkdownRemark___internal___description',
-  childMarkdownRemark___internal___fieldOwners = 'childMarkdownRemark___internal___fieldOwners',
-  childMarkdownRemark___internal___ignoreType = 'childMarkdownRemark___internal___ignoreType',
-  childMarkdownRemark___internal___mediaType = 'childMarkdownRemark___internal___mediaType',
-  childMarkdownRemark___internal___owner = 'childMarkdownRemark___internal___owner',
-  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type'
+  childImageSharp___internal___type = 'childImageSharp___internal___type'
 }
 
 export type FileFilterInput = {
@@ -811,8 +811,8 @@ export type FileFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   publicURL?: Maybe<StringQueryOperatorInput>,
-  childImageSharp?: Maybe<ImageSharpFilterInput>,
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>,
+  childImageSharp?: Maybe<ImageSharpFilterInput>,
 };
 
 export type FileGroupConnection = {
@@ -1823,8 +1823,8 @@ export type QueryFileArgs = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   publicURL?: Maybe<StringQueryOperatorInput>,
-  childImageSharp?: Maybe<ImageSharpFilterInput>,
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>,
+  childImageSharp?: Maybe<ImageSharpFilterInput>
 };
 
 
@@ -1846,6 +1846,7 @@ export type QuerySitePageArgs = {
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
+  context?: Maybe<SitePageContextFilterInput>,
   pluginCreator?: Maybe<SitePluginFilterInput>,
   pluginCreatorId?: Maybe<StringQueryOperatorInput>,
   componentPath?: Maybe<StringQueryOperatorInput>
@@ -2140,6 +2141,7 @@ export type SitePage = Node & {
   component?: Maybe<Scalars['String']>,
   componentChunkName?: Maybe<Scalars['String']>,
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>,
+  context?: Maybe<SitePageContext>,
   pluginCreator?: Maybe<SitePlugin>,
   pluginCreatorId?: Maybe<Scalars['String']>,
   componentPath?: Maybe<Scalars['String']>,
@@ -2165,6 +2167,15 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>,
   field: SitePageFieldsEnum
+};
+
+export type SitePageContext = {
+   __typename?: 'SitePageContext',
+  slug?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -2266,6 +2277,7 @@ export enum SitePageFieldsEnum {
   component = 'component',
   componentChunkName = 'componentChunkName',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___slug = 'context___slug',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2350,6 +2362,7 @@ export type SitePageFilterInput = {
   component?: Maybe<StringQueryOperatorInput>,
   componentChunkName?: Maybe<StringQueryOperatorInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
+  context?: Maybe<SitePageContextFilterInput>,
   pluginCreator?: Maybe<SitePluginFilterInput>,
   pluginCreatorId?: Maybe<StringQueryOperatorInput>,
   componentPath?: Maybe<StringQueryOperatorInput>,
@@ -2863,7 +2876,7 @@ export type IndexQuery = (
         & Pick<MarkdownRemark, 'excerpt'>
         & { frontmatter: Maybe<(
           { __typename?: 'MarkdownRemarkFrontmatter' }
-          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags' | 'slug'>
         )> }
       ) }
     )> }
