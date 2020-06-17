@@ -13,6 +13,7 @@ const Header: React.FC<{
     aria-label="main navigation"
     style={{ padding: "0.5rem" }}>
     <div className="navbar-brand">
+      <span className="ml-4" />
       <Link className="navbar-item" to="/">
         <GatsbyImage fixed={headerImage} />
       </Link>
@@ -28,10 +29,11 @@ const Header: React.FC<{
       </a>
     </div>
     <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
-      <div className="navbar-start">
+      <div className="navbar-end">
         <Link className="navbar-item" to="/">
           Home
         </Link>
+        <span className="mr-6" />
       </div>
     </div>
   </nav>
