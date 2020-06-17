@@ -2895,7 +2895,7 @@ export type BlogTemplateQuery = (
     & Pick<MarkdownRemark, 'html'>
     & { frontmatter: Maybe<(
       { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'slug'>
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'slug' | 'tags' | 'author' | 'date'>
     )> }
   )> }
 );
