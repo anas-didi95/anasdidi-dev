@@ -35,9 +35,12 @@ yarn install
 ---
 
 ## Features
+* Main page with list of blogs.
+* Blog page to view content
+
 To-do list:
-* Main page with list of posts
-* Post page to view content
+* 'About Me' section
+* '404' error page
 
 ---
 
