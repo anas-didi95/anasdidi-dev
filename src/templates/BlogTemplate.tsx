@@ -4,19 +4,22 @@ import { graphql } from "gatsby"
 import { BlogTemplateQuery } from "../graphqlTypes"
 import { oc } from "ts-optchain"
 
-const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => (
-  <AppLayout
-    title={oc(data).markdownRemark.frontmatter.title("")}
-    description={oc(data).markdownRemark.frontmatter.description("")}>
-    <div
-      className="content"
-      dangerouslySetInnerHTML={{
-        __html: oc(data).markdownRemark.html(""),
-      }}></div>
-  </AppLayout>
-)
+const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
+  return (
+    <AppLayout
+      title={oc(data).markdownRemark.frontmatter.title("")}
+      description={oc(data).markdownRemark.frontmatter.description("")}>
+      <div
+        className="content"
+        dangerouslySetInnerHTML={{
+          __html: oc(data).markdownRemark.html(""),
+        }}
+      />
+    </AppLayout>
+  )
+}
 
-const PageQuery = graphql`
+export const PageQuery = graphql`
   query BlogTemplate($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
