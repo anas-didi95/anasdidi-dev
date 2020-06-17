@@ -1,7 +1,6 @@
 import React from "react"
 import * as Types from "../utils/types"
 import { Link } from "gatsby"
-import * as Common from "../utils/common"
 import Box from "./Box"
 import Tag from "./Tag"
 
@@ -9,7 +8,7 @@ const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
   <>
     {blogList.map((blog, i) => (
       <Box key={`blog${i}`}>
-        <Link className="title is-3" to={Common.getBlogPath(blog.slug)}>
+        <Link className="title is-3" to={blog.slug}>
           <p>{blog.title}</p>
         </Link>
         <div className="mb-5 mt-1">
