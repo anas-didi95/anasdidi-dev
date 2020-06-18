@@ -2895,6 +2895,9 @@ export type AboutMeQuery = (
         & GatsbyImageSharpFixedFragment
       )> }
     )> }
+  )>, content: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'html'>
   )> }
 );
 

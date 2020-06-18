@@ -20,6 +20,13 @@ module.exports = {
         name: `blog`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about-me`,
+        name: `aboutMe`,
+      },
+    },
     `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,

@@ -19,6 +19,9 @@ const AboutMePage: React.FC<{}> = () => {
           }
         }
       }
+      content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
+        html
+      }
     }
   `)
 
@@ -69,6 +72,17 @@ const AboutMePage: React.FC<{}> = () => {
               </div>
             </div>
           </Box>
+        </div>
+        <div className="column" />
+      </div>
+      <br />
+      <div className="columns">
+        <div className="column" />
+        <div className="column is-6">
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: oc(data).content.html("") }}
+          />
         </div>
         <div className="column" />
       </div>
