@@ -44,30 +44,24 @@ const AboutMePage: React.FC<{}> = () => {
                   <table className="table">
                     <tbody>
                       <tr>
-                        <td style={{ width: "10%" }}>
-                          <SocialIcon type="email" />
-                        </td>
-                        <td style={{ width: "40%" }}>
-                          {metadata.social.email}
-                        </td>
-                        <td style={{ width: "10%" }}>
-                          <SocialIcon type="github" />
-                        </td>
-                        <td style={{ width: "40%" }}>
-                          {metadata.social.github}
-                        </td>
+                        <TableColumnSocialLink
+                          type="email"
+                          link={metadata.social.email}
+                        />
+                        <TableColumnSocialLink
+                          type="github"
+                          link={metadata.social.github}
+                        />
                       </tr>
                       <tr>
-                        <td style={{ width: "10%" }}>
-                          <SocialIcon type="linkedin" />
-                        </td>
-                        <td style={{ width: "40%" }}>
-                          {metadata.social.linkedin}
-                        </td>
-                        <td style={{ width: "10%" }}>
-                          <SocialIcon type="web" />
-                        </td>
-                        <td style={{ width: "40%" }}>{metadata.social.web}</td>
+                        <TableColumnSocialLink
+                          type="linkedin"
+                          link={metadata.social.linkedin}
+                        />
+                        <TableColumnSocialLink
+                          type="web"
+                          link={metadata.social.web}
+                        />
                       </tr>
                     </tbody>
                   </table>
@@ -81,5 +75,24 @@ const AboutMePage: React.FC<{}> = () => {
     </AppLayout>
   )
 }
+
+const TableColumnSocialLink: React.FC<{
+  type: "email" | "github" | "linkedin" | "web"
+  link: string
+}> = ({ type, link }) => (
+  <>
+    <td style={{ width: "5%" }}>
+      <SocialIcon type={type} />
+    </td>
+    <td style={{ width: "45%" }}>
+      <a
+        className="is-size-6"
+        href={`${type === "email" ? "mailto:" + link : link}`}
+        target="_blank">
+        {link}
+      </a>
+    </td>
+  </>
+)
 
 export default AboutMePage
