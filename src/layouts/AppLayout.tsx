@@ -6,7 +6,7 @@ import Footer from "../components/Footer"
 
 const AppLayout: React.FC<{
   children: ReactNode
-  description: string
+  description?: string
   title: string
 }> = ({ children, description, title }) => {
   const [isActive, setActive] = useState(false)

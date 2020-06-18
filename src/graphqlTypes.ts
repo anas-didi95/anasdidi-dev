@@ -2872,6 +2872,23 @@ export type ImageQueryQuery = (
   )> }
 );
 
+export type AboutMeQueryVariables = {};
+
+
+export type AboutMeQuery = (
+  { __typename?: 'Query' }
+  & { profilePic: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
+  )> }
+);
+
 export type IndexQueryVariables = {};
 
 
