@@ -9,7 +9,7 @@ module.exports = {
       email: "anas.didi95@gmail.com",
       github: "https://github.com/anas-didi95",
       linkedin: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
-      web: "https://thirsty-swartz-3da69a.netlify.app/",
+      web: "https://anasdidi.dev/"
     },
   },
   plugins: [
