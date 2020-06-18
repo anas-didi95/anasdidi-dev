@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { AboutMeQuery } from "../graphqlTypes"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
+import SocialIcon from "../components/SocialIcon"
 
 const AboutMePage: React.FC<{}> = () => {
   const data: AboutMeQuery = useStaticQuery(graphql`
@@ -34,7 +35,36 @@ const AboutMePage: React.FC<{}> = () => {
                   style={{ borderRadius: "25%" }}
                 />
               </div>
-              <div className="column is-9">hello world 2</div>
+              <div className="column is-9">
+                <p className="title is-3">Anas Juwaidi Bin Mohd Jeffry</p>
+                <p className="subtitle is-5">Software Engineer</p>
+                <div className="table-container">
+                  <table className="table">
+                    <tbody>
+                      <tr>
+                        <td style={{ width: "10%" }}>
+                          <SocialIcon type="email" />
+                        </td>
+                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "10%" }}>
+                          <SocialIcon type="github" />
+                        </td>
+                        <td style={{ width: "40%" }}>Link</td>
+                      </tr>
+                      <tr>
+                        <td style={{ width: "10%" }}>
+                          <SocialIcon type="linkedin" />
+                        </td>
+                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "10%" }}>
+                          <SocialIcon type="web" />
+                        </td>
+                        <td style={{ width: "40%" }}>Link</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </Box>
         </div>
