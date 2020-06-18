@@ -6,8 +6,10 @@ import { AboutMeQuery } from "../graphqlTypes"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
 import SocialIcon from "../components/SocialIcon"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 
 const AboutMePage: React.FC<{}> = () => {
+  const metadata = useQueryMetadata()
   const data: AboutMeQuery = useStaticQuery(graphql`
     query AboutMe {
       profilePic: file(absolutePath: { regex: "/images/profile-pic/" }) {
@@ -36,8 +38,8 @@ const AboutMePage: React.FC<{}> = () => {
                 />
               </div>
               <div className="column is-9">
-                <p className="title is-3">Anas Juwaidi Bin Mohd Jeffry</p>
-                <p className="subtitle is-5">Software Engineer</p>
+                <p className="title is-3">{metadata.fullname}</p>
+                <p className="subtitle is-5">{metadata.position}</p>
                 <div className="table-container">
                   <table className="table">
                     <tbody>
@@ -45,21 +47,27 @@ const AboutMePage: React.FC<{}> = () => {
                         <td style={{ width: "10%" }}>
                           <SocialIcon type="email" />
                         </td>
-                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "40%" }}>
+                          {metadata.social.email}
+                        </td>
                         <td style={{ width: "10%" }}>
                           <SocialIcon type="github" />
                         </td>
-                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "40%" }}>
+                          {metadata.social.github}
+                        </td>
                       </tr>
                       <tr>
                         <td style={{ width: "10%" }}>
                           <SocialIcon type="linkedin" />
                         </td>
-                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "40%" }}>
+                          {metadata.social.linkedin}
+                        </td>
                         <td style={{ width: "10%" }}>
                           <SocialIcon type="web" />
                         </td>
-                        <td style={{ width: "40%" }}>Link</td>
+                        <td style={{ width: "40%" }}>{metadata.social.web}</td>
                       </tr>
                     </tbody>
                   </table>

@@ -11,7 +11,10 @@ const Footer: React.FC<{ email: string; github: string; linkedin: string }> = ({
       <div className="columns">
         <div className="column" />
         <div className="buttons column">
-          <SocialLink icon={<SocialIcon type="email" />} link={email} />
+          <SocialLink
+            icon={<SocialIcon type="email" />}
+            link={`mailto:${email}`}
+          />
           <SocialLink icon={<SocialIcon type="github" />} link={github} />
           <SocialLink icon={<SocialIcon type="linkedin" />} link={linkedin} />
         </div>

@@ -3,10 +3,13 @@ module.exports = {
     title: `Anas Juwaidi's Blog`,
     description: `My personal blog developed using Gatsby and TypeScript.`,
     author: `@anasdidi95`,
+    fullname: "Anas Juwaidi Bin Mohd Jeffry",
+    position: "Software Engineer",
     social: {
-      email: "mailto:anas.didi95@gmail.com",
+      email: "anas.didi95@gmail.com",
       github: "https://github.com/anas-didi95",
       linkedin: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
+      web: "https://thirsty-swartz-3da69a.netlify.app/",
     },
   },
   plugins: [
