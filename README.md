@@ -1,5 +1,6 @@
 # My Personal Blog
 > My personal blog developed using Gatsby and TypeScript.
+> Use the following link to reach the blog: [anasdidi.dev](https://anasdidi.dev/)
 
 ---
 
