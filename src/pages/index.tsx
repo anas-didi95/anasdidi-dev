@@ -33,6 +33,7 @@ const IndexPage: React.FC<{}> = () => {
 
   const blogList: Types.Blog[] = oc(data)
     .blogList.edges([])
+    .filter(edge => oc(edge).node.fields.slug(""))
     .map(edge => ({
       title: oc(edge).node.frontmatter.title(""),
       author: oc(edge).node.frontmatter.author(""),
@@ -44,7 +45,7 @@ const IndexPage: React.FC<{}> = () => {
     }))
 
   return (
-    <AppLayout description="Home page" title="Home">
+    <AppLayout title="Home">
       <div className="columns">
         <div className="column" />
         <div className="column is-6">
