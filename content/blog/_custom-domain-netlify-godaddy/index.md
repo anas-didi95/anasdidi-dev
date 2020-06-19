@@ -15,14 +15,15 @@ Following guide will provide on how to configure DNS from GoDaddy to point to Ne
 ---
 
 ## Table of contents
-* [Domain Settings in Netlify](#domain-settings-netlify)
-* [DNS Configuration](#dns-configuration)
+* [Domain settings in Netlify](#domain-settings-netlify)
+* [DNS configuration](#dns-configuration)
+* [Verify DNS configuration](#verify-dns-configuration)
 * [References](#references)
 
 ---
 
 <a name="domain-settings-netlify"></a>
-## Domain Settings in Netlify
+## Domain settings in Netlify
 Login to Netlify Dashboard, open your project and click **Domain settings**.
 
 ![Netlify Dashboard](./0-netlify-dashboard.png)
@@ -36,11 +37,39 @@ Next, enter the domain registered with GoDaddy and click **Yes, add domain** to 
 ---
 
 <a name="dns-configuration"></a>
-## DNS Configuration
+## DNS configuration
 
 After added, Netlify will try to propagate the DNS changes with GoDaddy. To continue, click **Check DNS configuration** for details required for GoDaddy configuration.
 
 ![Check DNS configuration](./2.0-check-dns-configuration.png)
+
+We got two options: either we can **point ANAME/ALIAS/CNAME record to Netlify subdomain** or we can **create an A record pointing to Netlify load balancer**.
+
+This guide will choose 2nd option as we are going to configure the root domain *(Apex domain)* from GoDaddy to our site.
+
+![DNS configuration](./2.1-dns-configuration.png)
+
+Login to GoDaddy Dashboard and click **DNS** under our registered domain to setup the DNS.
+
+![GoDaddy Dashboard](./3.0-godaddy-dns-record.png)
+
+Next, update the A record to points to Netlify load balancer from previous DNS configuration details and save.
+
+![GoDaddy DNS record](./3.1-godaddy-dns-record.png)
+
+---
+
+<a name="verify-dns-configuration"></a>
+## Verify DNS configuration
+Back to Netlify domain settings panel, refresh the page and it will say it is waiting for the DNS to propagate under **HTTPS**.
+
+![Waiting DNS propagation](./4-verify-dns-configuration.png)
+
+Once it is complete, Netlify will automatically provision the SSL certificate using Let's Encrypt. Wait a few minutes for the certificate to be provisioned.
+
+![HTTPS enabled](./5-https-enabled.png)
+
+Now, we can access our Netlify-deployed site using our registered custom domain with HTTPS enabled!
 
 ---
 
