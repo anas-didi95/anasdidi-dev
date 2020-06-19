@@ -2,7 +2,7 @@ import React from "react"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { Error404PageQuery } from "../graphqlTypes"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
@@ -27,11 +27,25 @@ const Error404Page: React.FC<{}> = () => {
         <div className="column" />
         <div className="column is-6">
           <Box>
-            <GatsbyImage
-              fixed={oc(data).icon.childImageSharp.fixed() as FixedObject}
-            />
-            Page Not Found Looks like you've followed a broken link or entered a
-            URL that doesn't exist on this site.
+            <div className="columns">
+              <div className="column is-3 has-text-centered">
+                <GatsbyImage
+                  fixed={oc(data).icon.childImageSharp.fixed() as FixedObject}
+                />
+              </div>
+              <div className="column">
+                <p className="title">Page Not Found!</p>
+                <p className="content">
+                  Looks like you've followed a broken link or entered a URL that
+                  doesn't exist on this site.
+                </p>
+                <div className="buttons">
+                  <Link to="/" className="button is-primary">
+                    Return to Home
+                  </Link>
+                </div>
+              </div>
+            </div>
           </Box>
         </div>
         <div className="column" />
