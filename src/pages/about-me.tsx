@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { AboutMeQuery } from "../graphqlTypes"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
-import SocialIcon from "../components/SocialIcon"
+import Icon from "../components/Icon"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 
@@ -97,7 +97,7 @@ const TableColumnSocialLink: React.FC<{
 }> = ({ type, link }) => (
   <>
     <td style={{ width: "5%" }}>
-      <SocialIcon type={type} />
+      <Icon type={type} />
     </td>
     <td style={{ width: "45%" }}>
       <a

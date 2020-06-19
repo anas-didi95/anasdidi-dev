@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import SocialIcon from "./SocialIcon"
+import Icon from "./Icon"
 
 const Footer: React.FC<{ email: string; github: string; linkedin: string }> = ({
   email,
@@ -11,12 +11,9 @@ const Footer: React.FC<{ email: string; github: string; linkedin: string }> = ({
       <div className="columns">
         <div className="column" />
         <div className="buttons column">
-          <SocialLink
-            icon={<SocialIcon type="email" />}
-            link={`mailto:${email}`}
-          />
-          <SocialLink icon={<SocialIcon type="github" />} link={github} />
-          <SocialLink icon={<SocialIcon type="linkedin" />} link={linkedin} />
+          <SocialLink icon={<Icon type="email" />} link={`mailto:${email}`} />
+          <SocialLink icon={<Icon type="github" />} link={github} />
+          <SocialLink icon={<Icon type="linkedin" />} link={linkedin} />
         </div>
         <div className="column" />
       </div>
