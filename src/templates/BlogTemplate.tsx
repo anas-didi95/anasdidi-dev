@@ -22,10 +22,6 @@ const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
               </p>
               <p className="subtitle is-6">
                 <span className="is-italic">
-                  {oc(data).markdownRemark.frontmatter.author("")}
-                </span>
-                <span className="mx-2">|</span>
-                <span className="is-italic">
                   {oc(data).markdownRemark.frontmatter.date("")}
                 </span>
               </p>
