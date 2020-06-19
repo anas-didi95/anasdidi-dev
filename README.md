@@ -39,9 +39,10 @@ yarn install
 * Main page with list of blogs.
 * Blog page to view content
 * 'About Me' section
+* '404' error page
 
 To-do list:
-* '404' error page
+* Blog pagination
 
 ---
 
