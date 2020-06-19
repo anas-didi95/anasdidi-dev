@@ -6,11 +6,11 @@ date: "2020-06-19"
 tags: ["dns","netlify","godaddy"]
 ---
 
-By default, any site deployed to Netlify will be provide with Netlify subdomain using the following template: `[site-name].netlify.app`
+By default, any site deployed to Netlify will be provided with Netlify subdomain using the following template: `[site-name].netlify.app`
 
 However, if we already have an external registered domain from other provider such as GoDaddy, we can configure the DNS provider to point to your domain to Netlify.
 
-Following guide will provide on how to configure DNS from GoDaddy to point to Netlify.
+Following entries will guide on how to configure DNS from GoDaddy to point to Netlify.
 
 ---
 
@@ -39,7 +39,7 @@ Next, enter the domain registered with GoDaddy and click **Yes, add domain** to 
 <a name="dns-configuration"></a>
 ## DNS configuration
 
-After added, Netlify will try to propagate the DNS changes with GoDaddy. To continue, click **Check DNS configuration** for details required for GoDaddy configuration.
+After added, Netlify will try to propagate the DNS changes with GoDaddy. Then, click **Check DNS configuration** for details required for GoDaddy configuration.
 
 ![Check DNS configuration](./2.0-check-dns-configuration.png)
 
@@ -69,7 +69,7 @@ Once it is complete, Netlify will automatically provision the SSL certificate us
 
 ![HTTPS enabled](./5-https-enabled.png)
 
-Now, we can access our Netlify-deployed site using our registered custom domain with HTTPS enabled!
+Now, we can get access to our Netlify-deployed site using our registered custom domain with HTTPS enabled!
 
 ---
 
