@@ -16,6 +16,7 @@ Following guide will provide on how to configure DNS from GoDaddy to point to Ne
 
 ## Table of contents
 * [Domain Settings in Netlify](#domain-settings-netlify)
+* [DNS Configuration](#dns-configuration)
 * [References](#references)
 
 ---
@@ -31,6 +32,15 @@ Add click **Add domain alias** under **Custom domains** box.
 Next, enter the domain registered with GoDaddy and click **Yes, add domain** to confirm the domain verification.
 
 ![Add custom domain](./1-netlify-add-custom-domain.png)
+
+---
+
+<a name="dns-configuration"></a>
+## DNS Configuration
+
+After added, Netlify will try to propagate the DNS changes with GoDaddy. To continue, click **Check DNS configuration** for details required for GoDaddy configuration.
+
+![Check DNS configuration](./2.0-check-dns-configuration.png)
 
 ---
 
