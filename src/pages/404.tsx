@@ -6,6 +6,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { Error404PageQuery } from "../graphqlTypes"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
+import Button from "../components/Button"
 
 const Error404Page: React.FC<{}> = () => {
   const data: Error404PageQuery = useStaticQuery(graphql`
@@ -40,9 +41,7 @@ const Error404Page: React.FC<{}> = () => {
                   doesn't exist on this site.
                 </p>
                 <div className="buttons">
-                  <Link to="/" className="button is-primary">
-                    Return to Home
-                  </Link>
+                  <Button type="link" value="Return to Home" link="/" />
                 </div>
               </div>
             </div>
