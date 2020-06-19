@@ -14,13 +14,7 @@ const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
         <div className="mb-5 mt-1">
           <div className="columns is-mobile">
             <div className="column">
-              <p className="subtitle is-6 is-italic">{blog.author}</p>
-            </div>
-            <div className="column" />
-            <div className="column">
-              <p className="has-text-right subtitle is-6 is-italic">
-                {blog.date}
-              </p>
+              <p className="subtitle is-6 is-italic">{blog.date}</p>
             </div>
           </div>
         </div>
