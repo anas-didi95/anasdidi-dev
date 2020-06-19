@@ -7,6 +7,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image"
 import { oc } from "ts-optchain"
 import SocialIcon from "../components/SocialIcon"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 
 const AboutMePage: React.FC<{}> = () => {
   const metadata = useQueryMetadata()
@@ -75,7 +76,7 @@ const AboutMePage: React.FC<{}> = () => {
         </div>
         <div className="column" />
       </div>
-      <br />
+      <ResponsiveBreakpoint />
       <div className="columns">
         <div className="column" />
         <div className="column is-6">

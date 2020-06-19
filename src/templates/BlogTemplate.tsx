@@ -5,6 +5,7 @@ import { BlogTemplateQuery } from "../graphqlTypes"
 import { oc } from "ts-optchain"
 import Box from "../components/Box"
 import Tag from "../components/Tag"
+import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 
 const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
   return (
@@ -42,7 +43,7 @@ const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
         </div>
         <div className="column" />
       </div>
-      <br />
+      <ResponsiveBreakpoint />
       <div className="columns">
         <div className="column" />
         <div className="column is-6">
