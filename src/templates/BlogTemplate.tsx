@@ -30,7 +30,7 @@ const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
               </p>
               <div
                 className="tags are-medium"
-                style={{ justifyContent: "space-around" }}>
+                style={{ justifyContent: "center" }}>
                 {oc(data)
                   .markdownRemark.frontmatter.tags([])
                   .map((tag, i) => (
