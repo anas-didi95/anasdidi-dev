@@ -1,7 +1,7 @@
 import React from "react"
 import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr"
 
-const SocialIcon: React.FC<{
+const Icon: React.FC<{
   type: "email" | "github" | "linkedin" | "web"
 }> = ({ type }) => (
   <>
@@ -17,4 +17,4 @@ const SocialIcon: React.FC<{
   </>
 )
 
-export default SocialIcon
+export default Icon
