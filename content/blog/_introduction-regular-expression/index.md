@@ -6,7 +6,7 @@ date: "2020-06-21"
 tags: ["regex", "regular", "expression"]
 ---
 
-Regular expression or shortened as *regex* is a sequence of character to define a search pattern.
+Regular expression or shortened as **regex** is a sequence of characters to define a search pattern.
 
 Regex allows us to search for specific, standard textual syntax for representing patterns for matching text. 
 
@@ -20,17 +20,17 @@ Thus, regex is used in search engines and in search and replace dialog of text e
 
 ## Table of contents
 * [Metacharacter](#metacharacter)
-  * [^](#caret)
-  * [.](#dot)
+  * [^ *(Caret)*](#caret)
+  * [. *(Dot)*](#dot)
   * [\[ \]](#square-bracket)
   * [\[^ \]](#caret-bracket)
-  * [$](#dollar)
-  * [*](#asterisk)
-  * [+](#plus)
-  * [?](#question-mark)
+  * [$ *(Dollar)*](#dollar)
+  * [* *(Asterisk)*](#asterisk)
+  * [+ *(Plus)*](#plus)
+  * [? *(Question mark)*](#question-mark)
   * [{n}](#curly-n)
   * [{n,m}](#curly-m-n)
-  * [|](#pipe)
+  * [| *(Pipe)*](#pipe)
 * [Example usage](#example-usage)
   * [Email validation](#email-validation)
   * [Phone validation](#phone-validation)
@@ -48,7 +48,7 @@ Following are the common metacharacter in regex and description:
 ---
 
 <a name="caret"></a>
-### ^
+### ^ *(Caret)*
 
 Matches the starting position within the string.
 
@@ -59,7 +59,7 @@ Matches the starting position within the string.
 ---
 
 <a name="dot"></a>
-### .
+### . *(Dot)*
 
 Matches any single character. Can be used as *wildcard* character.
 
@@ -84,22 +84,22 @@ Matches a single character that is contained within the bracket.
 ---
 
 <a name="caret-bracket"></a>
-### [^ ]
+### [\^ ]
 
 Matches a single character that is not contained within the bracket.
 
 **Example**
-![Caret bracket 1](./04.1-caret-bracket)
+![Caret bracket 1](./04.1-caret-bracket.png)
 
 `-` can be used to specific a range of characters. Thus, `[^a-z]` matches any except "a" until "z".
 
 **Example**
-![Caret bracket 2](./04.2-caret-bracket)
+![Caret bracket 2](./04.2-caret-bracket.png)
 
 ---
 
 <a name="dollar"></a>
-### $
+### $ *(Dollar)*
 
 Matches the ending position of the string.
 
@@ -109,7 +109,7 @@ Matches the ending position of the string.
 ---
 
 <a name="asterisk"></a>
-### *
+### * *(Asterisk)*
 
 A repeater where matches when the character preceding `*` matches 0 or more times.
 
@@ -119,7 +119,7 @@ A repeater where matches when the character preceding `*` matches 0 or more time
 ---
 
 <a name="plus"></a>
-### +
+### + *(Plus)*
 
 A repeater where matches when the character preceding `+` matches at least one or more times.
 
@@ -129,7 +129,7 @@ A repeater where matches when the character preceding `+` matches at least one o
 ---
 
 <a name="question-mark"></a>
-### ?
+### ? *(Question mark)*
 
 Matches when the character preceding `?` occurs 0 or 1 time only, making the character optional.
 
@@ -159,7 +159,7 @@ Matches when the preceding character occurs at least *m* and not more than *n* t
 ---
 
 <a name="pipe"></a>
-### |
+### | *(Pipe)*
 
 Matches either the expression before or expression after the `|`.
 
