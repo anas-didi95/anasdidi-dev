@@ -10,7 +10,7 @@ Regular expression or shortened as **regex** is a sequence of characters to defi
 
 Regex allows us to search for specific, standard textual syntax for representing patterns for matching text. 
 
-Thought look complicated, regex are very powerful as it can be used to create and match any text pattern.
+Though look complicated, regex are very powerful as it can be used to create and match any text pattern.
 
 Usually, operations such as string searching algorithms and input validation solved by using regex. 
 
@@ -43,7 +43,7 @@ Thus, regex is used in search engines and in search and replace dialog of text e
 
 Metacharacter is a character that has a special meaning to a regex.
 
-Following are the common metacharacter in regex and description:
+Following are the common metacharacters in regex and description:
 
 ---
 
