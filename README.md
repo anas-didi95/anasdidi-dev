@@ -1,15 +1,20 @@
 # My Personal Blog
 > My personal blog developed using Gatsby and TypeScript.
-> Use the following link to reach the blog: [anasdidi.dev](https://anasdidi.dev/)
 
 ---
 
 ## Table of contents
+* [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
 * [Credits](#credits)
 * [Contact](#contact)
+
+---
+
+## General info
+Use the following link to reach the blog: [anasdidi.dev](https://anasdidi.dev/)
 
 ---
 
