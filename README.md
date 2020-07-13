@@ -78,9 +78,9 @@ npm start
 * Blog page to view content
 * 'About Me' section
 * '404' error page
+* Blog pagination
 
 To-do list:
-* Blog pagination
 
 ---
 
