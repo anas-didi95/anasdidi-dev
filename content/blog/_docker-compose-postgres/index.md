@@ -1,5 +1,5 @@
 ---
-title: "Configuring PostgreSQL and pgAdmin with Docker Compose"
+title: "Configure PostgreSQL and pgAdmin with Docker Compose"
 description: "Step-by-step on how to configure PostgreSQL and pgAdmin with Docker Compose."
 author: "Anas Juwaidi"
 date: "2020-07-13"
@@ -11,7 +11,7 @@ tags: ["postgres", "pgadmin", "docker", "docker-compose"]
 While Docker is mainly used in deployment, it can also be use in development environment. By running a container for development environment, 
 we can avoid to install a bunch of tools or languages on our machine.
 
-For example, we can use Docker to run service such as **Postgres** and **pgAdmin** for database service and administration platform for Postgres in a container.
+For example, we can use Docker to run service such as **postgres** and **pgadmin** for database service and administration platform for PostgreSQL respectively in a container.
 
 To demonstrate, we will configure Postgres and pgAdmin with **Docker Compose** for database service for our development environment.
 
@@ -46,8 +46,7 @@ Both can be installed by referring to the official guide on how to install based
 <a name="docker-compose-file"></a>
 ## Create a Docker Compose file
 
-**Docker Compose** is a tool for defining and running multi-container Docker applications. By using Docker Compose, we can orchestrate on how the applications/services
-start in the container by a single command.
+**Docker Compose** is a tool for defining and running multi-container Docker applications. By using Docker Compose, we can orchestrate on how the applications/services start in the container by a single command.
 
 Moreover, Docker Compose allows us to:
 * Start, stop, and rebuild services
@@ -78,10 +77,10 @@ postgres:
         - postgres:/var/lib/postgresql/data
 ```
 
-**Explaination**
+**Explanation**
 * `image`: Specify the image to start the container from. In this case, we are going to use **postgres:12.3-alpine** from [Docker Hub](https://hub.docker.com/_/postgres/).
 * `restart`: Configure container to always restart if container stopped unexpectedly.
-* `environment`: Configure environment variable. The above is used for database superuser authentication.
+* `environment`: Configure environment variable for database superuser authentication.
 * `volumes`: Mount named volumes for database files.
 
 ---
@@ -105,20 +104,19 @@ pgadmin:
         - postgres
 ```
 
-**Explaination**
+**Explanation**
 * `image`: Specify the image to start the container from. In this case, we are going to use **dpage/pgadmin4:4.23** from [Docker Hub](https://hub.docker.com/r/pgadmin/ripmain).
-* `environment`: Configure environment variable. The above is used for application authentication and setup.
-* `ports`: Mapping port between host machine **15432** and container **80**.
+* `environment`: Configure environment variable for application authentication and setup.
+* `ports`: Map port between host machine **15432** and container **80**.
 * `volumes`: Mount named volumes for application files.
-* `depends_on`: Defined the dependencies of services. This allow us to deploy service in order; e.g. `postgres` -> `pgadmin`.
+* `depends_on`: Define the dependencies of services. This allow us to deploy service in order; e.g. `postgres` -> `pgadmin`.
 
 ---
 
 <a name="example"></a>
 ### Example
 
-Then, we will going to put all services' configuration in file `docker-compose.yml`. Because we are using the **named volume**, we also need to setup the volumes
-based on the name we used in services.
+Then, we will going to put all services' configuration in file `docker-compose.yml`. Because we are using the **named volume**, we also need to configure the volumes based on the name we used in services.
 
 **Snippet**
 ```
@@ -179,7 +177,7 @@ To check if services are running successfully, we can use command: `docker-compo
 <a name="open-pgadmin"></a>
 ## Open pgAdmin
 
-After running Docker Compose services, open web browser and open `localhost:15432`. The port number is based on the mapping we configured under `pgadmin` service.
+After running Docker Compose services, open web browser and go to `localhost:15432`. The port number is based on the mapping we configured under **pgadmin** service.
 
 Then key-in the email and password configured using the environment variable: `PGADMIN_DEFAULT_EMAIL` and `PGADMIN_DEFAULT_PASSWORD`.
 
@@ -209,7 +207,7 @@ Enter **Host name/address**, **Username** and **Password** under **Connection**.
 ![Server connection](./07-server-connection.png)
 *Figure 07: Server connection*
 
-And click **Save** to finish create. After done, we can access the database from the sidebar.
+And click **Save** to finish create. After done, we can get access to the database from the sidebar.
 
 ![Database dashboard](./08-database-dashboard.png)
 *Figure 08: Database dashboard*
