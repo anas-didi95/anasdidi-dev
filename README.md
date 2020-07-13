@@ -81,6 +81,7 @@ npm start
 * Blog pagination
 
 To-do list:
+* 'Projects' section
 
 ---
 
