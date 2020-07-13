@@ -37,6 +37,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               slug
             }
           }
+          next {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
+          previous {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
+          }
         }
       }
     }
@@ -46,13 +62,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.slug,
       component: BlogTemplate,
       context: {
         // additional data can be passed via context
         slug: node.fields.slug,
+        next,
+        previous
       },
     })
   })

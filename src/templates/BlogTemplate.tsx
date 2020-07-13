@@ -7,7 +7,30 @@ import Box from "../components/Box"
 import Tag from "../components/Tag"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 
-const BlogTemplate: React.FC<{ data: BlogTemplateQuery }> = ({ data }) => {
+type TPageContext = {
+  next?: {
+    frontmatter: {
+      title: string
+    }
+    fields: {
+      slug: string
+    }
+  }
+  previous?: {
+    frontmatter: {
+      title: string
+    }
+    fields: {
+      slug: string
+    }
+  }
+}
+
+const BlogTemplate: React.FC<{
+  data: BlogTemplateQuery
+  pageContext: TPageContext
+}> = ({ data, pageContext }) => {
+  console.log("pageContext", pageContext)
   return (
     <AppLayout
       title={oc(data).markdownRemark.frontmatter.title("")}
