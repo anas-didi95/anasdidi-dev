@@ -6,6 +6,7 @@ import { oc } from "ts-optchain"
 import Box from "../components/Box"
 import Tag from "../components/Tag"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
+import Button from "../components/Button"
 
 type TPageContext = {
   next?: {
@@ -72,6 +73,28 @@ const BlogTemplate: React.FC<{
               __html: oc(data).markdownRemark.html(""),
             }}
           />
+        </div>
+        <div className="column" />
+      </div>
+      <ResponsiveBreakpoint />
+      <div className="columns">
+        <div className="column" />
+        <div className="column is-7">
+          <div className="has-text-right">
+            <Button
+              type="link"
+              value={oc(pageContext).next.frontmatter.title("") + " >>"}
+              link={oc(pageContext).next.fields.slug("")}
+            />
+          </div>
+          <br />
+          <div className="has-text-left">
+            <Button
+              type="link"
+              value={"<< " + oc(pageContext).previous.frontmatter.title("")}
+              link={oc(pageContext).previous.fields.slug("")}
+            />
+          </div>
         </div>
         <div className="column" />
       </div>
