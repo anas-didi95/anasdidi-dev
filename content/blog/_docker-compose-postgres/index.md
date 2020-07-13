@@ -6,14 +6,14 @@ date: "2020-07-13"
 tags: ["postgres", "pgadmin", "docker", "docker-compose"]
 ---
 
-*Docker* is a set of tools that utilises OS-level virtualization to running software in packages called container. 
+**Docker** is a set of tools that utilises OS-level virtualization to running software in packages called container. 
 
-While *Docker* is mainly used in deployment, it can also be use in development environment. By running a container for development environment, 
+While Docker is mainly used in deployment, it can also be use in development environment. By running a container for development environment, 
 we can avoid to install a bunch of tools or languages on our machine.
 
-For example, we can use Docker to run service such as *Postgres* and *pgAdmin* for database service and administration platform for Postgres in a container.
+For example, we can use Docker to run service such as **Postgres** and **pgAdmin** for database service and administration platform for Postgres in a container.
 
-To demonstrate, we will configure Postgres and pgAdmin with Docker Compose for database service for our development environment.
+To demonstrate, we will configure Postgres and pgAdmin with **Docker Compose** for database service for our development environment.
 
 ---
 
@@ -46,7 +46,7 @@ Both can be installed by referring to the official guide on how to install based
 <a name="docker-compose-file"></a>
 ## Create a Docker Compose file
 
-*Docker Compose* is a tool for defining and running multi-container Docker applications. By using Docker Compose, we can orchestrate on how the applications/services
+**Docker Compose** is a tool for defining and running multi-container Docker applications. By using Docker Compose, we can orchestrate on how the applications/services
 start in the container by a single command.
 
 Moreover, Docker Compose allows us to:
@@ -58,8 +58,8 @@ Moreover, Docker Compose allows us to:
 Next, we are going to create a Docker Compose file `docker-compose.yml` to define the services that we are going to run in the container.
 
 The services are:
-1. postgres: PostgreSQL database service
-2. pgadmin: Administration and development platform for PostgreSQL
+1. **postgres**: PostgreSQL database service
+2. **pgadmin**: Administration and development platform for PostgreSQL
 
 ---
 
@@ -78,11 +78,11 @@ postgres:
         - postgres:/var/lib/postgresql/data
 ```
 
-*Explaination*
+**Explaination**
 * `image`: Specify the image to start the container from. In this case, we are going to use **postgres:12.3-alpine** from [Docker Hub](https://hub.docker.com/_/postgres/).
 * `restart`: Configure container to always restart if container stopped unexpectedly.
 * `environment`: Configure environment variable. The above is used for database superuser authentication.
-* `volumes`: Mount named volumes **(refer to full snippet on how to configure)** for database files.
+* `volumes`: Mount named volumes for database files.
 
 ---
 
@@ -105,11 +105,11 @@ pgadmin:
         - postgres
 ```
 
-*Explaination*
+**Explaination**
 * `image`: Specify the image to start the container from. In this case, we are going to use **dpage/pgadmin4:4.23** from [Docker Hub](https://hub.docker.com/r/pgadmin/ripmain).
 * `environment`: Configure environment variable. The above is used for application authentication and setup.
 * `ports`: Mapping port between host machine **15432** and container **80**.
-* `volumes`: Mount named volumes **(refer to full snippet on how to configure)** for application files.
+* `volumes`: Mount named volumes for application files.
 * `depends_on`: Defined the dependencies of services. This allow us to deploy service in order; e.g. `postgres` -> `pgadmin`.
 
 ---
@@ -117,10 +117,10 @@ pgadmin:
 <a name="example"></a>
 ### Example
 
-Then, we will going to put all services' configuration in file `docker-compose.yml`. Because we are using the *named volume*, we also need to setup the values
-based on the name we used in volumes.
+Then, we will going to put all services' configuration in file `docker-compose.yml`. Because we are using the **named volume**, we also need to setup the volumes
+based on the name we used in services.
 
-*Snippet*
+**Snippet**
 ```
 version: "3"
 
@@ -157,19 +157,22 @@ volumes:
 <a name="running-docker-compose"></a>
 ## Running Docker Compose
 
-First, we are going to *check and validate* the Compose file by execute command: `docker-compose config`.
-![docker-compose config](./01-docker-compose-config.png)
-**Example `docker-compose config` output**
+First, we are going to **check and validate** the Compose file by execute command: `docker-compose config`.
 
-Next, we are *deploying and running* the service by execute command: `docker-compose up -d`.
+![docker-compose config](./01-docker-compose-config.png)
+*Figure 01: Example `docker-compose config` output*
+
+Next, we are **deploying and running** the service by execute command: `docker-compose up -d`.
+
 ![docker-compose up -d](./02-docker-compose-up.png)
-**Example `docker-compose up -d` output**
+*Figure 02: Example `docker-compose up -d` output*
 
 The output may vary depends on if we already downloaded the images and setup the volumes.
 
 To check if services are running successfully, we can use command: `docker-compose ps`.
+
 ![docker-compose ps](./03-docker-compose-ps.png)
-**Example `docker-compose ps` output**
+*Figure 03: Example `docker-compose ps` output*
 
 ---
 
@@ -179,32 +182,37 @@ To check if services are running successfully, we can use command: `docker-compo
 After running Docker Compose services, open web browser and open `localhost:15432`. The port number is based on the mapping we configured under `pgadmin` service.
 
 Then key-in the email and password configured using the environment variable: `PGADMIN_DEFAULT_EMAIL` and `PGADMIN_DEFAULT_PASSWORD`.
+
 ![pgadmin login](./04-pgadmin-login.png)
-**pgAdmin login page**
+*Figure 04: pgAdmin login page*
 
 ---
 
-<a name="setup database"></a>
+<a name="setup-database"></a>
 ### Setup database
 
-Click *Add New Server* under *Quick Links*.
+Click **Add New Server** under **Quick Links**.
+
 ![Add new server](./05-add-new-server.png)
-**Add new server**
+*Figure 05: Add new server*
 
-Enter *Name* under *General*. The value can be anything.
+Enter **Name** under **General**. The value can be anything.
+
 ![Server name](./06-server-name.png)
-**Server name**
+*Figure 06: Server name*
 
-Enter *Host name/address*, *Username* and *Password* under *Connection*.
-* For *Host name/address*, the value is the Docker Compose database service name, in our case is *postgres*.
-* For *Username*, the value is the environment variable `POSTGRES_USER`.
-* For *Password*, the value is the environment variable `POSTGRES_PASSWORD`.
+Enter **Host name/address**, **Username** and **Password** under **Connection**.
+* For **Host name/address**, the value is the Docker Compose database service name, in our case is **postgres**.
+* For **Username**, the value is the environment variable `POSTGRES_USER`.
+* For **Password**, the value is the environment variable `POSTGRES_PASSWORD`.
+
 ![Server connection](./07-server-connection.png)
-**Server connection**
+*Figure 07: Server connection*
 
-And click *Save* to finish create. After done, we can access the database from the sidebar.
+And click **Save** to finish create. After done, we can access the database from the sidebar.
+
 ![Database dashboard](./08-database-dashboard.png)
-**Database dashboard**
+*Figure 08: Database dashboard*
 
 ---
 
@@ -212,8 +220,9 @@ And click *Save* to finish create. After done, we can access the database from t
 ## Stopping Docker Compose
 
 To stop Docker Compose service, just execute command: `docker-compose down`
+
 ![docker-compose down](./09-docker-compose-down.png)
-**Example `docker-compose down` output**
+*Figure 09: Example `docker-compose down` output*
 
 ---
 
