@@ -1,5 +1,6 @@
 import React from "react"
-import Button from "./Button"
+import { Link } from "gatsby"
+import { GrCaretNext, GrCaretPrevious } from "react-icons/gr"
 
 type TNode = {
   frontmatter: {
@@ -19,21 +20,21 @@ const BlogPagination: React.FC<{ next?: TNode; previous?: TNode }> = ({
     <div className="column is-7">
       {next && (
         <div className="has-text-right">
-          <Button
-            type="link"
-            value={next.frontmatter.title + " >>"}
-            link={next.fields.slug}
-          />
+          <Link
+            className="has-text-primary has-text-weight-bold"
+            to={next.fields.slug}>
+            {next.frontmatter.title} <GrCaretNext />
+          </Link>
         </div>
       )}
       <br />
       {previous && (
         <div className="has-text-left">
-          <Button
-            type="link"
-            value={"<< " + previous.frontmatter.title}
-            link={previous.fields.slug}
-          />
+          <Link
+            className="has-text-primary has-text-weight-bold"
+            to={previous.fields.slug}>
+            <GrCaretPrevious /> {previous.frontmatter.title}
+          </Link>
         </div>
       )}
     </div>
