@@ -6,7 +6,7 @@ date: "2020-08-23"
 tags: ["typescript"]
 ---
 
-TypeScript is an open-source language which acts as superset of JavaScript, with additional of static typing to the language.
+TypeScript is an open-source language which acts as superset of JavaScript, plus static typing to the language.
 
 By having static typing to the language, it providing better documentation and enable type-checking at compile time when transcompiles to JavaScript.
 
@@ -27,7 +27,7 @@ Sometimes, **Type Aliases** is similar to **Interfaces**. However, both have dif
   * [3. Extend](#3-extend)
   * [4. Implements](#4-implements)
   * [5. Declaration Merging](#5-declaration-merging)
-* [Types Aliases and Interfaces Comparison Table][#types-intefaces-comparison-table]
+* [Types Aliases and Interfaces Comparison Table](#types-intefaces-comparison-table)
 * [References](#references)
 
 ---
@@ -59,7 +59,7 @@ Based on the example, aliasing does not create a new type, but to create a new *
 <a name="interfaces"></a>
 ## Interfaces
 
-**Interfaces** is used to describe data shapes such as an object to provides type-checking on the shape that values have. Therefore, interfaces are a way to defining contracts within the code as well constract with code outside the project.
+**Interfaces** is used to describe data shapes such as an object to provides type-checking on the shape that values have. Therefore, interfaces are a way to defining contracts within the code as well contract with code outside the project.
 
 Keyword `interface` is used to define interfaces.
 
@@ -89,7 +89,7 @@ Based on the example, interfaces provides the powerful way to define entities.
 <a name="comparison-types-interfaces"></a>
 ## Comparison between Types Aliases and Interfaces
 
-Following is the list of differences of typs aliases and interfaces.
+Following is the list of differences of type aliases and interfaces.
 
 ---
 
@@ -125,7 +125,7 @@ interface SetPoint {
 <a name="2-other-type"></a>
 ### 2. Other Type
 
-Only type alias can be used for other types such as primitives, uninons and tuples.
+Only type alias can be used for other types such as primitives, unions and tuples.
 ```typescript
 // Primitive
 type Name = string
@@ -146,7 +146,7 @@ type Data = [number, string]
 <a name="3-extend"></a>
 ### 3. Extend
 
-Both can be extended, but the syntax differs. Moreover, an interface and type alias are not mutually-exclusive. Thus, an inteface can extend a type alias and vice versa.
+Both can be extended, but the syntax differs. Moreover, an interface and type alias are not mutually exclusive. Thus, an interface can extend a type alias and vice versa.
 
 **Interface extends interface**
 ```typescript

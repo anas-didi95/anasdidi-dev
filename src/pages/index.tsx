@@ -48,7 +48,7 @@ const IndexPage: React.FC<{}> = () => {
     <AppLayout title="Home">
       <div className="columns">
         <div className="column" />
-        <div className="column is-8">
+        <div className="column is-7">
           <BlogList blogList={blogList} />
         </div>
         <div className="column" />
