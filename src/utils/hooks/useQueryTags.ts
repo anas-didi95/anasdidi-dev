@@ -4,8 +4,10 @@ import { oc } from "ts-optchain"
 
 export const useQueryTags = (): string[] => {
   const data: TagsQuery = useStaticQuery(graphql`
-    query Tags {
-      allMarkdownRemark {
+    query {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      ) {
         group(field: frontmatter___tags) {
           tag: fieldValue
         }

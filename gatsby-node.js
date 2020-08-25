@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       blogs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content\/blog/" } }
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -57,7 +57,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
-      tags: allMarkdownRemark {
+      tags: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      ) {
         group(field: frontmatter___tags) {
           tag: fieldValue
         }
@@ -89,8 +91,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: `/tags/${tag}`,
       component: TagTemplate,
       context: {
-        tag: tag
-      }
+        tag: tag,
+      },
     })
   })
 }
