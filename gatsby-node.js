@@ -24,9 +24,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
   const BlogTemplate = require.resolve(`./src/templates/BlogTemplate.tsx`)
+  const TagTemplate = require.resolve(`./src/templates/TagTemplate.tsx`)
+
   const result = await graphql(`
     {
-      allMarkdownRemark(
+      blogs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content\/blog/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
@@ -55,14 +57,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+      tags: allMarkdownRemark {
+        group(field: frontmatter___tags) {
+          tag: fieldValue
+        }
+      }
     }
   `)
+
   // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
+
+  result.data.blogs.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.slug,
       component: BlogTemplate,
@@ -70,8 +79,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         // additional data can be passed via context
         slug: node.fields.slug,
         next,
-        previous
+        previous,
       },
+    })
+  })
+
+  result.data.tags.group.forEach(({ tag }) => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: TagTemplate,
+      context: {
+        tag: tag
+      }
     })
   })
 }
