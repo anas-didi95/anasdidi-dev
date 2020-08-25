@@ -1,10 +1,5 @@
 import React from "react"
 import AppLayout from "../layouts/AppLayout"
-import { useStaticQuery, graphql } from "gatsby"
-import Box from "../components/Box"
-import { TagsPageQuery } from "../graphqlTypes"
-import { oc } from "ts-optchain"
-import Tag from "../components/Tag"
 import { useQueryTags } from "../utils/hooks/useQueryTags"
 import TagList from "../components/TagList"
 

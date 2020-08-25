@@ -4,7 +4,7 @@ import { oc } from "ts-optchain"
 
 export const useQueryTags = (): string[] => {
   const data: TagsQuery = useStaticQuery(graphql`
-    query {
+    query Tags {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       ) {
