@@ -10,6 +10,7 @@ const IndexPage: React.FC<{}> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
     query Index {
       blogList: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
         sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
@@ -33,7 +34,6 @@ const IndexPage: React.FC<{}> = () => {
 
   const blogList: Types.Blog[] = oc(data)
     .blogList.edges([])
-    .filter(edge => oc(edge).node.fields.slug(""))
     .map(edge => ({
       title: oc(edge).node.frontmatter.title(""),
       author: oc(edge).node.frontmatter.author(""),

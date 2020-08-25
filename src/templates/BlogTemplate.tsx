@@ -53,7 +53,11 @@ const BlogTemplate: React.FC<{
               {oc(data)
                 .markdownRemark.frontmatter.tags([])
                 .map((tag, i) => (
-                  <Tag key={`tag${i}`} value={tag} />
+                  <Tag
+                    key={`tag${i}`}
+                    value={oc(tag)("")}
+                    isHighlighted={true}
+                  />
                 ))}
             </div>
           </div>

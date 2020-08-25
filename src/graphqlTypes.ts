@@ -2185,10 +2185,74 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
    __typename?: 'SitePageContext',
   slug?: Maybe<Scalars['String']>,
+  next?: Maybe<SitePageContextNext>,
+  previous?: Maybe<SitePageContextPrevious>,
+  tag?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>,
+  next?: Maybe<SitePageContextNextFilterInput>,
+  previous?: Maybe<SitePageContextPreviousFilterInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePageContextNext = {
+   __typename?: 'SitePageContextNext',
+  frontmatter?: Maybe<SitePageContextNextFrontmatter>,
+  fields?: Maybe<SitePageContextNextFields>,
+};
+
+export type SitePageContextNextFields = {
+   __typename?: 'SitePageContextNextFields',
+  slug?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextNextFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePageContextNextFilterInput = {
+  frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>,
+  fields?: Maybe<SitePageContextNextFieldsFilterInput>,
+};
+
+export type SitePageContextNextFrontmatter = {
+   __typename?: 'SitePageContextNextFrontmatter',
+  title?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextNextFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePageContextPrevious = {
+   __typename?: 'SitePageContextPrevious',
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatter>,
+  fields?: Maybe<SitePageContextPreviousFields>,
+};
+
+export type SitePageContextPreviousFields = {
+   __typename?: 'SitePageContextPreviousFields',
+  slug?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextPreviousFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePageContextPreviousFilterInput = {
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>,
+  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>,
+};
+
+export type SitePageContextPreviousFrontmatter = {
+   __typename?: 'SitePageContextPreviousFrontmatter',
+  title?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextPreviousFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -2291,6 +2355,11 @@ export enum SitePageFieldsEnum {
   componentChunkName = 'componentChunkName',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___slug = 'context___slug',
+  context___next___frontmatter___title = 'context___next___frontmatter___title',
+  context___next___fields___slug = 'context___next___fields___slug',
+  context___previous___frontmatter___title = 'context___previous___frontmatter___title',
+  context___previous___fields___slug = 'context___previous___fields___slug',
+  context___tag = 'context___tag',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2996,23 +3065,6 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
 );
 
-export type ImageQueryQueryVariables = {};
-
-
-export type ImageQueryQuery = (
-  { __typename?: 'Query' }
-  & { placeholderImage: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & GatsbyImageSharpFluidFragment
-      )> }
-    )> }
-  )> }
-);
-
 export type Error404PageQueryVariables = {};
 
 
@@ -3091,6 +3143,33 @@ export type BlogTemplateQuery = (
   )> }
 );
 
+export type TagTemplateQueryVariables = {
+  tag?: Maybe<Scalars['String']>
+};
+
+
+export type TagTemplateQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'excerpt'>
+        & { fields: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
+        )>, frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+        )> }
+      ) }
+    )> }
+  ) }
+);
+
 export type MetadataQueryVariables = {};
 
 
@@ -3116,4 +3195,18 @@ export type MetadataQuery = (
       )> }
     )> }
   )> }
+);
+
+export type TagsQueryVariables = {};
+
+
+export type TagsQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { tag: MarkdownRemarkGroupConnection['fieldValue'] }
+    )> }
+  ) }
 );
