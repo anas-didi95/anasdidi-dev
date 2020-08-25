@@ -4,6 +4,9 @@ import { TagTemplateQuery } from "../graphqlTypes"
 import AppLayout from "../layouts/AppLayout"
 import { useQueryTags } from "../utils/hooks/useQueryTags"
 import TagList from "../components/TagList"
+import * as Types from "../utils/types"
+import { oc } from "ts-optchain"
+import BlogList from "../components/BlogList"
 
 type TPageContext = {
   tag: string
@@ -15,12 +18,32 @@ const TagTemplate: React.FC<{
 }> = ({ data, pageContext }) => {
   const tags = useQueryTags()
 
+  const blogList: Types.Blog[] = oc(data).allMarkdownRemark.edges([]).map(edge => ({
+    title: oc(edge).node.frontmatter.title(""),
+    author: oc(edge).node.frontmatter.author(""),
+    date: oc(edge).node.frontmatter.date(""),
+    description: oc(edge).node.frontmatter.description(""),
+    tags: oc(edge).node.frontmatter.tags([]),
+    excerpt: oc(edge).node.excerpt(""),
+    slug: oc(edge).node.fields.slug(""),
+  }))
+
   return (
     <AppLayout title={`Tag: ${pageContext.tag}`}>
       <div className="columns">
-        <div className="column is-6 is-offset-3">
+        <div className="column" />
+        <div className="column is-6">
           <TagList tags={tags} value={pageContext.tag} />
         </div>
+        <div className="column" />
+      </div>
+      <p className="has-text-centered my-4 has-text-weight-bold is-size-4">---</p>
+      <div className="columns">
+        <div className="column" />
+        <div className="column is-7">
+          <BlogList blogList={blogList} />
+        </div>
+        <div className="column" />
       </div>
     </AppLayout>
   )
@@ -46,6 +69,7 @@ export const PageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             tags
           }
+          excerpt
         }
       }
     }

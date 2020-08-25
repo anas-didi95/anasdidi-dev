@@ -33,7 +33,6 @@ const IndexPage: React.FC<{}> = () => {
 
   const blogList: Types.Blog[] = oc(data)
     .blogList.edges([])
-    .filter(edge => oc(edge).node.fields.slug(""))
     .map(edge => ({
       title: oc(edge).node.frontmatter.title(""),
       author: oc(edge).node.frontmatter.author(""),

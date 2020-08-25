@@ -3126,20 +3126,6 @@ export type IndexQuery = (
   ) }
 );
 
-export type TagsPageQueryVariables = {};
-
-
-export type TagsPageQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { group: Array<(
-      { __typename?: 'MarkdownRemarkGroupConnection' }
-      & { tag: MarkdownRemarkGroupConnection['fieldValue'] }
-    )> }
-  ) }
-);
-
 export type BlogTemplateQueryVariables = {
   slug: Scalars['String']
 };
@@ -3171,6 +3157,7 @@ export type TagTemplateQuery = (
       { __typename?: 'MarkdownRemarkEdge' }
       & { node: (
         { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'excerpt'>
         & { fields: Maybe<(
           { __typename?: 'MarkdownRemarkFields' }
           & Pick<MarkdownRemarkFields, 'slug'>
