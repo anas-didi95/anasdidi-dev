@@ -3,6 +3,7 @@ import * as Types from "../utils/types"
 import { Link } from "gatsby"
 import Box from "./Box"
 import Tag from "./Tag"
+import { oc } from "ts-optchain"
 
 const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
   <>
@@ -21,7 +22,11 @@ const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
         <p className="mb-5">{blog.excerpt}</p>
         <div className="tags are-medium">
           {blog.tags.map((tag, ii) => (
-            <Tag key={`blog${i}tag${ii}`} value={tag} />
+            <Tag
+              key={`blog${i}tag${ii}`}
+              value={oc(tag)("")}
+              isHighlighted={true}
+            />
           ))}
         </div>
       </Box>
