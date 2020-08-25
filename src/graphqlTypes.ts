@@ -2187,12 +2187,14 @@ export type SitePageContext = {
   slug?: Maybe<Scalars['String']>,
   next?: Maybe<SitePageContextNext>,
   previous?: Maybe<SitePageContextPrevious>,
+  tag?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>,
   next?: Maybe<SitePageContextNextFilterInput>,
   previous?: Maybe<SitePageContextPreviousFilterInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageContextNext = {
@@ -2357,6 +2359,7 @@ export enum SitePageFieldsEnum {
   context___next___fields___slug = 'context___next___fields___slug',
   context___previous___frontmatter___title = 'context___previous___frontmatter___title',
   context___previous___fields___slug = 'context___previous___fields___slug',
+  context___tag = 'context___tag',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -3154,6 +3157,32 @@ export type BlogTemplateQuery = (
   )> }
 );
 
+export type TagTemplateQueryVariables = {
+  tag?: Maybe<Scalars['String']>
+};
+
+
+export type TagTemplateQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & { fields: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
+        )>, frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+        )> }
+      ) }
+    )> }
+  ) }
+);
+
 export type MetadataQueryVariables = {};
 
 
@@ -3179,4 +3208,18 @@ export type MetadataQuery = (
       )> }
     )> }
   )> }
+);
+
+export type TagsQueryVariables = {};
+
+
+export type TagsQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { tag: MarkdownRemarkGroupConnection['fieldValue'] }
+    )> }
+  ) }
 );

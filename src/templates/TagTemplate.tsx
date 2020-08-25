@@ -2,15 +2,26 @@ import React from "react"
 import { graphql } from "gatsby"
 import { TagTemplateQuery } from "../graphqlTypes"
 import AppLayout from "../layouts/AppLayout"
+import { useQueryTags } from "../utils/hooks/useQueryTags"
+import TagList from "../components/TagList"
 
 type TPageContext = {
   tag: string
 }
 
-const TagTemplate: React.FC<{ data: TagTemplateQuery, pageContext: TPageContext }> = ({ data, pageContext }) => {
+const TagTemplate: React.FC<{
+  data: TagTemplateQuery
+  pageContext: TPageContext
+}> = ({ data, pageContext }) => {
+  const tags = useQueryTags()
+
   return (
     <AppLayout title={`Tag: ${pageContext.tag}`}>
-
+      <div className="columns">
+        <div className="column is-6 is-offset-3">
+          <TagList tags={tags} value={pageContext.tag} />
+        </div>
+      </div>
     </AppLayout>
   )
 }
