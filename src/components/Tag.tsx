@@ -1,14 +1,15 @@
 import React from "react"
-import { Maybe } from "../graphqlTypes"
+import { Link } from "gatsby"
 
 const Tag: React.FC<{ value: string; isHighlighted: boolean }> = ({
   value,
   isHighlighted,
 }) => (
-  <span
+  <Link
+    to={`/tags/${value}`}
     className={`tag mb-2 mr-2 ${isHighlighted ? "is-primary" : "is-light"}`}>
     #{value}
-  </span>
+  </Link>
 )
 
 export default Tag
