@@ -6,9 +6,9 @@ date: "2020-07-13"
 tags: ["postgres", "pgadmin", "docker", "docker-compose"]
 ---
 
-**Docker** is a set of tools that utilises OS-level virtualization to running software in packages called container. 
+**Docker** is a set of tools that utilises OS-level virtualization to running software in packages called container.
 
-While Docker is mainly used in deployment, it can also be use in development environment. By running a container for development environment, 
+While Docker is mainly used in deployment, it can also be use in development environment. By running a container for development environment,
 we can avoid to install a bunch of tools or languages on our machine.
 
 For example, we can use Docker to run service such as **postgres** and **pgadmin** for database service and administration platform for PostgreSQL respectively in a container.
@@ -66,7 +66,7 @@ The services are:
 ### postgres
 
 Below is the snippet for the service:
-```
+```yaml
 postgres:
     image: postgres:12.3-alpine
     restart: always
@@ -89,7 +89,7 @@ postgres:
 ### pgadmin
 
 Below is the snippet for the service:
-```
+```yaml
 pgadmin:
     image: dpage/pgadmin4:4.23
     environment:
@@ -119,7 +119,7 @@ pgadmin:
 Then, we will going to put all services' configuration in file `docker-compose.yml`. Because we are using the **named volume**, we also need to configure the volumes based on the name we used in services.
 
 **Snippet**
-```
+```yaml
 version: "3"
 
 services:
