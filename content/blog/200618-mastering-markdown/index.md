@@ -199,7 +199,6 @@ function fancyAlert(arg) {
 <a name="references"></a>
 ## References
 
-* [https://guides.github.com/features/mastering-markdown/](https://guides.github.com/features/mastering-markdown/)
-* [https://daringfireball.net/projects/markdown/syntax#hr](https://daringfireball.net/projects/markdown/syntax#hr)
-* [https://github.github.com/gfm](https://github.github.com/gfm/)
-
+* [Mastering Markdown; github.com](https://guides.github.com/features/mastering-markdown/)
+* [Markdown; daringfireball.net](https://daringfireball.net/projects/markdown)
+* [GitHub Flavored Markdown Spec; github.com](https://github.github.com/gfm/)
