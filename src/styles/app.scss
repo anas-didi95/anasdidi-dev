@@ -4,6 +4,22 @@
 $body-size: 16px;
 $body-background-color: hsl(0, 0%, 98%);
 $footer-background-color: hsl(0, 0%, 86%);
-
 @import "~bulma/bulma.sass";
 @import "~bulmaswatch/pulse/_overrides.scss";
+
+@import "~prismjs/themes/prism-okaidia.css";
+.token.tag,
+.token.content,
+.token.number {
+  display: inline;
+  padding: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+  white-space: inherit;
+  background: inherit;
+  margin: inherit;
+}

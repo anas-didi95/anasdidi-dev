@@ -34,7 +34,7 @@ Following are the basic syntax used in Markdown.
 
 <a name="header"></a>
 ### Header
-```markdown
+```
 # This is an H1 tag
 ## This is an H2 tag
 ### This is an H3 tag
@@ -56,7 +56,7 @@ Following are the basic syntax used in Markdown.
 
 <a name="emphasis"></a>
 ### Emphasis
-```markdown
+```
 *This text will be italic*
 _This will also be italic_
 
@@ -84,7 +84,7 @@ _You **can** combine them_
 ### List
 
 *Unordered*
-```markdown
+```
 * Item 1
 * Item 2
 ```
@@ -95,7 +95,7 @@ _You **can** combine them_
 * Item 2
 
 *Ordered*
-```markdown
+```
 1. Item 1
 2. Item 2
 ```
@@ -109,7 +109,7 @@ _You **can** combine them_
 
 <a name="image"></a>
 ### Image
-```markdown
+```
 ![Google Logo](url)
 ## Format: ![Alt text](URL)
 ```
@@ -134,7 +134,7 @@ _You **can** combine them_
 
 <a name="blockquote"></a>
 ### Blockquote
-```markdown
+```
 > We're living the future so
 > the present is our past.
 ```
@@ -148,7 +148,7 @@ _You **can** combine them_
 
 <a name="inline-code"></a>
 ### Inline Code
-```markdown
+```
 `CTRL` + `C`
 ```
 
@@ -160,7 +160,7 @@ _You **can** combine them_
 
 <a name="code-block"></a>
 ### Code block
-```markdown
+```
 # backtick
 '''javascript
 function fancyAlert(arg) {
@@ -185,7 +185,7 @@ function fancyAlert(arg) {
 
 <a name="horizontal-rule"></a>
 ### Horizontal rule
-```markdown
+```
 ---
 ```
 
