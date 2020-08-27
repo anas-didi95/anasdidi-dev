@@ -76,6 +76,6 @@ Now, we can get access to our Netlify-deployed site using our registered custom 
 <a name="references"></a>
 ## References
 
-* [Custom Domains in Netlify](https://serverless-stack.com/chapters/custom-domain-in-netlify.html)
-* [Configure external DNS for a custom domain](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-a-subdomain)
+* [Custom Domains in Netlify; serverless-stack.com](https://serverless-stack.com/chapters/custom-domain-in-netlify.html)
+* [Configure external DNS for a custom domain; netlify.com](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-a-subdomain)
 
