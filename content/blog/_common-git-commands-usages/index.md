@@ -45,14 +45,14 @@ $ git init
 Initialized empty Git repository in /home/anas/Desktop/#example/.git/
 ```
 
-Additionally, running this command in existing repository is safe as it will not overwrite things in the repository. It will pick up newly-added template which not been copied from template directory into existing repository.
+Additionally, running this command in existing repository is safe as it will not overwrite things in the repository. It will pick up newly added template which not been copied from template directory into existing repository.
 
 ---
 
 <a name="git-status"></a>
 ## git status
 
-This command displays the state of the working directory and the **staging area** which is an intermediate area where commits can be reviewed before finalize the commit. 
+This command displays the state of the working directory and the **staging area** which is an intermediate area where commits may be reviewed before complete the commit.
 
 Therefore, it lets you see the current state of files and files which not being tracked by Git.
 
@@ -75,7 +75,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-It is recommended to check the state of the files before committing to avoid any mistakes happen.
+The recommendation is to check the state of the files before committing to avoid any mistakes happen.
 
 ---
 
@@ -84,7 +84,7 @@ It is recommended to check the state of the files before committing to avoid any
 
 This command adds the changes in the working directory to the staging area. It tells Git to prepare the content staged for next commit. 
 
-Therefore, this command do not affect the repository in any ways as the changes not recorded yet. User can get the summary of files that are staged by using `git status`.
+Therefore, this command do not affect the repository in any ways as the changes not recorded yet. User can get the summary of files that in staged by using `git status`.
 
 **Syntax**
 > **git add &lt;file1&gt; &lt;file2&gt; ...**
@@ -103,14 +103,14 @@ Changes to be committed:
 	new file:   hello.md
 ```
 
-Moreover, this command can be performed multiple times before commit, thus allowing user to group related changes before actually finalize the commit.
+Moreover, this command may be performed multiple times before commit, thus allowing user to group related changes before actually complete the commit.
 
 ---
 
 <a name="git-rm"></a>
 ## git rm
 
-This command remove tracked files from a Git repository. Thus, it can be assume as the inverse of `git add` command.
+This command removes tracked files from a Git repository. Thus, it may be assume as the inverse of `git add` command.
 
 However, this command will not remove file from the working tree and yet keep it in the repository.
 
@@ -145,7 +145,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 This command captures the contents in staging area and create new commit in the repository.
 
-The snapshot are committed to the local repository only. Later, the commit can be pushed to remote repositories using another command.
+The snapshot committed to the local repository only. Later, the commit may be pushed to remote repositories using another command.
 
 Following are the list of options for the command:
 * **-m <msg>, --message=<msg>**: Set commit message
@@ -164,7 +164,7 @@ $ git commit -m 'Add new file'
  create mode 100644 hello.md
 ```
 
-Prior to the execution of `git commit`, `git add` is used to stage the changes into staging are for the commit.
+Prior the execution of `git commit`, `git add` is used to stage the changes into staging are for the commit.
 
 ---
 
