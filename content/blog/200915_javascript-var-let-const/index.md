@@ -2,7 +2,7 @@
 title: "The difference between var, let and const in JavaScript"
 description: "Explanation about the difference between var, let and const in JavaScript"
 author: "Anas Juwaidi"
-date: "2020-12-12"
+date: "2020-09-15"
 tags: ["javascript"]
 ---
 
