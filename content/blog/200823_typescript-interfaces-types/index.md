@@ -272,7 +272,7 @@ Below is the summary of comparison between type alias and interface.
 			<tr>
 				<td><b>Declaration Merging</b></td>
 				<td>Cannot have multiple merged declarations</td>
-				<td>Can have multiple multiple merged declarations</td>
+				<td>Can have multiple merged declarations</td>
 			</tr>
 		</tbody>
 	</table>

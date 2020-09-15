@@ -6,9 +6,9 @@ date: "2020-12-12"
 tags: ["javascript"]
 ---
 
-Before the introduction of **ECMAScript 6 (ES6)**, the only way to declare a variable in JavaScript is by using ` var ` keyword. However, variables declared using ` var ` have several issues in terms of **scope** and **usage**.
+Before the introduction of **ECMAScript 6 (ES6)**, the only way to declare a variable in JavaScript is by using `var` keyword. However, variables declared using `var` have several issues in terms of **scope** and **usage**.
 
-With the introduction of ` let ` and ` const ` for variable declaration in JavaScript, it solve the issues when using ` var `, making them easier to debug and less prone to mistakes.
+With the introduction of `let` and `const` for variable declaration in JavaScript, it solve the issues when using `var`, making them easier to debug and less prone to mistakes.
 
 Each keyword can be compared from their **scope** and **usage**.
 
@@ -33,7 +33,7 @@ Each keyword can be compared from their **scope** and **usage**.
 
 But with the introduction of ES6, new type of scope is added to JavaScript; **Block scope**.
 
-Therefore, unlike ` var ` keyword which has global scope and function scope, ` let ` and ` const ` keyword also have both with the additional of block scope for their definition.
+Therefore, unlike `var` keyword which has global scope and function scope, `let` and `const` keyword also have both with the additional of block scope for their definition.
 
 ---
 
@@ -51,7 +51,7 @@ function greetName() {
 }
 ```
 
-In the example, variable ` name ` can be access anywhere as it is defined as global variable.
+In the example, variable `name` can be access anywhere as it is defined as global variable.
 
 ---
 
@@ -69,14 +69,14 @@ function getGreet() {
 }
 ```
 
-In the example, variable ` greet ` can only be access from inside the function it is declared.
+In the example, variable `greet` can only be access from inside the function it is declared.
 
 ---
 
 <a name="block-scope"></a>
 ### Block scope
 
-**Block scope** is applied to variable which is using ` let ` and ` const ` keyword. The variables with block scope cannot be access from outside the block.
+**Block scope** is applied to variable which is using `let` and `const` keyword. The variables with block scope cannot be access from outside the block.
 
 **Example**
 ```javascript
@@ -91,7 +91,7 @@ In the example, variable ` greet ` can only be access from inside the function i
 console.log("3: "+a); // Output: 3: 11
 ```
 
-In the example, the ` a ` variable can be use outside the block as it is declared using ` var ` keyword.  Next is example for using ` let ` to declare variable.
+In the example, the `a` variable can be use outside the block as it is declared using `var` keyword.  Next is example for using `let` to declare variable.
 
 **Example**
 ```javascript
@@ -106,14 +106,14 @@ In the example, the ` a ` variable can be use outside the block as it is declare
 console.log("3: "+b);
 ```
 
-In the example, using ` let ` will produce error as variable ` b ` is declared on first block, but second block try to access it.
+In the example, using `let` will produce error as variable `b` is declared on first block, but second block try to access it.
 
 ---
 
 <a name="variable-redeclare"></a>
 ## Variable re-declare
 
-The usage of ` var ` allow the developer to re-declare existing variable within same scope and will not caught any error.
+The usage of `var` allow the developer to re-declare existing variable within same scope and will not caught any error.
 
 **Example**
 ```javascript
@@ -124,7 +124,7 @@ var greet = "Hi"; // Output: Hi
 console.log(greet);
 ```
 
-In the example, ` greet ` is declared twice and its value is updated when re-declared. But for ` let ` and ` const `, re-declared existing variable within same scope will produce error.
+In the example, `greet` is declared twice and its value is updated when re-declared. But for `let` and `const`, re-declared existing variable within same scope will produce error.
 
 **Example**
 ```javascript
@@ -137,14 +137,14 @@ console.log(greet);
 // ERROR! Uncaught SyntaxError: Identifier 'greet' has already been declared
 ```
 
-Therefore, using ` let ` and ` const ` help the developer to avoid re-declare any existing variable, thus making less prone to mistakes in development.
+Therefore, using `let` and `const` help the developer to avoid re-declare any existing variable, thus making less prone to mistakes in development.
 
 ---
 
 <a name="variable-constant"></a>
 ## Variable constant
 
-ES6 also introduce a way to declare constant using ` const ` keyword. Any variable declared with ` const ` cannot be re-assigned to a different value.
+ES6 also introduce a way to declare constant using `const` keyword. Any variable declared with `const` cannot be re-assigned to a different value.
 
 **Example**
 ```javascript
@@ -174,7 +174,7 @@ console.log(me); // Output: {firstName: "Anas", lastName: "Juwaidi"}
 <a name="summary"></a>
 ## Summary
 
-Following is the summary table between ` var `, ` let ` and ` const ` keyword.
+Following is the summary table between `var`, `let` and `const` keyword.
 
 <div class="table-container">
 	<table class="table is-striped is-bordered">
