@@ -1,5 +1,8 @@
 # My Personal Blog
-> My personal blog developed using Gatsby and TypeScript.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9258c80b-c925-48fc-822f-bc3ad72be1d8/deploy-status)](https://app.netlify.com/sites/anasdidi-dev/deploys)
+
+My personal blog developed using Gatsby and TypeScript.
 
 ---
 
