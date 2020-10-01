@@ -103,7 +103,8 @@ const TableColumnSocialLink: React.FC<{
       <a
         className="is-size-6"
         href={`${type === "email" ? "mailto:" + link : link}`}
-        target="_blank">
+        target="_blank"
+        rel="noreferrer">
         {link}
       </a>
     </td>

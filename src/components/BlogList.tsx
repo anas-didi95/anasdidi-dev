@@ -12,7 +12,7 @@ const BlogList: React.FC<{ blogList: Types.Blog[] }> = ({ blogList }) => (
         <Link className="title is-3" to={blog.slug}>
           <p>{blog.title}</p>
         </Link>
-        <div className="mb-5 mt-1">
+        <div className="mb-5 mt-2">
           <div className="columns is-mobile">
             <div className="column">
               <p className="subtitle is-6 is-italic">{blog.date}</p>

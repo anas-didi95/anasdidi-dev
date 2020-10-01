@@ -7,42 +7,44 @@ const Header: React.FC<{
   isActive: boolean
   toggleMenu: any
 }> = ({ headerImage, isActive, toggleMenu }) => (
-  <nav
-    className="navbar is-dark"
-    role="navigation"
-    aria-label="main navigation"
-    style={{ padding: "0.5rem" }}>
-    <div className="navbar-brand">
-      <span className="ml-4" />
-      <Link className="navbar-item" to="/">
-        <GatsbyImage fixed={headerImage} />
-      </Link>
-      <a
-        role="button"
-        className={`navbar-burger ${isActive ? "is-active" : ""}`}
-        aria-label="menu"
-        aria-expanded="false"
-        onClick={toggleMenu}>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
-      <div className="navbar-end">
-        <Link className="navbar-item" to="/">
-          Home
+  <header>
+    <nav
+      className="navbar is-dark"
+      role="navigation"
+      aria-label="main navigation"
+      style={{ padding: "0.5rem" }}>
+      <div className="navbar-brand">
+        <span className="ml-4" />
+        <Link className="navbar-item" to="/" aria-label="Home">
+          <GatsbyImage fixed={headerImage} />
         </Link>
-        <Link className="navbar-item" to="/tags">
-          Tags
-        </Link>
-        <Link className="navbar-item" to="/about-me">
-          About Me
-        </Link>
-        <span className="mr-6" />
+        <a
+          role="button"
+          className={`navbar-burger ${isActive ? "is-active" : ""}`}
+          aria-label="menu"
+          aria-expanded="false"
+          onClick={toggleMenu}>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-    </div>
-  </nav>
+      <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        <div className="navbar-end">
+          <Link className="navbar-item" to="/">
+            Home
+          </Link>
+          <Link className="navbar-item" to="/tags">
+            Tags
+          </Link>
+          <Link className="navbar-item" to="/about-me">
+            About Me
+          </Link>
+          <span className="mr-6" />
+        </div>
+      </div>
+    </nav>
+  </header>
 )
 
 export default Header
