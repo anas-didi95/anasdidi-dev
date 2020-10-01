@@ -33,13 +33,13 @@ const Header: React.FC<{
         <div className="navbar-end">
           <Link className="navbar-item" to="/">
             Home
-        </Link>
+          </Link>
           <Link className="navbar-item" to="/tags">
             Tags
-        </Link>
+          </Link>
           <Link className="navbar-item" to="/about-me">
             About Me
-        </Link>
+          </Link>
           <span className="mr-6" />
         </div>
       </div>
