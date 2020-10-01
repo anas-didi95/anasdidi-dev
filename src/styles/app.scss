@@ -28,3 +28,8 @@ code {
   padding-left: 5px !important;
   padding-right: 5px !important;
 }
+
+pre > code {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
