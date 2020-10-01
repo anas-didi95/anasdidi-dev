@@ -33,3 +33,11 @@ pre > code {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+.content ul p:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+
+.content ul ul {
+  margin-bottom: 1em !important;
+}
