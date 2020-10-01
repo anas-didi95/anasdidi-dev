@@ -30,14 +30,17 @@ const AppLayout: React.FC<{
           flexDirection: "column",
           minHeight: "100vh",
         }}>
+        <a className="skip-link" href="#mainContent">Skip to main</a>
         <Header
           isActive={isActive}
           toggleMenu={handler.toggleMenu}
           headerImage={metadata.headerImage}
         />
-        <section className="section" style={{ flex: 1 }}>
-          <div className="container">{children}</div>
-        </section>
+        <main id="#mainContent">
+          <section className="section" style={{ flex: 1 }}>
+            <div className="container">{children}</div>
+          </section>
+        </main>
         <Footer
           email={metadata.social.email}
           github={metadata.social.github}
