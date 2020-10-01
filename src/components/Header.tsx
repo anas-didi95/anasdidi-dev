@@ -15,7 +15,7 @@ const Header: React.FC<{
       style={{ padding: "0.5rem" }}>
       <div className="navbar-brand">
         <span className="ml-4" />
-        <Link className="navbar-item" to="/">
+        <Link className="navbar-item" to="/" aria-label="Home">
           <GatsbyImage fixed={headerImage} />
         </Link>
         <a
