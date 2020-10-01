@@ -31,18 +31,8 @@ const Footer: React.FC<{ email: string; github: string; linkedin: string }> = ({
       </div>
       <p>All rights reserved &copy; {new Date().getFullYear()}</p>
       <p>
-        Built with{" "}
-        <a
-          className="has-text-primary has-text-weight-bold"
-          href="https://bulma.io/">
-          Bulma
-        </a>{" "}
-        and{" "}
-        <a
-          className="has-text-primary has-text-weight-bold"
-          href="https://www.gatsbyjs.org/">
-          Gatsby
-        </a>{" "}
+        Built with <ToolLink link="https://bulma.io" label="Bulma" /> and{" "}
+        <ToolLink link="https://www.gatsbyjs.org" label="Gatsby" />
       </p>
     </div>
   </footer>
@@ -60,6 +50,15 @@ const SocialLink: React.FC<{
     rel="noreferrer"
     aria-label={ariaLabel}>
     <span className="is-size-3">{icon}</span>
+  </a>
+)
+
+const ToolLink: React.FC<{ link: string; label: string }> = ({
+  link,
+  label,
+}) => (
+  <a className="has-text-black has-text-weight-bold" href={link}>
+    {label}
   </a>
 )
 
