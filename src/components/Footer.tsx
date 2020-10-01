@@ -30,7 +30,7 @@ const SocialLink: React.FC<{ icon: ReactNode; link: string }> = ({
   icon,
   link,
 }) => (
-    <a className="button is-text" target="_blank" href={link}>
+    <a className="button is-text" target="_blank" href={link} rel="noreferrer">
       <span className="is-size-3">{icon}</span>
     </a>
   )
