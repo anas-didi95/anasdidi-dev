@@ -30,7 +30,9 @@ const AppLayout: React.FC<{
           flexDirection: "column",
           minHeight: "100vh",
         }}>
-        <a className="skip-link" href="#mainContent">Skip to main</a>
+        <a className="skip-link" href="#mainContent">
+          Skip to main
+        </a>
         <Header
           isActive={isActive}
           toggleMenu={handler.toggleMenu}
