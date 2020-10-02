@@ -18,7 +18,7 @@ Following is the guide on how to deploy Spring Boot application with Heroku usin
 
 ## Table of contents
 * [Generate project](#generate-project)
-* [Create Web Controller](#create-web-controller)
+* [Create web controller](#create-web-controller)
 * [References](#references)
 
 ---
@@ -26,7 +26,7 @@ Following is the guide on how to deploy Spring Boot application with Heroku usin
 <a name="generate-project"></a>
 ## Generate project
 
-First, we need to generate Spring Boot project. And the easier way to do this is by using **[Spring Initializr](https://start.spring.io/)** website. Spring Initializr is a web-based tool provided by Pivotal Web Service to help generating Spring Boot project within clicks.
+First, we need to generate Spring Boot project. And the easier way to do this is by using [Spring Initializr](https://start.spring.io/) website. **Spring Initializr** is a web-based tool provided by Pivotal Web Service to help generating Spring Boot project within clicks.
 
 ![01-generate-project](./01-generate-project.png)
 *Figure 01: Spring Initializr website interface*
@@ -38,7 +38,7 @@ This sample project will add **Spring Web** for the dependency.
 ---
 
 <a name="create-web-controller"></a>
-## Create Web Controller
+## Create web controller
 
 Next, we are going to create sample controller for the application. This controller allows us to submit HTTP requests into the application and get the result back.
 
@@ -66,7 +66,7 @@ public class HelloController {
 }
 ```
 
-Then, we can test the controller in local environment by using **cURL** to send request to **http://localhost:8080/hello**.
+Then, we can test the controller in local environment by using **cURL** to send request to **localhost:8080/hello**.
 
 ```bash
 $ curl --request GET --url http://localhost:8080/hello
