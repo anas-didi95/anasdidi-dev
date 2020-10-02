@@ -33,13 +33,47 @@ First, we need to generate Spring Boot project. And the easier way to do this is
 
 In the website, we can setup the project components such as package management, language, metadata and dependency. Thus, the website offers a fast way to pull in all the dependencies we need for an application and does a lot of the setup for us.
 
-This example will add **Spring Web** for the dependency.
+This sample project will add **Spring Web** for the dependency.
 
 ---
 
 <a name="create-web-controller"></a>
 ## Create Web Controller
 
+Next, we are going to create sample controller for the application. This controller allows us to submit HTTP requests into the application and get the result back.
+
+In Spring Boot, we annotate the class with `@Controller` or `@RestController` to identify it as controller. 
+* `@Controller` is used to mark class as Spring MVC controller which allows us to return a view (e.g. HTML) as response. 
+* `@RestController` is convenience annotation for both `@Controller` and `@ResponseBody` which allows us to convert response to JSON/XML automatically.
+
+In the sample, **HelloController** handles **GET** request for **/hello** which will return a String as response.
+
+```java
+package com.anasdidi.rms.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+  @RequestMapping(value = "/hello", method = RequestMethod.GET)
+  public ResponseEntity<String> getGreeting() {
+    return ResponseEntity.ok().body("Hello World");
+  }
+}
+```
+
+Then, we can test the controller in local environment by using **cURL** to send request to **http://localhost:8080/hello**.
+
+```bash
+$ curl --request GET --url http://localhost:8080/hello
+Hello World
+```
+
+Now the sample application is ready to be deployed into Heroku.
 
 ---
 
