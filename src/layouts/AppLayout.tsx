@@ -38,8 +38,8 @@ const AppLayout: React.FC<{
           toggleMenu={handler.toggleMenu}
           headerImage={metadata.headerImage}
         />
-        <main id="#mainContent">
-          <section className="section" style={{ flex: 1 }}>
+        <main id="#mainContent" style={{ flex: 1 }}>
+          <section className="section">
             <div className="container">{children}</div>
           </section>
         </main>
