@@ -2,7 +2,7 @@
 title: "Deploying Spring Boot application with Heroku"
 description: "Guide on how to deploy Spring Boot application with Heroku"
 author: "Anas Juwaidi"
-date: "2100-01-01"
+date: "2020-10-03"
 tags: ["spring-boot", "heroku"]
 ---
 
