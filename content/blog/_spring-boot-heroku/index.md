@@ -121,7 +121,7 @@ Refresh the page to see the project is pushed into Github.
 
 Login to Heroku dashboard and create new app and fill in the required details.
 
-![03-create-new-app](#./03-create-new-app.png)
+![03-create-new-app](./03-create-new-app.png)
 *Figure 03: Create new app*
 
 Choose **Github** as deployment method for the app, enter the repository name and click **Search**. From the result, click **Connect** to choose the repository.
@@ -156,7 +156,7 @@ Hello World
 <a name="conclusion"></a>
 ## Conclusion
 
-In conclusion, deploy Spring boot application with Heroku is a breeze compared to setup our own server. 
+In conclusion, deploy Spring boot application with Heroku is more easier compared to setup our own server. 
 
 This tool allow developers to focus more on apps and getting the apps out onto the Internet quickly and iterating. Thus, Heroku is an amazing developer experience. Heroku gets out of the way where it matters, letting devs get on with what they do best - developing apps.
 
