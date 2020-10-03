@@ -6,7 +6,7 @@ date: "2100-01-01"
 tags: ["spring-boot", "heroku"]
 ---
 
-**Spring Boot** packaging model enables us to package the application into a standalone application. Combine with **Heroku** to deploy the application, it will make deployment more easier compared to traditional Java application deployment.
+**Spring Boot** packaging model enables us to package the application into a standalone application. Combine with **Heroku** to deploy the application, it will make deployment more easier compared to setup our own server.
 
 Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps. Heroku makes the processes of deploying, configuring, scaling, tuning, and managing apps as simple and straightforward as possible, so that developers can focus on what’s most important: building great apps that delight and engage customers.
 
@@ -19,6 +19,7 @@ Following is the guide on how to deploy Spring Boot application with Heroku usin
 ## Table of contents
 * [Generate project](#generate-project)
 * [Create web controller](#create-web-controller)
+* [Push to Github](#push-to-github)
 * [References](#references)
 
 ---
@@ -73,7 +74,36 @@ $ curl --request GET --url http://localhost:8080/hello
 Hello World
 ```
 
-Now the sample application is ready to be deployed into Heroku.
+Now the sample application is ready to be push to Github and deploy into Heroku.
+
+---
+
+<a name="push-to-github"></a>
+## Push to Github
+
+We are going to create new repository on Github for the application.
+
+![02-create-new-repository](./02-create-new-repository.png)
+*Figure 02: Create new repository*
+
+Then, we are going to push and existing repository using the command line.
+```bash
+$ git remote add origin git@github.com:anas-didi95/spring-boot-rms.git
+$ git push -u origin master
+
+Enumerating objects: 75, done.
+Counting objects: 100% (75/75), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (50/50), done.
+Writing objects: 100% (75/75), 57.40 KiB | 6.38 MiB/s, done.
+Total 75 (delta 11), reused 0 (delta 0)
+remote: Resolving deltas: 100% (11/11), done.
+To github.com:anas-didi95/spring-boot-rms.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin' by rebasing.
+```
+
+Refresh the page to see the project is pushed into Github.
 
 ---
 
