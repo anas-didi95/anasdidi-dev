@@ -32,7 +32,7 @@ Following is the guide on how to deploy Spring Boot application with Heroku usin
 First, we need to generate Spring Boot project. And the easier way to do this is by using [Spring Initializr](https://start.spring.io/) website. **Spring Initializr** is a web-based tool provided by Pivotal Web Service to help generating Spring Boot project within clicks.
 
 ![01-generate-project](./01-generate-project.png)
-*Figure 01: Spring Initializr website interface*
+*Figure 01: Spring Initializr website*
 
 In the website, we can setup the project components such as package management, language, metadata and dependency. Thus, the website offers a fast way to pull in all the dependencies we need for an application and does a lot of the setup for us.
 
@@ -43,7 +43,7 @@ This sample project will add **Spring Web** for the dependency.
 <a name="create-web-controller"></a>
 ## Create web controller
 
-Next, we are going to create sample controller for the application. This controller allows us to submit HTTP requests into the application and get the result back.
+Next, we are going to create sample controller for the application. This controller allows us to send HTTP requests into the application and get the result back.
 
 In Spring Boot, we annotate the class with `@Controller` or `@RestController` to identify it as controller. 
 * `@Controller` is used to mark class as Spring MVC controller which allows us to return a view (e.g. HTML) as response. 
@@ -76,9 +76,9 @@ $ curl --request GET --url http://localhost:8080/hello
 Hello World
 ```
 
-Currently, this application is using Java 11 and Heroku is using Java 8 to run application by default. Therefore, we need to specifying a Java version for the application by set a property `java.runtime.version` in the file `system.properties`.
+Currently, this application is using Java 11 and Heroku is using Java 8 to run application by default. Therefore, we need to specify a Java version for the application by set a property `java.runtime.version` in the file `system.properties`.
 
-```bash
+```properties
 # system.properties
 java.runtime.version=11
 ```
@@ -96,7 +96,7 @@ We are going to create new repository on Github for the application.
 *Figure 02: Create new repository*
 
 Then, we are going to push and existing repository using the command line.
-```bash
+```
 $ git remote add origin git@github.com:anas-didi95/spring-boot-rms.git
 $ git push -u origin master
 
@@ -134,12 +134,12 @@ Next, we will enable **Automatic deploys** for the app. Any changes on the branc
 ![05-automatic-deploys](./05-automatic-deploys.png)
 *Figure 05: Automatic deploys*
 
-Finally, click **Deploy Branch** to initiate deploy the application into Heroku.
+Finally, click **Deploy Branch** to start deploy the application into Heroku.
 
 ![06-deploy-branch](./06-deploy-branch.png)
 *Figure 06: Deploy branch*
 
-We can get the build log from **Activity** tab and click **View build log**. In the log, we will get the URL to access the app.
+We can get the build log from **Activity** tab and click **View build log**. In the log, we will get the URL to get access to the app.
 
 ![07-build-log](./07-build-log.png)
 *Figure 07: Build log*
@@ -158,7 +158,7 @@ Hello World
 
 In conclusion, deploy Spring boot application with Heroku is more easier compared to setup our own server. 
 
-This tool allow developers to focus more on apps and getting the apps out onto the Internet quickly and iterating. Thus, Heroku is an amazing developer experience. Heroku gets out of the way where it matters, letting devs get on with what they do best - developing apps.
+This tool allows developers to focus more on apps and getting the apps out onto the Internet quickly and iterating. Thus, Heroku is an amazing developer experience. Heroku gets out of the way where it matters, letting devs get on with what they do best - developing apps.
 
 ---
 
