@@ -20,6 +20,8 @@ Following is the guide on how to deploy Spring Boot application with Heroku usin
 * [Generate project](#generate-project)
 * [Create web controller](#create-web-controller)
 * [Push to Github](#push-to-github)
+* [Deploy to Heroku](#deploy-to-heroku)
+* [Conclusion](#conclusion)
 * [References](#references)
 
 ---
@@ -74,6 +76,13 @@ $ curl --request GET --url http://localhost:8080/hello
 Hello World
 ```
 
+Currently, this application is using Java 11 and Heroku is using Java 8 to run application by default. Therefore, we need to specifying a Java version for the application by set a property `java.runtime.version` in the file `system.properties`.
+
+```bash
+# system.properties
+java.runtime.version=11
+```
+
 Now the sample application is ready to be push to Github and deploy into Heroku.
 
 ---
@@ -107,9 +116,56 @@ Refresh the page to see the project is pushed into Github.
 
 ---
 
+<a name="deploy-to-heroku"></a>
+## Deploy to Heroku
+
+Login to Heroku dashboard and create new app and fill in the required details.
+
+![03-create-new-app](#./03-create-new-app.png)
+*Figure 03: Create new app*
+
+Choose **Github** as deployment method for the app, enter the repository name and click **Search**. From the result, click **Connect** to choose the repository.
+
+![04-deployment-method-github](./04-deployment-method-github.png)
+*Figure 04: Github deployment method*
+
+Next, we will enable **Automatic deploys** for the app. Any changes on the branch selected in Github will deploy a new version of this app. We are going to choose **master** branch to watch and click **Enable Automatic Deploys** to confirm.
+
+![05-automatic-deploys](./05-automatic-deploys.png)
+*Figure 05: Automatic deploys*
+
+Finally, click **Deploy Branch** to initiate deploy the application into Heroku.
+
+![06-deploy-branch](./06-deploy-branch.png)
+*Figure 06: Deploy branch*
+
+We can get the build log from **Activity** tab and click **View build log**. In the log, we will get the URL to access the app.
+
+![07-build-log](./07-build-log.png)
+*Figure 07: Build log*
+
+Trying to access the URL given will get the similar result during development.
+
+```bash
+$ curl --request GET --url https://anasdidi-rms.herokuapp.com/hello
+Hello World
+```
+
+---
+
+<a name="conclusion"></a>
+## Conclusion
+
+In conclusion, deploy Spring boot application with Heroku is a breeze compared to setup our own server. 
+
+This tool allow developers to focus more on apps and getting the apps out onto the Internet quickly and iterating. Thus, Heroku is an amazing developer experience. Heroku gets out of the way where it matters, letting devs get on with what they do best - developing apps.
+
+---
+
 <a name="references"></a>
 ## References
 
 * [What is Heroku; heroku.com](https://www.heroku.com/what)
 * [Spring Initializr; spring.io](https://start.spring.io/)
+* [Heroku Java Support; heroku.com](https://devcenter.heroku.com/articles/java-support)
 
