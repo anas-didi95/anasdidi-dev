@@ -10,6 +10,7 @@ const ProjectsPage: React.FC<{}> = () => {
   const data: ProjectsQuery = useStaticQuery(graphql`
     query Projects {
       allMarkdownRemark(
+        sort: { fields: frontmatter___title, order: ASC }
         filter: { fileAbsolutePath: { regex: "/content/projects/" } }
       ) {
         edges {
