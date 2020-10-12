@@ -82,9 +82,10 @@ npm start
 * 'About Me' section
 * '404' error page
 * Blog pagination
+* 'Projects' section
 
 To-do list:
-* 'Projects' section
+* Blog list pagination
 
 ---
 
