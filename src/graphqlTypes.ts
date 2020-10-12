@@ -626,6 +626,8 @@ export enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___author = 'childMarkdownRemark___frontmatter___author',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
   childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark___frontmatter___tags',
+  childMarkdownRemark___frontmatter___link = 'childMarkdownRemark___frontmatter___link',
+  childMarkdownRemark___frontmatter___source = 'childMarkdownRemark___frontmatter___source',
   childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -1496,6 +1498,8 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___author = 'frontmatter___author',
   frontmatter___date = 'frontmatter___date',
   frontmatter___tags = 'frontmatter___tags',
+  frontmatter___link = 'frontmatter___link',
+  frontmatter___source = 'frontmatter___source',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
@@ -1629,6 +1633,8 @@ export type MarkdownRemarkFrontmatter = {
   author?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   tags?: Maybe<Array<Maybe<Scalars['String']>>>,
+  link?: Maybe<Scalars['String']>,
+  source?: Maybe<Scalars['String']>,
 };
 
 
@@ -1645,6 +1651,8 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   author?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   tags?: Maybe<StringQueryOperatorInput>,
+  link?: Maybe<StringQueryOperatorInput>,
+  source?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -2409,6 +2417,17 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___browserAPIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   pluginCreator___pluginOptions___maxWidth = 'pluginCreator___pluginOptions___maxWidth',
+  pluginCreator___pluginOptions___pathPrefix = 'pluginCreator___pluginOptions___pathPrefix',
+  pluginCreator___pluginOptions___wrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
+  pluginCreator___pluginOptions___backgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
+  pluginCreator___pluginOptions___linkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
+  pluginCreator___pluginOptions___showCaptions = 'pluginCreator___pluginOptions___showCaptions',
+  pluginCreator___pluginOptions___markdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
+  pluginCreator___pluginOptions___withWebp = 'pluginCreator___pluginOptions___withWebp',
+  pluginCreator___pluginOptions___tracedSVG = 'pluginCreator___pluginOptions___tracedSVG',
+  pluginCreator___pluginOptions___loading = 'pluginCreator___pluginOptions___loading',
+  pluginCreator___pluginOptions___disableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
+  pluginCreator___pluginOptions___disableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
@@ -2615,9 +2634,31 @@ export enum SitePluginFieldsEnum {
   pluginOptions___plugins___name = 'pluginOptions___plugins___name',
   pluginOptions___plugins___version = 'pluginOptions___plugins___version',
   pluginOptions___plugins___pluginOptions___maxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
+  pluginOptions___plugins___pluginOptions___pathPrefix = 'pluginOptions___plugins___pluginOptions___pathPrefix',
+  pluginOptions___plugins___pluginOptions___wrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
+  pluginOptions___plugins___pluginOptions___backgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
+  pluginOptions___plugins___pluginOptions___linkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
+  pluginOptions___plugins___pluginOptions___showCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
+  pluginOptions___plugins___pluginOptions___markdownCaptions = 'pluginOptions___plugins___pluginOptions___markdownCaptions',
+  pluginOptions___plugins___pluginOptions___withWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
+  pluginOptions___plugins___pluginOptions___tracedSVG = 'pluginOptions___plugins___pluginOptions___tracedSVG',
+  pluginOptions___plugins___pluginOptions___loading = 'pluginOptions___plugins___pluginOptions___loading',
+  pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha = 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha',
+  pluginOptions___plugins___pluginOptions___disableBgImage = 'pluginOptions___plugins___pluginOptions___disableBgImage',
   pluginOptions___plugins___browserAPIs = 'pluginOptions___plugins___browserAPIs',
   pluginOptions___plugins___pluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   pluginOptions___maxWidth = 'pluginOptions___maxWidth',
+  pluginOptions___pathPrefix = 'pluginOptions___pathPrefix',
+  pluginOptions___wrapperStyle = 'pluginOptions___wrapperStyle',
+  pluginOptions___backgroundColor = 'pluginOptions___backgroundColor',
+  pluginOptions___linkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
+  pluginOptions___showCaptions = 'pluginOptions___showCaptions',
+  pluginOptions___markdownCaptions = 'pluginOptions___markdownCaptions',
+  pluginOptions___withWebp = 'pluginOptions___withWebp',
+  pluginOptions___tracedSVG = 'pluginOptions___tracedSVG',
+  pluginOptions___loading = 'pluginOptions___loading',
+  pluginOptions___disableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
+  pluginOptions___disableBgImage = 'pluginOptions___disableBgImage',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___short_name = 'pluginOptions___short_name',
@@ -2751,6 +2792,17 @@ export type SitePluginPluginOptions = {
    __typename?: 'SitePluginPluginOptions',
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
   maxWidth?: Maybe<Scalars['Int']>,
+  pathPrefix?: Maybe<Scalars['String']>,
+  wrapperStyle?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
+  disableBgImage?: Maybe<Scalars['Boolean']>,
   path?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   short_name?: Maybe<Scalars['String']>,
@@ -2765,6 +2817,17 @@ export type SitePluginPluginOptions = {
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>,
   maxWidth?: Maybe<IntQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
+  wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   short_name?: Maybe<StringQueryOperatorInput>,
@@ -2804,10 +2867,32 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 export type SitePluginPluginOptionsPluginsPluginOptions = {
    __typename?: 'SitePluginPluginOptionsPluginsPluginOptions',
   maxWidth?: Maybe<Scalars['Int']>,
+  pathPrefix?: Maybe<Scalars['String']>,
+  wrapperStyle?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
+  disableBgImage?: Maybe<Scalars['Boolean']>,
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
+  wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>,
 };
 
 export type SitePluginSortInput = {
@@ -3043,6 +3128,27 @@ export type IndexQuery = (
         )>, fields: Maybe<(
           { __typename?: 'MarkdownRemarkFields' }
           & Pick<MarkdownRemarkFields, 'slug'>
+        )> }
+      ) }
+    )> }
+  ) }
+);
+
+export type ProjectsQueryVariables = {};
+
+
+export type ProjectsQuery = (
+  { __typename?: 'Query' }
+  & { projectList: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'html'>
+        & { frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'link' | 'source' | 'tags'>
         )> }
       ) }
     )> }
