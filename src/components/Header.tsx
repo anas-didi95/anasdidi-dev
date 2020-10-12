@@ -34,7 +34,9 @@ const Header: React.FC<{
           <Link className="navbar-item" to="/">
             Home
           </Link>
-          <Link className="navbar-item" to="/projects">Projects</Link>
+          <Link className="navbar-item" to="/projects">
+            Projects
+          </Link>
           <Link className="navbar-item" to="/tags">
             Tags
           </Link>
