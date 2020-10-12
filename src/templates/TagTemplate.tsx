@@ -7,6 +7,7 @@ import TagList from "../components/TagList"
 import * as Types from "../utils/types"
 import { oc } from "ts-optchain"
 import BlogList from "../components/BlogList"
+import Separator from "../components/Separator"
 
 type TPageContext = {
   tag: string
@@ -39,9 +40,7 @@ const TagTemplate: React.FC<{
         </div>
         <div className="column" />
       </div>
-      <p className="has-text-centered my-4 has-text-weight-bold is-size-4">
-        ---
-      </p>
+      <Separator />
       <div className="columns">
         <div className="column" />
         <div className="column is-7">
