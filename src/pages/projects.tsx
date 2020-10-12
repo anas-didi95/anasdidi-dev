@@ -5,11 +5,13 @@ import Separator from "../components/Separator"
 import AppLayout from "../layouts/AppLayout"
 import { oc } from "ts-optchain"
 import { ProjectsQuery } from "../graphqlTypes"
+import * as Types from "../utils/types"
+import ProjectList from "../components/ProjectList"
 
 const ProjectsPage: React.FC<{}> = () => {
   const data: ProjectsQuery = useStaticQuery(graphql`
     query Projects {
-      allMarkdownRemark(
+      projectList: allMarkdownRemark(
         sort: { fields: frontmatter___title, order: ASC }
         filter: { fileAbsolutePath: { regex: "/content/projects/" } }
       ) {
@@ -29,6 +31,17 @@ const ProjectsPage: React.FC<{}> = () => {
     }
   `)
 
+  const projectList: Types.Project[] = oc(data)
+    .projectList.edges([])
+    .map(edge => ({
+      title: oc(edge).node.frontmatter.title(""),
+      description: oc(edge).node.frontmatter.description(""),
+      html: oc(edge).node.html(""),
+      link: oc(edge).node.frontmatter.link(""),
+      source: oc(edge).node.frontmatter.source(""),
+      tags: oc(edge).node.frontmatter.tags([]),
+    }))
+
   return (
     <AppLayout title="Projects">
       <div className="columns">
@@ -46,37 +59,7 @@ const ProjectsPage: React.FC<{}> = () => {
         </div>
       </div>
       <Separator />
-      {oc(data)
-        .allMarkdownRemark.edges([])
-        .map((node, idx) => (
-          <div
-            key={`projects${idx}`}
-            className="columns"
-            style={{ justifyContent: "center" }}>
-            <div className="column is-6">
-              <Box>
-                <p className="title is-4 is-spaced">
-                  {oc(node).node.frontmatter.title("")}
-                </p>
-                <p className="subtitle is-6">
-                  {oc(node).node.frontmatter.description("")}
-                </p>
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={{ __html: oc(node).node.html("") }}
-                />
-                <hr />
-                <div className="content">
-                  <ul>
-                    <li>Link: {oc(node).node.frontmatter.link("")}</li>
-                    <li>Source: {oc(node).node.frontmatter.source("")}</li>
-                    <li>Tags</li>
-                  </ul>
-                </div>
-              </Box>
-            </div>
-          </div>
-        ))}
+      <ProjectList projectList={projectList} />
     </AppLayout>
   )
 }

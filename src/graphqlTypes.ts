@@ -3139,7 +3139,7 @@ export type ProjectsQueryVariables = {};
 
 export type ProjectsQuery = (
   { __typename?: 'Query' }
-  & { allMarkdownRemark: (
+  & { projectList: (
     { __typename?: 'MarkdownRemarkConnection' }
     & { edges: Array<(
       { __typename?: 'MarkdownRemarkEdge' }

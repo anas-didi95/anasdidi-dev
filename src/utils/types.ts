@@ -9,3 +9,12 @@ export type Blog = {
   excerpt: string
   slug: string
 }
+
+export type Project = {
+  title: string
+  description: string
+  html: string
+  link: string
+  source: string
+  tags: Maybe<string>[]
+}
