@@ -3173,7 +3173,7 @@ export type BlogTemplateQuery = (
 );
 
 export type TagTemplateQueryVariables = {
-  tag?: Maybe<Scalars['String']>
+  tag: Scalars['String']
 };
 
 
