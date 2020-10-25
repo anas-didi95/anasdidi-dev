@@ -53,11 +53,14 @@ const TagTemplate: React.FC<{
 }
 
 export const PageQuery = graphql`
-  query TagTemplate($tag: String) {
+  query TagTemplate($tag: String!) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { tags: { in: [$tag] } }
+      }
     ) {
       totalCount
       edges {
