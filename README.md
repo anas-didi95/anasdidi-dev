@@ -23,7 +23,7 @@ Use the following link to reach the blog: [anasdidi.dev](https://anasdidi.dev/)
 
 ## Technologies
 * Gatsby - version 2.15.36
-* React - version 16.10.2
+* React - version 16.14.0
 * TypeScript - version 3.6.4
 * Bulma - version 0.9.0
 
