@@ -2,7 +2,7 @@
 title: "SOLID Design Principles - Single Responsibility Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
-date: "9999-99-99"
+date: "2020-11-08"
 tags: ["solid", "design-principle", "oop"]
 ---
 
