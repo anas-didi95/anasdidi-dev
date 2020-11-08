@@ -1,10 +1,9 @@
-name: Checks
+#Reference: https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
+#Reference: https://github.com/actions/setup-node
+
+name: build
 
 on:
-  push:
-    branches:
-      - setup-build-workflow-action
-
   pull_request:
     branches:
       - main
