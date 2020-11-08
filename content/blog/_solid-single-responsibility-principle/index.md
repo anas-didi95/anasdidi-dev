@@ -6,7 +6,9 @@ date: "9999-99-99"
 tags: ["solid", "design-principle", "oop"]
 ---
 
-**SOLID** is a sets for five design principles used in object-oriented programming to make software easier to understand, flexible and maintain. The theory of SOLID was introduced by Robert C. Martin in year 200o on his paper *Design Principles and Design Patterns.*. Later, the SOLID acronym is introduced by Micheal Feathers.
+**SOLID** is a sets for five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
+
+The theory of SOLID was introduced by Robert C. Martin in year 200o on his paper *Design Principles and Design Patterns.*. Later, the SOLID acronym is introduced by Micheal Feathers.
 
 SOLID stands for
 - **S**ingle-responsibility Principle
@@ -36,7 +38,9 @@ Following writing will discussed on one of the principles which is **Single-resp
 
 **SRP** defined that every module, class or function in software should have responsibility over single purpose in the software's functionality. Therefore, all module, class or function's services should be narrowly aligned with that responsibility.
 
-If a single function of software has multiple responsibilities, it will make the software tightly coupled, thus make any changes in the future harder. Therefore, by applying single-responsibility on function of software, it will makes the software easier to understand and prevents unexpected side-effects of future changes.
+If a single function of software has multiple responsibilities, it will make the software tightly coupled, thus make any changes in the future harder.
+
+Therefore, by applying single-responsibility on function of software, it will makes the software easier to understand and prevents unexpected side-effects of future changes.
 
 Thus, a function should only have a single responsibility, that is, only changes to one part of software's specification should be able to affect the specification of the function.
 
@@ -82,7 +86,9 @@ public class Student {
 
 Overall, it looks like a POJO class, however the class actually breaking the single-responsibility principle.
 
-This is due to implementation of method `markAttendance`. By having the method in the class, we now have multiple responsibilities which is to contains the Student details and to display the attendance status of Student. Any new requirement on the attendance status, we need to change the Student class, which may lead to unexpected side-effects in the future.
+This is due to implementation of method `markAttendance`. By having the method in the class, we now have multiple responsibilities which is to contains the Student details and to display the attendance status of Student.
+
+Any new requirement on the attendance status, we need to change the Student class, which may lead to unexpected side-effects in the future.
 
 
 <a name="good-example"></a>
@@ -90,7 +96,6 @@ This is due to implementation of method `markAttendance`. By having the method i
 
 Therefore, we need to separate the responsibilities to each class, `Student` for Student details and `AttendanceTracker` for attendance-related functions.
 
-Below is the revised `Student` class.
 
 ```java
 // Student.java
@@ -122,8 +127,7 @@ public class Student {
   }
 }
 ```
-
-And below is the new class, `AttendanceTracker` class.
+Above is the revised `Student` class.
 
 ```java
 // AttendanceTracker.java
@@ -142,6 +146,7 @@ public class AttendanceTracker {
   }
 }
 ```
+And above is the new class, `AttendanceTracker` class.
 
 The `AttendanceTracker` class takes an student object as a dependency and marks the attendance of the student.
 
