@@ -1,12 +1,12 @@
 ---
-title: "SOLID Design Principles - Single Responsibility Principle"
+title: "SOLID Design Principles - Single-responsibility Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
 date: "2020-11-08"
 tags: ["solid", "design-principle", "oop"]
 ---
 
-**SOLID** is a sets of five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
+**SOLID** is a set of five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
 
 Robert C. Martin introduced the theory of SOLID in year 2000 on his paper *Design Principles and Design Patterns*. Later, Micheal Feathers introduced the SOLID acronym.
 
