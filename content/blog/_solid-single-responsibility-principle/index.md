@@ -26,6 +26,7 @@ Following writing will discussed on one of the principles which is **Single-resp
 * [Example](#example)
   * [Bad Example](#bad-example)
   * [Good Example](#good-example)
+* [Conclusion](#conclusion)
 * [References](#references)
 
 ---
@@ -38,11 +39,11 @@ Following writing will discussed on one of the principles which is **Single-resp
 
 **SRP** defined that every module, class or function in software should have responsibility over single purpose in the software's functionality. Therefore, all module, class or function's services should be narrowly aligned with that responsibility.
 
-If a single function of software has multiple responsibilities, it will make the software tightly coupled, thus make any changes in the future harder.
+If a single class of software has multiple responsibilities, it will make the software tightly coupled, thus make any changes in the future harder.
 
-Therefore, by applying single-responsibility on function of software, it will makes the software easier to understand and prevents unexpected side-effects of future changes.
+Therefore, by applying single-responsibility on class of software, it will makes the software easier to understand and prevents unexpected side-effects of future changes.
 
-Thus, a function should only have a single responsibility, that is, only changes to one part of software's specification should be able to affect the specification of the function.
+Thus, a class should only have a single responsibility, that is, only changes to one part of software's specification should be able to affect the specification of the function.
 
 ---
 
@@ -151,6 +152,15 @@ And above is the new class, `AttendanceTracker` class.
 The `AttendanceTracker` class takes an student object as a dependency and marks the attendance of the student.
 
 Therefore, both responsibilities has been split according to each class which adhere to the **Single-responsibility principle**. Any changes in the future for any of the class would not affect the others, thus, makes the maintenance and testing easier.
+
+---
+
+<a name="conclusion"></a>
+## Conclusion
+
+In conclusion, having a class with multiple responsibilities will make implements new requirements harder. Moreover, the maintenance of the software will be a growing pain as it is adding more complexity and making the classes responsibilities strongly coupled to each other.
+
+Therefore, having a class with single-responsibility is the best way to make class more robust and easier to maintain.
 
 ---
 
