@@ -27,5 +27,8 @@ jobs:
         run: |
           yarn install
           yarn build
+          yarn codegen
+          yarn type-check
+          yarn test
         env:
           CI: true
