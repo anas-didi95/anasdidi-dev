@@ -30,8 +30,20 @@ Following writing will discussed on one of the principles which is **Open-closed
 <a name="concept"></a>
 ## Concept
 
-> "A class should have only one reason to change."<br/>
->  -*Robert C Martin*
+> "Software entities should be open for extension, but closed for modification."<br/>
+>  -*Bertrand Mayer*
+
+The general idea of **Open-closed Principle** is we will be able to implement new features without changes the existing implementation of the project. This principle will avoid any changes required other clasess as dependencies in the project.
+
+Therefore, the definition can be summaries as below:
+- **Open for extension** - Any new feature can be added in the project.
+- **Closed for modification** - Adding new feature does not result in changes to other classes of the project.
+
+To design for Open-closed Principle, we can adapt either of two (generally used) pattern.
+- **Implementation inheritance** - Uses abstract classes and methods.
+- **Interface inheritance** - Uses interface.
+
+It is recommended to use **interface** instead of classes to enable different implementations which we can easily substitute without changing the code that uses it. Thus, by using interface enable loose-coupling which are independent of each other and don't need to share any code.
 
 ---
 
@@ -39,3 +51,5 @@ Following writing will discussed on one of the principles which is **Open-closed
 ## References
 
 * [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+* [Open closed principle; howtodoinjava.com](https://howtodoinjava.com/design-patterns/open-closed-principle/)
+* [SOLID Design Principles Explained: The Open/Closed Principle with Code Examples; stackify.com](https://stackify.com/solid-design-open-closed-principle/)
