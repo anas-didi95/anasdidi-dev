@@ -37,17 +37,17 @@ Following writing will discussed on one of the principles which is **Open-closed
 > "Software entities should be open for extension, but closed for modification."<br/>
 >  -*Bertrand Mayer*
 
-The general idea of **Open-closed Principle** is we will be able to implement new features without changes the existing implementation of the project. This principle will avoid any changes required other clasess as dependencies in the project.
+The general idea of **Open-closed Principle** is we will be able to add new features without changes the existing implementation of the project. This principle will avoid any changes required other classes as dependencies in the project.
 
-Therefore, the definition can be summaries as below:
-- **Open for extension** - Any new feature can be added in the project.
+Therefore, the summary of the definition as below:
+- **Open for extension** - Project can add any new features.
 - **Closed for modification** - Adding new feature does not result in changes to other classes of the project.
 
-To design for Open-closed Principle, we can adapt either of two (generally used) pattern.
+To design for Open-closed Principle, we can adopt either of two (generally used) pattern.
 - **Implementation inheritance** - Uses abstract classes and methods.
 - **Interface inheritance** - Uses interface.
 
-It is recommended to use **interface** instead of classes to enable different implementations which we can easily substitute without changing the code that uses it. Thus, by using interface enable loose-coupling which are independent of each other and don't need to share any code.
+Using **interface** is better instead of classes to enable different implementations which we can easily substitute without changing the code that uses it. Thus, by using interface enable loose-coupling which are independent of each other and don't need to share any code.
 
 ---
 
@@ -125,7 +125,7 @@ public class SimpleCalculator implements ICalculator {
 ```
 ***SimpleCalculator.java***
 
-From the implementation, if a new feature such as Multiplication is added, we are required to update ***SimpleCalculater.java***. Thus, this code breaking Open-closed Principle.
+From the implementation, by adding new feature such as Multiplication, ***SimpleCalculater.java*** need to update. Thus, this code breaking Open-closed Principle.
 
 <a name="good-example"></a>
 ### Good Example
@@ -231,9 +231,9 @@ public class Multiplication implements IOperation {
 <a name="conclusion"></a>
 ## Conclusion
 
-In conclusion, Open-closed Principle is a guideline on how developers can build code that allows change over time. With introduction of agile practice, new features is common and need to be implement. If the current implementation not built to enable change, it will be difficult, time-consuming, error-prone and costly.
+In conclusion, Open-closed Principle is a guideline on how developers can build code that allows change over time. With introduction of agile practice, add new features is common. If the current implementation not built to enable change, it will be difficult, time-consuming, error-prone and costly.
 
-By following the principle of open to extension but closed for modification, we can disallow any changes to existing implementation, and any new features can be easily integrate by using the interface.
+By adhere to the principle of open to extension but closed for modification, we can disallow any changes to existing implementation, and any new features are easily integrated by using the interface.
 
 ---
 
