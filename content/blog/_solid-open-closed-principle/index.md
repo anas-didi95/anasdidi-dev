@@ -23,6 +23,9 @@ Following writing will discussed on one of the principles which is **Open-closed
 
 ## Table of contents
 * [Concept](#concept)
+* [Example](#example)
+  * [Bad Example](#bad-example)
+  * [Good Example](#good-example)
 * [References](#references)
 
 ---
@@ -44,6 +47,183 @@ To design for Open-closed Principle, we can adapt either of two (generally used)
 - **Interface inheritance** - Uses interface.
 
 It is recommended to use **interface** instead of classes to enable different implementations which we can easily substitute without changing the code that uses it. Thus, by using interface enable loose-coupling which are independent of each other and don't need to share any code.
+
+---
+
+<a name="example"></a>
+## Example
+
+<a name="bad-example"></a>
+### Bad Example
+
+Below are implementation for Calculator project.
+
+```java
+public interface IOperation {
+}
+```
+***IOperation.java***
+
+```java
+public class Addition implements IOperation {
+    private double num1;
+    private double num2;
+    private double total = 0.0;
+
+    public Addition(double num1, double num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    //Setters and getters
+}
+```
+***Addition.java***
+
+```java
+public class Substraction implements IOperation {
+    private double num1;
+    private double num2;
+    private double total = 0.0;
+
+    public Substraction(double num1, double num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    //Setters and getters
+}
+```
+***Substraction.java***
+
+```java
+public interface ICalculator {
+  void calculate(IOperation operation)
+}
+```
+***ICalculator.java***
+
+```java
+public class SimpleCalculator implements ICalculator {
+    @Override
+    public void calculate(IOperation operation)
+    {
+        if (operation == null) {
+            throw new InvalidParameterException("Some message");
+        }
+
+        if (operation instanceof Addition) {
+            Addition obj = (Addition) operation;
+            obj.setTotal(obj.getNum1() + obj.getNum2());
+        } else if (operation instanceof Substraction) {
+            Substraction obj = (Substraction) operation;
+            obj.setTotal(obj.getNum1() - obj.getNum2());
+        }
+    }
+}
+```
+***SimpleCalculator.java***
+
+From the implementation, if a new feature such as Multiplication is added, we are required to update ***SimpleCalculater.java***. Thus, this code breaking Open-closed Principle.
+
+<a name="good-example"></a>
+### Good Example
+
+Therefore, we need to abstract the functionality what changes in the project. In this project, the calculation part is changes with every new operations.
+
+```java
+public interface IOperation {
+  void performOperation();
+}
+```
+***IOperation.java***
+
+```java
+public class Addition implements IOperation {
+    private double num1;
+    private double num2;
+    private double total = 0.0;
+
+    public Addition(double num1, double num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    @Override
+    public void performOperation() {
+        total = num1 + num2;
+    }
+
+    //Setters and getters
+}
+```
+***Addition.java***
+
+```java
+public class Substraction implements IOperation {
+    private double num1;
+    private double num2;
+    private double total = 0.0;
+
+    public Substraction(double num1, double num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    @Override
+    public void performOperation() {
+        total = num1 - num2;
+    }
+
+    //Setters and getters
+}
+```
+***Substraction.java***
+
+```java
+public interface ICalculator {
+  void calculate(IOperation operation)
+}
+```
+***ICalculator.java***
+
+```java
+public class SimpleCalculator implements ICalculator {
+    @Override
+    public void calculate(IOperation operation)
+    {
+        if (operation == null) {
+            throw new InvalidParameterException("Some message");
+        }
+
+        operation.performOperation();
+    }
+}
+```
+***SimpleCalculator.java***
+
+Thus, we can add new operation such as Multiplication without need to change the current implementation. Any new operation will easily integrate with existing implementation.
+
+```java
+public class Multiplication implements IOperation {
+    private double num1;
+    private double num2;
+    private double total = 0.0;
+
+    public Multiplication(double num1, double num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    @Override
+    public void performOperation() {
+        total = num1 - num2;
+    }
+
+    //Setters and getters
+}
+```
+***Multiplication.java***
 
 ---
 
