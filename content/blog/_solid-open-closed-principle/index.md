@@ -26,6 +26,7 @@ Following writing will discussed on one of the principles which is **Open-closed
 * [Example](#example)
   * [Bad Example](#bad-example)
   * [Good Example](#good-example)
+* [Conclusion](#conclusion)
 * [References](#references)
 
 ---
@@ -224,6 +225,15 @@ public class Multiplication implements IOperation {
 }
 ```
 ***Multiplication.java***
+
+---
+
+<a name="conclusion"></a>
+## Conclusion
+
+In conclusion, Open-closed Principle is a guideline on how developers can build code that allows change over time. With introduction of agile practice, new features is common and need to be implement. If the current implementation not built to enable change, it will be difficult, time-consuming, error-prone and costly.
+
+By following the principle of open to extension but closed for modification, we can disallow any changes to existing implementation, and any new features can be easily integrate by using the interface.
 
 ---
 
