@@ -2,7 +2,7 @@
 title: "SOLID Design Principles - Open-closed Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
-date: "9999-12-31"
+date: "2020-11-15"
 tags: ["solid", "design-principle", "oop"]
 ---
 
@@ -218,7 +218,7 @@ public class Multiplication implements IOperation {
 
     @Override
     public void performOperation() {
-        total = num1 - num2;
+        total = num1 * num2;
     }
 
     //Setters and getters
