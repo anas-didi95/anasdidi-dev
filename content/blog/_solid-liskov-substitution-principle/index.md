@@ -43,3 +43,5 @@ In **object-oriented programming (OOP)** such as Java has a concept called **Inh
 ## References
 
 * [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+* [Liskov Substitution Principle; springframework.guru](https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/)
+* [SOLID Design Principles Explained: The Liskov Substitution Principle with Code Examples; stackify.com](https://stackify.com/solid-design-liskov-substitution-principle/)
