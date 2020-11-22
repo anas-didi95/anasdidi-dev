@@ -23,6 +23,8 @@ Following writing will discussed on one of the principles which is **Liskov Subs
 
 ## Table of contents
 * [Concept](#concept)
+* [Example](#example)
+  * [Bad Example](#bad-example)
 * [References](#references)
 
 ---
@@ -36,6 +38,54 @@ Following writing will discussed on one of the principles which is **Liskov Subs
 The general idea of **LSP** is **substitutability**, where a superclass can be replaced with its subclass without altering any properties of the application. Thus, objects of the subclasses required to behave in similar to the objects of the superclass.
 
 In **object-oriented programming (OOP)** such as Java has a concept called **Inheritance**. Inheritance is a concept where a class are based on another class. Where a class is "inherited" from another class, the inherited class become the subclass of the superclass, thus has all the characteristics of the superclass, but can also contain new properties.
+
+---
+
+<a name="example"></a>
+## Example
+
+The application of LSP is easier to abuse due this principle is depends on the behavior of the classes rather than structures. Thus, the compiler would not catch any error in the application and it will work, but mostly lead to buggy or difficult to maintain code.
+
+<a name="bad-example"></a>
+### Bad Example
+
+Below is the bad application of LSP for vehicle application.
+
+```java
+public class Vehicle {
+  private String name;
+  private double speed;
+
+  // public setter and getter method
+
+  public void startEngine() { ... }
+}
+```
+***Vehicle.java***
+
+```java
+public class Car extends Vehicle {
+
+  @Override
+  public void startEngine() { ... }
+}
+```
+***Car.java***
+
+Above shown Car class is a subclass of Vehicle class. Thus, Car is overriding the `startEngine` method of its superclass.
+
+```java
+public class Bicycle extends Vehicle {
+
+  @Override
+  public void startEngine() { ... }
+}
+```
+***Bicycle.java***
+
+But if Bicycle class inherited Vehicle class, it leads to incorrect behavior due to bicycle do not have any engine. Therefore, the `startEngine` method is redundant and useless for Bicycle class.
+
+Therefore, this is a violation of LSP which result in a method in class does nothing, or simply cannot be implemented due incorrect behavior.
 
 ---
 
