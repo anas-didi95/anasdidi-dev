@@ -39,14 +39,14 @@ Following writing will discussed on one of the principles which is **Liskov Subs
 
 The general idea of **LSP** is **substitutability**, where a superclass can be replaced with its subclass without altering any properties of the application. Thus, objects of the subclasses required to behave in similar to the objects of the superclass.
 
-In **object-oriented programming (OOP)** such as Java has a concept called **Inheritance**. Inheritance is a concept where a class are based on another class. Where a class is "inherited" from another class, the inherited class become the subclass of the superclass, thus has all the characteristics of the superclass, but can also contain new properties.
+In **object-oriented programming (OOP)** such as Java has a concept called **Inheritance**. Inheritance is a concept where a class is based on another class. Where a class is "inherited" from another class, the inherited class become the subclass of the superclass, thus has all the characteristics of the superclass, but can also contain new properties.
 
 ---
 
 <a name="example"></a>
 ## Example
 
-The application of LSP is easier to abuse due this principle is depends on the behavior of the classes rather than structures. Thus, the compiler would not catch any error in the application and it will work, but mostly lead to buggy or difficult to maintain code.
+LSP is easier to abuse due to this principle is depends on the behavior of the classes than structures. Thus, the compiler would not catch any error in the application and it will work, but mostly lead to buggy or difficult to maintain code.
 
 <a name="bad-example"></a>
 ### Bad Example
@@ -88,7 +88,7 @@ public class Bicycle extends Vehicle {
 
 But if Bicycle class inherited Vehicle class, it leads to incorrect behavior due to bicycle do not have any engine. Therefore, the `startEngine` method is redundant and useless for Bicycle class.
 
-Therefore, this is a violation of LSP which result in a method in class does nothing, or simply cannot be implemented due incorrect behavior.
+Therefore, this violate the LSP which result in a method in class does nothing, or simply cannot be implemented due incorrect behavior.
 
 <a name="good-example"></a>
 ### Good Example
@@ -140,16 +140,18 @@ public class Bicycle extends VehicleWithoutEngine {
 ```
 ***Bicycle.java***
 
-Therefore, with additional classes to differentiate vehicle with or without engine, the implementation now adhere to LSP.
+Therefore, with more classes to differentiate vehicle with or without engine, the implementation now adhere to LSP.
 
 ---
 
 <a name="conclusion"></a>
 ## Conclusion
 
-In conclusion, Liskov Substitution Principle enables developer to replace a parent class with subclass without breaking the application. While to apply the principle can be achieved by using inheritance in OOP, inheritance can easily misuse which lead to buggy or difficult to maintain code although the application is running fine.
+In conclusion, Liskov Substitution Principle enables developer to replace a parent class with subclass without breaking the application.
 
-Thus, developer need careful regarding the behavior of class when developing an application to avoid violate the LSP.
+While to apply the principle can be achieved by using inheritance in OOP, inheritance can easily misuse which lead to buggy or difficult to maintain code although the application is running fine.
+
+Thus, developer need careful about the behavior of class when developing an application to avoid violate the LSP.
 
 ---
 
