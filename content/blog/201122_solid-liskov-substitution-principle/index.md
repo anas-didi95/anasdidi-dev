@@ -2,7 +2,7 @@
 title: "SOLID Design Principles - Liskov Substitution Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
-date: "2099-12-31"
+date: "2020-11-22"
 tags: ["solid", "design-principle", "oop"]
 ---
 
