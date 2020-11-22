@@ -25,6 +25,7 @@ Following writing will discussed on one of the principles which is **Liskov Subs
 * [Concept](#concept)
 * [Example](#example)
   * [Bad Example](#bad-example)
+  * [Good Example](#good-example)
 * [References](#references)
 
 ---
@@ -53,6 +54,7 @@ Below is the bad application of LSP for vehicle application.
 
 ```java
 public class Vehicle {
+
   private String name;
   private double speed;
 
@@ -86,6 +88,58 @@ public class Bicycle extends Vehicle {
 But if Bicycle class inherited Vehicle class, it leads to incorrect behavior due to bicycle do not have any engine. Therefore, the `startEngine` method is redundant and useless for Bicycle class.
 
 Therefore, this is a violation of LSP which result in a method in class does nothing, or simply cannot be implemented due incorrect behavior.
+
+<a name="good-example"></a>
+### Good Example
+
+To fix the violation, each vehicle need to classify either with or without engines. In this case, bicycle as vehicle without engine while car with engine.
+
+```java
+public class Vehicle {
+
+  private String name;
+  private double speed;
+
+  // public setter and getter
+}
+```
+***Vehicle.java***
+
+```java
+public class VehicleWithEngine extends Vehicle {
+
+  public void startEngine() { ... }
+}
+```
+***VehicleWithEngine.java***
+
+```java
+public class VehicleWithoutEngine extends Vehicle {
+
+  public void startMoving() { ... }
+}
+```
+***VehicleWithoutEngine.java***
+
+```java
+public class Car extends VehicleWithEngine {
+
+  @Override
+  public void startEngine() { .. }
+}
+```
+***Car.java***
+
+```java
+public class Bicycle extends VehicleWithoutEngine {
+
+  @Override
+  public void startMoving() { ... }
+}
+```
+***Bicycle.java***
+
+Therefore, with additional classes to differentiate vehicle with or without engine, the implementation now adhere to LSP.
 
 ---
 
