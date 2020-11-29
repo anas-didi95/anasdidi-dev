@@ -26,6 +26,7 @@ Following writing will discussed on one of the principles which is **Interface S
 * [Example](#example)
   * [Bad Example](#bad-example)
   * [Good Example](#good-example)
+* [Conclusion](#conclusion)
 * [References](#references)
 
 ---
@@ -132,6 +133,15 @@ public class Robot implements IWorker {
 ***Robot.java***
 
 Thus, by splitting `work()` method and `eat()` method in specific interfaces, each class can implement the interfaces which related to them. So, ***Robot*** class no longer need to implement `eat()` method.
+
+---
+
+<a name="conclusion"></a>
+## Conclusion
+
+In conclusion, Interface Segregation Principle enables developer to split a general-purpose interface to several specific interfaces. Later, the client can implement the interface which needed by them.
+
+Therefore, the client no need to implement dummy method making the implementation and refactor easier. Moreover, if developer need another function for a client, they can create a specific interface for the function and implement to the client.
 
 ---
 
