@@ -22,7 +22,22 @@ Following writing will discussed on one of the principles which is **Interface S
 ---
 
 ## Table of contents
+* [Concept](#concept)
 * [References](#references)
+
+---
+
+<a name="concept"></a>
+## Concept
+
+> Many client-specific interfaces are better than one general-purpose interface.<br/>
+> -*Robert C. Martin*
+
+The general idea of **ISP** is client should not be forced to implement methods it does not use. Thus, the approach is to splits several intefaces into smaller and specific interfaces, so the client can implements the specific interfaces which related to them.
+
+Having an interface with define methods which unrelated to each others will make the interface become a fat interface or populated interface. When implement such interface, developer also need to write implementation for unused methods resulted in dummy methods which have no values in the implementation.
+
+Thus, a fat interface makes the implementation rigid due to developer need to manage changes for all clients when making change to a single interface. Therefore, the advantages of ISP will keep a system decoupled and make refactor an implementation easier as each interface will only contains methods which required by its client.
 
 ---
 
@@ -30,3 +45,5 @@ Following writing will discussed on one of the principles which is **Interface S
 ## References
 
 * [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+* [Interface Segregation Principle (ISP); oodesign.com](https://www.oodesign.com/interface-segregation-principle.html)
+* [Interface Segregation Principle explained with example in Java; javabrahman.com](https://www.javabrahman.com/programming-principles/interface-segregation-principle-explained-examples-java/)
