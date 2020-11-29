@@ -23,6 +23,9 @@ Following writing will discussed on one of the principles which is **Interface S
 
 ## Table of contents
 * [Concept](#concept)
+* [Example](#example)
+  * [Bad Example](#bad-example)
+  * [Good Example](#good-example)
 * [References](#references)
 
 ---
@@ -38,6 +41,97 @@ The general idea of **ISP** is client should not be forced to implement methods 
 Having an interface with define methods which unrelated to each others will make the interface become a fat interface or populated interface. When implement such interface, developer also need to write implementation for unused methods resulted in dummy methods which have no values in the implementation.
 
 Thus, a fat interface makes the implementation rigid due to developer need to manage changes for all clients when making change to a single interface. Therefore, the advantages of ISP will keep a system decoupled and make refactor an implementation easier as each interface will only contains methods which required by its client.
+
+---
+
+<a name="example"></a>
+## Example
+
+Consider an example of a factory application. In a factory consists of ***Worker*** which is a human worker, ***Robot*** as robot worker. As human worker, they can work and eat. But for a robot worker, they can only work.
+
+<a name="bad-example"></a>
+### Bad Example
+
+Therefore, below is the bad application for the factory application.
+
+```java
+public interface IWorker {
+  public void eat();
+  public void work();
+}
+```
+***IWorker.java***
+
+```java
+public class Worker implements IWorker {
+  public void eat() {
+    // ...eating
+  }
+
+  public void work() {
+    // ...working
+  }
+}
+```
+***Worker.java***
+
+```java
+public class Robot implements IWorker {
+  public void eat() {
+    // ...do nothing
+  }
+
+  public void work() {
+    // ...working
+  }
+}
+```
+***Robot.java***
+
+From the implementation, developer also need to implement `eat()` method for ***Robot*** class because the class implement ***IWorker*** interface. This make the method become a dummy method for ***Robot*** class, thus resulted ***IWorker*** interface become fat interface.
+
+<a name="good-example"></a>
+### Good Example
+
+Thus, ***IWorker*** interface need to be split into several specific interfaces. So, ***IFeedable*** can define `eat()` method and ***IWorker*** only define `work()` method.
+
+```java
+public interface IFeedable {
+  public void eat();
+}
+```
+***IFeedable.java***
+
+```java
+public interface IWorker {
+  public void work();
+}
+```
+***IWorker.java***
+
+```java
+public class Worker implements IWorker, IFeedable {
+  public void eat() {
+    // ...eating
+  }
+
+  public void work() {
+    // ...working
+  }
+}
+```
+***Worker.java***
+
+```java
+public class Robot implements IWorker {
+  public void work() {
+    // ...working
+  }
+}
+```
+***Robot.java***
+
+Thus, by splitting `work()` method and `eat()` method in specific interfaces, each class can implement the interfaces which related to them. So, ***Robot*** class no longer need to implement `eat()` method.
 
 ---
 
