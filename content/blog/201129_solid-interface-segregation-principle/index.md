@@ -2,7 +2,7 @@
 title: "SOLID Design Principles - Interface Segregation Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
-date: "2099-01-01"
+date: "2020-11-29"
 tags: ["solid", "design-principle", "oop"]
 ---
 
