@@ -1,17 +1,16 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.166.0/containers/typescript-node/.devcontainer/base.Dockerfile
 
-# To fully customize the contents of this image, use the following Dockerfile instead:
-# https://github.com/microsoft/vscode-dev-containers/tree/v0.122.1/containers/typescript-node-12/.devcontainer/Dockerfile
-FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-12
+# [Choice] Node.js version: 14, 12, 10
+ARG VARIANT="14-buster"
+FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
-# ** [Optional] Uncomment this section to install additional packages. **
-#
-# RUN apt-get update \
-#     && export DEBIAN_FRONTEND=noninteractive \
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-# Install Node packages
-RUN npm install -g gatsby-cli
+# [Optional] Uncomment if you want to install an additional version of node using nvm
+# ARG EXTRA_NODE_VERSION=10
+# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
+
+# [Optional] Uncomment if you want to install more global node packages
+RUN su node -c "npm install -g gatsby-cli"
