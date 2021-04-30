@@ -16,7 +16,7 @@ interface Props {
 }
 
 const useSiteTitle = () => {
-  const data  = useStaticQuery<SiteTitleQuery>(
+  const data = useStaticQuery<SiteTitleQuery>(
     graphql`
       query SiteTitle {
         site {
