@@ -25,6 +25,22 @@ export type Scalars = {
 
 
 
+export type AvifOptions = {
+  quality?: Maybe<Scalars['Int']>;
+  lossless?: Maybe<Scalars['Boolean']>;
+  speed?: Maybe<Scalars['Int']>;
+};
+
+export type BlurredOptions = {
+  /** Width of the generated low-res preview. Default is 20px */
+  width?: Maybe<Scalars['Int']>;
+  /**
+   * Force the output format for the low-res preview. Default is to use the same
+   * format as the input. You should rarely need to change this
+   */
+  toFormat?: Maybe<ImageFormat>;
+};
+
 export type BooleanQueryOperatorInput = {
   eq?: Maybe<Scalars['Boolean']>;
   ne?: Maybe<Scalars['Boolean']>;
@@ -394,6 +410,9 @@ export type File = Node & {
   blocks?: Maybe<Scalars['Int']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
+  /** Returns all children nodes filtered by type ImageSharp */
+  childrenImageSharp?: Maybe<Array<Maybe<ImageSharp>>>;
+  /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   childImageSharp?: Maybe<ImageSharp>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -521,6 +540,99 @@ export enum FileFieldsEnum {
   blksize = 'blksize',
   blocks = 'blocks',
   publicURL = 'publicURL',
+  childrenImageSharp = 'childrenImageSharp',
+  childrenImageSharp___fixed___base64 = 'childrenImageSharp___fixed___base64',
+  childrenImageSharp___fixed___tracedSVG = 'childrenImageSharp___fixed___tracedSVG',
+  childrenImageSharp___fixed___aspectRatio = 'childrenImageSharp___fixed___aspectRatio',
+  childrenImageSharp___fixed___width = 'childrenImageSharp___fixed___width',
+  childrenImageSharp___fixed___height = 'childrenImageSharp___fixed___height',
+  childrenImageSharp___fixed___src = 'childrenImageSharp___fixed___src',
+  childrenImageSharp___fixed___srcSet = 'childrenImageSharp___fixed___srcSet',
+  childrenImageSharp___fixed___srcWebp = 'childrenImageSharp___fixed___srcWebp',
+  childrenImageSharp___fixed___srcSetWebp = 'childrenImageSharp___fixed___srcSetWebp',
+  childrenImageSharp___fixed___originalName = 'childrenImageSharp___fixed___originalName',
+  childrenImageSharp___resolutions___base64 = 'childrenImageSharp___resolutions___base64',
+  childrenImageSharp___resolutions___tracedSVG = 'childrenImageSharp___resolutions___tracedSVG',
+  childrenImageSharp___resolutions___aspectRatio = 'childrenImageSharp___resolutions___aspectRatio',
+  childrenImageSharp___resolutions___width = 'childrenImageSharp___resolutions___width',
+  childrenImageSharp___resolutions___height = 'childrenImageSharp___resolutions___height',
+  childrenImageSharp___resolutions___src = 'childrenImageSharp___resolutions___src',
+  childrenImageSharp___resolutions___srcSet = 'childrenImageSharp___resolutions___srcSet',
+  childrenImageSharp___resolutions___srcWebp = 'childrenImageSharp___resolutions___srcWebp',
+  childrenImageSharp___resolutions___srcSetWebp = 'childrenImageSharp___resolutions___srcSetWebp',
+  childrenImageSharp___resolutions___originalName = 'childrenImageSharp___resolutions___originalName',
+  childrenImageSharp___fluid___base64 = 'childrenImageSharp___fluid___base64',
+  childrenImageSharp___fluid___tracedSVG = 'childrenImageSharp___fluid___tracedSVG',
+  childrenImageSharp___fluid___aspectRatio = 'childrenImageSharp___fluid___aspectRatio',
+  childrenImageSharp___fluid___src = 'childrenImageSharp___fluid___src',
+  childrenImageSharp___fluid___srcSet = 'childrenImageSharp___fluid___srcSet',
+  childrenImageSharp___fluid___srcWebp = 'childrenImageSharp___fluid___srcWebp',
+  childrenImageSharp___fluid___srcSetWebp = 'childrenImageSharp___fluid___srcSetWebp',
+  childrenImageSharp___fluid___sizes = 'childrenImageSharp___fluid___sizes',
+  childrenImageSharp___fluid___originalImg = 'childrenImageSharp___fluid___originalImg',
+  childrenImageSharp___fluid___originalName = 'childrenImageSharp___fluid___originalName',
+  childrenImageSharp___fluid___presentationWidth = 'childrenImageSharp___fluid___presentationWidth',
+  childrenImageSharp___fluid___presentationHeight = 'childrenImageSharp___fluid___presentationHeight',
+  childrenImageSharp___sizes___base64 = 'childrenImageSharp___sizes___base64',
+  childrenImageSharp___sizes___tracedSVG = 'childrenImageSharp___sizes___tracedSVG',
+  childrenImageSharp___sizes___aspectRatio = 'childrenImageSharp___sizes___aspectRatio',
+  childrenImageSharp___sizes___src = 'childrenImageSharp___sizes___src',
+  childrenImageSharp___sizes___srcSet = 'childrenImageSharp___sizes___srcSet',
+  childrenImageSharp___sizes___srcWebp = 'childrenImageSharp___sizes___srcWebp',
+  childrenImageSharp___sizes___srcSetWebp = 'childrenImageSharp___sizes___srcSetWebp',
+  childrenImageSharp___sizes___sizes = 'childrenImageSharp___sizes___sizes',
+  childrenImageSharp___sizes___originalImg = 'childrenImageSharp___sizes___originalImg',
+  childrenImageSharp___sizes___originalName = 'childrenImageSharp___sizes___originalName',
+  childrenImageSharp___sizes___presentationWidth = 'childrenImageSharp___sizes___presentationWidth',
+  childrenImageSharp___sizes___presentationHeight = 'childrenImageSharp___sizes___presentationHeight',
+  childrenImageSharp___gatsbyImageData = 'childrenImageSharp___gatsbyImageData',
+  childrenImageSharp___original___width = 'childrenImageSharp___original___width',
+  childrenImageSharp___original___height = 'childrenImageSharp___original___height',
+  childrenImageSharp___original___src = 'childrenImageSharp___original___src',
+  childrenImageSharp___resize___src = 'childrenImageSharp___resize___src',
+  childrenImageSharp___resize___tracedSVG = 'childrenImageSharp___resize___tracedSVG',
+  childrenImageSharp___resize___width = 'childrenImageSharp___resize___width',
+  childrenImageSharp___resize___height = 'childrenImageSharp___resize___height',
+  childrenImageSharp___resize___aspectRatio = 'childrenImageSharp___resize___aspectRatio',
+  childrenImageSharp___resize___originalName = 'childrenImageSharp___resize___originalName',
+  childrenImageSharp___id = 'childrenImageSharp___id',
+  childrenImageSharp___parent___id = 'childrenImageSharp___parent___id',
+  childrenImageSharp___parent___parent___id = 'childrenImageSharp___parent___parent___id',
+  childrenImageSharp___parent___parent___children = 'childrenImageSharp___parent___parent___children',
+  childrenImageSharp___parent___children = 'childrenImageSharp___parent___children',
+  childrenImageSharp___parent___children___id = 'childrenImageSharp___parent___children___id',
+  childrenImageSharp___parent___children___children = 'childrenImageSharp___parent___children___children',
+  childrenImageSharp___parent___internal___content = 'childrenImageSharp___parent___internal___content',
+  childrenImageSharp___parent___internal___contentDigest = 'childrenImageSharp___parent___internal___contentDigest',
+  childrenImageSharp___parent___internal___description = 'childrenImageSharp___parent___internal___description',
+  childrenImageSharp___parent___internal___fieldOwners = 'childrenImageSharp___parent___internal___fieldOwners',
+  childrenImageSharp___parent___internal___ignoreType = 'childrenImageSharp___parent___internal___ignoreType',
+  childrenImageSharp___parent___internal___mediaType = 'childrenImageSharp___parent___internal___mediaType',
+  childrenImageSharp___parent___internal___owner = 'childrenImageSharp___parent___internal___owner',
+  childrenImageSharp___parent___internal___type = 'childrenImageSharp___parent___internal___type',
+  childrenImageSharp___children = 'childrenImageSharp___children',
+  childrenImageSharp___children___id = 'childrenImageSharp___children___id',
+  childrenImageSharp___children___parent___id = 'childrenImageSharp___children___parent___id',
+  childrenImageSharp___children___parent___children = 'childrenImageSharp___children___parent___children',
+  childrenImageSharp___children___children = 'childrenImageSharp___children___children',
+  childrenImageSharp___children___children___id = 'childrenImageSharp___children___children___id',
+  childrenImageSharp___children___children___children = 'childrenImageSharp___children___children___children',
+  childrenImageSharp___children___internal___content = 'childrenImageSharp___children___internal___content',
+  childrenImageSharp___children___internal___contentDigest = 'childrenImageSharp___children___internal___contentDigest',
+  childrenImageSharp___children___internal___description = 'childrenImageSharp___children___internal___description',
+  childrenImageSharp___children___internal___fieldOwners = 'childrenImageSharp___children___internal___fieldOwners',
+  childrenImageSharp___children___internal___ignoreType = 'childrenImageSharp___children___internal___ignoreType',
+  childrenImageSharp___children___internal___mediaType = 'childrenImageSharp___children___internal___mediaType',
+  childrenImageSharp___children___internal___owner = 'childrenImageSharp___children___internal___owner',
+  childrenImageSharp___children___internal___type = 'childrenImageSharp___children___internal___type',
+  childrenImageSharp___internal___content = 'childrenImageSharp___internal___content',
+  childrenImageSharp___internal___contentDigest = 'childrenImageSharp___internal___contentDigest',
+  childrenImageSharp___internal___description = 'childrenImageSharp___internal___description',
+  childrenImageSharp___internal___fieldOwners = 'childrenImageSharp___internal___fieldOwners',
+  childrenImageSharp___internal___ignoreType = 'childrenImageSharp___internal___ignoreType',
+  childrenImageSharp___internal___mediaType = 'childrenImageSharp___internal___mediaType',
+  childrenImageSharp___internal___owner = 'childrenImageSharp___internal___owner',
+  childrenImageSharp___internal___type = 'childrenImageSharp___internal___type',
   childImageSharp___fixed___base64 = 'childImageSharp___fixed___base64',
   childImageSharp___fixed___tracedSVG = 'childImageSharp___fixed___tracedSVG',
   childImageSharp___fixed___aspectRatio = 'childImageSharp___fixed___aspectRatio',
@@ -565,6 +677,7 @@ export enum FileFieldsEnum {
   childImageSharp___sizes___originalName = 'childImageSharp___sizes___originalName',
   childImageSharp___sizes___presentationWidth = 'childImageSharp___sizes___presentationWidth',
   childImageSharp___sizes___presentationHeight = 'childImageSharp___sizes___presentationHeight',
+  childImageSharp___gatsbyImageData = 'childImageSharp___gatsbyImageData',
   childImageSharp___original___width = 'childImageSharp___original___width',
   childImageSharp___original___height = 'childImageSharp___original___height',
   childImageSharp___original___src = 'childImageSharp___original___src',
@@ -735,6 +848,7 @@ export type FileFilterInput = {
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
   publicURL?: Maybe<StringQueryOperatorInput>;
+  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -792,9 +906,24 @@ export enum ImageFit {
 
 export enum ImageFormat {
   NO_CHANGE = 'NO_CHANGE',
+  AUTO = 'AUTO',
   JPG = 'JPG',
   PNG = 'PNG',
-  WEBP = 'WEBP'
+  WEBP = 'WEBP',
+  AVIF = 'AVIF'
+}
+
+export enum ImageLayout {
+  FIXED = 'FIXED',
+  FULL_WIDTH = 'FULL_WIDTH',
+  CONSTRAINED = 'CONSTRAINED'
+}
+
+export enum ImagePlaceholder {
+  DOMINANT_COLOR = 'DOMINANT_COLOR',
+  TRACED_SVG = 'TRACED_SVG',
+  BLURRED = 'BLURRED',
+  NONE = 'NONE'
 }
 
 export type ImageSharp = Node & {
@@ -805,6 +934,7 @@ export type ImageSharp = Node & {
   fluid?: Maybe<ImageSharpFluid>;
   /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
   sizes?: Maybe<ImageSharpSizes>;
+  gatsbyImageData: Scalars['JSON'];
   original?: Maybe<ImageSharpOriginal>;
   resize?: Maybe<ImageSharpResize>;
   id: Scalars['ID'];
@@ -910,6 +1040,28 @@ export type ImageSharpSizesArgs = {
 };
 
 
+export type ImageSharpGatsbyImageDataArgs = {
+  layout?: Maybe<ImageLayout>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
+  placeholder?: Maybe<ImagePlaceholder>;
+  blurredOptions?: Maybe<BlurredOptions>;
+  tracedSVGOptions?: Maybe<Potrace>;
+  formats?: Maybe<Array<Maybe<ImageFormat>>>;
+  outputPixelDensities?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  breakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  sizes?: Maybe<Scalars['String']>;
+  quality?: Maybe<Scalars['Int']>;
+  jpgOptions?: Maybe<JpgOptions>;
+  pngOptions?: Maybe<PngOptions>;
+  webpOptions?: Maybe<WebPOptions>;
+  avifOptions?: Maybe<AvifOptions>;
+  transformOptions?: Maybe<TransformOptions>;
+  backgroundColor?: Maybe<Scalars['String']>;
+};
+
+
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -1006,6 +1158,7 @@ export enum ImageSharpFieldsEnum {
   sizes___originalName = 'sizes___originalName',
   sizes___presentationWidth = 'sizes___presentationWidth',
   sizes___presentationHeight = 'sizes___presentationHeight',
+  gatsbyImageData = 'gatsbyImageData',
   original___width = 'original___width',
   original___height = 'original___height',
   original___src = 'original___src',
@@ -1108,12 +1261,17 @@ export type ImageSharpFilterInput = {
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
   fluid?: Maybe<ImageSharpFluidFilterInput>;
   sizes?: Maybe<ImageSharpSizesFilterInput>;
+  gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   original?: Maybe<ImageSharpOriginalFilterInput>;
   resize?: Maybe<ImageSharpResizeFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+};
+
+export type ImageSharpFilterListInput = {
+  elemMatch?: Maybe<ImageSharpFilterInput>;
 };
 
 export type ImageSharpFixed = {
@@ -1313,6 +1471,20 @@ export type IntQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
+export type JpgOptions = {
+  quality?: Maybe<Scalars['Int']>;
+  progressive?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type JsonQueryOperatorInput = {
+  eq?: Maybe<Scalars['JSON']>;
+  ne?: Maybe<Scalars['JSON']>;
+  in?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  nin?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  regex?: Maybe<Scalars['JSON']>;
+  glob?: Maybe<Scalars['JSON']>;
+};
 
 /** Node Interface */
 export type Node = {
@@ -1344,6 +1516,11 @@ export type PageInfo = {
   totalCount: Scalars['Int'];
 };
 
+export type PngOptions = {
+  quality?: Maybe<Scalars['Int']>;
+  compressionSpeed?: Maybe<Scalars['Int']>;
+};
+
 export type Potrace = {
   turnPolicy?: Maybe<PotraceTurnPolicy>;
   turdSize?: Maybe<Scalars['Float']>;
@@ -1371,10 +1548,10 @@ export type Query = {
   allFile: FileConnection;
   directory?: Maybe<Directory>;
   allDirectory: DirectoryConnection;
-  sitePage?: Maybe<SitePage>;
-  allSitePage: SitePageConnection;
   site?: Maybe<Site>;
   allSite: SiteConnection;
+  sitePage?: Maybe<SitePage>;
+  allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
@@ -1419,6 +1596,7 @@ export type QueryFileArgs = {
   blksize?: Maybe<IntQueryOperatorInput>;
   blocks?: Maybe<IntQueryOperatorInput>;
   publicURL?: Maybe<StringQueryOperatorInput>;
+  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -1484,6 +1662,28 @@ export type QueryAllDirectoryArgs = {
 };
 
 
+export type QuerySiteArgs = {
+  buildTime?: Maybe<DateQueryOperatorInput>;
+  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteArgs = {
+  filter?: Maybe<SiteFilterInput>;
+  sort?: Maybe<SiteSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QuerySitePageArgs = {
   path?: Maybe<StringQueryOperatorInput>;
   component?: Maybe<StringQueryOperatorInput>;
@@ -1509,33 +1709,12 @@ export type QueryAllSitePageArgs = {
 };
 
 
-export type QuerySiteArgs = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllSiteArgs = {
-  filter?: Maybe<SiteFilterInput>;
-  sort?: Maybe<SiteSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryImageSharpArgs = {
   fixed?: Maybe<ImageSharpFixedFilterInput>;
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
   fluid?: Maybe<ImageSharpFluidFilterInput>;
   sizes?: Maybe<ImageSharpSizesFilterInput>;
+  gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   original?: Maybe<ImageSharpOriginalFilterInput>;
   resize?: Maybe<ImageSharpResizeFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2106,18 +2285,26 @@ export enum SitePageFieldsEnum {
   pluginCreator___version = 'pluginCreator___version',
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
+  pluginCreator___pluginOptions___base64Width = 'pluginCreator___pluginOptions___base64Width',
+  pluginCreator___pluginOptions___stripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
+  pluginCreator___pluginOptions___defaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
+  pluginCreator___pluginOptions___failOnError = 'pluginCreator___pluginOptions___failOnError',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
   pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
   pluginCreator___pluginOptions___background_color = 'pluginCreator___pluginOptions___background_color',
   pluginCreator___pluginOptions___theme_color = 'pluginCreator___pluginOptions___theme_color',
   pluginCreator___pluginOptions___display = 'pluginCreator___pluginOptions___display',
   pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
-  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
-  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
   pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
   pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator___pluginOptions___theme_color_in_head',
+  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  pluginCreator___pluginOptions___crossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
+  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
   pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
+  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
+  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
   pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
@@ -2126,6 +2313,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
   pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
   pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
+  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
   pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
   pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
   pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
@@ -2310,18 +2498,26 @@ export enum SitePluginFieldsEnum {
   version = 'version',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___path = 'pluginOptions___path',
+  pluginOptions___base64Width = 'pluginOptions___base64Width',
+  pluginOptions___stripMetadata = 'pluginOptions___stripMetadata',
+  pluginOptions___defaultQuality = 'pluginOptions___defaultQuality',
+  pluginOptions___failOnError = 'pluginOptions___failOnError',
   pluginOptions___short_name = 'pluginOptions___short_name',
   pluginOptions___start_url = 'pluginOptions___start_url',
   pluginOptions___background_color = 'pluginOptions___background_color',
   pluginOptions___theme_color = 'pluginOptions___theme_color',
   pluginOptions___display = 'pluginOptions___display',
   pluginOptions___icon = 'pluginOptions___icon',
-  pluginOptions___cache_busting_mode = 'pluginOptions___cache_busting_mode',
-  pluginOptions___include_favicon = 'pluginOptions___include_favicon',
   pluginOptions___legacy = 'pluginOptions___legacy',
   pluginOptions___theme_color_in_head = 'pluginOptions___theme_color_in_head',
+  pluginOptions___cache_busting_mode = 'pluginOptions___cache_busting_mode',
+  pluginOptions___crossOrigin = 'pluginOptions___crossOrigin',
+  pluginOptions___include_favicon = 'pluginOptions___include_favicon',
   pluginOptions___cacheDigest = 'pluginOptions___cacheDigest',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
+  pluginOptions___allExtensions = 'pluginOptions___allExtensions',
+  pluginOptions___isTSX = 'pluginOptions___isTSX',
+  pluginOptions___jsxPragma = 'pluginOptions___jsxPragma',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
   ssrAPIs = 'ssrAPIs',
@@ -2330,6 +2526,7 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
+  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -2375,6 +2572,7 @@ export type SitePluginPackageJson = {
   description?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
   main?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
   license?: Maybe<Scalars['String']>;
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -2417,6 +2615,7 @@ export type SitePluginPackageJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
   main?: Maybe<StringQueryOperatorInput>;
+  author?: Maybe<StringQueryOperatorInput>;
   license?: Maybe<StringQueryOperatorInput>;
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -2443,35 +2642,51 @@ export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
+  base64Width?: Maybe<Scalars['Int']>;
+  stripMetadata?: Maybe<Scalars['Boolean']>;
+  defaultQuality?: Maybe<Scalars['Int']>;
+  failOnError?: Maybe<Scalars['Boolean']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
   theme_color?: Maybe<Scalars['String']>;
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
-  cache_busting_mode?: Maybe<Scalars['String']>;
-  include_favicon?: Maybe<Scalars['Boolean']>;
   legacy?: Maybe<Scalars['Boolean']>;
   theme_color_in_head?: Maybe<Scalars['Boolean']>;
+  cache_busting_mode?: Maybe<Scalars['String']>;
+  crossOrigin?: Maybe<Scalars['String']>;
+  include_favicon?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  allExtensions?: Maybe<Scalars['Boolean']>;
+  isTSX?: Maybe<Scalars['Boolean']>;
+  jsxPragma?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  base64Width?: Maybe<IntQueryOperatorInput>;
+  stripMetadata?: Maybe<BooleanQueryOperatorInput>;
+  defaultQuality?: Maybe<IntQueryOperatorInput>;
+  failOnError?: Maybe<BooleanQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
   theme_color?: Maybe<StringQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
-  cache_busting_mode?: Maybe<StringQueryOperatorInput>;
-  include_favicon?: Maybe<BooleanQueryOperatorInput>;
   legacy?: Maybe<BooleanQueryOperatorInput>;
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
+  cache_busting_mode?: Maybe<StringQueryOperatorInput>;
+  crossOrigin?: Maybe<StringQueryOperatorInput>;
+  include_favicon?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  isTSX?: Maybe<BooleanQueryOperatorInput>;
+  jsxPragma?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -2509,6 +2724,19 @@ export type StringQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['String']>>>;
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
+};
+
+export type TransformOptions = {
+  grayscale?: Maybe<Scalars['Boolean']>;
+  duotone?: Maybe<DuotoneGradient>;
+  rotate?: Maybe<Scalars['Int']>;
+  trim?: Maybe<Scalars['Float']>;
+  cropFocus?: Maybe<ImageCropFocus>;
+  fit?: Maybe<ImageFit>;
+};
+
+export type WebPOptions = {
+  quality?: Maybe<Scalars['Int']>;
 };
 
 export type GatsbyImageSharpFixedFragment = (
@@ -2634,49 +2862,4 @@ export type GatsbyImageSharpSizes_NoBase64Fragment = (
 export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   { __typename?: 'ImageSharpSizes' }
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type ImageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ImageQuery = (
-  { __typename?: 'Query' }
-  & { placeholderImage?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & GatsbyImageSharpFluidFragment
-      )> }
-    )> }
-  )> }
-);
-
-export type SiteTitleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SiteTitleQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
-    )> }
-  )> }
-);
-
-export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SiteMetadataQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
-    )> }
-  )> }
 );
