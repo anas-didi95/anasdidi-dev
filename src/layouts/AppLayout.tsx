@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from "react"
+import SEO from "../components/SEO"
 //import Header from "../components/Header"
 //import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
-//import SEO from "../components/SEO"
 //import Footer from "../components/Footer"
 
 const AppLayout: React.FC<{
