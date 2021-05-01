@@ -10,10 +10,9 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ headerImage, isActive, toggleMenu }) => (
   <header>
     <nav
-      className="navbar is-dark"
+      className="navbar is-dark is-spaced"
       role="navigation"
-      aria-label="main navigation"
-      style={{ padding: "0.5rem" }}>
+      aria-label="main navigation">
       <div className="navbar-brand">
         <span className="ml-4" />
         <Link className="navbar-item" to="/" aria-label="Home">
