@@ -45,7 +45,7 @@ export const useQueryMetadata = (): IQueryMetadata => {
       email: data.site?.siteMetadata?.social?.email ?? "",
       github: data.site?.siteMetadata?.social?.github ?? "",
       linkedin: data.site?.siteMetadata?.social?.linkedin ?? "",
-      web: data.site?.siteMetadata?.social?.web ?? ""
-    }
+      web: data.site?.siteMetadata?.social?.web ?? "",
+    },
   }
 }
