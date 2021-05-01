@@ -1,8 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter TypeScript`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@andykenward`,
+    title: `Anas Juwaidi's Blog`,
+    description: `My personal blog developed using Gatsby and TypeScript.`,
+    author: `@anasdidi95`,
+    fullname: "Anas Juwaidi Bin Mohd Jeffry",
+    position: "Software Engineer",
+    social: {
+      email: "anas.didi95@gmail.com",
+      github: "https://github.com/anas-didi95",
+      linkedin: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
+      web: "https://anasdidi.dev/"
+    },
   },
   plugins: [
     `gatsby-plugin-sass`,
