@@ -30,8 +30,7 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
           display: "flex",
           flexDirection: "column",
           minHeight: "100vh",
-        }}
-      >
+        }}>
         <a className="skip-link" href="#mainContent">
           Skip to main
         </a>
