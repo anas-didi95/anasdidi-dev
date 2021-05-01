@@ -2906,5 +2906,14 @@ export type MetadataQuery = (
         & Pick<SiteSiteMetadataSocial, 'email' | 'github' | 'linkedin' | 'web'>
       )> }
     )> }
+  )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & Pick<ImageSharpFixed, 'src'>
+      )> }
+    )> }
   )> }
 );
