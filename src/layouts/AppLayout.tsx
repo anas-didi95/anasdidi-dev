@@ -1,15 +1,21 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode, Reducer, useReducer } from "react"
 import SEO from "../components/SEO"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
-//import Header from "../components/Header"
+import Header from "../components/Header"
 //import Footer from "../components/Footer"
 
-const AppLayout: React.FC<{
+interface IAppLayout {
   children: ReactNode
   description?: string
   title: string
-}> = ({ children, description, title }) => {
+}
+const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
+  const [state, dispatch] = useReducer<Reducer<TState, TAction>>(reducer, {
+    isActive: false,
+  })
+
+  const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
 
   return (
     <>
@@ -24,16 +30,15 @@ const AppLayout: React.FC<{
           display: "flex",
           flexDirection: "column",
           minHeight: "100vh",
-        }}
-      >
+        }}>
         <a className="skip-link" href="#mainContent">
           Skip to main
         </a>
-        {/*<Header
-          isActive={isActive}
-          toggleMenu={handler.toggleMenu}
+        <Header
+          isActive={state.isActive}
+          toggleMenu={toggleMenu}
           headerImage={metadata.headerImage}
-        />*/}
+        />
         <main id="#mainContent" style={{ flex: 1 }}>
           <section className="section">
             <div className="container">{children}</div>
@@ -50,3 +55,17 @@ const AppLayout: React.FC<{
 }
 
 export default AppLayout
+
+type TState = {
+  isActive: boolean
+}
+type TAction = { type: "TOGGLE_MENU" } | { type: "TOGGLE_MENU" }
+const reducer: Reducer<TState, TAction> = (state: TState, action: TAction) => {
+  switch (action.type) {
+    case "TOGGLE_MENU":
+      const { isActive } = state
+      return { ...state, isActive: !isActive }
+    default:
+      throw new Error(`Action Type not defined! ${action.type}`)
+  }
+}

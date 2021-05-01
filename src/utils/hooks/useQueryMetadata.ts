@@ -1,7 +1,9 @@
 import { useStaticQuery, graphql } from "gatsby"
+import { FixedObject } from "gatsby-image"
 import { MetadataQuery } from "../../../graphql-types"
 
 export type IQueryMetadata = {
+  headerImage: FixedObject
   title: string
   description: string
   author: string
@@ -32,10 +34,18 @@ export const useQueryMetadata = (): IQueryMetadata => {
           }
         }
       }
+      file(absolutePath: { regex: "/images/header-brand.png/" }) {
+        childImageSharp {
+          fixed(height: 28) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
   return {
+    headerImage: data.file?.childImageSharp?.fixed as FixedObject,
     author: data.site?.siteMetadata?.author ?? "",
     description: data.site?.siteMetadata?.description ?? "",
     fullname: data.site?.siteMetadata?.fullname ?? "",
