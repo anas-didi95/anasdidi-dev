@@ -1,7 +1,7 @@
-import React, { useState, ReactNode } from "react"
+import React, { ReactNode } from "react"
 import SEO from "../components/SEO"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 //import Header from "../components/Header"
-//import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 //import Footer from "../components/Footer"
 
 const AppLayout: React.FC<{
@@ -9,21 +9,16 @@ const AppLayout: React.FC<{
   description?: string
   title: string
 }> = ({ children, description, title }) => {
-  const [isActive, setActive] = useState(false)
-  //const metadata = useQueryMetadata()
-
-  const handler = {
-    toggleMenu: () => setActive((prev) => !prev),
-  }
+  const metadata = useQueryMetadata()
 
   return (
     <>
-      {/*<SEO
+      <SEO
         title={title}
         author={metadata.author}
         description={description || metadata.description}
         siteTitle={metadata.title}
-      />*/}
+      />
       <div
         style={{
           display: "flex",
