@@ -18,31 +18,31 @@ export type IQueryMetadata = {
 }
 export const useQueryMetadata = (): IQueryMetadata => {
   const data: MetadataQuery = useStaticQuery(graphql`
-  query Metadata {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-        fullname
-        position
-        social {
-          email
-          github
-          linkedin
-          web
+    query Metadata {
+      site {
+        siteMetadata {
+          title
+          description
+          author
+          fullname
+          position
+          social {
+            email
+            github
+            linkedin
+            web
+          }
+        }
+      }
+      file(absolutePath: { regex: "/images/header-brand.png/" }) {
+        childImageSharp {
+          fixed(height: 28) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }
-    file(absolutePath: {regex: "/images/header-brand.png/"}) {
-      childImageSharp {
-        fixed(height: 28) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-      `)
+  `)
 
   return {
     headerImage: data.file?.childImageSharp?.fixed as FixedObject,

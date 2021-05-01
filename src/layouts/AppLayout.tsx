@@ -1,4 +1,4 @@
-import React, { ReactNode, Reducer, useReducer, useState } from "react"
+import React, { ReactNode, Reducer, useReducer } from "react"
 import SEO from "../components/SEO"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import Header from "../components/Header"
@@ -11,7 +11,9 @@ interface IAppLayout {
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
-  const [state, dispatch] = useReducer<Reducer<TState, TAction>>(reducer, { isActive: false })
+  const [state, dispatch] = useReducer<Reducer<TState, TAction>>(reducer, {
+    isActive: false,
+  })
 
   const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
 
@@ -58,9 +60,7 @@ export default AppLayout
 type TState = {
   isActive: boolean
 }
-type TAction =
-  | { type: 'TOGGLE_MENU' }
-  | { type: 'TOGGLE_MENU' }
+type TAction = { type: "TOGGLE_MENU" } | { type: "TOGGLE_MENU" }
 const reducer: Reducer<TState, TAction> = (state: TState, action: TAction) => {
   switch (action.type) {
     case "TOGGLE_MENU":

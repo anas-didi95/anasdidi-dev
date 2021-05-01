@@ -12,7 +12,8 @@ const Header: React.FC<IHeader> = ({ headerImage, isActive, toggleMenu }) => (
     <nav
       className="navbar is-dark is-spaced"
       role="navigation"
-      aria-label="main navigation">
+      aria-label="main navigation"
+    >
       <div className="navbar-brand">
         <span className="ml-4" />
         <Link className="navbar-item" to="/" aria-label="Home">
@@ -23,7 +24,8 @@ const Header: React.FC<IHeader> = ({ headerImage, isActive, toggleMenu }) => (
           className={`navbar-burger ${isActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
-          onClick={toggleMenu}>
+          onClick={toggleMenu}
+        >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
