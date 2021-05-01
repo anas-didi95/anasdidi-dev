@@ -3,7 +3,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image"
 import { Link } from "gatsby"
 
 interface IHeader {
-  headerImage?: FixedObject
+  headerImage: FixedObject
   isActive: boolean
   toggleMenu: any
 }
@@ -17,7 +17,7 @@ const Header: React.FC<IHeader> = ({ headerImage, isActive, toggleMenu }) => (
       <div className="navbar-brand">
         <span className="ml-4" />
         <Link className="navbar-item" to="/" aria-label="Home">
-          <GatsbyImage fixed={headerImage as FixedObject} />
+          <GatsbyImage fixed={headerImage} />
         </Link>
         <a
           role="button"

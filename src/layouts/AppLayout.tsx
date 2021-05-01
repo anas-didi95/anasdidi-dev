@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode, useReducer, useState } from "react"
 import SEO from "../components/SEO"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
-//import Header from "../components/Header"
+import Header from "../components/Header"
 //import Footer from "../components/Footer"
 
 const AppLayout: React.FC<{
@@ -10,6 +10,9 @@ const AppLayout: React.FC<{
   title: string
 }> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
+  const [isActive, setActive] = useState<boolean>(false)
+
+  const toggleMenu = () => setActive(prev => !prev)
 
   return (
     <>
@@ -29,11 +32,11 @@ const AppLayout: React.FC<{
         <a className="skip-link" href="#mainContent">
           Skip to main
         </a>
-        {/*<Header
+        <Header
           isActive={isActive}
-          toggleMenu={handler.toggleMenu}
+          toggleMenu={toggleMenu}
           headerImage={metadata.headerImage}
-        />*/}
+        />
         <main id="#mainContent" style={{ flex: 1 }}>
           <section className="section">
             <div className="container">{children}</div>
