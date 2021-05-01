@@ -1,18 +1,19 @@
-import React, { ReactNode, useReducer, useState } from "react"
+import React, { ReactNode, Reducer, useReducer, useState } from "react"
 import SEO from "../components/SEO"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import Header from "../components/Header"
 //import Footer from "../components/Footer"
 
-const AppLayout: React.FC<{
+interface IAppLayout {
   children: ReactNode
   description?: string
   title: string
-}> = ({ children, description, title }) => {
+}
+const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
-  const [isActive, setActive] = useState<boolean>(false)
+  const [state, dispatch] = useReducer<Reducer<TState, TAction>>(reducer, { isActive: false })
 
-  const toggleMenu = () => setActive(prev => !prev)
+  const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
 
   return (
     <>
@@ -33,7 +34,7 @@ const AppLayout: React.FC<{
           Skip to main
         </a>
         <Header
-          isActive={isActive}
+          isActive={state.isActive}
           toggleMenu={toggleMenu}
           headerImage={metadata.headerImage}
         />
@@ -53,3 +54,19 @@ const AppLayout: React.FC<{
 }
 
 export default AppLayout
+
+type TState = {
+  isActive: boolean
+}
+type TAction =
+  | { type: 'TOGGLE_MENU' }
+  | { type: 'TOGGLE_MENU' }
+const reducer: Reducer<TState, TAction> = (state: TState, action: TAction) => {
+  switch (action.type) {
+    case "TOGGLE_MENU":
+      const { isActive } = state
+      return { ...state, isActive: !isActive }
+    default:
+      throw new Error(`Action Type not defined! ${action.type}`)
+  }
+}
