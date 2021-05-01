@@ -36,8 +36,8 @@ export const useQueryMetadata = (): IQueryMetadata => {
     }
     file(absolutePath: {regex: "/images/header-brand.png/"}) {
       childImageSharp {
-        fixed {
-          src
+        fixed(height: 28) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

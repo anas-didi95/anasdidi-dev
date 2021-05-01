@@ -2912,7 +2912,7 @@ export type MetadataQuery = (
       { __typename?: 'ImageSharp' }
       & { fixed?: Maybe<(
         { __typename?: 'ImageSharpFixed' }
-        & Pick<ImageSharpFixed, 'src'>
+        & GatsbyImageSharpFixedFragment
       )> }
     )> }
   )> }
