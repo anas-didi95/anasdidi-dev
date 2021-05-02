@@ -1,8 +1,8 @@
 import React, { ReactNode, Reducer, useReducer } from "react"
 import SEO from "../components/SEO"
-import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import Header from "../components/Header"
-//import Footer from "../components/Footer"
+import Footer from "../components/Footer"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 
 interface IAppLayout {
   children: ReactNode
@@ -44,11 +44,11 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
             <div className="container">{children}</div>
           </section>
         </main>
-        {/*<Footer
+        <Footer
           email={metadata.social.email}
           github={metadata.social.github}
           linkedin={metadata.social.linkedin}
-        />*/}
+        />
       </div>
     </>
   )
