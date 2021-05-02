@@ -1,9 +1,10 @@
 import React from "react"
 import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr"
 
-const Icon: React.FC<{
+interface IIcon {
   type: "email" | "github" | "linkedin" | "web"
-}> = ({ type }) => (
+}
+const Icon: React.FC<IIcon> = ({ type }) => (
   <>
     {
       {
