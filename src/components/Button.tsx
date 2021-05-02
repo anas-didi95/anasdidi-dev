@@ -15,7 +15,7 @@ const Button: React.FC<IButton> = ({
     {
       {
         link: (
-          <Link to={link || ""} className="button is-primary is-rounded">
+          <Link to={link ?? ""} className="button is-primary is-rounded">
             {value}
           </Link>
         ),
