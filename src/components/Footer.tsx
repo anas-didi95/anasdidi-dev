@@ -6,11 +6,7 @@ interface IFooter {
   github: string
   linkedin: string
 }
-const Footer: React.FC<IFooter> = ({
-  email,
-  github,
-  linkedin,
-}) => (
+const Footer: React.FC<IFooter> = ({ email, github, linkedin }) => (
   <footer className="footer">
     <div className="content has-text-centered">
       <div className="columns">
