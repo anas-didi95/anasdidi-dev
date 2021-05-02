@@ -1,12 +1,14 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import GatsbyImage, { FixedObject } from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 import Button from "../components/Button"
+import { Error404PageQuery } from "../../graphql-types"
 
 const Error404Page: React.FC<{}> = () => {
-  /*const data: Error404PageQuery = useStaticQuery(graphql`
+  const data: Error404PageQuery = useStaticQuery(graphql`
     query Error404Page {
       icon: file(absolutePath: { regex: "/images/warning.png/" }) {
         childImageSharp {
@@ -16,7 +18,7 @@ const Error404Page: React.FC<{}> = () => {
         }
       }
     }
-  `)*/
+  `)
 
   return (
     <AppLayout title="Error 404">
@@ -27,9 +29,9 @@ const Error404Page: React.FC<{}> = () => {
           <Box>
             <div className="columns">
               <div className="column is-3 has-text-centered">
-                {/*<GatsbyImage
-                  fixed={oc(data).icon.childImageSharp.fixed() as FixedObject}
-                />*/}
+                <GatsbyImage
+                  fixed={data.icon?.childImageSharp?.fixed as FixedObject}
+                />
               </div>
               <div className="column">
                 <p className="title">Page Not Found!</p>
