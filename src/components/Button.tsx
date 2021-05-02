@@ -6,11 +6,7 @@ interface IButton {
   link?: string
   value: string
 }
-const Button: React.FC<IButton> = ({
-  type,
-  link,
-  value,
-}) => (
+const Button: React.FC<IButton> = ({ type, link, value }) => (
   <>
     {
       {
