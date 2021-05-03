@@ -5,6 +5,8 @@ import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import Icon from "../components/Icon"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
+import { TSocialEnum } from "../utils/types"
+import { toTitleCase } from "../utils/common"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import { AboutMeQuery } from "../../graphql-types"
 
@@ -81,7 +83,7 @@ const AboutMePage: React.FC<{}> = () => {
 }
 
 const _SocialLinkField: React.FC<{
-  type: "email" | "github" | "linkedin" | "web"
+  type: TSocialEnum
   link: string
 }> = ({ type, link }) => (
   <div className="field">
@@ -89,7 +91,7 @@ const _SocialLinkField: React.FC<{
       <div style={{ display: "flex", alignItems: "center" }}>
         <Icon type={type} />
         <span className="ml-2">
-          {type.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))}
+          {toTitleCase(type)}
         </span>
       </div>
     </label>
@@ -102,26 +104,6 @@ const _SocialLinkField: React.FC<{
       </a>
     </div>
   </div>
-)
-
-const _TColumnSocialLink: React.FC<{
-  type: "email" | "github" | "linkedin" | "web"
-  link: string
-}> = ({ type, link }) => (
-  <>
-    <td style={{ width: "5%" }}>
-      <Icon type={type} />
-    </td>
-    <td style={{ width: "45%" }}>
-      <a
-        className="is-size-6"
-        href={`${type === "email" ? "mailto:" + link : link}`}
-        target="_blank"
-        rel="noreferrer">
-        {link}
-      </a>
-    </td>
-  </>
 )
 
 export default AboutMePage
