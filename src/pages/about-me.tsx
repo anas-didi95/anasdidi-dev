@@ -45,31 +45,19 @@ const AboutMePage: React.FC<{}> = () => {
               <div className="column is-9">
                 <p className="title is-3">{metadata.fullname}</p>
                 <p className="subtitle is-5">{metadata.position}</p>
-                <div className="table-container">
-                  <table className="table">
-                    <tbody>
-                      <tr>
-                        <TableColumnSocialLink
-                          type="email"
-                          link={metadata.social.email}
-                        />
-                        <TableColumnSocialLink
-                          type="github"
-                          link={metadata.social.github}
-                        />
-                      </tr>
-                      <tr>
-                        <TableColumnSocialLink
-                          type="linkedin"
-                          link={metadata.social.linkedin}
-                        />
-                        <TableColumnSocialLink
-                          type="web"
-                          link={metadata.social.web}
-                        />
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="columns is-multiline">
+                  <div className="column is-6">
+                    <_SocialLinkField type="email" link={metadata.social.email} />
+                  </div>
+                  <div className="column is-6">
+                    <_SocialLinkField type="github" link={metadata.social.github} />
+                  </div>
+                  <div className="column is-6">
+                    <_SocialLinkField type="linkedin" link={metadata.social.linkedin} />
+                  </div>
+                  <div className="column is-6">
+                    <_SocialLinkField type="web" link={metadata.social.web} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,7 +80,31 @@ const AboutMePage: React.FC<{}> = () => {
   )
 }
 
-const TableColumnSocialLink: React.FC<{
+const _SocialLinkField: React.FC<{
+  type: "email" | "github" | "linkedin" | "web"
+  link: string
+}> = ({ type, link }) => (
+  <div className="field">
+    <label className="label">
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Icon type={type} />
+        <span className="ml-2">
+          {type.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))}
+        </span>
+      </div>
+    </label>
+    <div className="control">
+      <a
+        href={`${type === "email" ? "mailto:" + link : link}`}
+        target="_blank"
+        rel="noreferrer">
+        {link}
+      </a>
+    </div>
+  </div>
+)
+
+const _TColumnSocialLink: React.FC<{
   type: "email" | "github" | "linkedin" | "web"
   link: string
 }> = ({ type, link }) => (
