@@ -76,16 +76,13 @@ const AboutMePage: React.FC<{}> = () => {
         </div>
         <div className="column" />
       </div>
-      <ResponsiveBreakpoint />
-      <div className="columns">
-        <div className="column" />
+      <div className="columns is-centered mt-2">
         <div className="column is-6">
           <div
             className="content"
             dangerouslySetInnerHTML={{ __html: data.content?.html ?? "" }}
           />
         </div>
-        <div className="column" />
       </div>
     </AppLayout>
   )
