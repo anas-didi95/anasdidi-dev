@@ -17,7 +17,7 @@ const AboutMePage: React.FC<{}> = () => {
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
         html
       }
-      profilePic: file(absolutePath: {regex: "/images/profile-pic/"}) {
+      profilePic: file(absolutePath: { regex: "/images/profile-pic/" }) {
         childImageSharp {
           fixed(width: 160, height: 160) {
             ...GatsbyImageSharpFixed
@@ -49,13 +49,22 @@ const AboutMePage: React.FC<{}> = () => {
                 <p className="subtitle is-5">{metadata.position}</p>
                 <div className="columns is-multiline">
                   <div className="column is-6">
-                    <_SocialLinkField type="email" link={metadata.social.email} />
+                    <_SocialLinkField
+                      type="email"
+                      link={metadata.social.email}
+                    />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="github" link={metadata.social.github} />
+                    <_SocialLinkField
+                      type="github"
+                      link={metadata.social.github}
+                    />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="linkedin" link={metadata.social.linkedin} />
+                    <_SocialLinkField
+                      type="linkedin"
+                      link={metadata.social.linkedin}
+                    />
                   </div>
                   <div className="column is-6">
                     <_SocialLinkField type="web" link={metadata.social.web} />
@@ -90,9 +99,7 @@ const _SocialLinkField: React.FC<{
     <label className="label">
       <div style={{ display: "flex", alignItems: "center" }}>
         <Icon type={type} />
-        <span className="ml-2">
-          {toTitleCase(type)}
-        </span>
+        <span className="ml-2">{toTitleCase(type)}</span>
       </div>
     </label>
     <div className="control">
