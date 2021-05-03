@@ -2,29 +2,21 @@ import React from "react"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import { useStaticQuery, graphql } from "gatsby"
-//import { AboutMeQuery } from "../graphqlTypes"
+import { AboutMeQuery } from "../../graphql-types"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-//import { oc } from "ts-optchain"
 import Icon from "../components/Icon"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 
 const AboutMePage: React.FC<{}> = () => {
   const metadata = useQueryMetadata()
-  /*const data: AboutMeQuery = useStaticQuery(graphql`
+  const data: AboutMeQuery = useStaticQuery(graphql`
     query AboutMe {
-      profilePic: file(absolutePath: { regex: "/images/profile-pic/" }) {
-        childImageSharp {
-          fixed(width: 160, height: 160) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
         html
       }
     }
-  `)*/
+  `)
 
   return (
     <AppLayout title="About Me">
@@ -80,10 +72,10 @@ const AboutMePage: React.FC<{}> = () => {
       <div className="columns">
         <div className="column" />
         <div className="column is-6">
-          {/*<div
+          <div
             className="content"
-            dangerouslySetInnerHTML={{ __html: oc(data).content.html("") }}
-          />*/}
+            dangerouslySetInnerHTML={{ __html: data.content?.html ?? "" }}
+          />
         </div>
         <div className="column" />
       </div>
