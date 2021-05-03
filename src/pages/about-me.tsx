@@ -29,8 +29,7 @@ const AboutMePage: React.FC<{}> = () => {
 
   return (
     <AppLayout title="About Me">
-      <div className="columns">
-        <div className="column" />
+      <div className="columns is-centered">
         <div className="column is-8">
           <Box>
             <div className="columns">
@@ -74,7 +73,6 @@ const AboutMePage: React.FC<{}> = () => {
             </div>
           </Box>
         </div>
-        <div className="column" />
       </div>
       <div className="columns is-centered mt-2">
         <div className="column is-6">
