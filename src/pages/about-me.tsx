@@ -1,12 +1,12 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import GatsbyImage, { FixedObject } from "gatsby-image"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
-import { useStaticQuery, graphql } from "gatsby"
-import { AboutMeQuery } from "../../graphql-types"
-import GatsbyImage, { FixedObject } from "gatsby-image"
 import Icon from "../components/Icon"
-import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { AboutMeQuery } from "../../graphql-types"
 
 const AboutMePage: React.FC<{}> = () => {
   const metadata = useQueryMetadata()
@@ -14,6 +14,13 @@ const AboutMePage: React.FC<{}> = () => {
     query AboutMe {
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
         html
+      }
+      profilePic: file(absolutePath: {regex: "/images/profile-pic/"}) {
+        childImageSharp {
+          fixed(width: 160, height: 160) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
     }
   `)
@@ -26,12 +33,14 @@ const AboutMePage: React.FC<{}> = () => {
           <Box>
             <div className="columns">
               <div className="column is-3 has-text-centered">
-                {/*<GatsbyImage
-                  fixed={
-                    oc(data).profilePic.childImageSharp.fixed() as FixedObject
-                  }
-                  style={{ borderRadius: "25%" }}
-                />*/}
+                <figure className="image">
+                  <GatsbyImage
+                    fixed={
+                      data.profilePic?.childImageSharp?.fixed as FixedObject
+                    }
+                    style={{ borderRadius: "25%" }}
+                  />
+                </figure>
               </div>
               <div className="column is-9">
                 <p className="title is-3">{metadata.fullname}</p>

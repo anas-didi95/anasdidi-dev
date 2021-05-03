@@ -3360,6 +3360,15 @@ export type AboutMeQuery = (
   & { content?: Maybe<(
     { __typename?: 'MarkdownRemark' }
     & Pick<MarkdownRemark, 'html'>
+  )>, profilePic?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
   )> }
 );
 
