@@ -1,8 +1,9 @@
 import React from "react"
 import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr"
+import { TSocialEnum } from "../utils/types"
 
 interface IIcon {
-  type: "email" | "github" | "linkedin" | "web"
+  type: TSocialEnum
 }
 const Icon: React.FC<IIcon> = ({ type }) => (
   <>
