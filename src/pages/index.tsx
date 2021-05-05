@@ -4,6 +4,7 @@ import AppLayout from "../layouts/AppLayout"
 import { useStaticQuery, graphql } from "gatsby"
 import { IndexQuery } from "../../graphql-types"
 import { TArticle } from "../utils/types"
+import ArticleList from "../components/ArticleList"
 //import { IndexQuery } from "../graphqlTypes"
 //import { oc } from "ts-optchain"
 
@@ -30,7 +31,7 @@ const IndexPage: React.FC<{}> = () => {
     }
   `)
 
-  const articleList: TArticle[] = data.articles.edges.map(edge => ({
+  const articles: TArticle[] = data.articles.edges.map(edge => ({
     author: edge.node.frontmatter?.author ?? "",
     date: edge.node.frontmatter?.date ?? "",
     description: edge.node.frontmatter?.description ?? "",
@@ -39,26 +40,13 @@ const IndexPage: React.FC<{}> = () => {
     tags: edge.node.frontmatter?.tags ?? [],
     title: edge.node.frontmatter?.title ?? ""
   }))
-  console.log("articleList", articleList)
-
-  /*const blogList: TArticle[] = oc(data
-    .blogList.edges([])
-    .map(edge => ({
-      title: oc(edge).node.frontmatter.title(""),
-      author: oc(edge).node.frontmatter.author(""),
-      date: oc(edge).node.frontmatter.date(""),
-      description: oc(edge).node.frontmatter.description(""),
-      tags: oc(edge).node.frontmatter.tags([]),
-      excerpt: oc(edge).node.excerpt(""),
-      slug: oc(edge).node.fields.slug(""),
-    }))*/
 
   return (
     <AppLayout title="Home">
       <div className="columns">
         <div className="column" />
         <div className="column is-7">
-          {/*<BlogList blogList={blogList} />*/}
+          <ArticleList articles={articles} />
         </div>
         <div className="column" />
       </div>
