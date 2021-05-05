@@ -12,7 +12,7 @@ const Error404Page: React.FC<{}> = () => {
     query Error404Page {
       icon: file(absolutePath: { regex: "/images/warning.png/" }) {
         childImageSharp {
-          fixed(width: 96, height: 96) {
+          fixed(width: 112, height: 112) {
             ...GatsbyImageSharpFixed
           }
         }
