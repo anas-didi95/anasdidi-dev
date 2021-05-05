@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import Box from "./Box"
-import { TArticle } from "../utils/types"
 import Tag from "./Tag"
+import { TArticle } from "../utils/types"
 
 interface IArticleList {
   articles: TArticle[]
@@ -42,12 +42,10 @@ const _Article: React.FC<{ article: TArticle }> = ({ article }) => (
         <p className="mt-5 mb-5">{article.excerpt}</p>
       </div>
       <div className="tags are-medium">
-        {!!article.tags && article.tags.map((tag, i) => (
-          <Tag
-            key={`tag${i}`}
-            value={tag ?? ""}
-            isHighlighted />
-        ))}
+        {!!article.tags &&
+          article.tags.map((tag, i) => (
+            <Tag key={`tag${i}`} value={tag ?? ""} isHighlighted />
+          ))}
       </div>
     </div>
   </Box>
