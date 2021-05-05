@@ -43,12 +43,10 @@ const IndexPage: React.FC<{}> = () => {
 
   return (
     <AppLayout title="Home">
-      <div className="columns">
-        <div className="column" />
-        <div className="column is-7">
+      <div className="columns is-centered">
+        <div className="column is-10">
           <ArticleList articles={articles} />
         </div>
-        <div className="column" />
       </div>
     </AppLayout>
   )
