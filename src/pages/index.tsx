@@ -18,7 +18,7 @@ const IndexPage: React.FC<{}> = () => {
               title
               description
               author
-              date(formatString: "MMMM DD, YYYY")
+              date(formatString: "YYYY, MMMM DD")
               tags
             }
             excerpt
