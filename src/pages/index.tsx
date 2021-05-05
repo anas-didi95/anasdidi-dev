@@ -1,12 +1,9 @@
 import React from "react"
-import AppLayout from "../layouts/AppLayout"
-//import BlogList from "../components/BlogList"
 import { useStaticQuery, graphql } from "gatsby"
-import { IndexQuery } from "../../graphql-types"
-import { TArticle } from "../utils/types"
+import AppLayout from "../layouts/AppLayout"
 import ArticleList from "../components/ArticleList"
-//import { IndexQuery } from "../graphqlTypes"
-//import { oc } from "ts-optchain"
+import { TArticle } from "../utils/types"
+import { IndexQuery } from "../../graphql-types"
 
 const IndexPage: React.FC<{}> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
