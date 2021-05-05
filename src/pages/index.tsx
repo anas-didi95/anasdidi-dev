@@ -1,17 +1,52 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import AppLayout from "../layouts/AppLayout"
+import ArticleList from "../components/ArticleList"
+import { TArticle } from "../utils/types"
+import { IndexQuery } from "../../graphql-types"
 
-const IndexPage: React.FC = () => (
-  <AppLayout title="Sample Page">
-    <section className="hero is-primary">
-      <div className="hero-body">
-        <p className="title">Hero title</p>
-        <p className="subtitle">Hero subtitle</p>
-        <p>Hello world</p>
+const IndexPage: React.FC<{}> = () => {
+  const data: IndexQuery = useStaticQuery(graphql`
+    query Index {
+      articles: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              description
+              author
+              date(formatString: "MMMM DD, YYYY")
+              tags
+            }
+            excerpt
+          }
+        }
+      }
+    }
+  `)
+
+  const articles: TArticle[] = data.articles.edges.map((edge) => ({
+    author: edge.node.frontmatter?.author ?? "",
+    date: edge.node.frontmatter?.date ?? "",
+    description: edge.node.frontmatter?.description ?? "",
+    excerpt: edge.node.excerpt ?? "",
+    slug: "",
+    tags: edge.node.frontmatter?.tags ?? [],
+    title: edge.node.frontmatter?.title ?? "",
+  }))
+
+  return (
+    <AppLayout title="Home">
+      <div className="columns is-centered">
+        <div className="column is-10">
+          <ArticleList articles={articles} />
+        </div>
       </div>
-    </section>
-    <p>Hello</p>
-  </AppLayout>
-)
+    </AppLayout>
+  )
+}
 
 export default IndexPage

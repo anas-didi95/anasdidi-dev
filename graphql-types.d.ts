@@ -3372,6 +3372,27 @@ export type AboutMeQuery = (
   )> }
 );
 
+export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type IndexQuery = (
+  { __typename?: 'Query' }
+  & { articles: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'excerpt'>
+        & { frontmatter?: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+        )> }
+      ) }
+    )> }
+  ) }
+);
+
 export type MetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
