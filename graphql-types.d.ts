@@ -3377,7 +3377,7 @@ export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type IndexQuery = (
   { __typename?: 'Query' }
-  & { blogList: (
+  & { articles: (
     { __typename?: 'MarkdownRemarkConnection' }
     & { edges: Array<(
       { __typename?: 'MarkdownRemarkEdge' }
