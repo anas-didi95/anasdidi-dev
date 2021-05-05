@@ -20,7 +20,13 @@ const ArticleList: React.FC<IArticleList> = ({ articles }) => (
 
 const _Article: React.FC<{ article: TArticle }> = ({ article }) => (
   <Box height="100%">
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%",
+      }}>
       <div>
         <Link className="title is-3" to={article.slug}>
           <p>{article.title}</p>
@@ -46,7 +52,6 @@ const _Article: React.FC<{ article: TArticle }> = ({ article }) => (
       </div>
     </div>
   </Box>
-
 )
 
 export default ArticleList

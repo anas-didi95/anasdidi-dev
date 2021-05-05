@@ -28,14 +28,14 @@ const IndexPage: React.FC<{}> = () => {
     }
   `)
 
-  const articles: TArticle[] = data.articles.edges.map(edge => ({
+  const articles: TArticle[] = data.articles.edges.map((edge) => ({
     author: edge.node.frontmatter?.author ?? "",
     date: edge.node.frontmatter?.date ?? "",
     description: edge.node.frontmatter?.description ?? "",
     excerpt: edge.node.excerpt ?? "",
     slug: "",
     tags: edge.node.frontmatter?.tags ?? [],
-    title: edge.node.frontmatter?.title ?? ""
+    title: edge.node.frontmatter?.title ?? "",
   }))
 
   return (
