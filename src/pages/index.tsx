@@ -1,17 +1,58 @@
 import React from "react"
 import AppLayout from "../layouts/AppLayout"
+//import BlogList from "../components/BlogList"
+import * as Types from "../utils/types"
+import { useStaticQuery, graphql } from "gatsby"
+import { IndexQuery } from "../../graphql-types"
+//import { IndexQuery } from "../graphqlTypes"
+//import { oc } from "ts-optchain"
 
-const IndexPage: React.FC = () => (
-  <AppLayout title="Sample Page">
-    <section className="hero is-primary">
-      <div className="hero-body">
-        <p className="title">Hero title</p>
-        <p className="subtitle">Hero subtitle</p>
-        <p>Hello world</p>
+const IndexPage: React.FC<{}> = () => {
+  const data: IndexQuery = useStaticQuery(graphql`
+    query Index {
+      blogList: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              description
+              author
+              date(formatString: "MMMM DD, YYYY")
+              tags
+            }
+            excerpt
+          }
+        }
+      }
+    }
+  `)
+
+  /*const blogList: Types.Blog[] = oc(data)
+    .blogList.edges([])
+    .map(edge => ({
+      title: oc(edge).node.frontmatter.title(""),
+      author: oc(edge).node.frontmatter.author(""),
+      date: oc(edge).node.frontmatter.date(""),
+      description: oc(edge).node.frontmatter.description(""),
+      tags: oc(edge).node.frontmatter.tags([]),
+      excerpt: oc(edge).node.excerpt(""),
+      slug: oc(edge).node.fields.slug(""),
+    }))*/
+
+  return (
+    <AppLayout title="Home">
+      <div className="columns">
+        <div className="column" />
+        <div className="column is-7">
+          {/*<BlogList blogList={blogList} />*/}
+        </div>
+        <div className="column" />
       </div>
-    </section>
-    <p>Hello</p>
-  </AppLayout>
-)
+    </AppLayout>
+  )
+}
 
 export default IndexPage
