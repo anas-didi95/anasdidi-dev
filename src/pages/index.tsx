@@ -7,33 +7,33 @@ import { IndexQuery } from "../../graphql-types"
 
 const IndexPage: React.FC<{}> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
-    query Index {
-      articles: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              description
-              author
-              date(formatString: "YYYY, MMMM DD")
-              tags
-            }
-            excerpt
+  query Index {
+    articles: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/content/articles/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+      edges {
+        node {
+          frontmatter {
+            title
+            description
+            author
+            date(formatString: "YYYY, MMMM DD")
+            tags
+          }
+          excerpt
+          fields {
+            slug
           }
         }
       }
     }
-  `)
+  }
+    `)
 
   const articles: TArticle[] = data.articles.edges.map((edge) => ({
     author: edge.node.frontmatter?.author ?? "",
     date: edge.node.frontmatter?.date ?? "",
     description: edge.node.frontmatter?.description ?? "",
     excerpt: edge.node.excerpt ?? "",
-    slug: "",
+    slug: edge.node.fields?.slug ?? "",
     tags: edge.node.frontmatter?.tags ?? [],
     title: edge.node.frontmatter?.title ?? "",
   }))
