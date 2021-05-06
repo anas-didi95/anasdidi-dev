@@ -1,9 +1,10 @@
 import React from "react"
 import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr"
-import { TSocialEnum } from "../utils/types"
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5"
+import { TPaginationEnum, TSocialEnum } from "../utils/types"
 
 interface IIcon {
-  type: TSocialEnum
+  type: TSocialEnum | TPaginationEnum
 }
 const Icon: React.FC<IIcon> = ({ type }) => (
   <>
@@ -13,6 +14,8 @@ const Icon: React.FC<IIcon> = ({ type }) => (
         github: <GrGithub />,
         linkedin: <GrLinkedin />,
         web: <GrGlobe />,
+        next: <IoArrowForwardOutline />,
+        previous: <IoArrowBackOutline />,
         default: <span />,
       }[type]
     }{" "}
