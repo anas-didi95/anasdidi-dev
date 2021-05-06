@@ -14,7 +14,7 @@ const reducer: Reducer<TState, TAction> = (state, action) => {
 
   if (type === "NEXT_PAGE") {
     const { currentPage, totalPages } = state
-    const nextPage = currentPage + 1;
+    const nextPage = currentPage + 1
 
     return {
       ...state,
@@ -45,7 +45,10 @@ const initialState: TState = {
   totalPages: -1,
 }
 
-export const useReducerAction = (totalArticles: number, articlesPerPage: number) =>
+export const useReducerAction = (
+  totalArticles: number,
+  articlesPerPage: number
+) =>
   useReducer<Reducer<TState, TAction>>(reducer, {
     ...initialState,
     articlesPerPage,
