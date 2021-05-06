@@ -17,8 +17,8 @@ const reducer: Reducer<TState, TAction> = (state: TState, action: TAction) => {
   }
 }
 
-
 const initialState: TState = {
-  isActive: false
+  isActive: false,
 }
-export const useReducerAction = () => useReducer<Reducer<TState, TAction>>(reducer, { ...initialState })
+export const useReducerAction = () =>
+  useReducer<Reducer<TState, TAction>>(reducer, { ...initialState })
