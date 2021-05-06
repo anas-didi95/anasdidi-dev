@@ -7,8 +7,18 @@ import { TArticle } from "../utils/types"
 
 interface IArticleList {
   articles: TArticle[]
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+  handleNextPage: () => void
+  handlePreviousPage: () => void
 }
-const ArticleList: React.FC<IArticleList> = ({ articles }) => (
+const ArticleList: React.FC<IArticleList> = ({
+  articles,
+  hasNextPage,
+  hasPreviousPage,
+  handleNextPage,
+  handlePreviousPage,
+}) => (
   <>
     <div className="columns is-multiline">
       {articles.map((article, i) => (
@@ -18,7 +28,10 @@ const ArticleList: React.FC<IArticleList> = ({ articles }) => (
       ))}
     </div>
     <nav className="pagination" role="navigation" aria-label="pagination">
-      <button className="pagination-previous button is-dark" disabled>
+      <button
+        className="pagination-previous button is-dark"
+        onClick={handlePreviousPage}
+        disabled={!hasPreviousPage}>
         <span
           className="mr-2"
           style={{ display: "flex", alignItems: "center" }}>
@@ -26,7 +39,10 @@ const ArticleList: React.FC<IArticleList> = ({ articles }) => (
         </span>
         <span>Previous</span>
       </button>
-      <button className="pagination-next button is-dark">
+      <button
+        className="pagination-next button is-dark"
+        onClick={handleNextPage}
+        disabled={!hasNextPage}>
         <span>Next page</span>
         <span
           className="ml-2"
