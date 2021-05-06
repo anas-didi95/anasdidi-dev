@@ -4,6 +4,8 @@ import AppLayout from "../layouts/AppLayout"
 import ArticleList from "../components/ArticleList"
 import { TArticle } from "../utils/types"
 import { IndexQuery } from "../../graphql-types"
+import { GrNext, GrPrevious } from "react-icons/gr"
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5"
 
 const IndexPage: React.FC<{}> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
@@ -46,6 +48,20 @@ const IndexPage: React.FC<{}> = () => {
       <div className="columns is-centered">
         <div className="column is-10">
           <ArticleList articles={articles} />
+          <nav className="pagination" role="navigation" aria-label="pagination">
+            <button className="pagination-previous button is-dark" disabled>
+              <span className="mr-2" style={{ display: "flex", alignItems: "center" }}><IoArrowBackOutline /></span>
+              <span>
+                Previous
+                </span>
+            </button>
+            <button className="pagination-next button is-dark">
+              <span>
+                Next page
+                </span>
+              <span className="ml-2" style={{ display: "flex", alignItems: "center" }}><IoArrowForwardOutline /></span>
+            </button>
+          </nav>
         </div>
       </div>
     </AppLayout>
