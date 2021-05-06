@@ -22,6 +22,9 @@ const IndexPage: React.FC<{}> = () => {
               tags
             }
             excerpt
+            fields {
+              slug
+            }
           }
         }
       }
@@ -33,7 +36,7 @@ const IndexPage: React.FC<{}> = () => {
     date: edge.node.frontmatter?.date ?? "",
     description: edge.node.frontmatter?.description ?? "",
     excerpt: edge.node.excerpt ?? "",
-    slug: "",
+    slug: edge.node.fields?.slug ?? "",
     tags: edge.node.frontmatter?.tags ?? [],
     title: edge.node.frontmatter?.title ?? "",
   }))

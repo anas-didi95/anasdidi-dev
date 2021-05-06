@@ -739,6 +739,7 @@ export enum FileFieldsEnum {
   childrenMarkdownRemark___excerpt = 'childrenMarkdownRemark___excerpt',
   childrenMarkdownRemark___rawMarkdownBody = 'childrenMarkdownRemark___rawMarkdownBody',
   childrenMarkdownRemark___fileAbsolutePath = 'childrenMarkdownRemark___fileAbsolutePath',
+  childrenMarkdownRemark___fields___slug = 'childrenMarkdownRemark___fields___slug',
   childrenMarkdownRemark___html = 'childrenMarkdownRemark___html',
   childrenMarkdownRemark___htmlAst = 'childrenMarkdownRemark___htmlAst',
   childrenMarkdownRemark___excerptAst = 'childrenMarkdownRemark___excerptAst',
@@ -797,6 +798,7 @@ export enum FileFieldsEnum {
   childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
+  childMarkdownRemark___fields___slug = 'childMarkdownRemark___fields___slug',
   childMarkdownRemark___html = 'childMarkdownRemark___html',
   childMarkdownRemark___htmlAst = 'childMarkdownRemark___htmlAst',
   childMarkdownRemark___excerptAst = 'childMarkdownRemark___excerptAst',
@@ -1648,6 +1650,7 @@ export type MarkdownRemark = Node & {
   excerpt?: Maybe<Scalars['String']>;
   rawMarkdownBody?: Maybe<Scalars['String']>;
   fileAbsolutePath?: Maybe<Scalars['String']>;
+  fields?: Maybe<MarkdownRemarkFields>;
   html?: Maybe<Scalars['String']>;
   htmlAst?: Maybe<Scalars['JSON']>;
   excerptAst?: Maybe<Scalars['JSON']>;
@@ -1715,6 +1718,11 @@ export type MarkdownRemarkEdge = {
   previous?: Maybe<MarkdownRemark>;
 };
 
+export type MarkdownRemarkFields = {
+  __typename?: 'MarkdownRemarkFields';
+  slug?: Maybe<Scalars['String']>;
+};
+
 export enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter___title',
@@ -1725,6 +1733,7 @@ export enum MarkdownRemarkFieldsEnum {
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
+  fields___slug = 'fields___slug',
   html = 'html',
   htmlAst = 'htmlAst',
   excerptAst = 'excerptAst',
@@ -1824,12 +1833,17 @@ export enum MarkdownRemarkFieldsEnum {
   internal___type = 'internal___type'
 }
 
+export type MarkdownRemarkFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
 export type MarkdownRemarkFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -2155,6 +2169,7 @@ export type QueryMarkdownRemarkArgs = {
   excerpt?: Maybe<StringQueryOperatorInput>;
   rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MarkdownRemarkFieldsFilterInput>;
   html?: Maybe<StringQueryOperatorInput>;
   htmlAst?: Maybe<JsonQueryOperatorInput>;
   excerptAst?: Maybe<JsonQueryOperatorInput>;
@@ -3387,6 +3402,9 @@ export type IndexQuery = (
         & { frontmatter?: Maybe<(
           { __typename?: 'MarkdownRemarkFrontmatter' }
           & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+        )>, fields?: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
         )> }
       ) }
     )> }
