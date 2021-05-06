@@ -1,4 +1,5 @@
-import React, { ReactNode, Reducer, useReducer } from "react"
+import React, { ReactNode } from "react"
+import { useReducerAction } from "./AppLayout.action"
 import SEO from "../components/SEO"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
@@ -11,9 +12,7 @@ interface IAppLayout {
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
-  const [state, dispatch] = useReducer<Reducer<TState, TAction>>(reducer, {
-    isActive: false,
-  })
+  const [state, dispatch] = useReducerAction()
 
   const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
 
@@ -55,17 +54,3 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
 }
 
 export default AppLayout
-
-type TState = {
-  isActive: boolean
-}
-type TAction = { type: "TOGGLE_MENU" } | { type: "TOGGLE_MENU" }
-const reducer: Reducer<TState, TAction> = (state: TState, action: TAction) => {
-  switch (action.type) {
-    case "TOGGLE_MENU":
-      const { isActive } = state
-      return { ...state, isActive: !isActive }
-    default:
-      throw new Error(`Action Type not defined! ${action.type}`)
-  }
-}

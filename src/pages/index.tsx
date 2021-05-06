@@ -1,5 +1,6 @@
 import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { animateScroll } from "react-scroll"
 import { useReducerAction } from "../actions/index.action"
 import AppLayout from "../layouts/AppLayout"
 import ArticleList from "../components/ArticleList"
@@ -33,6 +34,15 @@ const IndexPage: React.FC<{}> = () => {
   `)
   const [state, dispatch] = useReducerAction(data.articles.edges.length, 6)
 
+  const handleNextPage = () => {
+    dispatch({ type: "NEXT_PAGE" })
+    animateScroll.scrollToTop({ duration: 750 })
+  }
+  const handlePreviousPage = () => {
+    dispatch({ type: "PREVIOUS_PAGE" })
+    animateScroll.scrollToTop({ duration: 750 })
+  }
+
   const articles: TArticle[] = useMemo(
     () =>
       data.articles.edges
@@ -59,8 +69,8 @@ const IndexPage: React.FC<{}> = () => {
         <div className="column is-10">
           <ArticleList
             articles={articles}
-            handleNextPage={() => dispatch({ type: "NEXT_PAGE" })}
-            handlePreviousPage={() => dispatch({ type: "PREVIOUS_PAGE" })}
+            handleNextPage={handleNextPage}
+            handlePreviousPage={handlePreviousPage}
             hasNextPage={state.hasNextPage}
             hasPreviousPage={state.hasPreviousPage}
           />
