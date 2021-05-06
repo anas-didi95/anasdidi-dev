@@ -1,5 +1,6 @@
 import React, { Reducer, useMemo, useReducer } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { useReducerAction } from "./index.action"
 import AppLayout from "../layouts/AppLayout"
 import ArticleList from "../components/ArticleList"
 import { TArticle } from "../utils/types"
@@ -30,7 +31,7 @@ const IndexPage: React.FC<{}> = () => {
       }
     }
   `)
-  const [state, dispatch] = useReducerAction(data.articles.edges.length, 5)
+  const [state, dispatch] = useReducerAction(data.articles.edges.length, 6)
 
   const articles: TArticle[] = useMemo(
     () =>
@@ -47,7 +48,7 @@ const IndexPage: React.FC<{}> = () => {
         .slice(
           (state.currentPage - 1) * state.articlesPerPage,
           (state.currentPage - 1) * state.articlesPerPage +
-            state.articlesPerPage
+          state.articlesPerPage
         ),
     [state.currentPage]
   )
@@ -70,48 +71,3 @@ const IndexPage: React.FC<{}> = () => {
 }
 
 export default IndexPage
-
-type TState = {
-  currentPage: number
-  hasNextPage: boolean
-  hasPreviousPage: boolean
-  articlesPerPage: number
-  totalPages: number
-}
-type TAction = { type: "NEXT_PAGE" } | { type: "PREVIOUS_PAGE" }
-const reducer: Reducer<TState, TAction> = (state, action) => {
-  const { type } = action
-  if (type === "NEXT_PAGE") {
-    const { currentPage, totalPages } = state
-    return {
-      ...state,
-      currentPage: currentPage + 1,
-      hasNextPage: currentPage + 1 !== totalPages,
-      hasPreviousPage: true,
-    }
-  } else if (type === "PREVIOUS_PAGE") {
-    let { currentPage } = state
-    return {
-      ...state,
-      currentPage: currentPage - 1,
-      hasNextPage: true,
-      hasPreviousPage: currentPage - 1 !== 1,
-    }
-  } else {
-    throw new Error(`Action Type not defined! ${type}`)
-  }
-}
-const initialState: TState = {
-  currentPage: 1,
-  hasNextPage: true,
-  hasPreviousPage: false,
-  articlesPerPage: -1,
-  totalPages: -1,
-}
-const useReducerAction = (totalArticles: number, articlesPerPage: number) =>
-  useReducer<Reducer<TState, TAction>>(reducer, {
-    ...initialState,
-    hasNextPage: totalArticles / articlesPerPage !== 1,
-    articlesPerPage,
-    totalPages: Math.ceil(totalArticles / articlesPerPage),
-  })
