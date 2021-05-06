@@ -1,6 +1,6 @@
-import React, { Reducer, useMemo, useReducer } from "react"
+import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { useReducerAction } from "./index.action"
+import { useReducerAction } from "../actions/index.action"
 import AppLayout from "../layouts/AppLayout"
 import ArticleList from "../components/ArticleList"
 import { TArticle } from "../utils/types"
