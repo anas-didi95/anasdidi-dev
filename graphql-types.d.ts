@@ -2126,6 +2126,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2580,6 +2581,7 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -2605,6 +2607,77 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   field: SitePageFieldsEnum;
+};
+
+export type SitePageContext = {
+  __typename?: 'SitePageContext';
+  slug?: Maybe<Scalars['String']>;
+  next?: Maybe<SitePageContextNext>;
+  previous?: Maybe<SitePageContextPrevious>;
+};
+
+export type SitePageContextFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+  next?: Maybe<SitePageContextNextFilterInput>;
+  previous?: Maybe<SitePageContextPreviousFilterInput>;
+};
+
+export type SitePageContextNext = {
+  __typename?: 'SitePageContextNext';
+  frontmatter?: Maybe<SitePageContextNextFrontmatter>;
+  fields?: Maybe<SitePageContextNextFields>;
+};
+
+export type SitePageContextNextFields = {
+  __typename?: 'SitePageContextNextFields';
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextNextFilterInput = {
+  frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>;
+  fields?: Maybe<SitePageContextNextFieldsFilterInput>;
+};
+
+export type SitePageContextNextFrontmatter = {
+  __typename?: 'SitePageContextNextFrontmatter';
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPrevious = {
+  __typename?: 'SitePageContextPrevious';
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatter>;
+  fields?: Maybe<SitePageContextPreviousFields>;
+};
+
+export type SitePageContextPreviousFields = {
+  __typename?: 'SitePageContextPreviousFields';
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPreviousFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPreviousFilterInput = {
+  frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>;
+  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>;
+};
+
+export type SitePageContextPreviousFrontmatter = {
+  __typename?: 'SitePageContextPreviousFrontmatter';
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPreviousFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2707,6 +2780,11 @@ export enum SitePageFieldsEnum {
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___slug = 'context___slug',
+  context___next___frontmatter___title = 'context___next___frontmatter___title',
+  context___next___fields___slug = 'context___next___fields___slug',
+  context___previous___frontmatter___title = 'context___previous___frontmatter___title',
+  context___previous___fields___slug = 'context___previous___fields___slug',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2805,6 +2883,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -3409,6 +3488,23 @@ export type IndexQuery = (
       ) }
     )> }
   ) }
+);
+
+export type ArticleTemplateQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ArticleTemplateQuery = (
+  { __typename?: 'Query' }
+  & { markdownRemark?: Maybe<(
+    { __typename?: 'MarkdownRemark' }
+    & Pick<MarkdownRemark, 'html'>
+    & { frontmatter?: Maybe<(
+      { __typename?: 'MarkdownRemarkFrontmatter' }
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'tags' | 'author' | 'date'>
+    )> }
+  )> }
 );
 
 export type MetadataQueryVariables = Exact<{ [key: string]: never; }>;
