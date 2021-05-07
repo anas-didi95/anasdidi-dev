@@ -66,6 +66,7 @@ const BlogTemplate: React.FC<{}> = (props) => (
     <div className="columns">
       <div className="column" />
       <div className="column is-6">
+        Hello World
         {/*<div
           className="content"
           dangerouslySetInnerHTML={{
