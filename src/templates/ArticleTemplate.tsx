@@ -3,10 +3,7 @@ import { graphql } from "gatsby"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import Tag from "../components/Tag"
-import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 import { ArticleTemplateQuery } from "../../graphql-types"
-//import { BlogTemplateQuery } from "../graphqlTypes"
-//import { oc } from "ts-optchain"
 //import BlogPagination from "../components/BlogPagination"
 
 type TPageContext = {
@@ -36,8 +33,7 @@ const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
     <AppLayout
       title={data.markdownRemark?.frontmatter?.title ?? ""}
       description={data.markdownRemark?.frontmatter?.description ?? ""}>
-      <div className="columns">
-        <div className="column" />
+      <div className="columns is-centered">
         <div className="column is-8">
           <Box>
             <div className="has-text-centered">
@@ -59,11 +55,8 @@ const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
             </div>
           </Box>
         </div>
-        <div className="column" />
       </div>
-      <ResponsiveBreakpoint />
-      <div className="columns">
-        <div className="column" />
+      <div className="columns is-centered mt-2 mb-4">
         <div className="column is-6">
           <div
             className="content"
@@ -72,9 +65,7 @@ const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
             }}
           />
         </div>
-        <div className="column" />
       </div>
-      <ResponsiveBreakpoint />
       {/*<BlogPagination next={pageContext.next} previous={pageContext.previous} />*/}
     </AppLayout>
   )
