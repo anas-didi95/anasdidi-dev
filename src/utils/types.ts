@@ -13,3 +13,12 @@ export type TArticle = {
   excerpt: string
   slug: string
 }
+
+export type TArticleNode = {
+  frontmatter: {
+    title: string
+  }
+  fields: {
+    slug: string
+  }
+}

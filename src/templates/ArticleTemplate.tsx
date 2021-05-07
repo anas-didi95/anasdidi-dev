@@ -1,34 +1,17 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import Tag from "../components/Tag"
+import Icon from "../components/Icon"
+import { TArticleNode } from "../utils/types"
 import { ArticleTemplateQuery } from "../../graphql-types"
-//import BlogPagination from "../components/BlogPagination"
-
-type TPageContext = {
-  next?: {
-    frontmatter: {
-      title: string
-    }
-    fields: {
-      slug: string
-    }
-  }
-  previous?: {
-    frontmatter: {
-      title: string
-    }
-    fields: {
-      slug: string
-    }
-  }
-}
 
 interface IArticleTemplate {
   data: ArticleTemplateQuery
+  pageContext: { next?: TArticleNode, previous?: TArticleNode }
 }
-const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
+const ArticleTemplate: React.FC<IArticleTemplate> = ({ data, pageContext }) => {
   return (
     <AppLayout
       title={data.markdownRemark?.frontmatter?.title ?? ""}
@@ -56,7 +39,7 @@ const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
           </Box>
         </div>
       </div>
-      <div className="columns is-centered mt-2 mb-4">
+      <div className="columns is-centered mt-2 mb-6">
         <div className="column is-6">
           <div
             className="content"
@@ -66,10 +49,46 @@ const ArticleTemplate: React.FC<IArticleTemplate> = ({ data }) => {
           />
         </div>
       </div>
-      {/*<BlogPagination next={pageContext.next} previous={pageContext.previous} />*/}
+      <_Pagination next={pageContext.next} previous={pageContext.previous} />
     </AppLayout>
   )
 }
+
+const _Pagination: React.FC<{ next?: TArticleNode, previous?: TArticleNode }> = ({ next, previous }) => (
+  <div className="columns is-centered">
+    <div className="column is-7">
+      {next && (
+        <div className="has-text-right">
+          <Link
+            className="has-text-primary has-text-weight-bold"
+            to={next.fields.slug}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+              <span className="mr-2">
+                {next.frontmatter.title}
+              </span>
+              <Icon type="next" />
+            </div>
+          </Link>
+        </div>
+      )}
+      <br />
+      {previous && (
+        <div className="has-text-left">
+          <Link
+            className="has-text-primary has-text-weight-bold"
+            to={previous.fields.slug}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Icon type="previous" />
+              <span className="ml-2">
+                {previous.frontmatter.title}
+              </span>
+            </div>
+          </Link>
+        </div>
+      )}
+    </div>
+  </div>
+)
 
 export const PageQuery = graphql`
   query ArticleTemplate($slug: String!) {
