@@ -1,17 +1,16 @@
 import React from "react"
 import AppLayout from "../layouts/AppLayout"
+import TagList from "../components/TagList"
 import { useQueryTags } from "../utils/hooks/useQueryTags"
-//import TagList from "../components/TagList"
 
 const TagsPage: React.FC<{}> = () => {
   const tags = useQueryTags()
-  console.log("tags", tags)
 
   return (
     <AppLayout title="Tags">
-      <div className="columns">
-        <div className="column is-6 is-offset-3">
-          {/*<TagList tags={tags} />*/}
+      <div className="columns is-centered">
+        <div className="column is-6">
+          <TagList tags={tags} />
         </div>
       </div>
     </AppLayout>
