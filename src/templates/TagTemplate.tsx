@@ -36,7 +36,7 @@ const TagTemplate: React.FC<ITagTemplate> = ({ data, pageContext }) => {
       <Separator />
       <div className="columns is-centered">
         <div className="column is-10">
-          <ArticleList articles={articles} handleNextPage={() => { }} handlePreviousPage={() => { }} hasNextPage={false} hasPreviousPage={false} />
+          <ArticleList articles={articles} hasNextPage={false} hasPreviousPage={false} />
         </div>
       </div>
     </AppLayout>
