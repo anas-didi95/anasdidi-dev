@@ -1,10 +1,11 @@
 import React from "react"
 import AppLayout from "../layouts/AppLayout"
-//import { useQueryTags } from "../utils/hooks/useQueryTags"
+import { useQueryTags } from "../utils/hooks/useQueryTags"
 //import TagList from "../components/TagList"
 
 const TagsPage: React.FC<{}> = () => {
-  //const tags = useQueryTags()
+  const tags = useQueryTags()
+  console.log("tags", tags)
 
   return (
     <AppLayout title="Tags">
