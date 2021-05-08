@@ -2614,12 +2614,14 @@ export type SitePageContext = {
   slug?: Maybe<Scalars['String']>;
   next?: Maybe<SitePageContextNext>;
   previous?: Maybe<SitePageContextPrevious>;
+  tag?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
   next?: Maybe<SitePageContextNextFilterInput>;
   previous?: Maybe<SitePageContextPreviousFilterInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextNext = {
@@ -2785,6 +2787,7 @@ export enum SitePageFieldsEnum {
   context___next___fields___slug = 'context___next___fields___slug',
   context___previous___frontmatter___title = 'context___previous___frontmatter___title',
   context___previous___fields___slug = 'context___previous___fields___slug',
+  context___tag = 'context___tag',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -3641,6 +3644,32 @@ export type ArticleTemplateQuery = (
       & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'tags' | 'author' | 'date'>
     )> }
   )> }
+);
+
+export type TagTemplateQueryVariables = Exact<{
+  tag: Scalars['String'];
+}>;
+
+
+export type TagTemplateQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: (
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'excerpt'>
+        & { fields?: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'slug'>
+        )>, frontmatter?: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'author' | 'date' | 'tags'>
+        )> }
+      ) }
+    )> }
+  ) }
 );
 
 export type MetadataQueryVariables = Exact<{ [key: string]: never; }>;

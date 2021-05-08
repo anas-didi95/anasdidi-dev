@@ -1,32 +1,28 @@
 import React from "react"
 import { graphql } from "gatsby"
-//import { TagTemplateQuery } from "../graphqlTypes"
 import AppLayout from "../layouts/AppLayout"
 import { useQueryTags } from "../utils/hooks/useQueryTags"
 import TagList from "../components/TagList"
-import * as Types from "../utils/types"
-//import { oc } from "ts-optchain"
-//import BlogList from "../components/BlogList"
-//import Separator from "../components/Separator"
+import { TagTemplateQuery, TagTemplateQueryVariables } from "../../graphql-types"
+import { TArticle } from "../utils/types"
+import ArticleList from "../components/ArticleList"
+import Separator from "../components/Separator"
 
 interface ITagTemplate {
-  data: any
-  pageContext: { tag: string }
+  data: TagTemplateQuery
+  pageContext: TagTemplateQueryVariables
 }
 const TagTemplate: React.FC<ITagTemplate> = ({ data, pageContext }) => {
   const tags = useQueryTags()
-
-  /*const blogList: Types.Blog[] = oc(data)
-    .allMarkdownRemark.edges([])
-    .map(edge => ({
-      title: oc(edge).node.frontmatter.title(""),
-      author: oc(edge).node.frontmatter.author(""),
-      date: oc(edge).node.frontmatter.date(""),
-      description: oc(edge).node.frontmatter.description(""),
-      tags: oc(edge).node.frontmatter.tags([]),
-      excerpt: oc(edge).node.excerpt(""),
-      slug: oc(edge).node.fields.slug(""),
-    }))*/
+  const articles: TArticle[] = data.allMarkdownRemark.edges.map(edge => ({
+    author: edge.node.frontmatter?.author ?? "",
+    date: edge.node.frontmatter?.date ?? "",
+    description: edge.node.frontmatter?.description ?? "",
+    excerpt: edge.node.excerpt ?? "",
+    slug: edge.node.fields?.slug ?? "",
+    title: edge.node.frontmatter?.title ?? "",
+    tags: edge.node.frontmatter?.tags ?? []
+  }))
 
   return (
     <AppLayout title={`Tag: ${pageContext.tag}`}>
@@ -37,13 +33,11 @@ const TagTemplate: React.FC<ITagTemplate> = ({ data, pageContext }) => {
         </div>
         <div className="column" />
       </div>
-      {/*<Separator />*/}
-      <div className="columns">
-        <div className="column" />
-        <div className="column is-7">
-          {/*<BlogList blogList={blogList} />*/}
+      <Separator />
+      <div className="columns is-centered">
+        <div className="column is-10">
+          <ArticleList articles={articles} handleNextPage={() => { }} handlePreviousPage={() => { }} hasNextPage={false} hasPreviousPage={false} />
         </div>
-        <div className="column" />
       </div>
     </AppLayout>
   )
