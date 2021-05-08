@@ -14,5 +14,5 @@ export const useQueryTags = (): string[] => {
     }
   `)
 
-  return data.allMarkdownRemark.group.map(node => node.tag ?? "")
+  return data.allMarkdownRemark.group.map((node) => node.tag ?? "")
 }
