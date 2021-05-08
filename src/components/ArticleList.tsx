@@ -9,8 +9,8 @@ interface IArticleList {
   articles: TArticle[]
   hasNextPage: boolean
   hasPreviousPage: boolean
-  handleNextPage: () => void
-  handlePreviousPage: () => void
+  handleNextPage?: () => void
+  handlePreviousPage?: () => void
 }
 const ArticleList: React.FC<IArticleList> = ({
   articles,
@@ -27,30 +27,32 @@ const ArticleList: React.FC<IArticleList> = ({
         </div>
       ))}
     </div>
-    <nav className="pagination" role="navigation" aria-label="pagination">
-      <button
-        className="pagination-previous button is-dark"
-        onClick={handlePreviousPage}
-        disabled={!hasPreviousPage}>
-        <span
-          className="mr-2"
-          style={{ display: "flex", alignItems: "center" }}>
-          <Icon type="previous" />
-        </span>
-        <span>Previous</span>
-      </button>
-      <button
-        className="pagination-next button is-dark"
-        onClick={handleNextPage}
-        disabled={!hasNextPage}>
-        <span>Next page</span>
-        <span
-          className="ml-2"
-          style={{ display: "flex", alignItems: "center" }}>
-          <Icon type="next" />
-        </span>
-      </button>
-    </nav>
+    {!!handleNextPage && !!handlePreviousPage && (
+      <nav className="pagination" role="navigation" aria-label="pagination">
+        <button
+          className="pagination-previous button is-dark"
+          onClick={handlePreviousPage}
+          disabled={!hasPreviousPage}>
+          <span
+            className="mr-2"
+            style={{ display: "flex", alignItems: "center" }}>
+            <Icon type="previous" />
+          </span>
+          <span>Previous</span>
+        </button>
+        <button
+          className="pagination-next button is-dark"
+          onClick={handleNextPage}
+          disabled={!hasNextPage}>
+          <span>Next page</span>
+          <span
+            className="ml-2"
+            style={{ display: "flex", alignItems: "center" }}>
+            <Icon type="next" />
+          </span>
+        </button>
+      </nav>
+    )}
   </>
 )
 

@@ -27,6 +27,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
   await _createArticlePages(createPage, graphql, reporter)
+  await _createTagPages(createPage, graphql, reporter)
 }
 
 _createArticlePages = async (createPage, graphql, reporter) => {
@@ -62,13 +63,6 @@ _createArticlePages = async (createPage, graphql, reporter) => {
           }
         }
       }
-      tags: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-      ) {
-        group(field: frontmatter___tags) {
-          tag: fieldValue
-        }
-      }
     }
   `)
 
@@ -86,6 +80,37 @@ _createArticlePages = async (createPage, graphql, reporter) => {
         slug: node.fields.slug,
         next,
         previous,
+      },
+    })
+  })
+}
+
+_createTagPages = async (createPage, graphql, reporter) => {
+  const template = require.resolve(`./src/templates/TagTemplate.tsx`)
+  const result = await graphql(`
+    {
+      tags: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+      ) {
+        group(field: frontmatter___tags) {
+          tag: fieldValue
+        }
+      }
+    }
+  `)
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`[_createTagPages] Error while running GraphQL query.`, result.errors)
+    return
+  }
+
+  result.data.tags.group.forEach(({ tag }) => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: template,
+      context: {
+        tag: tag
       },
     })
   })
