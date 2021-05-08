@@ -27,7 +27,7 @@ const ArticleList: React.FC<IArticleList> = ({
         </div>
       ))}
     </div>
-    {!!handleNextPage && !!handlePreviousPage &&
+    {!!handleNextPage && !!handlePreviousPage && (
       <nav className="pagination" role="navigation" aria-label="pagination">
         <button
           className="pagination-previous button is-dark"
@@ -52,7 +52,7 @@ const ArticleList: React.FC<IArticleList> = ({
           </span>
         </button>
       </nav>
-    }
+    )}
   </>
 )
 
