@@ -3568,23 +3568,6 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
 );
 
-export type Error404PageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Error404PageQuery = (
-  { __typename?: 'Query' }
-  & { icon?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
-  )> }
-);
-
 export type AboutMeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3593,15 +3576,6 @@ export type AboutMeQuery = (
   & { content?: Maybe<(
     { __typename?: 'MarkdownRemark' }
     & Pick<MarkdownRemark, 'html'>
-  )>, profilePic?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
   )> }
 );
 
@@ -3627,23 +3601,6 @@ export type ArticlesQuery = (
       ) }
     )> }
   ) }
-);
-
-export type LandingQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LandingQuery = (
-  { __typename?: 'Query' }
-  & { landingImage?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid?: Maybe<(
-        { __typename?: 'ImageSharpFluid' }
-        & GatsbyImageSharpFluidFragment
-      )> }
-    )> }
-  )> }
 );
 
 export type ArticleTemplateQueryVariables = Exact<{
@@ -3746,24 +3703,6 @@ export type MetadataQuery = (
       & { social?: Maybe<(
         { __typename?: 'SiteSiteMetadataSocial' }
         & Pick<SiteSiteMetadataSocial, 'email' | 'github' | 'linkedin' | 'web'>
-      )> }
-    )> }
-  )>, file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
-  )>, profilePic?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
       )> }
     )> }
   )> }

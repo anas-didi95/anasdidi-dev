@@ -1,23 +1,13 @@
 import React from "react"
 import GatsbyImage from "gatsby-image"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import SEO from "../components/SEO"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import { useRoutes } from "../utils/hooks/useRoutes"
-import { LandingQuery } from "../../graphql-types"
+import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 const IndexPage: React.FC<{}> = () => {
-  const data: LandingQuery = useStaticQuery(graphql`
-    query Landing {
-      landingImage: file(absolutePath: { regex: "/images/landing.jpg/" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+  const { landing, profile } = useQueryImage()
   const metadata = useQueryMetadata()
   const routes = useRoutes()
 
@@ -32,7 +22,7 @@ const IndexPage: React.FC<{}> = () => {
       <section
         className="hero is-primary is-fullheight"
         style={{
-          backgroundImage: `url(${data.landingImage?.childImageSharp?.fluid?.src})`,
+          backgroundImage: `url(${landing.src})`,
           backgroundSize: "cover",
           backgroundBlendMode: "darken",
         }}>
@@ -40,7 +30,7 @@ const IndexPage: React.FC<{}> = () => {
         <div className="hero-body">
           <div className="container has-text-centered">
             <GatsbyImage
-              fixed={metadata.profilePic}
+              fixed={profile}
               style={{ borderRadius: "50%" }}
             />
             <div className="mt-4">

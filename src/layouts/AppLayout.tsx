@@ -5,6 +5,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import { useRoutes } from "../utils/hooks/useRoutes"
+import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 interface IAppLayout {
   children: ReactNode
@@ -12,6 +13,7 @@ interface IAppLayout {
   title: string
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
+  const { header } = useQueryImage()
   const metadata = useQueryMetadata()
   const routes = useRoutes()
   const [state, dispatch] = useReducerAction()
@@ -38,7 +40,7 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
         <Header
           isActive={state.isActive}
           toggleMenu={toggleMenu}
-          headerImage={metadata.headerImage}
+          headerImage={header}
           routes={routes}
         />
         <main id="#mainContent" style={{ flex: 1 }}>
