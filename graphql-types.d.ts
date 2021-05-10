@@ -3629,6 +3629,23 @@ export type ArticlesQuery = (
   ) }
 );
 
+export type LandingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LandingQuery = (
+  { __typename?: 'Query' }
+  & { landingImage?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'src'>
+      )> }
+    )> }
+  )> }
+);
+
 export type ArticleTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;

@@ -9,7 +9,12 @@ interface IHeader {
   routes: TRoutes[]
   toggleMenu: () => void
 }
-const Header: React.FC<IHeader> = ({ headerImage, isActive, routes, toggleMenu }) => (
+const Header: React.FC<IHeader> = ({
+  headerImage,
+  isActive,
+  routes,
+  toggleMenu,
+}) => (
   <header>
     <nav
       className="navbar is-dark is-spaced"
@@ -33,8 +38,11 @@ const Header: React.FC<IHeader> = ({ headerImage, isActive, routes, toggleMenu }
       </div>
       <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-end">
-          {routes.map(route => (
-            <Link key={`route${route.path}`} className="navbar-item" to={route.path}>
+          {routes.map((route) => (
+            <Link
+              key={`route${route.path}`}
+              className="navbar-item"
+              to={route.path}>
               {route.label}
             </Link>
           ))}

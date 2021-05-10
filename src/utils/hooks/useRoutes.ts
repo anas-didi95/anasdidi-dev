@@ -3,10 +3,8 @@ export type TRoutes = {
   path: string
 }
 
-export const useRoutes = (): TRoutes[] => (
-  [
-    { label: "Articles", path: "/articles" },
-    { label: "Tags", path: "/tags" },
-    { label: "About Me", path: "/about-me" }
-  ]
-)
+export const useRoutes = (): TRoutes[] => [
+  { label: "Articles", path: "/articles" },
+  { label: "Tags", path: "/tags" },
+  { label: "About Me", path: "/about-me" },
+]
