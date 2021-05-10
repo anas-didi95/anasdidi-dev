@@ -14,7 +14,7 @@ interface IAppLayout {
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const { header } = useQueryImage()
-  const metadata = useQueryMetadata()
+  const { author, description: siteDescription, title: siteTitle, social } = useQueryMetadata()
   const routes = useRoutes()
   const [state, dispatch] = useReducerAction()
 
@@ -24,9 +24,9 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
     <>
       <SEO
         title={title}
-        author={metadata.author}
-        description={description || metadata.description}
-        siteTitle={metadata.title}
+        author={author}
+        description={description || siteDescription}
+        siteTitle={siteTitle}
       />
       <div
         style={{
@@ -49,9 +49,9 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
           </section>
         </main>
         <Footer
-          email={metadata.social.email}
-          github={metadata.social.github}
-          linkedin={metadata.social.linkedin}
+          email={social.email}
+          github={social.github}
+          linkedin={social.linkedin}
         />
       </div>
     </>

@@ -12,7 +12,7 @@ import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 const AboutMePage: React.FC<{}> = () => {
   const { profile } = useQueryImage()
-  const metadata = useQueryMetadata()
+  const { fullname, position, social } = useQueryMetadata()
   const data: AboutMeQuery = useStaticQuery(graphql`
     query AboutMe {
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
@@ -37,29 +37,29 @@ const AboutMePage: React.FC<{}> = () => {
                 </figure>
               </div>
               <div className="column is-9">
-                <p className="title is-3">{metadata.fullname}</p>
-                <p className="subtitle is-5">{metadata.position}</p>
+                <p className="title is-3">{fullname}</p>
+                <p className="subtitle is-5">{position}</p>
                 <div className="columns is-multiline">
                   <div className="column is-6">
                     <_SocialLinkField
                       type="email"
-                      link={metadata.social.email}
+                      link={social.email}
                     />
                   </div>
                   <div className="column is-6">
                     <_SocialLinkField
                       type="github"
-                      link={metadata.social.github}
+                      link={social.github}
                     />
                   </div>
                   <div className="column is-6">
                     <_SocialLinkField
                       type="linkedin"
-                      link={metadata.social.linkedin}
+                      link={social.linkedin}
                     />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="web" link={metadata.social.web} />
+                    <_SocialLinkField type="web" link={social.web} />
                   </div>
                 </div>
               </div>

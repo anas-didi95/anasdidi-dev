@@ -8,15 +8,15 @@ import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 const IndexPage: React.FC<{}> = () => {
   const { landing, profile } = useQueryImage()
-  const metadata = useQueryMetadata()
+  const { author, description, title, fullname, position } = useQueryMetadata()
   const routes = useRoutes()
 
   return (
     <>
       <SEO
-        author={metadata.author}
-        description={metadata.description}
-        siteTitle={metadata.title}
+        author={author}
+        description={description}
+        siteTitle={title}
         title="Home"
       />
       <section
@@ -34,9 +34,9 @@ const IndexPage: React.FC<{}> = () => {
               style={{ borderRadius: "50%" }}
             />
             <div className="mt-4">
-              <p className="title">{metadata.fullname}</p>
+              <p className="title">{fullname}</p>
               <p className="subtitle has-text-weight-bold">
-                {metadata.position}
+                {position}
               </p>
             </div>
             <div className="columns is-centered is-mobile mt-6">
