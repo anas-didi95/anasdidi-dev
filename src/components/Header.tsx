@@ -31,11 +31,8 @@ const Header: React.FC<IHeader> = ({ headerImage, isActive, toggleMenu }) => (
       </div>
       <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-end">
-          <Link className="navbar-item" to="/">
-            Home
-          </Link>
-          <Link className="navbar-item" to="/projects">
-            Projects
+          <Link className="navbar-item" to="/articles">
+            Articles
           </Link>
           <Link className="navbar-item" to="/tags">
             Tags
