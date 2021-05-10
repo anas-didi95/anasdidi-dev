@@ -1,82 +1,76 @@
-import React, { useMemo } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { animateScroll } from "react-scroll"
-import { useReducerAction } from "../actions/index.action"
-import AppLayout from "../layouts/AppLayout"
-import ArticleList from "../components/ArticleList"
-import { TArticle } from "../utils/types"
-import { IndexQuery } from "../../graphql-types"
+import React from "react"
+import GatsbyImage from "gatsby-image"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import SEO from "../components/SEO"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { useRoutes } from "../utils/hooks/useRoutes"
+import { LandingQuery } from "../../graphql-types"
 
 const IndexPage: React.FC<{}> = () => {
-  const data: IndexQuery = useStaticQuery(graphql`
-    query Index {
-      articles: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              description
-              author
-              date(formatString: "YYYY, MMMM DD")
-              tags
-            }
-            excerpt
-            fields {
-              slug
-            }
+  const data: LandingQuery = useStaticQuery(graphql`
+    query Landing {
+      landingImage: file(absolutePath: { regex: "/images/landing.jpg/" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-  const [state, dispatch] = useReducerAction(data.articles.edges.length, 6)
-
-  const handleNextPage = () => {
-    dispatch({ type: "NEXT_PAGE" })
-    animateScroll.scrollToTop({ duration: 750 })
-  }
-  const handlePreviousPage = () => {
-    dispatch({ type: "PREVIOUS_PAGE" })
-    animateScroll.scrollToTop({ duration: 750 })
-  }
-
-  const articles: TArticle[] = useMemo(
-    () =>
-      data.articles.edges
-        .map((edge) => ({
-          author: edge.node.frontmatter?.author ?? "",
-          date: edge.node.frontmatter?.date ?? "",
-          description: edge.node.frontmatter?.description ?? "",
-          excerpt: edge.node.excerpt ?? "",
-          slug: edge.node.fields?.slug ?? "",
-          tags: edge.node.frontmatter?.tags ?? [],
-          title: edge.node.frontmatter?.title ?? "",
-        }))
-        .slice(
-          (state.currentPage - 1) * state.articlesPerPage,
-          (state.currentPage - 1) * state.articlesPerPage +
-            state.articlesPerPage
-        ),
-    [state.currentPage]
-  )
+  const metadata = useQueryMetadata()
+  const routes = useRoutes()
 
   return (
-    <AppLayout title="Home">
-      <div className="columns is-centered">
-        <div className="column is-10">
-          <ArticleList
-            articles={articles}
-            handleNextPage={handleNextPage}
-            handlePreviousPage={handlePreviousPage}
-            hasNextPage={state.hasNextPage}
-            hasPreviousPage={state.hasPreviousPage}
-          />
+    <>
+      <SEO
+        author={metadata.author}
+        description={metadata.description}
+        siteTitle={metadata.title}
+        title="Home"
+      />
+      <section
+        className="hero is-primary is-fullheight"
+        style={{
+          backgroundImage: `url(${data.landingImage?.childImageSharp?.fluid?.src})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "darken",
+        }}>
+        <div className="hero-head" />
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <GatsbyImage
+              fixed={metadata.profilePic}
+              style={{ borderRadius: "50%" }}
+            />
+            <div className="mt-4">
+              <p className="title">{metadata.fullname}</p>
+              <p className="subtitle has-text-weight-bold">
+                {metadata.position}
+              </p>
+            </div>
+            <div className="columns is-centered is-mobile mt-6">
+              <div className="column is-7">
+                <nav className="level">
+                  {routes.map((route) => (
+                    <div
+                      key={`route${route.path}`}
+                      className="level-item has-text-centered mx-4">
+                      <Link
+                        to={route.path}
+                        className="button is-rounded is-fullwidth">
+                        {route.label}
+                      </Link>
+                    </div>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </AppLayout>
+        <div className="hero-foot" />
+      </section>
+    </>
   )
 }
 

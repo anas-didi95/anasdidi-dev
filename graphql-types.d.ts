@@ -3605,10 +3605,10 @@ export type AboutMeQuery = (
   )> }
 );
 
-export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
+export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexQuery = (
+export type ArticlesQuery = (
   { __typename?: 'Query' }
   & { articles: (
     { __typename?: 'MarkdownRemarkConnection' }
@@ -3627,6 +3627,23 @@ export type IndexQuery = (
       ) }
     )> }
   ) }
+);
+
+export type LandingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LandingQuery = (
+  { __typename?: 'Query' }
+  & { landingImage?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & Pick<ImageSharpFluid, 'src'>
+      )> }
+    )> }
+  )> }
 );
 
 export type ArticleTemplateQueryVariables = Exact<{
@@ -3688,6 +3705,15 @@ export type MetadataQuery = (
       )> }
     )> }
   )>, file?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
+  )>, profilePic?: Maybe<(
     { __typename?: 'File' }
     & { childImageSharp?: Maybe<(
       { __typename?: 'ImageSharp' }
