@@ -58,13 +58,13 @@ const ArticlesPage: React.FC<{}> = () => {
         .slice(
           (state.currentPage - 1) * state.articlesPerPage,
           (state.currentPage - 1) * state.articlesPerPage +
-            state.articlesPerPage
+          state.articlesPerPage
         ),
     [state.currentPage]
   )
 
   return (
-    <AppLayout title="Home">
+    <AppLayout title="Articles">
       <div className="columns is-centered">
         <div className="column is-10">
           <ArticleList
