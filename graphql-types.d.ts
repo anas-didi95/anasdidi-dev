@@ -3640,7 +3640,7 @@ export type LandingQuery = (
       { __typename?: 'ImageSharp' }
       & { fluid?: Maybe<(
         { __typename?: 'ImageSharpFluid' }
-        & Pick<ImageSharpFluid, 'src'>
+        & GatsbyImageSharpFluidFragment
       )> }
     )> }
   )> }
@@ -3687,6 +3687,50 @@ export type TagTemplateQuery = (
       ) }
     )> }
   ) }
+);
+
+export type ImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ImageQuery = (
+  { __typename?: 'Query' }
+  & { warning?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
+  )>, profile?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
+  )>, header?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fixed?: Maybe<(
+        { __typename?: 'ImageSharpFixed' }
+        & GatsbyImageSharpFixedFragment
+      )> }
+    )> }
+  )>, landing?: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp?: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid?: Maybe<(
+        { __typename?: 'ImageSharpFluid' }
+        & GatsbyImageSharpFluidFragment
+      )> }
+    )> }
+  )> }
 );
 
 export type MetadataQueryVariables = Exact<{ [key: string]: never; }>;
