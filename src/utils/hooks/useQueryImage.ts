@@ -11,28 +11,28 @@ export type TQueryImage = {
 export const useQueryImage = (): TQueryImage => {
   const data: ImageQuery = useStaticQuery(graphql`
     query Image {
-      warning: file(absolutePath: { regex: "/images/warning.png/" }) {
+      warning: file(absolutePath: { regex: "/images/warning/" }) {
         childImageSharp {
           fixed(width: 112, height: 112) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      profile: file(absolutePath: { regex: "/images/profile-pic/" }) {
+      profile: file(absolutePath: { regex: "/images/profile/" }) {
         childImageSharp {
           fixed(width: 160, height: 160) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      header: file(absolutePath: { regex: "/images/header-brand.png/" }) {
+      header: file(absolutePath: { regex: "/images/header/" }) {
         childImageSharp {
           fixed(height: 28) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      landing: file(absolutePath: { regex: "/images/landing.jpg/" }) {
+      landing: file(absolutePath: { regex: "/images/landing/" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
