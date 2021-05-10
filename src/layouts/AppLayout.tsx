@@ -14,7 +14,12 @@ interface IAppLayout {
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const { header } = useQueryImage()
-  const { author, description: siteDescription, title: siteTitle, social } = useQueryMetadata()
+  const {
+    author,
+    description: siteDescription,
+    title: siteTitle,
+    social,
+  } = useQueryMetadata()
   const routes = useRoutes()
   const [state, dispatch] = useReducerAction()
 

@@ -46,6 +46,6 @@ export const useQueryImage = (): TQueryImage => {
     header: data.header?.childImageSharp?.fixed as FixedObject,
     landing: data.landing?.childImageSharp?.fluid as FluidObject,
     profile: data.profile?.childImageSharp?.fixed as FixedObject,
-    warning: data.warning?.childImageSharp?.fixed as FixedObject
+    warning: data.warning?.childImageSharp?.fixed as FixedObject,
   }
 }

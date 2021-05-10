@@ -29,15 +29,10 @@ const IndexPage: React.FC<{}> = () => {
         <div className="hero-head" />
         <div className="hero-body">
           <div className="container has-text-centered">
-            <GatsbyImage
-              fixed={profile}
-              style={{ borderRadius: "50%" }}
-            />
+            <GatsbyImage fixed={profile} style={{ borderRadius: "50%" }} />
             <div className="mt-4">
               <p className="title">{fullname}</p>
-              <p className="subtitle has-text-weight-bold">
-                {position}
-              </p>
+              <p className="subtitle has-text-weight-bold">{position}</p>
             </div>
             <div className="columns is-centered is-mobile mt-6">
               <div className="column is-7">

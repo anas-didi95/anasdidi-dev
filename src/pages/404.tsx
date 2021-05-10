@@ -1,6 +1,5 @@
 import React from "react"
-import GatsbyImage, { FixedObject } from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
+import GatsbyImage from "gatsby-image"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
@@ -19,9 +18,7 @@ const Error404Page: React.FC<{}> = () => {
           <Box>
             <div className="columns">
               <div className="column is-3 has-text-centered">
-                <GatsbyImage
-                  fixed={warning}
-                />
+                <GatsbyImage fixed={warning} />
               </div>
               <div className="column">
                 <p className="title">Page Not Found!</p>

@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import GatsbyImage, { FixedObject } from "gatsby-image"
+import GatsbyImage from "gatsby-image"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import Icon from "../components/Icon"
@@ -30,8 +30,7 @@ const AboutMePage: React.FC<{}> = () => {
               <div className="column is-3 has-text-centered">
                 <figure className="image">
                   <GatsbyImage
-                    fixed={profile
-                    }
+                    fixed={profile}
                     style={{ borderRadius: "25%" }}
                   />
                 </figure>
@@ -41,22 +40,13 @@ const AboutMePage: React.FC<{}> = () => {
                 <p className="subtitle is-5">{position}</p>
                 <div className="columns is-multiline">
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="email"
-                      link={social.email}
-                    />
+                    <_SocialLinkField type="email" link={social.email} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="github"
-                      link={social.github}
-                    />
+                    <_SocialLinkField type="github" link={social.github} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="linkedin"
-                      link={social.linkedin}
-                    />
+                    <_SocialLinkField type="linkedin" link={social.linkedin} />
                   </div>
                   <div className="column is-6">
                     <_SocialLinkField type="web" link={social.web} />
