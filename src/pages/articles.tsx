@@ -58,7 +58,7 @@ const ArticlesPage: React.FC<{}> = () => {
         .slice(
           (state.currentPage - 1) * state.articlesPerPage,
           (state.currentPage - 1) * state.articlesPerPage +
-          state.articlesPerPage
+            state.articlesPerPage
         ),
     [state.currentPage]
   )

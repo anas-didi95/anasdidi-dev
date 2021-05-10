@@ -1,82 +1,41 @@
-import React, { useMemo } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { animateScroll } from "react-scroll"
-import { useReducerAction } from "../actions/index.action"
-import AppLayout from "../layouts/AppLayout"
-import ArticleList from "../components/ArticleList"
-import { TArticle } from "../utils/types"
-import { IndexQuery } from "../../graphql-types"
+import { Link } from "gatsby"
+import GatsbyImage from "gatsby-image"
+import React from "react"
+import Button from "../components/Button"
+import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 
 const IndexPage: React.FC<{}> = () => {
-  const data: IndexQuery = useStaticQuery(graphql`
-    query Index {
-      articles: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              description
-              author
-              date(formatString: "YYYY, MMMM DD")
-              tags
-            }
-            excerpt
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-  const [state, dispatch] = useReducerAction(data.articles.edges.length, 6)
-
-  const handleNextPage = () => {
-    dispatch({ type: "NEXT_PAGE" })
-    animateScroll.scrollToTop({ duration: 750 })
-  }
-  const handlePreviousPage = () => {
-    dispatch({ type: "PREVIOUS_PAGE" })
-    animateScroll.scrollToTop({ duration: 750 })
-  }
-
-  const articles: TArticle[] = useMemo(
-    () =>
-      data.articles.edges
-        .map((edge) => ({
-          author: edge.node.frontmatter?.author ?? "",
-          date: edge.node.frontmatter?.date ?? "",
-          description: edge.node.frontmatter?.description ?? "",
-          excerpt: edge.node.excerpt ?? "",
-          slug: edge.node.fields?.slug ?? "",
-          tags: edge.node.frontmatter?.tags ?? [],
-          title: edge.node.frontmatter?.title ?? "",
-        }))
-        .slice(
-          (state.currentPage - 1) * state.articlesPerPage,
-          (state.currentPage - 1) * state.articlesPerPage +
-            state.articlesPerPage
-        ),
-    [state.currentPage]
-  )
+  const metadata = useQueryMetadata()
 
   return (
-    <AppLayout title="Home">
-      <div className="columns is-centered">
-        <div className="column is-10">
-          <ArticleList
-            articles={articles}
-            handleNextPage={handleNextPage}
-            handlePreviousPage={handlePreviousPage}
-            hasNextPage={state.hasNextPage}
-            hasPreviousPage={state.hasPreviousPage}
-          />
+    <section className="hero is-primary is-fullheight">
+      <div className="hero-head" />
+      <div className="hero-body">
+        <div className="container has-text-centered">
+          <GatsbyImage fixed={metadata.profilePic} style={{ borderRadius: "50%" }} />
+          <div className="mt-2">
+            <p className="title">{metadata.fullname}</p>
+            <p className="subtitle">{metadata.position}</p>
+          </div>
+          <div className="columns is-centered is-mobile mt-6">
+            <div className="column is-7">
+              <nav className="level">
+                <div className="level-item has-text-centered mx-4">
+                  <Link to="/articles" className="button is-rounded is-fullwidth" >Articles</Link>
+                </div>
+                <div className="level-item has-text-centered mx-4">
+                  <Link to="/tags" className="button is-rounded is-fullwidth" >Tags</Link>
+                </div>
+                <div className="level-item has-text-centered mx-4">
+                  <Link to="/about-me" className="button is-rounded is-fullwidth" >About Me</Link>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
-    </AppLayout>
+      <div className="hero-foot" />
+    </section>
   )
 }
 

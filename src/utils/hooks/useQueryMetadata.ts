@@ -15,6 +15,7 @@ export type IQueryMetadata = {
     linkedin: string
     web: string
   }
+  profilePic: FixedObject
 }
 export const useQueryMetadata = (): IQueryMetadata => {
   const data: MetadataQuery = useStaticQuery(graphql`
@@ -41,6 +42,13 @@ export const useQueryMetadata = (): IQueryMetadata => {
           }
         }
       }
+      profilePic: file(absolutePath: { regex: "/images/profile-pic/" }) {
+        childImageSharp {
+          fixed(width: 160, height: 160) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
@@ -57,5 +65,6 @@ export const useQueryMetadata = (): IQueryMetadata => {
       linkedin: data.site?.siteMetadata?.social?.linkedin ?? "",
       web: data.site?.siteMetadata?.social?.web ?? "",
     },
+    profilePic: data.profilePic?.childImageSharp?.fixed as FixedObject
   }
 }
