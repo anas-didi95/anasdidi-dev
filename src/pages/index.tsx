@@ -10,7 +10,7 @@ const IndexPage: React.FC<{}> = () => {
   query Landing {
     landingImage: file(absolutePath: { regex: "/images/landing.jpg/" }) {
       childImageSharp {
-        fluid(quality: 10) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }
@@ -38,7 +38,7 @@ const IndexPage: React.FC<{}> = () => {
           />
           <div className="mt-4">
             <p className="title">{metadata.fullname}</p>
-            <p className="subtitle">{metadata.position}</p>
+            <p className="subtitle has-text-weight-bold">{metadata.position}</p>
           </div>
           <div className="columns is-centered is-mobile mt-6">
             <div className="column is-7">
