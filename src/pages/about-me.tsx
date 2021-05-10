@@ -1,28 +1,22 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import GatsbyImage, { FixedObject } from "gatsby-image"
+import GatsbyImage from "gatsby-image"
 import AppLayout from "../layouts/AppLayout"
 import Box from "../components/Box"
 import Icon from "../components/Icon"
-import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
 import { TSocialEnum } from "../utils/types"
 import { toTitleCase } from "../utils/common"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import { AboutMeQuery } from "../../graphql-types"
+import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 const AboutMePage: React.FC<{}> = () => {
-  const metadata = useQueryMetadata()
+  const { profile } = useQueryImage()
+  const { fullname, position, social } = useQueryMetadata()
   const data: AboutMeQuery = useStaticQuery(graphql`
     query AboutMe {
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
         html
-      }
-      profilePic: file(absolutePath: { regex: "/images/profile-pic/" }) {
-        childImageSharp {
-          fixed(width: 160, height: 160) {
-            ...GatsbyImageSharpFixed
-          }
-        }
       }
     }
   `)
@@ -36,37 +30,26 @@ const AboutMePage: React.FC<{}> = () => {
               <div className="column is-3 has-text-centered">
                 <figure className="image">
                   <GatsbyImage
-                    fixed={
-                      data.profilePic?.childImageSharp?.fixed as FixedObject
-                    }
+                    fixed={profile}
                     style={{ borderRadius: "25%" }}
                   />
                 </figure>
               </div>
               <div className="column is-9">
-                <p className="title is-3">{metadata.fullname}</p>
-                <p className="subtitle is-5">{metadata.position}</p>
+                <p className="title is-3">{fullname}</p>
+                <p className="subtitle is-5">{position}</p>
                 <div className="columns is-multiline">
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="email"
-                      link={metadata.social.email}
-                    />
+                    <_SocialLinkField type="email" link={social.email} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="github"
-                      link={metadata.social.github}
-                    />
+                    <_SocialLinkField type="github" link={social.github} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField
-                      type="linkedin"
-                      link={metadata.social.linkedin}
-                    />
+                    <_SocialLinkField type="linkedin" link={social.linkedin} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="web" link={metadata.social.web} />
+                    <_SocialLinkField type="web" link={social.web} />
                   </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
 import { useRoutes } from "../utils/hooks/useRoutes"
+import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 interface IAppLayout {
   children: ReactNode
@@ -12,7 +13,13 @@ interface IAppLayout {
   title: string
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
-  const metadata = useQueryMetadata()
+  const { header } = useQueryImage()
+  const {
+    author,
+    description: siteDescription,
+    title: siteTitle,
+    social,
+  } = useQueryMetadata()
   const routes = useRoutes()
   const [state, dispatch] = useReducerAction()
 
@@ -22,9 +29,9 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
     <>
       <SEO
         title={title}
-        author={metadata.author}
-        description={description || metadata.description}
-        siteTitle={metadata.title}
+        author={author}
+        description={description || siteDescription}
+        siteTitle={siteTitle}
       />
       <div
         style={{
@@ -38,7 +45,7 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
         <Header
           isActive={state.isActive}
           toggleMenu={toggleMenu}
-          headerImage={metadata.headerImage}
+          headerImage={header}
           routes={routes}
         />
         <main id="#mainContent" style={{ flex: 1 }}>
@@ -47,9 +54,9 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
           </section>
         </main>
         <Footer
-          email={metadata.social.email}
-          github={metadata.social.github}
-          linkedin={metadata.social.linkedin}
+          email={social.email}
+          github={social.github}
+          linkedin={social.linkedin}
         />
       </div>
     </>
