@@ -4,6 +4,7 @@ import SEO from "../components/SEO"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { useRoutes } from "../utils/hooks/useRoutes"
 
 interface IAppLayout {
   children: ReactNode
@@ -12,6 +13,7 @@ interface IAppLayout {
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
   const metadata = useQueryMetadata()
+  const routes = useRoutes()
   const [state, dispatch] = useReducerAction()
 
   const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
@@ -37,6 +39,7 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
           isActive={state.isActive}
           toggleMenu={toggleMenu}
           headerImage={metadata.headerImage}
+          routes={routes}
         />
         <main id="#mainContent" style={{ flex: 1 }}>
           <section className="section">

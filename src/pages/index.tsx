@@ -1,11 +1,12 @@
-import { Link } from "gatsby"
-import GatsbyImage from "gatsby-image"
 import React from "react"
-import Button from "../components/Button"
+import GatsbyImage from "gatsby-image"
+import { Link } from "gatsby"
 import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { useRoutes } from "../utils/hooks/useRoutes"
 
 const IndexPage: React.FC<{}> = () => {
   const metadata = useQueryMetadata()
+  const routes = useRoutes()
 
   return (
     <section className="hero is-primary is-fullheight">
@@ -20,15 +21,11 @@ const IndexPage: React.FC<{}> = () => {
           <div className="columns is-centered is-mobile mt-6">
             <div className="column is-7">
               <nav className="level">
-                <div className="level-item has-text-centered mx-4">
-                  <Link to="/articles" className="button is-rounded is-fullwidth" >Articles</Link>
-                </div>
-                <div className="level-item has-text-centered mx-4">
-                  <Link to="/tags" className="button is-rounded is-fullwidth" >Tags</Link>
-                </div>
-                <div className="level-item has-text-centered mx-4">
-                  <Link to="/about-me" className="button is-rounded is-fullwidth" >About Me</Link>
-                </div>
+                {routes.map(route => (
+                  <div key={`route${route.path}`} className="level-item has-text-centered mx-4">
+                    <Link to={route.path} className="button is-rounded is-fullwidth" >{route.label}</Link>
+                  </div>
+                ))}
               </nav>
             </div>
           </div>
