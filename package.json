@@ -40,7 +40,7 @@
     "@graphql-codegen/typescript-operations": "1.8.2",
     "@types/node": "12.7.12",
     "@types/react": "16.9.9",
-    "@types/react-dom": "16.9.2",
+    "@types/react-dom": "17.0.4",
     "@types/react-helmet": "6.1.0",
     "prettier": "1.18.2",
     "typescript": "^4.0.3"
