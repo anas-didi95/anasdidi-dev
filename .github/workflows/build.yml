@@ -22,12 +22,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install, build, codegen, type-check and test
+      - name: yarn install, build
         run: |
           yarn install
           yarn build
-          yarn codegen
-          yarn type-check
-          yarn test
         env:
           CI: true
