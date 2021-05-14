@@ -1,5 +1,7 @@
-#Reference: https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
-#Reference: https://github.com/actions/setup-node
+# References
+# https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-nodejs
+# https://github.com/actions/checkout
+# https://github.com/actions/setup-node
 
 name: build
 
@@ -7,9 +9,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - fix-build-workflow
 
 jobs:
   build:
