@@ -20,6 +20,11 @@ My personal blog developed using Gatsby and TypeScript.
 ## General info
 Use the following link to reach the blog: [anasdidi.dev](https://anasdidi.dev/)
 
+This project is developed and deployed using Node 14. To change the Node version, change the following files:
+- docker-compose.yml
+- .github/workflows/build.yml
+- .nvmrc
+
 ---
 
 ## Technologies
