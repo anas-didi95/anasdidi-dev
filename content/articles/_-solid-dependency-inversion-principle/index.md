@@ -29,6 +29,6 @@ Following writing will discussed on one of the principles which is **Dependency 
 <a name="references"></a>
 ## References
 
-* [Dependency inversion principle; wikipedia.org](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+* [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
 * [Dependency Inversion Principle; tutorialsteacher.com](https://www.tutorialsteacher.com/ioc/dependency-inversion-principle)
 * [SOLID Design Principles Explained: Dependency Inversion Principle with Code Examples; stackify.com](https://stackify.com/dependency-inversion-principle/)
