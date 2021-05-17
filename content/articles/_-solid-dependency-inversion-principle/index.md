@@ -22,7 +22,6 @@ Following writing will discussed on one of the principles which is **Dependency 
 ---
 
 ## Table of contents
-* [Concept](#concept)
 * [References](#references)
 
 ---
@@ -30,6 +29,6 @@ Following writing will discussed on one of the principles which is **Dependency 
 <a name="references"></a>
 ## References
 
-* [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
-* [Interface Segregation Principle (ISP); oodesign.com](https://www.oodesign.com/interface-segregation-principle.html)
-* [Interface Segregation Principle explained with example in Java; javabrahman.com](https://www.javabrahman.com/programming-principles/interface-segregation-principle-explained-examples-java/)
+* [Dependency inversion principle; wikipedia.org](https://en.wikipedia.org/wiki/Dependency_inversion_principle)
+* [Dependency Inversion Principle; tutorialsteacher.com](https://www.tutorialsteacher.com/ioc/dependency-inversion-principle)
+* [SOLID Design Principles Explained: Dependency Inversion Principle with Code Examples; stackify.com](https://stackify.com/dependency-inversion-principle/)
