@@ -22,7 +22,24 @@ Following writing will discussed on one of the principles which is **Dependency 
 ---
 
 ## Table of contents
+* [Concept](#concept)
 * [References](#references)
+
+---
+
+<a name="concept"></a>
+## Concept
+
+> Depend upon abstractions, [not] concretions <br/>
+> -*Robert C. Martin*
+
+The general idea of **DIP** is that when designing between high-level modules and low-level modules, the interaction between them should be design as abstract. Meaning for high-level modules which provide complex logic, low-level modules which provide utility functions can easily be reuse and modify.
+
+Thus, from the idea, **DIP** stated:
+1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
+2. Abstractions should not depend on details. Details should depend on abstractions.
+
+Therefore, it dictates that both high-level modules and low-level modules must depend on same abstractions. It splits the dependency between high-level modules and low-level modules by introducint an abstraction between them.
 
 ---
 
