@@ -48,7 +48,7 @@ Therefore, it dictates that both high-level modules and low-level modules must d
 <a name="example"></a>
 ## Example
 
-Consider the following implementations:
+Consider the following implementation:
 ```java
 public class SecurityManager {
   private final UserServicePg userService;
@@ -69,11 +69,11 @@ public class UserServicePg {
 }
 ```
 
-From above example, the `SecurityManager` class uses the concrete `UserServicePg` class. Therefore, it is tightly-coupled in the implementation. It means when the implementation need to change the configuration like database from Postgres to Mongo, the `SecurityManager` need to be change.
+From above example, the `SecurityManager` class uses the concrete `UserServicePg` class. Therefore, it is tightly coupled in the implementation. It means when the implementation need to change the configuration like database from Postgres to Mongo, the `SecurityManager` need to be change.
 
-Thus, **DIP** can be uses to make `SecurityManager` and `UserServicePg` class more loosely-coupled.
+Thus, **DIP** can be uses to make `SecurityManager` and `UserServicePg` class more loosely coupled.
 
-Based on **DIP** definition, a high-level module should not depend on low-level module. And both should depend on abstraction. From the example, `SecurityManager` depends on the `UserServicePg` class, so `SecurityManager` is a high-level module and `UserServicePg` is a low-level module.
+Based on **DIP** definition, a high-level module should not depend on low-level module. And both should depend on abstraction. From the example, `SecurityManager` depends on the `UserServicePg`, so `SecurityManager` is a high-level module and `UserServicePg` is a low-level module.
 
 Next, abstraction need to be define between both high-level module and low-level module. An abstraction in programming means to create an interface or abstract class which allows both high-level module and low-level module to depend on and create interaction between them.
 
