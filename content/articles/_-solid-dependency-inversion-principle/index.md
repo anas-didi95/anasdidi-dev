@@ -24,6 +24,7 @@ Following writing will discussed on one of the principles which is **Dependency 
 ## Table of contents
 * [Concept](#concept)
 * [Example](#example)
+* [Conclusion](#conclusion)
 * [References](#references)
 
 ---
@@ -109,6 +110,16 @@ public class SecurityManager {
 ```
 
 With the latest implementation, the `SecurityManager` class can accept any class which implements the `UserService` interface. Thus, if next development required change to the configuration like database, it can simply be change without making any changes to `SecurityManager` class which is high-level module.
+
+---
+
+<a name="conclusion"></a>
+## Conclusion
+
+In conclusion, Dependency Inversion Principle enables abstraction between high-level modules and low-level modules by usage of interface.
+It allows the dependency between high-level modules and low-leve levels split and both modules will depend on same abstraction to interact.
+
+Thus, it enables developer to change high-level modules and low-level modules without affection any other classes, as long as they do not change any interface abstractions.
 
 ---
 
