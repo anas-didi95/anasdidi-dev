@@ -23,6 +23,7 @@ Following writing will discussed on one of the principles which is **Dependency 
 
 ## Table of contents
 * [Concept](#concept)
+* [Example](#example)
 * [References](#references)
 
 ---
@@ -39,7 +40,75 @@ Thus, from the idea, **DIP** stated:
 1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
 2. Abstractions should not depend on details. Details should depend on abstractions.
 
-Therefore, it dictates that both high-level modules and low-level modules must depend on same abstractions. It splits the dependency between high-level modules and low-level modules by introducint an abstraction between them.
+Therefore, it dictates that both high-level modules and low-level modules must depend on same abstractions. It splits the dependency between high-level modules and low-level modules by introduce an abstraction between them.
+
+---
+
+<a name="example"></a>
+## Example
+
+Consider the following implementations:
+```java
+public class SecurityManager {
+  private final UserServicePg userService;
+
+  public SecurityManager(UserServicePg userService) {
+    this.userService = userService;
+  }
+
+  public List<User> getUserList() {
+    return userService.getUserList();
+  }
+}
+
+public class UserServicePg {
+  public List<User> getUserList() {
+    return new ArrayList<>(); // Get results from Postgres
+  }
+}
+```
+
+From above example, the `SecurityManager` class uses the concrete `UserServicePg` class. Therefore, it is tightly-coupled in the implementation. It means when the implementation need to change the configuration like database from Postgres to Mongo, the `SecurityManager` need to be change.
+
+Thus, **DIP** can be uses to make `SecurityManager` and `UserServicePg` class more loosely-coupled.
+
+Based on **DIP** definition, a high-level module should not depend on low-level module. And both should depend on abstraction. From the example, `SecurityManager` depends on the `UserServicePg` class, so `SecurityManager` is a high-level module and `UserServicePg` is a low-level module.
+
+Next, abstraction need to be define between both high-level module and low-level module. An abstraction in programming means to create an interface or abstract class which allows both high-level module and low-level module to depend on and create interaction between them.
+
+Thus, `UserServicePg` class method can be abstract into interface class like below:
+```java
+public interface IUserService {
+  public List<User> getUserList();
+}
+```
+
+Next, the interface can be implemented into `UserServicePg` class.
+```java
+public class UserServicePg implements IUserService {
+  @Override
+  public List<User> getUserList() {
+    return new ArrayList<>(); // Get results from Postgres
+  }
+}
+```
+
+Now, change the `SecurityManager` to accept interface as parameter for dependency.
+```java
+public class SecurityManager {
+  private final UserService userService;
+
+  public SecurityManager(UserService userService) {
+    this.userService = userService;
+  }
+
+  public List<User> getUserList() {
+    return userService.getUserList();
+  }
+}
+```
+
+With the latest implementation, the `SecurityManager` class can accept any class which implements the `UserService` interface. Thus, if next development required change to the configuration like database, it can simply be change without making any changes to `SecurityManager` class which is high-level module.
 
 ---
 
