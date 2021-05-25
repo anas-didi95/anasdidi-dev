@@ -2,6 +2,7 @@ schema: schema.json
 documents:
   - ./src/**/*.{ts,tsx}
   - ./node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js
+  - ./node_modules/gatsby-transformer-remark/!(node_modules)/**/*.js
   #- ./node_modules/gatsby*/!(node_modules)/**/*.js
 config:
   namingConvention:
