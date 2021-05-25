@@ -2,7 +2,7 @@
 title: "SOLID Design Principles - Dependency Inversion Principle"
 description: "Discussion on one of the SOLID design principles in object-oriented software development"
 author: "Anas Juwaidi"
-date: "2099-01-01"
+date: "2021-05-25"
 tags: ["solid", "design-principle", "oop"]
 ---
 
