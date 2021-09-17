@@ -28,7 +28,7 @@ This project is developed and deployed using Node 14. To change the Node version
 ---
 
 ## Technologies
-* Gatsby - version 2.24.63
+* Gatsby - version 2.32.13
 * React - version 16.13.1
 * Bulma - version 0.9.2
 * Prismjs: version 1.23.0
@@ -84,12 +84,12 @@ npm start
 ---
 
 ## Features
-* Landing page
-* Articles page
-* Tags page
-* About Me page
-* 404 error page
-* Articles pagination
+- [x] Landing page
+- [x] Articles page
+- [x] Tags page
+- [x] About Me page
+- [x] 404 error page
+- [x] Articles pagination
 
 ---
 
