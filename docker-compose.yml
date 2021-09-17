@@ -14,3 +14,4 @@ services:
       - 9000:9000
     volumes:
       - ./:/workspace
+      - .vscode-server/:/home/node/.vscode-server
