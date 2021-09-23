@@ -31,7 +31,7 @@ This project is developed and deployed using Node 14. To change the Node version
 * Gatsby - version 2.32.13
 * React - version 16.13.1
 * Bulma - version 0.9.2
-* Prismjs: version 1.23.0
+* Prismjs: version 1.25.0
 * TypeScript - version 4.0.3
 
 ---
