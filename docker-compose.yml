@@ -2,18 +2,9 @@ version: "3"
 
 services:
   webapp:
-    build:
-      context: .devcontainer
-      dockerfile: Dockerfile
-      args:
-        # Update 'VARIANT' to pick a Node version: 18, 16, 14.
-        # Append -bullseye or -buster to pin to an OS version.
-        # Use -bullseye variants on local on arm64/Apple Silicon.
-        VARIANT: 16-bullseye
+    userns_mode: keep-id
+    image: mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye
     command: sleep infinity
-    ports:
-      - 8000:8000
-      - 9000:9000
     volumes:
-      - ./:/workspace:z
+      - ./:/home/node/workspace:z
       - .vscode-server/:/home/node/.vscode-server:z
