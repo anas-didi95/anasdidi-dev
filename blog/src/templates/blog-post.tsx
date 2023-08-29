@@ -1,15 +1,16 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react"
+import { HeadFC, Link, graphql } from "gatsby"
+import { WindowLocation } from "@reach/router"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogPostTemplate = ({
+const BlogPostTemplate: React.FC<{ data: Queries.BlogPostBySlugQuery, location: WindowLocation }> = ({
   data: { previous, next, site, markdownRemark: post },
   location,
 }) => {
-  const siteTitle = site.siteMetadata?.title || `Title`
+  const siteTitle = site?.siteMetadata?.title || `Title`
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -19,11 +20,11 @@ const BlogPostTemplate = ({
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline">{post?.frontmatter?.title}</h1>
+          <p>{post?.frontmatter?.date}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: post?.html ?? "" }}
           itemProp="articleBody"
         />
         <hr />
@@ -43,15 +44,15 @@ const BlogPostTemplate = ({
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={previous.fields?.slug ?? ""} rel="prev">
+                ← {previous.frontmatter?.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={next.fields?.slug ?? ""} rel="next">
+                {next.frontmatter?.title} →
               </Link>
             )}
           </li>
@@ -61,11 +62,11 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }) => {
+export const Head: HeadFC<Queries.BlogPostBySlugQuery> = ({ data: { markdownRemark: post } }) => {
   return (
     <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
+      title={post?.frontmatter?.title ?? ""}
+      description={(post?.frontmatter?.description || post?.excerpt) ?? ""}
     />
   )
 }
