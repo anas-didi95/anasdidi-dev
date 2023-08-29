@@ -6,10 +6,10 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogPostTemplate: React.FC<{ data: Queries.BlogPostBySlugQuery, location: WindowLocation }> = ({
-  data: { previous, next, site, markdownRemark: post },
-  location,
-}) => {
+const BlogPostTemplate: React.FC<{
+  data: Queries.BlogPostBySlugQuery
+  location: WindowLocation
+}> = ({ data: { previous, next, site, markdownRemark: post }, location }) => {
   const siteTitle = site?.siteMetadata?.title || `Title`
 
   return (
@@ -62,7 +62,9 @@ const BlogPostTemplate: React.FC<{ data: Queries.BlogPostBySlugQuery, location: 
   )
 }
 
-export const Head: HeadFC<Queries.BlogPostBySlugQuery> = ({ data: { markdownRemark: post } }) => {
+export const Head: HeadFC<Queries.BlogPostBySlugQuery> = ({
+  data: { markdownRemark: post },
+}) => {
   return (
     <Seo
       title={post?.frontmatter?.title ?? ""}
