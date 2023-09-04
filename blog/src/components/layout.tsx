@@ -7,7 +7,7 @@ const Layout: React.FC<{
   title: string
   children: ReactNode
 }> = ({ location, title, children }) => {
-  const rootPath = "" //`${__PATH_PREFIX__}/`
+  const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
 
