@@ -22,6 +22,7 @@ module.exports = {
   },
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -1,95 +1,62 @@
-import { Link, graphql, PageProps } from "gatsby"
 import React from "react"
+//import GatsbyImage from "gatsby-image"
+//import { Link } from "gatsby"
+//import SEO from "../components/SEO"
+//import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+//import { useRoutes } from "../utils/hooks/useRoutes"
+//import { useQueryImage } from "../utils/hooks/useQueryImage"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-
-const BlogIndex = ({ data, location }: PageProps<Queries.IndexPageQuery>) => {
-  const siteTitle = data.site?.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Bio />
-        <p>
-          No blog posts found.Add markdown posts to "content/blog"(or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby - config.js).
-        </p>
-      </Layout>
-    )
-  }
+const IndexPage: React.FC<{}> = () => {
+  //const { landing, profile } = useQueryImage()
+  //const { author, description, title, fullname, position } = useQueryMetadata()
+  //const routes = useRoutes()
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter?.title || post.fields?.slug
-
-          return (
-            <li key={post.fields?.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields?.slug ?? ""} itemProp="url">
-                      <span itemProp="headline"> {title} </span>
-                    </Link>
-                  </h2>
-                  <small> {post.frontmatter?.date} </small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        (post.frontmatter?.description || post.excerpt) ?? "",
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
-    </Layout>
+    <>
+      {/*<SEO
+        author={author}
+        description={description}
+        siteTitle={title}
+        title="Home"
+  />*/}
+      <section
+        className="hero is-primary is-fullheight"
+        style={{
+          //backgroundImage: `url(${landing.src})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "darken",
+        }}>
+        <div className="hero-head" />
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            {/*<GatsbyImage fixed={profile} style={{ borderRadius: "50%" }} />*/}
+            <div className="mt-4">
+              {/*<p className="title">{fullname}</p>
+              <p className="subtitle has-text-weight-bold">{position}</p>*/}
+            </div>
+            <div className="columns is-centered is-mobile mt-6">
+              <div className="column is-7">
+                {/*<nav className="level">
+                  {routes.map((route) => (
+                    <div
+                      key={`route${route.path}`}
+                      className="level-item has-text-centered mx-4">
+                      <Link
+                        to={route.path}
+                        className="button is-rounded is-fullwidth">
+                        {route.label}
+                      </Link>
+                    </div>
+                  ))}
+                  </nav>*/}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-foot" />
+      </section>
+    </>
   )
 }
 
-export default BlogIndex
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-//export const Head = () => <Seo title="All posts">
-
-export const pageQuery = graphql`
-  query IndexPage {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
-      }
-    }
-  }
-`
+export default IndexPage
