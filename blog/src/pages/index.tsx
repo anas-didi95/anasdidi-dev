@@ -1,24 +1,18 @@
 import React from "react"
 //import GatsbyImage from "gatsby-image"
 //import { Link } from "gatsby"
-//import SEO from "../components/SEO"
-//import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { HeadFC } from "gatsby"
 //import { useRoutes } from "../utils/hooks/useRoutes"
 //import { useQueryImage } from "../utils/hooks/useQueryImage"
 
+import SEO from "../components/SEO"
+
 const IndexPage: React.FC<{}> = () => {
   //const { landing, profile } = useQueryImage()
-  //const { author, description, title, fullname, position } = useQueryMetadata()
   //const routes = useRoutes()
 
   return (
     <>
-      {/*<SEO
-        author={author}
-        description={description}
-        siteTitle={title}
-        title="Home"
-  />*/}
       <section
         className="hero is-primary is-fullheight"
         style={{
@@ -60,3 +54,5 @@ const IndexPage: React.FC<{}> = () => {
 }
 
 export default IndexPage
+
+export const Head: HeadFC = () => <SEO siteTitle="Home" />
