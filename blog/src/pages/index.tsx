@@ -2,7 +2,7 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { HeadFC } from "gatsby"
-import { useQueryMetadata } from "../utils/hooks/use-query"
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata"
 import { useRoutes } from "../utils/hooks/use-routes"
 import { useQueryImage } from "../utils/hooks/use-query-image"
 

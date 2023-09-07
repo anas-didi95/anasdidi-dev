@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import { useQueryMetadata } from "../utils/hooks/use-query"
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata"
 
 interface ISEO {
   siteTitle: string
