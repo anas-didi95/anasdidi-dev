@@ -5,7 +5,7 @@ import { HeadFC } from "gatsby"
 import { useRoutes } from "../utils/hooks/use-routes"
 //import { useQueryImage } from "../utils/hooks/useQueryImage"
 
-import SEO from "../components/SEO"
+import SEO from "../components/seo"
 
 const IndexPage: React.FC<{}> = () => {
   //const { landing, profile } = useQueryImage()

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
+import { useQueryMetadata } from "../utils/hooks/use-query"
 
 interface ISEO {
   siteTitle: string
@@ -10,7 +10,7 @@ const SEO: React.FC<ISEO> = ({ siteTitle, children }) => {
 
   return (
     <>
-      <title>{!!siteTitle ? `${title} | ${siteTitle}` : title}</title>
+      <title>{!!siteTitle ? `${siteTitle} | ${title}` : title}</title>
       <meta name="description" content={description} />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
