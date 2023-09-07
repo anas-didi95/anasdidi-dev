@@ -1,12 +1,12 @@
-import React, { ReactNode } from "react"
-import { useQueryMetadata } from "../utils/hooks/use-query-metadata"
+import React, { ReactNode } from "react";
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata";
 
 interface ISEO {
-  siteTitle: string
-  children?: ReactNode
+  siteTitle: string;
+  children?: ReactNode;
 }
 const SEO: React.FC<ISEO> = ({ siteTitle, children }) => {
-  const { author, description, title } = useQueryMetadata()
+  const { author, description, title } = useQueryMetadata();
 
   return (
     <>
@@ -21,7 +21,7 @@ const SEO: React.FC<ISEO> = ({ siteTitle, children }) => {
       <meta name="twitter:description" content={description} />
       {children}
     </>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;

@@ -18,7 +18,7 @@ module.exports = {
       email: "anas.didi95@gmail.com",
       github: "https://github.com/anas-didi95",
       linkedin: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
-      web: "https://anasdidi.dev/"
+      web: "https://anasdidi.dev/",
     },
   },
   graphqlTypegen: true,
@@ -86,8 +86,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                });
+              });
             },
             query: `{
               allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
@@ -125,4 +125,4 @@ module.exports = {
       },
     },
   ],
-}
+};
