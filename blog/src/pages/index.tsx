@@ -2,12 +2,14 @@ import React from "react"
 //import GatsbyImage from "gatsby-image"
 import { Link } from "gatsby"
 import { HeadFC } from "gatsby"
+import { useQueryMetadata } from "../utils/hooks/use-query"
 import { useRoutes } from "../utils/hooks/use-routes"
 //import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 import SEO from "../components/seo"
 
 const IndexPage: React.FC<{}> = () => {
+  const { fullname, position } = useQueryMetadata()
   //const { landing, profile } = useQueryImage()
   const routes = useRoutes()
 
@@ -25,8 +27,8 @@ const IndexPage: React.FC<{}> = () => {
           <div className="container has-text-centered">
             {/*<GatsbyImage fixed={profile} style={{ borderRadius: "50%" }} />*/}
             <div className="mt-4">
-              {/*<p className="title">{fullname}</p>
-              <p className="subtitle has-text-weight-bold">{position}</p>*/}
+              <p className="title">{fullname}</p>
+              <p className="subtitle has-text-weight-bold">{position}</p>
             </div>
             <div className="columns is-centered is-mobile mt-6">
               <div className="column is-7">
