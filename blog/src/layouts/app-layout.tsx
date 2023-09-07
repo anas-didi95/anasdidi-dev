@@ -1,26 +1,24 @@
-import React, { ReactNode } from "react"
-import { useReducerAction } from "./AppLayout.action"
-import { useQueryMetadata } from "../utils/hooks/use-query-metadata"
-import { useRoutes } from "../utils/hooks/use-routes"
-import { useQueryImage } from "../utils/hooks/use-query-image"
+import React, { ReactNode } from "react";
+import { useReducerAction } from "./app-layout.action";
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata";
+import { useRoutes } from "../utils/hooks/use-routes";
+import { useQueryImage } from "../utils/hooks/use-query-image";
 
-import Header from "../components/header"
-import Footer from "../components/footer"
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 interface IAppLayout {
-  children: ReactNode
-  description?: string
-  title: string
+  children: ReactNode;
+  description?: string;
+  title: string;
 }
 const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
-  const { header } = useQueryImage()
-  const {
-    social,
-  } = useQueryMetadata()
-  const routes = useRoutes()
-  const [state, dispatch] = useReducerAction()
+  const { header } = useQueryImage();
+  const { social } = useQueryMetadata();
+  const routes = useRoutes();
+  const [state, dispatch] = useReducerAction();
 
-  const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" })
+  const toggleMenu = () => dispatch({ type: "TOGGLE_MENU" });
 
   return (
     <div
@@ -49,7 +47,7 @@ const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
         linkedin={social.linkedin}
       />
     </div>
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;

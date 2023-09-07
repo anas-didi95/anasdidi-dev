@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react"
-import Icon from "./icon"
+import React, { ReactNode } from "react";
+import Icon from "./icon";
 
 interface IFooter {
-  email: string
-  github: string
-  linkedin: string
+  email: string;
+  github: string;
+  linkedin: string;
 }
 const Footer: React.FC<IFooter> = ({ email, github, linkedin }) => (
   <footer className="footer">
@@ -37,12 +37,12 @@ const Footer: React.FC<IFooter> = ({ email, github, linkedin }) => (
       </p>
     </div>
   </footer>
-)
+);
 
 const SocialLink: React.FC<{
-  icon: ReactNode
-  link: string
-  ariaLabel: string
+  icon: ReactNode;
+  link: string;
+  ariaLabel: string;
 }> = ({ icon, link, ariaLabel }) => (
   <a
     className="button is-text"
@@ -52,7 +52,7 @@ const SocialLink: React.FC<{
     aria-label={ariaLabel}>
     <span className="is-size-3">{icon}</span>
   </a>
-)
+);
 
 const ToolLink: React.FC<{ link: string; label: string }> = ({
   link,
@@ -61,6 +61,6 @@ const ToolLink: React.FC<{ link: string; label: string }> = ({
   <a className="has-text-black has-text-weight-bold" href={link}>
     {label}
   </a>
-)
+);
 
-export default Footer
+export default Footer;
