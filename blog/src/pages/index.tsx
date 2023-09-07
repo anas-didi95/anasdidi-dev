@@ -1,15 +1,15 @@
 import React from "react"
 //import GatsbyImage from "gatsby-image"
-//import { Link } from "gatsby"
+import { Link } from "gatsby"
 import { HeadFC } from "gatsby"
-//import { useRoutes } from "../utils/hooks/useRoutes"
+import { useRoutes } from "../utils/hooks/use-routes"
 //import { useQueryImage } from "../utils/hooks/useQueryImage"
 
 import SEO from "../components/SEO"
 
 const IndexPage: React.FC<{}> = () => {
   //const { landing, profile } = useQueryImage()
-  //const routes = useRoutes()
+  const routes = useRoutes()
 
   return (
     <>
@@ -30,7 +30,7 @@ const IndexPage: React.FC<{}> = () => {
             </div>
             <div className="columns is-centered is-mobile mt-6">
               <div className="column is-7">
-                {/*<nav className="level">
+                <nav className="level">
                   {routes.map((route) => (
                     <div
                       key={`route${route.path}`}
@@ -42,7 +42,7 @@ const IndexPage: React.FC<{}> = () => {
                       </Link>
                     </div>
                   ))}
-                  </nav>*/}
+                </nav>
               </div>
             </div>
           </div>
