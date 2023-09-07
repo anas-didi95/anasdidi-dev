@@ -1,16 +1,16 @@
 import React from "react"
-//import GatsbyImage from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { HeadFC } from "gatsby"
 import { useQueryMetadata } from "../utils/hooks/use-query"
 import { useRoutes } from "../utils/hooks/use-routes"
-//import { useQueryImage } from "../utils/hooks/useQueryImage"
+import { useQueryImage } from "../utils/hooks/use-query-image"
 
 import SEO from "../components/seo"
 
 const IndexPage: React.FC<{}> = () => {
   const { fullname, position } = useQueryMetadata()
-  //const { landing, profile } = useQueryImage()
+  const { landing, profile } = useQueryImage()
   const routes = useRoutes()
 
   return (
@@ -18,14 +18,14 @@ const IndexPage: React.FC<{}> = () => {
       <section
         className="hero is-primary is-fullheight"
         style={{
-          //backgroundImage: `url(${landing.src})`,
+          backgroundImage: `url(${landing?.images.fallback?.src})`,
           backgroundSize: "cover",
           backgroundBlendMode: "darken",
         }}>
         <div className="hero-head" />
         <div className="hero-body">
           <div className="container has-text-centered">
-            {/*<GatsbyImage fixed={profile} style={{ borderRadius: "50%" }} />*/}
+            <GatsbyImage image={profile} style={{ borderRadius: "50%", display: "inline-block" }} alt="Profile" />
             <div className="mt-4">
               <p className="title">{fullname}</p>
               <p className="subtitle has-text-weight-bold">{position}</p>
