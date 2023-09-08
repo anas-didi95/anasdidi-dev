@@ -91,8 +91,9 @@ export default AboutMePage;
 export const Head: HeadFC = () => <SEO siteTitle="About Me" />;
 
 export const PageQuery = graphql`
-query AboutMe {
-  content: markdownRemark(fileAbsolutePath: {regex: "/about-me/"}) {
-    html
+  query AboutMe {
+    content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
+      html
+    }
   }
-}`
+`;
