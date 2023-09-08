@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql, HeadFC } from "gatsby";
+import { graphql, HeadFC, PageProps } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { TSocialEnum } from "../utils/types";
 import { toTitleCase } from "../utils/common";
@@ -11,16 +11,9 @@ import Box from "../components/box";
 import Icon from "../components/icon";
 import SEO from "../components/seo";
 
-const AboutMePage: React.FC<{}> = () => {
+const AboutMePage: React.FC<PageProps<Queries.AboutMeQuery>> = ({ data }) => {
   const { profile } = useQueryImage();
   const { fullname, position, social } = useQueryMetadata();
-  const data: Queries.AboutMeQuery = useStaticQuery(graphql`
-    query AboutMe {
-      content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
-        html
-      }
-    }
-  `);
 
   return (
     <AppLayout title="About Me">
@@ -96,3 +89,10 @@ const SocialLinkField: React.FC<{
 export default AboutMePage;
 
 export const Head: HeadFC = () => <SEO siteTitle="About Me" />;
+
+export const PageQuery = graphql`
+query AboutMe {
+  content: markdownRemark(fileAbsolutePath: {regex: "/about-me/"}) {
+    html
+  }
+}`
