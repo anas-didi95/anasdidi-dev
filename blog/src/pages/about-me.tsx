@@ -1,26 +1,26 @@
-import React from "react"
-import { useStaticQuery, graphql, HeadFC } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { TSocialEnum } from "../utils/types"
-import { toTitleCase } from "../utils/common"
-import { useQueryMetadata } from "../utils/hooks/use-query-metadata"
-import { useQueryImage } from "../utils/hooks/use-query-image"
+import React from "react";
+import { useStaticQuery, graphql, HeadFC } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { TSocialEnum } from "../utils/types";
+import { toTitleCase } from "../utils/common";
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata";
+import { useQueryImage } from "../utils/hooks/use-query-image";
 
-import AppLayout from "../layouts/app-layout"
-import Box from "../components/box"
-import Icon from "../components/icon"
-import SEO from "../components/seo"
+import AppLayout from "../layouts/app-layout";
+import Box from "../components/box";
+import Icon from "../components/icon";
+import SEO from "../components/seo";
 
 const AboutMePage: React.FC<{}> = () => {
-  const { profile } = useQueryImage()
-  const { fullname, position, social } = useQueryMetadata()
+  const { profile } = useQueryImage();
+  const { fullname, position, social } = useQueryMetadata();
   const data: Queries.AboutMeQuery = useStaticQuery(graphql`
     query AboutMe {
       content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
         html
       }
     }
-  `)
+  `);
 
   return (
     <AppLayout title="About Me">
@@ -68,12 +68,12 @@ const AboutMePage: React.FC<{}> = () => {
         </div>
       </div>
     </AppLayout>
-  )
-}
+  );
+};
 
 const SocialLinkField: React.FC<{
-  type: TSocialEnum
-  link: string
+  type: TSocialEnum;
+  link: string;
 }> = ({ type, link }) => (
   <div className="field">
     <label className="label">
@@ -91,8 +91,8 @@ const SocialLinkField: React.FC<{
       </a>
     </div>
   </div>
-)
+);
 
-export default AboutMePage
+export default AboutMePage;
 
-export const Head: HeadFC = () => <SEO siteTitle="About Me" />
+export const Head: HeadFC = () => <SEO siteTitle="About Me" />;
