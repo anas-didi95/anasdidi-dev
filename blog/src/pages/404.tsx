@@ -13,7 +13,7 @@ const Error404Page: React.FC<{}> = () => {
   const { warning } = useQueryImage();
 
   return (
-    <AppLayout title="Error 404">
+    <AppLayout>
       <ResponsiveBreakpoint />
       <div className="columns">
         <div className="column" />

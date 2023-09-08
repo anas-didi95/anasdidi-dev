@@ -16,7 +16,7 @@ const AboutMePage: React.FC<PageProps<Queries.AboutMeQuery>> = ({ data }) => {
   const { fullname, position, social } = useQueryMetadata();
 
   return (
-    <AppLayout title="About Me">
+    <AppLayout>
       <div className="columns is-centered">
         <div className="column is-8">
           <Box>

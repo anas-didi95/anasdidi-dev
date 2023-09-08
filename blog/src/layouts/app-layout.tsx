@@ -9,10 +9,8 @@ import Footer from "../components/footer";
 
 interface IAppLayout {
   children: ReactNode;
-  description?: string;
-  title: string;
 }
-const AppLayout: React.FC<IAppLayout> = ({ children, description, title }) => {
+const AppLayout: React.FC<IAppLayout> = ({ children }) => {
   const { header } = useQueryImage();
   const { social } = useQueryMetadata();
   const routes = useRoutes();
