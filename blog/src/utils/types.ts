@@ -7,7 +7,7 @@ export type TArticle = {
   author: string;
   date: string;
   description: string;
-  tags?: Queries.Maybe<string>[];
+  tags?: readonly (string | null)[];
   excerpt: string;
   slug: string;
 };
