@@ -1,14 +1,19 @@
-import React from "react"
-import { graphql, HeadFC, Link, PageProps } from "gatsby"
-import { TArticleNode } from "../utils/types"
+import React from "react";
+import { graphql, HeadFC, Link, PageProps } from "gatsby";
+import { TArticleNode } from "../utils/types";
 
-import AppLayout from "../layouts/app-layout"
-import Box from "../components/box"
-import Tag from "../components/tag"
-import Icon from "../components/icon"
-import SEO from "../components/seo"
+import AppLayout from "../layouts/app-layout";
+import Box from "../components/box";
+import Tag from "../components/tag";
+import Icon from "../components/icon";
+import SEO from "../components/seo";
 
-const ArticleTemplate: React.FC<PageProps<Queries.ArticleTemplateQuery, { next: TArticleNode, previous: TArticleNode }>> = ({ data, pageContext }) => (
+const ArticleTemplate: React.FC<
+  PageProps<
+    Queries.ArticleTemplateQuery,
+    { next: TArticleNode; previous: TArticleNode }
+  >
+> = ({ data, pageContext }) => (
   <AppLayout>
     <div className="columns is-centered">
       <div className="column is-8">
@@ -46,11 +51,11 @@ const ArticleTemplate: React.FC<PageProps<Queries.ArticleTemplateQuery, { next: 
     </div>
     <Pagination next={pageContext.next} previous={pageContext.previous} />
   </AppLayout>
-)
+);
 
 const Pagination: React.FC<{
-  next?: TArticleNode
-  previous?: TArticleNode
+  next?: TArticleNode;
+  previous?: TArticleNode;
 }> = ({ next, previous }) => (
   <div className="columns is-centered">
     <div className="column is-7">
@@ -86,11 +91,16 @@ const Pagination: React.FC<{
       )}
     </div>
   </div>
-)
+);
 
-export default ArticleTemplate
+export default ArticleTemplate;
 
-export const Head: HeadFC<Queries.ArticleTemplateQuery> = ({ data }) => <SEO siteTitle={data.markdownRemark?.frontmatter?.title ?? ""} siteDescription={data.markdownRemark?.frontmatter?.description ?? ""} />
+export const Head: HeadFC<Queries.ArticleTemplateQuery> = ({ data }) => (
+  <SEO
+    siteTitle={data.markdownRemark?.frontmatter?.title ?? ""}
+    siteDescription={data.markdownRemark?.frontmatter?.description ?? ""}
+  />
+);
 
 export const PageQuery = graphql`
   query ArticleTemplate($slug: String!) {
@@ -105,4 +115,4 @@ export const PageQuery = graphql`
       html
     }
   }
-`
+`;

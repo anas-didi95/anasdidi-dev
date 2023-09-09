@@ -12,7 +12,10 @@ const SEO: React.FC<ISEO> = ({ siteTitle, siteDescription, children }) => {
   return (
     <>
       <title>{!!siteTitle ? `${siteTitle} | ${title}` : title}</title>
-      <meta name="description" content={!!siteDescription ? siteDescription : description} />
+      <meta
+        name="description"
+        content={!!siteDescription ? siteDescription : description}
+      />
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
       <meta name="og:type" content="website" />

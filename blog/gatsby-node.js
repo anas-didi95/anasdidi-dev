@@ -6,49 +6,49 @@
 
 //const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const path = require('path')
+const path = require("path");
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   // Create article pages
-  const articleTemplate = path.resolve(`./src/templates/article-template.tsx`)
+  const articleTemplate = path.resolve(`./src/templates/article-template.tsx`);
   const articleResult = await graphql(`
-  query CreateArticlePage {
-    allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/content/articles/"}}
-      sort: {frontmatter: {date: DESC}}
-      limit: 1000
-    ) {
-      edges {
-        node {
-          fields {
-            slug
+    query CreateArticlePage {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+        sort: { frontmatter: { date: DESC } }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
           }
-        }
-        next {
-          frontmatter {
-            title
+          next {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
           }
-          fields {
-            slug
-          }
-        }
-        previous {
-          frontmatter {
-            title
-          }
-          fields {
-            slug
+          previous {
+            frontmatter {
+              title
+            }
+            fields {
+              slug
+            }
           }
         }
       }
     }
-  }
-   ` );
+  `);
 
   if (articleResult.errors) {
     reporter.panicOnBuild(
@@ -58,17 +58,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  articleResult.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
-    createPage({
-      path: node.fields.slug,
-      component: articleTemplate,
-      context: {
-        slug: node.fields.slug,
-        next,
-        previous,
-      },
-    })
-  })
+  articleResult.data.allMarkdownRemark.edges.forEach(
+    ({ node, next, previous }) => {
+      createPage({
+        path: node.fields.slug,
+        component: articleTemplate,
+        context: {
+          slug: node.fields.slug,
+          next,
+          previous,
+        },
+      });
+    }
+  );
 };
 
 /**
