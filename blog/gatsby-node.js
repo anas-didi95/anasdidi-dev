@@ -6,59 +6,69 @@
 
 //const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`);
-
-// Define the template for blog post
-//const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+const path = require('path')
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  //const { createPage } = actions
+  const { createPage } = actions
 
-  // Get all markdown blog posts sorted by date
-  const result = await graphql(`
-    {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
-        nodes {
-          id
+  // Create article pages
+  const articleTemplate = path.resolve(`./src/templates/article-template.tsx`)
+  const articleResult = await graphql(`
+  query CreateArticlePage {
+    allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/content/articles/"}}
+      sort: {frontmatter: {date: DESC}}
+      limit: 1000
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+        next {
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+        previous {
+          frontmatter {
+            title
+          }
           fields {
             slug
           }
         }
       }
     }
-  `);
+  }
+   ` );
 
-  if (result.errors) {
+  if (articleResult.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
-      result.errors
+      articleResult.errors
     );
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.nodes;
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      //const previousPostId = index === 0 ? null : posts[index - 1].id
-      //const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-      /*createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })*/
-    });
-  }
+  articleResult.data.allMarkdownRemark.edges.forEach(({ node, next, previous }) => {
+    createPage({
+      path: node.fields.slug,
+      component: articleTemplate,
+      context: {
+        slug: node.fields.slug,
+        next,
+        previous,
+      },
+    })
+  })
 };
 
 /**
