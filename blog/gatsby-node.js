@@ -71,6 +71,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
   );
+
+  // Create tag pages
+  const tagTemplate = path.resolve(`./src/templates/tag-template.tsx`);
+  const tagResult = await graphql(`
+  query CreateTagPage {
+    tags: allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/content/articles/"}}
+    ) {
+      group(field: {frontmatter: {tags: SELECT}}) {
+        tag: fieldValue
+      }
+    }
+  }
+    `);
+
+  if (tagResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your tag pages`,
+      tagResult.errors
+    );
+    return;
+  }
+
+  tagResult.data.tags.group.forEach(({ tag }) => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: tagTemplate,
+      context: {
+        tag: tag
+      },
+    })
+  })
 };
 
 /**
