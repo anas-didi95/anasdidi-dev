@@ -1,13 +1,13 @@
-import React from "react"
-import { HeadFC } from "gatsby"
-import { useQueryTags } from "../utils/hooks/use-query-tags"
+import React from "react";
+import { HeadFC } from "gatsby";
+import { useQueryTags } from "../utils/hooks/use-query-tags";
 
-import AppLayout from "../layouts/app-layout"
-import SEO from "../components/seo"
-import TagList from "../components/tag-list"
+import AppLayout from "../layouts/app-layout";
+import SEO from "../components/seo";
+import TagList from "../components/tag-list";
 
 const TagsPage: React.FC<{}> = () => {
-  const tags = useQueryTags()
+  const tags = useQueryTags();
 
   return (
     <AppLayout>
@@ -17,9 +17,9 @@ const TagsPage: React.FC<{}> = () => {
         </div>
       </div>
     </AppLayout>
-  )
-}
+  );
+};
 
-export default TagsPage
+export default TagsPage;
 
-export const Head: HeadFC = () => <SEO siteTitle="Tags" />
+export const Head: HeadFC = () => <SEO siteTitle="Tags" />;

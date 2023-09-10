@@ -75,16 +75,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create tag pages
   const tagTemplate = path.resolve(`./src/templates/tag-template.tsx`);
   const tagResult = await graphql(`
-  query CreateTagPage {
-    tags: allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/content/articles/"}}
-    ) {
-      group(field: {frontmatter: {tags: SELECT}}) {
-        tag: fieldValue
+    query CreateTagPage {
+      tags: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+      ) {
+        group(field: { frontmatter: { tags: SELECT } }) {
+          tag: fieldValue
+        }
       }
     }
-  }
-    `);
+  `);
 
   if (tagResult.errors) {
     reporter.panicOnBuild(
@@ -99,10 +99,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: `/tags/${tag}`,
       component: tagTemplate,
       context: {
-        tag: tag
+        tag: tag,
       },
-    })
-  })
+    });
+  });
 };
 
 /**
