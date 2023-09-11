@@ -14,6 +14,7 @@ module.exports = {
     author: `@anasdidi95`,
     fullname: "Anas Juwaidi Bin Mohd Jeffry",
     position: "Software Engineer",
+    siteUrl: "https://anasdidi.dev/",
     social: {
       email: "anas.didi95@gmail.com",
       github: "https://github.com/anas-didi95",
@@ -105,7 +106,7 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Anas Juwaidi's Blog RSS Feed",
           },
         ],
       },
