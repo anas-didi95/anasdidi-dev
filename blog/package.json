@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "anasdidi-dev",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "My personal blog developed using Gatsby and TypeScript",
+  "version": "2.0.0",
+  "author": "Anas Juwaidi <anas.didi95@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -39,7 +39,8 @@
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "typescript"
   ],
   "license": "0BSD",
   "repository": {
