@@ -8,9 +8,10 @@ tags: ["solid", "design-principle", "oop"]
 
 **SOLID** is a set of five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
 
-Robert C. Martin introduced the theory of SOLID in year 2000 on his paper *Design Principles and Design Patterns*. Later, Micheal Feathers introduced the SOLID acronym.
+Robert C. Martin introduced the theory of SOLID in year 2000 on his paper _Design Principles and Design Patterns_. Later, Micheal Feathers introduced the SOLID acronym.
 
 SOLID stands for
+
 - **S**ingle-responsibility Principle
 - **O**pen-closed Principle
 - **L**iskov Substitution Principle
@@ -22,20 +23,21 @@ Following writing will discussed on one of the principles which is **Liskov Subs
 ---
 
 ## Table of contents
-* [Concept](#concept)
-* [Example](#example)
-  * [Bad Example](#bad-example)
-  * [Good Example](#good-example)
-* [Conclusion](#conclusion)
-* [References](#references)
+
+- [Concept](#concept)
+- [Example](#example)
+  - [Bad Example](#bad-example)
+  - [Good Example](#good-example)
+- [Conclusion](#conclusion)
+- [References](#references)
 
 ---
 
 <a name="concept"></a>
+
 ## Concept
 
-> Let Φ(x) be a property provable about objects x of type T. Then Φ(y)should be true for objects y of type S where S is a subtype of T.<br/>
-> -*Barbara Liskov and Jeannette Wing*
+> Let Φ(x) be a property provable about objects x of type T. Then Φ(y)should be true for objects y of type S where S is a subtype of T.<br/> -_Barbara Liskov and Jeannette Wing_
 
 The general idea of **LSP** is **substitutability**, where a superclass can be replaced with its subclass without altering any properties of the application. Thus, objects of the subclasses required to behave in similar to the objects of the superclass.
 
@@ -44,11 +46,13 @@ In **object-oriented programming (OOP)** such as Java has a concept called **Inh
 ---
 
 <a name="example"></a>
+
 ## Example
 
 LSP is easier to abuse due to this principle is depends on the behavior of the classes than structures. Thus, the compiler would not catch any error in the application and it will work, but mostly lead to buggy or difficult to maintain code.
 
 <a name="bad-example"></a>
+
 ### Bad Example
 
 Below is the bad application of LSP for vehicle application.
@@ -64,7 +68,8 @@ public class Vehicle {
   public void startEngine() { ... }
 }
 ```
-***Vehicle.java***
+
+**_Vehicle.java_**
 
 ```java
 public class Car extends Vehicle {
@@ -73,7 +78,8 @@ public class Car extends Vehicle {
   public void startEngine() { ... }
 }
 ```
-***Car.java***
+
+**_Car.java_**
 
 Above shown Car class is a subclass of Vehicle class. Thus, Car is overriding the `startEngine` method of its superclass.
 
@@ -84,13 +90,15 @@ public class Bicycle extends Vehicle {
   public void startEngine() { ... }
 }
 ```
-***Bicycle.java***
+
+**_Bicycle.java_**
 
 But if Bicycle class inherited Vehicle class, it leads to incorrect behavior due to bicycle do not have any engine. Therefore, the `startEngine` method is redundant and useless for Bicycle class.
 
 Therefore, this violate the LSP which result in a method in class does nothing, or simply cannot be implemented due incorrect behavior.
 
 <a name="good-example"></a>
+
 ### Good Example
 
 To fix the violation, each vehicle need to classify either with or without engines. In this case, bicycle as vehicle without engine while car with engine.
@@ -104,7 +112,8 @@ public class Vehicle {
   // public setter and getter
 }
 ```
-***Vehicle.java***
+
+**_Vehicle.java_**
 
 ```java
 public class VehicleWithEngine extends Vehicle {
@@ -112,7 +121,8 @@ public class VehicleWithEngine extends Vehicle {
   public void startEngine() { ... }
 }
 ```
-***VehicleWithEngine.java***
+
+**_VehicleWithEngine.java_**
 
 ```java
 public class VehicleWithoutEngine extends Vehicle {
@@ -120,7 +130,8 @@ public class VehicleWithoutEngine extends Vehicle {
   public void startMoving() { ... }
 }
 ```
-***VehicleWithoutEngine.java***
+
+**_VehicleWithoutEngine.java_**
 
 ```java
 public class Car extends VehicleWithEngine {
@@ -129,7 +140,8 @@ public class Car extends VehicleWithEngine {
   public void startEngine() { .. }
 }
 ```
-***Car.java***
+
+**_Car.java_**
 
 ```java
 public class Bicycle extends VehicleWithoutEngine {
@@ -138,13 +150,15 @@ public class Bicycle extends VehicleWithoutEngine {
   public void startMoving() { ... }
 }
 ```
-***Bicycle.java***
+
+**_Bicycle.java_**
 
 Therefore, with more classes to differentiate vehicle with or without engine, the implementation now adhere to LSP.
 
 ---
 
 <a name="conclusion"></a>
+
 ## Conclusion
 
 In conclusion, Liskov Substitution Principle enables developer to replace a parent class with subclass without breaking the application.
@@ -156,8 +170,9 @@ Thus, developer need careful about the behavior of class when developing an appl
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
-* [Liskov Substitution Principle; springframework.guru](https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/)
-* [SOLID Design Principles Explained: The Liskov Substitution Principle with Code Examples; stackify.com](https://stackify.com/solid-design-liskov-substitution-principle/)
+- [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+- [Liskov Substitution Principle; springframework.guru](https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/)
+- [SOLID Design Principles Explained: The Liskov Substitution Principle with Code Examples; stackify.com](https://stackify.com/solid-design-liskov-substitution-principle/)

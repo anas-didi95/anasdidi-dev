@@ -1,13 +1,13 @@
-import React from "react"
-import GatsbyImage, { FixedObject } from "gatsby-image"
-import { Link } from "gatsby"
-import { TRoutes } from "../utils/hooks/useRoutes"
+import React from "react";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { TRoutes } from "../utils/hooks/use-routes";
 
 interface IHeader {
-  headerImage: FixedObject
-  isActive: boolean
-  routes: TRoutes[]
-  toggleMenu: () => void
+  headerImage: IGatsbyImageData;
+  isActive: boolean;
+  routes: TRoutes[];
+  toggleMenu: () => void;
 }
 const Header: React.FC<IHeader> = ({
   headerImage,
@@ -23,10 +23,9 @@ const Header: React.FC<IHeader> = ({
       <div className="navbar-brand">
         <span className="ml-4" />
         <Link className="navbar-item" to="/" aria-label="Home">
-          <GatsbyImage fixed={headerImage} />
+          <GatsbyImage image={headerImage} alt="Header" />
         </Link>
-        <a
-          role="button"
+        <button
           className={`navbar-burger ${isActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
@@ -34,11 +33,11 @@ const Header: React.FC<IHeader> = ({
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-        </a>
+        </button>
       </div>
       <div className={`navbar-menu ${isActive ? "is-active" : ""}`}>
         <div className="navbar-end">
-          {routes.map((route) => (
+          {routes.map(route => (
             <Link
               key={`route${route.path}`}
               className="navbar-item"
@@ -51,6 +50,6 @@ const Header: React.FC<IHeader> = ({
       </div>
     </nav>
   </header>
-)
+);
 
-export default Header
+export default Header;

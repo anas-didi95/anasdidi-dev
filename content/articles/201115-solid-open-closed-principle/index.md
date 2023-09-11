@@ -8,9 +8,10 @@ tags: ["solid", "design-principle", "oop"]
 
 **SOLID** is a set of five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
 
-Robert C. Martin introduced the theory of SOLID in year 2000 on his paper *Design Principles and Design Patterns*. Later, Micheal Feathers introduced the SOLID acronym.
+Robert C. Martin introduced the theory of SOLID in year 2000 on his paper _Design Principles and Design Patterns_. Later, Micheal Feathers introduced the SOLID acronym.
 
 SOLID stands for
+
 - **S**ingle-responsibility Principle
 - **O**pen-closed Principle
 - **L**iskov Substitution Principle
@@ -22,28 +23,31 @@ Following writing will discussed on one of the principles which is **Open-closed
 ---
 
 ## Table of contents
-* [Concept](#concept)
-* [Example](#example)
-  * [Bad Example](#bad-example)
-  * [Good Example](#good-example)
-* [Conclusion](#conclusion)
-* [References](#references)
+
+- [Concept](#concept)
+- [Example](#example)
+  - [Bad Example](#bad-example)
+  - [Good Example](#good-example)
+- [Conclusion](#conclusion)
+- [References](#references)
 
 ---
 
 <a name="concept"></a>
+
 ## Concept
 
-> "Software entities should be open for extension, but closed for modification."<br/>
->  -*Bertrand Mayer*
+> "Software entities should be open for extension, but closed for modification."<br/> -_Bertrand Mayer_
 
 The general idea of **Open-closed Principle** is we will be able to add new features without changes the existing implementation of the project. This principle will avoid any changes required other classes as dependencies in the project.
 
 Therefore, the summary of the definition as below:
+
 - **Open for extension** - Project can add any new features.
 - **Closed for modification** - Adding new feature does not result in changes to other classes of the project.
 
 To design for Open-closed Principle, we can adopt either of two (generally used) pattern.
+
 - **Implementation inheritance** - Uses abstract classes and methods.
 - **Interface inheritance** - Uses interface.
 
@@ -52,9 +56,11 @@ Using **interface** is better instead of classes to enable different implementat
 ---
 
 <a name="example"></a>
+
 ## Example
 
 <a name="bad-example"></a>
+
 ### Bad Example
 
 Below are implementation for Calculator project.
@@ -63,7 +69,8 @@ Below are implementation for Calculator project.
 public interface IOperation {
 }
 ```
-***IOperation.java***
+
+**_IOperation.java_**
 
 ```java
 public class Addition implements IOperation {
@@ -79,7 +86,8 @@ public class Addition implements IOperation {
     //Setters and getters
 }
 ```
-***Addition.java***
+
+**_Addition.java_**
 
 ```java
 public class Substraction implements IOperation {
@@ -95,14 +103,16 @@ public class Substraction implements IOperation {
     //Setters and getters
 }
 ```
-***Substraction.java***
+
+**_Substraction.java_**
 
 ```java
 public interface ICalculator {
   void calculate(IOperation operation)
 }
 ```
-***ICalculator.java***
+
+**_ICalculator.java_**
 
 ```java
 public class SimpleCalculator implements ICalculator {
@@ -123,11 +133,13 @@ public class SimpleCalculator implements ICalculator {
     }
 }
 ```
-***SimpleCalculator.java***
 
-From the implementation, by adding new feature such as Multiplication, ***SimpleCalculater.java*** need to update. Thus, this code breaking Open-closed Principle.
+**_SimpleCalculator.java_**
+
+From the implementation, by adding new feature such as Multiplication, **_SimpleCalculater.java_** need to update. Thus, this code breaking Open-closed Principle.
 
 <a name="good-example"></a>
+
 ### Good Example
 
 Therefore, we need to abstract the functionality what changes in the project. In this project, the calculation part is changes with every new operations.
@@ -137,7 +149,8 @@ public interface IOperation {
   void performOperation();
 }
 ```
-***IOperation.java***
+
+**_IOperation.java_**
 
 ```java
 public class Addition implements IOperation {
@@ -158,7 +171,8 @@ public class Addition implements IOperation {
     //Setters and getters
 }
 ```
-***Addition.java***
+
+**_Addition.java_**
 
 ```java
 public class Substraction implements IOperation {
@@ -179,14 +193,16 @@ public class Substraction implements IOperation {
     //Setters and getters
 }
 ```
-***Substraction.java***
+
+**_Substraction.java_**
 
 ```java
 public interface ICalculator {
   void calculate(IOperation operation)
 }
 ```
-***ICalculator.java***
+
+**_ICalculator.java_**
 
 ```java
 public class SimpleCalculator implements ICalculator {
@@ -201,7 +217,8 @@ public class SimpleCalculator implements ICalculator {
     }
 }
 ```
-***SimpleCalculator.java***
+
+**_SimpleCalculator.java_**
 
 Thus, we can add new operation such as Multiplication without need to change the current implementation. Any new operation will easily integrate with existing implementation.
 
@@ -224,11 +241,13 @@ public class Multiplication implements IOperation {
     //Setters and getters
 }
 ```
-***Multiplication.java***
+
+**_Multiplication.java_**
 
 ---
 
 <a name="conclusion"></a>
+
 ## Conclusion
 
 In conclusion, Open-closed Principle is a guideline on how developers can build code that allows change over time. With introduction of agile practice, add new features is common. If the current implementation not built to enable change, it will be difficult, time-consuming, error-prone and costly.
@@ -238,8 +257,9 @@ By adhere to the principle of open to extension but closed for modification, we 
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
-* [Open closed principle; howtodoinjava.com](https://howtodoinjava.com/design-patterns/open-closed-principle/)
-* [SOLID Design Principles Explained: The Open/Closed Principle with Code Examples; stackify.com](https://stackify.com/solid-design-open-closed-principle/)
+- [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+- [Open closed principle; howtodoinjava.com](https://howtodoinjava.com/design-patterns/open-closed-principle/)
+- [SOLID Design Principles Explained: The Open/Closed Principle with Code Examples; stackify.com](https://stackify.com/solid-design-open-closed-principle/)

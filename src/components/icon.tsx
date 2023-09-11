@@ -1,10 +1,10 @@
-import React from "react"
-import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr"
-import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5"
-import { TPaginationEnum, TSocialEnum } from "../utils/types"
+import React from "react";
+import { GrMail, GrGithub, GrLinkedin, GrGlobe } from "react-icons/gr";
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
+import { TPaginationEnum, TSocialEnum } from "../utils/types";
 
 interface IIcon {
-  type: TSocialEnum | TPaginationEnum
+  type: TSocialEnum | TPaginationEnum;
 }
 const Icon: React.FC<IIcon> = ({ type }) => (
   <>
@@ -20,6 +20,6 @@ const Icon: React.FC<IIcon> = ({ type }) => (
       }[type]
     }{" "}
   </>
-)
+);
 
-export default Icon
+export default Icon;

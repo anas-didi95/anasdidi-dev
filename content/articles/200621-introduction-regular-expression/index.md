@@ -8,37 +8,39 @@ tags: ["regex", "regular", "expression"]
 
 Regular expression or shortened as **regex** is a sequence of characters to define a search pattern.
 
-Regex allows us to search for specific, standard textual syntax for representing patterns for matching text. 
+Regex allows us to search for specific, standard textual syntax for representing patterns for matching text.
 
 Though look complicated, regex are very powerful as it can be used to create and match any text pattern.
 
-Usually, operations such as string searching algorithms and input validation solved by using regex. 
+Usually, operations such as string searching algorithms and input validation solved by using regex.
 
 Thus, regex is used in search engines and in search and replace dialog of text editors.
 
 ---
 
 ## Table of contents
-* [Metacharacter](#metacharacter)
-  * [^ *(Caret)*](#caret)
-  * [. *(Dot)*](#dot)
-  * [\[ \]](#square-bracket)
-  * [\[^ \]](#caret-bracket)
-  * [$ *(Dollar)*](#dollar)
-  * [* *(Asterisk)*](#asterisk)
-  * [+ *(Plus)*](#plus)
-  * [? *(Question mark)*](#question-mark)
-  * [{n}](#curly-n)
-  * [{n,m}](#curly-m-n)
-  * [| *(Pipe)*](#pipe)
-* [Example usage](#example-usage)
-  * [Email validation](#email-validation)
-  * [Phone validation](#phone-validation)
-* [References](#references)
+
+- [Metacharacter](#metacharacter)
+  - [^ _(Caret)_](#caret)
+  - [. _(Dot)_](#dot)
+  - [\[ \]](#square-bracket)
+  - [\[^ \]](#caret-bracket)
+  - [$ _(Dollar)_](#dollar)
+  - [\* _(Asterisk)_](#asterisk)
+  - [+ _(Plus)_](#plus)
+  - [? _(Question mark)_](#question-mark)
+  - [{n}](#curly-n)
+  - [{n,m}](#curly-m-n)
+  - [| _(Pipe)_](#pipe)
+- [Example usage](#example-usage)
+  - [Email validation](#email-validation)
+  - [Phone validation](#phone-validation)
+- [References](#references)
 
 ---
 
 <a name="metacharacter"></a>
+
 ## Metacharacter
 
 Metacharacter is a character that has a special meaning to a regex.
@@ -48,20 +50,21 @@ Following are the common metacharacters in regex and description:
 ---
 
 <a name="caret"></a>
-### ^ *(Caret)*
+
+### ^ _(Caret)_
 
 Matches the starting position within the string.
 
 **Example**
 ![Caret](./01-caret.png)
 
-
 ---
 
 <a name="dot"></a>
-### . *(Dot)*
 
-Matches any single character. Can be used as *wildcard* character.
+### . _(Dot)_
+
+Matches any single character. Can be used as _wildcard_ character.
 
 **Example**
 ![Dot](./02-dot.png)
@@ -69,6 +72,7 @@ Matches any single character. Can be used as *wildcard* character.
 ---
 
 <a name="square-bracket"></a>
+
 ### [ ]
 
 Matches a single character that is contained within the bracket.
@@ -84,6 +88,7 @@ Matches a single character that is contained within the bracket.
 ---
 
 <a name="caret-bracket"></a>
+
 ### [\^ ]
 
 Matches a single character that is not contained within the bracket.
@@ -99,7 +104,8 @@ Matches a single character that is not contained within the bracket.
 ---
 
 <a name="dollar"></a>
-### $ *(Dollar)*
+
+### $ _(Dollar)_
 
 Matches the ending position of the string.
 
@@ -109,7 +115,8 @@ Matches the ending position of the string.
 ---
 
 <a name="asterisk"></a>
-### * *(Asterisk)*
+
+### \* _(Asterisk)_
 
 A repeater where matches when the character preceding `*` matches 0 or more times.
 
@@ -119,7 +126,8 @@ A repeater where matches when the character preceding `*` matches 0 or more time
 ---
 
 <a name="plus"></a>
-### + *(Plus)*
+
+### + _(Plus)_
 
 A repeater where matches when the character preceding `+` matches at least one or more times.
 
@@ -129,7 +137,8 @@ A repeater where matches when the character preceding `+` matches at least one o
 ---
 
 <a name="question-mark"></a>
-### ? *(Question mark)*
+
+### ? _(Question mark)_
 
 Matches when the character preceding `?` occurs 0 or 1 time only, making the character optional.
 
@@ -139,9 +148,10 @@ Matches when the character preceding `?` occurs 0 or 1 time only, making the cha
 ---
 
 <a name="curly-n"></a>
+
 ### {n}
 
-Matches when the preceding character occurs *n* times.
+Matches when the preceding character occurs _n_ times.
 
 **Example**
 ![Curly n](./09-curly-n.png)
@@ -149,9 +159,10 @@ Matches when the preceding character occurs *n* times.
 ---
 
 <a name="curly-m-n"></a>
+
 ### {m,n}
 
-Matches when the preceding character occurs at least *m* and not more than *n* times.
+Matches when the preceding character occurs at least _m_ and not more than _n_ times.
 
 **Example**
 ![Curly m n](./10-curly-m-n.png)
@@ -159,7 +170,8 @@ Matches when the preceding character occurs at least *m* and not more than *n* t
 ---
 
 <a name="pipe"></a>
-### | *(Pipe)*
+
+### | _(Pipe)_
 
 Matches either the expression before or expression after the `|`.
 
@@ -169,15 +181,17 @@ Matches either the expression before or expression after the `|`.
 ---
 
 <a name="example-usage"></a>
+
 ## Example usage
 
-Following are common usages of regex. 
+Following are common usages of regex.
 
 If the usage required to use metacharacter as literal character, we can used backslash `\` to escape the character.
 
 ---
 
 <a name="email-validation"></a>
+
 ### Email validation
 
 `^[a-z0-9_\.]+@[a-z]+\.[a-z]{2,3}$`
@@ -188,6 +202,7 @@ If the usage required to use metacharacter as literal character, we can used bac
 ---
 
 <a name="phone-validation"></a>
+
 ### Phone validation
 
 Regex is used to match phone validation used in Malaysia.
@@ -200,9 +215,9 @@ Regex is used to match phone validation used in Malaysia.
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [Regular Expression; wikipedia.org](https://en.wikipedia.org/wiki/Regular_expression)
-* [A Programmer's Guide to Regex or Regular Expressions; hackernoon.com](https://hackernoon.com/a-programmers-guide-to-regex-or-regular-expressions-0daw30be)
-* [Online regex tester and debugger; regex101.com](https://regex101.com/)
-
+- [Regular Expression; wikipedia.org](https://en.wikipedia.org/wiki/Regular_expression)
+- [A Programmer's Guide to Regex or Regular Expressions; hackernoon.com](https://hackernoon.com/a-programmers-guide-to-regex-or-regular-expressions-0daw30be)
+- [Online regex tester and debugger; regex101.com](https://regex101.com/)

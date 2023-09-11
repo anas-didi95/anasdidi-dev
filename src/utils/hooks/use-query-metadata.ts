@@ -1,21 +1,20 @@
-import { useStaticQuery, graphql } from "gatsby"
-import { MetadataQuery } from "../../../graphql-types"
+import { useStaticQuery, graphql } from "gatsby";
 
 export type IQueryMetadata = {
-  title: string
-  description: string
-  author: string
-  fullname: string
-  position: string
+  title: string;
+  description: string;
+  author: string;
+  fullname: string;
+  position: string;
   social: {
-    email: string
-    github: string
-    linkedin: string
-    web: string
-  }
-}
+    email: string;
+    github: string;
+    linkedin: string;
+    web: string;
+  };
+};
 export const useQueryMetadata = (): IQueryMetadata => {
-  const data: MetadataQuery = useStaticQuery(graphql`
+  const data: Queries.MetadataQuery = useStaticQuery(graphql`
     query Metadata {
       site {
         siteMetadata {
@@ -33,7 +32,7 @@ export const useQueryMetadata = (): IQueryMetadata => {
         }
       }
     }
-  `)
+  `);
 
   return {
     author: data.site?.siteMetadata?.author ?? "",
@@ -47,5 +46,5 @@ export const useQueryMetadata = (): IQueryMetadata => {
       linkedin: data.site?.siteMetadata?.social?.linkedin ?? "",
       web: data.site?.siteMetadata?.social?.web ?? "",
     },
-  }
-}
+  };
+};

@@ -1,7 +1,6 @@
-.cache
-node_modules
-public
-graphql-types.d.ts
+.vscode-server/
+.npm/
+.cache/
+package.json
 package-lock.json
-schema.json
-yarn.lock
+public

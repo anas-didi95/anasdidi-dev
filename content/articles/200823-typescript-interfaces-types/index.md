@@ -19,20 +19,22 @@ Sometimes, **Type Aliases** is similar to **Interfaces**. However, both have dif
 ---
 
 ## Table of contents
-* [Types Aliases](#types-aliases)
-* [Interfaces](#interfaces)
-* [Comparison between Types Aliases and Interfaces](#comparison-types-interfaces)
-  * [1. Object / Function](#1-object-function)
-  * [2. Other Type](#2-other-type)
-  * [3. Extend](#3-extend)
-  * [4. Implements](#4-implements)
-  * [5. Declaration Merging](#5-declaration-merging)
-* [Types Aliases and Interfaces Comparison Table](#types-intefaces-comparison-table)
-* [References](#references)
+
+- [Types Aliases](#types-aliases)
+- [Interfaces](#interfaces)
+- [Comparison between Types Aliases and Interfaces](#comparison-types-interfaces)
+  - [1. Object / Function](#1-object-function)
+  - [2. Other Type](#2-other-type)
+  - [3. Extend](#3-extend)
+  - [4. Implements](#4-implements)
+  - [5. Declaration Merging](#5-declaration-merging)
+- [Types Aliases and Interfaces Comparison Table](#types-intefaces-comparison-table)
+- [References](#references)
 
 ---
 
 <a name="types-aliases"></a>
+
 ## Type Aliases
 
 **Types Aliases** is used to create a new name for a type. It provides a way to name primitives, unions, tuples and any other types.
@@ -40,23 +42,25 @@ Sometimes, **Type Aliases** is similar to **Interfaces**. However, both have dif
 Keyword `type` is used to define Type aliases.
 
 For example,
-```typescript
-type Hour = number
 
-let timeInHour: Hour = 10
-console.log(typeof(timeInHour))
+```typescript
+type Hour = number;
+
+let timeInHour: Hour = 10;
+console.log(typeof timeInHour);
 // Output: [LOG]: number
 
-let time: Hour = 12
-console.log(typeof(time))
+let time: Hour = 12;
+console.log(typeof time);
 // Output: [LOG]: number
 ```
 
-Based on the example, aliasing does not create a new type, but to create a new *name* to refer to other type.
+Based on the example, aliasing does not create a new type, but to create a new _name_ to refer to other type.
 
 ---
 
 <a name="interfaces"></a>
+
 ## Interfaces
 
 **Interfaces** is used to describe data shapes such as an object to provides type-checking on the shape that values have. Therefore, interfaces are a way to defining contracts within the code as well contract with code outside the project.
@@ -64,21 +68,22 @@ Based on the example, aliasing does not create a new type, but to create a new *
 Keyword `interface` is used to define interfaces.
 
 For example,
+
 ```typescript
 interface Book {
-    author: string
-    title: string
+  author: string;
+  title: string;
 }
 
 let book1: Book = {
-    title: "Cracking the Coding Interview",
-    author: "Gayle Laakmann McDowell"
-}
+  title: "Cracking the Coding Interview",
+  author: "Gayle Laakmann McDowell",
+};
 
-console.log(typeof(book1))
+console.log(typeof book1);
 // Output: [LOG]: object
 
-console.log(book1)
+console.log(book1);
 // Output: [LOG]: { "title": "Cracking the Coding Interview", "author": "Gayle Laakmann McDowell" }
 ```
 
@@ -87,6 +92,7 @@ Based on the example, interfaces provides the powerful way to define entities.
 ---
 
 <a name="comparison-types-interfaces"></a>
+
 ## Comparison between Types Aliases and Interfaces
 
 Following is the list of differences of type aliases and interfaces.
@@ -94,112 +100,132 @@ Following is the list of differences of type aliases and interfaces.
 ---
 
 <a name="1-object-function"></a>
+
 ### 1. Object / Function
 
 Both can be used to describe the shape of an object or a function signature. But the syntax differs.
 
 **Type alias**
+
 ```typescript
 type Point = {
-  x: number
-  y: number
-}
+  x: number;
+  y: number;
+};
 
-type SetPoint = (x: number, y: number) => Point
+type SetPoint = (x: number, y: number) => Point;
 ```
 
 **Interface**
+
 ```typescript
 interface Point {
-    x: number
-    y: number
+  x: number;
+  y: number;
 }
 
 interface SetPoint {
-    (x: number, y: number): Point
+  (x: number, y: number): Point;
 }
 ```
 
 ---
 
 <a name="2-other-type"></a>
+
 ### 2. Other Type
 
 Only type alias can be used for other types such as primitives, unions and tuples.
+
 ```typescript
 // Primitive
-type Name = string
+type Name = string;
 
 // Object
-type PartialPointX = { x: number }
-type PartialPointY = { y: number }
+type PartialPointX = { x: number };
+type PartialPointY = { y: number };
 
 // Union
-type PartialPoint = PartialPointX | PartialPointY
+type PartialPoint = PartialPointX | PartialPointY;
 
 // Tuple
-type Data = [number, string]
+type Data = [number, string];
 ```
 
 ---
 
 <a name="3-extend"></a>
+
 ### 3. Extend
 
 Both can be extended, but the syntax differs. Moreover, an interface and type alias are not mutually exclusive. Thus, an interface can extend a type alias and vice versa.
 
 **Interface extends interface**
+
 ```typescript
-interface PartialPointX { x: number }
-interface Point extends PartialPointX { y: number }
+interface PartialPointX {
+  x: number;
+}
+interface Point extends PartialPointX {
+  y: number;
+}
 ```
 
 **Type alias extends type alias**
+
 ```typescript
-type PartialPointX = { x: number }
-type Point = PartialPointX & { y: number }
+type PartialPointX = { x: number };
+type Point = PartialPointX & { y: number };
 ```
 
 **Interface extends type alias**
+
 ```typescript
 type PartialPointX = { x: number };
-interface Point extends PartialPointX { y: number }
+interface Point extends PartialPointX {
+  y: number;
+}
 ```
 
 **Type alias extends interface**
+
 ```typescript
-interface PartialPointX { x: number }
-type Point = PartialPointX & { y: number }
+interface PartialPointX {
+  x: number;
+}
+type Point = PartialPointX & { y: number };
 ```
 
 ---
 
 <a name="4-implements"></a>
+
 ### Implements
 
 A class can implement an interface or type alias. However, they cannot implement/extend a type alias that names a union type.
+
 ```typescript
 interface Point {
-  x: number
-  y: number
+  x: number;
+  y: number;
 }
 
 class SomePoint implements Point {
-  x = 1
-  y = 2
+  x = 1;
+  y = 2;
 }
 
 type Point2 = {
-  x: number
-  y: number
+  x: number;
+  y: number;
 };
 
 class SomePoint2 implements Point2 {
-  x = 1
-  y = 2
+  x = 1;
+  y = 2;
 }
 
-type PartialPoint = { x: number } | { y: number }
+type PartialPoint = { x: number } | { y: number };
 
 /*
  * ERROR:
@@ -207,29 +233,36 @@ type PartialPoint = { x: number } | { y: number }
  * intersection of object types with statically known members.(2422)
  **/
 class SomePartialPoint implements PartialPoint {
-  x = 1
-  y = 2
+  x = 1;
+  y = 2;
 }
 ```
 
 ---
 
 <a name="5-declaration-merging"></a>
+
 ### 5. Declaration Merging
 
 Only interface can be defined multiple times and will be treated as a single interface (with members of all declarations being merged).
+
 ```typescript
 // These two declarations become:
 // interface Point { x: number; y: number; }
-interface Point { x: number }
-interface Point { y: number }
+interface Point {
+  x: number;
+}
+interface Point {
+  y: number;
+}
 
-const point: Point = { x: 1, y: 2 }
+const point: Point = { x: 1, y: 2 };
 ```
 
 ---
 
 <a name="types-intefaces-comparison-table"></a>
+
 ## Types Aliases and Interfaces Comparison Table
 
 Below is the summary of comparison between type alias and interface.
@@ -281,9 +314,10 @@ Below is the summary of comparison between type alias and interface.
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [TypeScript Official Website; typescriptlang.org](https://www.typescriptlang.org/)
-* [Types vs. interfaces in TypeScript; logrocket.com](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
-* [TypeScript Type vs Interface; educba.com](https://www.educba.com/typescript-type-vs-interface/)
-* [TypeScript: Interfaces vs Types; stackoverflow.com](https://stackoverflow.com/questions/37233735/typescript-interfaces-vs-types)
+- [TypeScript Official Website; typescriptlang.org](https://www.typescriptlang.org/)
+- [Types vs. interfaces in TypeScript; logrocket.com](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
+- [TypeScript Type vs Interface; educba.com](https://www.educba.com/typescript-type-vs-interface/)
+- [TypeScript: Interfaces vs Types; stackoverflow.com](https://stackoverflow.com/questions/37233735/typescript-interfaces-vs-types)
