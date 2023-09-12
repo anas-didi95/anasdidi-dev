@@ -9,25 +9,27 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    title: `Anas Juwaidi's Blog`,
+    description: `My personal blog developed using Gatsby and TypeScript.`,
+    author: `@anasdidi95`,
+    fullname: "Anas Juwaidi Bin Mohd Jeffry",
+    position: "Software Engineer",
     social: {
-      twitter: `kylemathews`,
+      email: "anas.didi95@gmail.com",
+      github: "https://github.com/anas-didi95",
+      linkedin: "https://www.linkedin.com/in/anas-juwaidi-mohd-jeffry",
+      web: "https://anasdidi.dev/",
     },
   },
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: `content`,
+        path: `${__dirname}/content`,
       },
     },
     {
@@ -44,7 +46,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 768,
             },
           },
           {
@@ -84,8 +86,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                });
+              });
             },
             query: `{
               allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
@@ -123,4 +125,4 @@ module.exports = {
       },
     },
   ],
-}
+};

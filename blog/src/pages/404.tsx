@@ -1,34 +1,48 @@
-import React from "react"
-import { graphql, PageProps } from "gatsby"
-import { WindowLocation } from "@reach/router"
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { useQueryImage } from "../utils/hooks/use-query-image";
+import { HeadFC } from "gatsby";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import AppLayout from "../layouts/app-layout";
+import Box from "../components/box";
+import ResponsiveBreakpoint from "../components/responsive-breakpoint";
+import Button from "../components/button";
+import SEO from "../components/seo";
 
-const NotFoundPage: React.FC<{
-  location: WindowLocation
-  data: Queries.IndexPageQuery
-}> = ({ data, location }) => {
-  const siteTitle = data.site?.siteMetadata?.title ?? ""
+const Error404Page: React.FC<{}> = () => {
+  const { warning } = useQueryImage();
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </Layout>
-  )
-}
+    <AppLayout>
+      <ResponsiveBreakpoint />
+      <div className="columns">
+        <div className="column" />
+        <div className="column is-6">
+          <Box>
+            <div className="columns">
+              <div className="column is-3 has-text-centered">
+                <GatsbyImage image={warning} alt="Warning" />
+              </div>
+              <div className="column">
+                <p className="title">Page Not Found!</p>
+                <p className="content">
+                  Looks like you've followed a broken link or entered a URL that
+                  doesn't exist on this site.
+                </p>
+                <div className="buttons">
+                  <Button type="link" value="Return to Home" link="/" />
+                </div>
+              </div>
+            </div>
+          </Box>
+        </div>
+        <div className="column" />
+      </div>
+      <ResponsiveBreakpoint />
+    </AppLayout>
+  );
+};
 
-export const Head = () => <Seo title="404: Not Found" />
+export default Error404Page;
 
-export default NotFoundPage
-
-export const pageQuery = graphql`
-  query NotFoundPage {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+export const Head: HeadFC = () => <SEO siteTitle="Error 404" />;

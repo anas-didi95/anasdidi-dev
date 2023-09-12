@@ -1,16 +1,19 @@
-import React from "react"
-import GatsbyImage from "gatsby-image"
-import AppLayout from "../layouts/AppLayout"
-import Box from "../components/Box"
-import ResponsiveBreakpoint from "../components/ResponsiveBreakpoint"
-import Button from "../components/Button"
-import { useQueryImage } from "../utils/hooks/useQueryImage"
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { useQueryImage } from "../utils/hooks/use-query-image";
+import { HeadFC } from "gatsby";
+
+import AppLayout from "../layouts/app-layout";
+import Box from "../components/box";
+import ResponsiveBreakpoint from "../components/responsive-breakpoint";
+import Button from "../components/button";
+import SEO from "../components/seo";
 
 const Error404Page: React.FC<{}> = () => {
-  const { warning } = useQueryImage()
+  const { warning } = useQueryImage();
 
   return (
-    <AppLayout title="Error 404">
+    <AppLayout>
       <ResponsiveBreakpoint />
       <div className="columns">
         <div className="column" />
@@ -18,7 +21,7 @@ const Error404Page: React.FC<{}> = () => {
           <Box>
             <div className="columns">
               <div className="column is-3 has-text-centered">
-                <GatsbyImage fixed={warning} />
+                <GatsbyImage image={warning} alt="Warning" />
               </div>
               <div className="column">
                 <p className="title">Page Not Found!</p>
@@ -37,7 +40,9 @@ const Error404Page: React.FC<{}> = () => {
       </div>
       <ResponsiveBreakpoint />
     </AppLayout>
-  )
-}
+  );
+};
 
-export default Error404Page
+export default Error404Page;
+
+export const Head: HeadFC = () => <SEO siteTitle="Error 404" />;
