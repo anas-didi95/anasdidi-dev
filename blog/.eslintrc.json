@@ -1,6 +1,0 @@
-{
-  "globals": {
-    "__PATH_PREFIX__": "readonly"
-  },
-  "extends": "react-app"
-}
