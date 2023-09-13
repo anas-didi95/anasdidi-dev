@@ -54,11 +54,12 @@
     "develop": "gatsby develop --host 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "postinstall": "gatsby clean",
-    "prebuild": "npm run type-check",
+    "prebuild": "npm run clean",
+    "preformat": "npm run type-check",
     "serve": "gatsby serve --host 0.0.0.0",
     "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "type-check": "tsc --noEmit"
   }
 }
