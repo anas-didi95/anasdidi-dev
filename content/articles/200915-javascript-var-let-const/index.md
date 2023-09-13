@@ -15,18 +15,20 @@ Each keyword can be compared from their **scope** and **usage**.
 ---
 
 ## Table of contents
-* [Scope](#scope)
-  * [Global scope](#global-scope)
-  * [Function scope](#function-scope)
-  * [Block scope](#block-scope)
-* [Variable re-declare](#variable-redeclare)
-* [Variable constant](#variable-constant)
-* [Summary](#summary)
-* [References](#references)
+
+- [Scope](#scope)
+  - [Global scope](#global-scope)
+  - [Function scope](#function-scope)
+  - [Block scope](#block-scope)
+- [Variable re-declare](#variable-redeclare)
+- [Variable constant](#variable-constant)
+- [Summary](#summary)
+- [References](#references)
 
 ---
 
 <a name="scope"></a>
+
 ## Scope
 
 **Scope** is defined as where the variables are available for use. In JavaScript, it has two type of common scopes; **Global scope** or **Function scope**.
@@ -38,11 +40,13 @@ Therefore, unlike `var` keyword which has global scope and function scope, `let`
 ---
 
 <a name="global-scope"></a>
+
 ### Global Scope
 
 **Global scope** is applied to variable declared globally (outside any function).
 
 **Example**
+
 ```javascript
 var name = "Anas";
 
@@ -56,13 +60,14 @@ In the example, variable `name` can be access anywhere as it is defined as globa
 ---
 
 <a name="function-scope"></a>
+
 ### Function scope
 
 **Function scope** is applied to variable declared locally (inside a function).
 
 **Example**
-```javascript
 
+```javascript
 function getGreet() {
   var greet = "Hi";
   console.log(greet);
@@ -74,36 +79,39 @@ In the example, variable `greet` can only be access from inside the function it 
 ---
 
 <a name="block-scope"></a>
+
 ### Block scope
 
 **Block scope** is applied to variable which is using `let` and `const` keyword. The variables with block scope cannot be access from outside the block.
 
 **Example**
+
 ```javascript
 {
   var a = 10;
-  console.log("1: "+a); // Output: 1: 10
+  console.log("1: " + a); // Output: 1: 10
 }
 {
   a++;
-  console.log("2: "+a); // Output: 2: 11
+  console.log("2: " + a); // Output: 2: 11
 }
-console.log("3: "+a); // Output: 3: 11
+console.log("3: " + a); // Output: 3: 11
 ```
 
-In the example, the `a` variable can be use outside the block as it is declared using `var` keyword.  Next is example for using `let` to declare variable.
+In the example, the `a` variable can be use outside the block as it is declared using `var` keyword. Next is example for using `let` to declare variable.
 
 **Example**
+
 ```javascript
 {
   let b = 10;
-  console.log("1: "+b); // Output: 1: 10
+  console.log("1: " + b); // Output: 1: 10
 }
 {
   b++;
-  console.log("2: "+b); // Output: ERROR! Uncaught ReferenceError: b is not defined
+  console.log("2: " + b); // Output: ERROR! Uncaught ReferenceError: b is not defined
 }
-console.log("3: "+b);
+console.log("3: " + b);
 ```
 
 In the example, using `let` will produce error as variable `b` is declared on first block, but second block try to access it.
@@ -111,11 +119,13 @@ In the example, using `let` will produce error as variable `b` is declared on fi
 ---
 
 <a name="variable-redeclare"></a>
+
 ## Variable re-declare
 
 The usage of `var` allow the developer to re-declare existing variable within same scope and will not caught any error.
 
 **Example**
+
 ```javascript
 var greet = "Hello";
 console.log(greet); // Output: Hello
@@ -127,6 +137,7 @@ console.log(greet);
 In the example, `greet` is declared twice and its value is updated when re-declared. But for `let` and `const`, re-declared existing variable within same scope will produce error.
 
 **Example**
+
 ```javascript
 let greet = "Hello";
 console.log(greet);
@@ -142,11 +153,13 @@ Therefore, using `let` and `const` help the developer to avoid re-declare any ex
 ---
 
 <a name="variable-constant"></a>
+
 ## Variable constant
 
 ES6 also introduce a way to declare constant using `const` keyword. Any variable declared with `const` cannot be re-assigned to a different value.
 
 **Example**
+
 ```javascript
 const name = "Anas";
 console.log(name); // Output: Anas
@@ -158,6 +171,7 @@ console.log(name); // Output: ERROR! Uncaught TypeError: Assignment to constant 
 However, the value of the variable is not fixed and it is mutable.
 
 **Example**
+
 ```javascript
 const lang = ["en", "my"];
 const me = { firstName: "Anas" };
@@ -172,6 +186,7 @@ console.log(me); // Output: {firstName: "Anas", lastName: "Juwaidi"}
 ---
 
 <a name="summary"></a>
+
 ## Summary
 
 Following is the summary table between `var`, `let` and `const` keyword.
@@ -224,7 +239,8 @@ Following is the summary table between `var`, `let` and `const` keyword.
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [Var, Let, and Const – What's the Difference?; freecodecamp.org](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
-* [Difference between var, let and const in Javascript.; codeburst.io](https://codeburst.io/difference-between-var-let-and-const-in-javascript-fbce2fba7b4)
+- [Var, Let, and Const – What's the Difference?; freecodecamp.org](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
+- [Difference between var, let and const in Javascript.; codeburst.io](https://codeburst.io/difference-between-var-let-and-const-in-javascript-fbce2fba7b4)

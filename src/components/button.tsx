@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 
 interface IButton {
-  type: "link"
-  link?: string
-  value: string
+  type: "link";
+  link?: string;
+  value: string;
 }
 const Button: React.FC<IButton> = ({ type, link, value }) => (
   <>
@@ -19,6 +19,6 @@ const Button: React.FC<IButton> = ({ type, link, value }) => (
       }[type]
     }
   </>
-)
+);
 
-export default Button
+export default Button;

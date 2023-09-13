@@ -3,8 +3,9 @@ version: "3"
 services:
   webapp:
     userns_mode: keep-id
-    image: mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye
+    image: mcr.microsoft.com/devcontainers/typescript-node:1-18-bullseye
     command: sleep infinity
     volumes:
       - ./:/home/node/workspace:z
       - .vscode-server/:/home/node/.vscode-server:z
+      - .npm/:/home/node/.npm:z

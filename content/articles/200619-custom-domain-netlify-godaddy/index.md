@@ -3,7 +3,7 @@ title: "Configure custom domain for Netlify with GoDaddy"
 description: "Step-by-step instruction on how to configure custom domain for Netlify with Godaddy."
 author: "Anas Juwaidi"
 date: "2020-06-19"
-tags: ["dns","netlify","godaddy"]
+tags: ["dns", "netlify", "godaddy"]
 ---
 
 By default, any site deployed to Netlify will be provided with Netlify subdomain using the following template: `[site-name].netlify.app`
@@ -15,15 +15,18 @@ Following entries will guide on how to configure DNS from GoDaddy to point to Ne
 ---
 
 ## Table of contents
-* [Domain settings in Netlify](#domain-settings-netlify)
-* [DNS configuration](#dns-configuration)
-* [Verify DNS configuration](#verify-dns-configuration)
-* [References](#references)
+
+- [Domain settings in Netlify](#domain-settings-netlify)
+- [DNS configuration](#dns-configuration)
+- [Verify DNS configuration](#verify-dns-configuration)
+- [References](#references)
 
 ---
 
 <a name="domain-settings-netlify"></a>
+
 ## Domain settings in Netlify
+
 Login to Netlify Dashboard, open your project and click **Domain settings**.
 
 ![Netlify Dashboard](./0-netlify-dashboard.png)
@@ -37,6 +40,7 @@ Next, enter the domain registered with GoDaddy and click **Yes, add domain** to 
 ---
 
 <a name="dns-configuration"></a>
+
 ## DNS configuration
 
 After added, Netlify will try to propagate the DNS changes with GoDaddy. Then, click **Check DNS configuration** for details required for GoDaddy configuration.
@@ -45,7 +49,7 @@ After added, Netlify will try to propagate the DNS changes with GoDaddy. Then, c
 
 We got two options: either we can **point ANAME/ALIAS/CNAME record to Netlify subdomain** or we can **create an A record pointing to Netlify load balancer**.
 
-This guide will choose 2nd option as we are going to configure the root domain *(Apex domain)* from GoDaddy to our site.
+This guide will choose 2nd option as we are going to configure the root domain _(Apex domain)_ from GoDaddy to our site.
 
 ![DNS configuration](./2.1-dns-configuration.png)
 
@@ -60,7 +64,9 @@ Next, update the A record to points to Netlify load balancer from previous DNS c
 ---
 
 <a name="verify-dns-configuration"></a>
+
 ## Verify DNS configuration
+
 Back to Netlify domain settings panel, refresh the page and it will say it is waiting for the DNS to propagate under **HTTPS**.
 
 ![Waiting DNS propagation](./4-verify-dns-configuration.png)
@@ -74,8 +80,8 @@ Now, we can get access to our Netlify-deployed site using our registered custom 
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [Custom Domains in Netlify; serverless-stack.com](https://serverless-stack.com/chapters/custom-domain-in-netlify.html)
-* [Configure external DNS for a custom domain; netlify.com](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-a-subdomain)
-
+- [Custom Domains in Netlify; serverless-stack.com](https://serverless-stack.com/chapters/custom-domain-in-netlify.html)
+- [Configure external DNS for a custom domain; netlify.com](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-a-subdomain)

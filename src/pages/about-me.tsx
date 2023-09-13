@@ -1,28 +1,22 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import GatsbyImage from "gatsby-image"
-import AppLayout from "../layouts/AppLayout"
-import Box from "../components/Box"
-import Icon from "../components/Icon"
-import { TSocialEnum } from "../utils/types"
-import { toTitleCase } from "../utils/common"
-import { useQueryMetadata } from "../utils/hooks/useQueryMetadata"
-import { AboutMeQuery } from "../../graphql-types"
-import { useQueryImage } from "../utils/hooks/useQueryImage"
+import React from "react";
+import { graphql, HeadFC, PageProps } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { TSocialEnum } from "../utils/types";
+import { toTitleCase } from "../utils/common";
+import { useQueryMetadata } from "../utils/hooks/use-query-metadata";
+import { useQueryImage } from "../utils/hooks/use-query-image";
 
-const AboutMePage: React.FC<{}> = () => {
-  const { profile } = useQueryImage()
-  const { fullname, position, social } = useQueryMetadata()
-  const data: AboutMeQuery = useStaticQuery(graphql`
-    query AboutMe {
-      content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
-        html
-      }
-    }
-  `)
+import AppLayout from "../layouts/app-layout";
+import Box from "../components/box";
+import Icon from "../components/icon";
+import SEO from "../components/seo";
+
+const AboutMePage: React.FC<PageProps<Queries.AboutMeQuery>> = ({ data }) => {
+  const { profile } = useQueryImage();
+  const { fullname, position, social } = useQueryMetadata();
 
   return (
-    <AppLayout title="About Me">
+    <AppLayout>
       <div className="columns is-centered">
         <div className="column is-8">
           <Box>
@@ -30,7 +24,8 @@ const AboutMePage: React.FC<{}> = () => {
               <div className="column is-3 has-text-centered">
                 <figure className="image">
                   <GatsbyImage
-                    fixed={profile}
+                    image={profile}
+                    alt="Profile"
                     style={{ borderRadius: "25%" }}
                   />
                 </figure>
@@ -40,16 +35,16 @@ const AboutMePage: React.FC<{}> = () => {
                 <p className="subtitle is-5">{position}</p>
                 <div className="columns is-multiline">
                   <div className="column is-6">
-                    <_SocialLinkField type="email" link={social.email} />
+                    <SocialLinkField type="email" link={social.email} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="github" link={social.github} />
+                    <SocialLinkField type="github" link={social.github} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="linkedin" link={social.linkedin} />
+                    <SocialLinkField type="linkedin" link={social.linkedin} />
                   </div>
                   <div className="column is-6">
-                    <_SocialLinkField type="web" link={social.web} />
+                    <SocialLinkField type="web" link={social.web} />
                   </div>
                 </div>
               </div>
@@ -66,12 +61,12 @@ const AboutMePage: React.FC<{}> = () => {
         </div>
       </div>
     </AppLayout>
-  )
-}
+  );
+};
 
-const _SocialLinkField: React.FC<{
-  type: TSocialEnum
-  link: string
+const SocialLinkField: React.FC<{
+  type: TSocialEnum;
+  link: string;
 }> = ({ type, link }) => (
   <div className="field">
     <label className="label">
@@ -89,6 +84,16 @@ const _SocialLinkField: React.FC<{
       </a>
     </div>
   </div>
-)
+);
 
-export default AboutMePage
+export default AboutMePage;
+
+export const Head: HeadFC = () => <SEO siteTitle="About Me" />;
+
+export const PageQuery = graphql`
+  query AboutMe {
+    content: markdownRemark(fileAbsolutePath: { regex: "/about-me/" }) {
+      html
+    }
+  }
+`;

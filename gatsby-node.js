@@ -1,42 +1,26 @@
 /**
  * Implement Gatsby's Node APIs in this file.
  *
- * See: https://www.gatsbyjs.org/docs/node-apis/
+ * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
-// You can delete this file if you're not using it
+//const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require("path");
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createFilePath } = require("gatsby-source-filesystem")
-  const { createNodeField } = actions
+/**
+ * @type {import('gatsby').GatsbyNode['createPages']}
+ */
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
 
-  if (node.internal.type === "MarkdownRemark") {
-    if (node.fileAbsolutePath.includes("content/articles")) {
-      const value = `${createFilePath({ node, getNode })}`
-
-      createNodeField({
-        node,
-        value,
-        name: "slug",
-      })
-    }
-  }
-}
-
-exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions
-
-  await _createArticlePages(createPage, graphql, reporter)
-  await _createTagPages(createPage, graphql, reporter)
-}
-
-_createArticlePages = async (createPage, graphql, reporter) => {
-  const template = require.resolve(`./src/templates/ArticleTemplate.tsx`)
-  const result = await graphql(`
-    {
-      articles: allMarkdownRemark(
+  // Create article pages
+  const articleTemplate = path.resolve(`./src/templates/article-template.tsx`);
+  const articleResult = await graphql(`
+    query CreateArticlePage {
+      allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
         edges {
@@ -64,54 +48,115 @@ _createArticlePages = async (createPage, graphql, reporter) => {
         }
       }
     }
-  `)
+  `);
 
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`[_createArticlePages] Error while running GraphQL query.`, result.errors)
-    return
+  if (articleResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      articleResult.errors
+    );
+    return;
   }
 
-  result.data.articles.edges.forEach(({ node, next, previous }) => {
-    createPage({
-      path: node.fields.slug,
-      component: template,
-      context: {
-        slug: node.fields.slug,
-        next,
-        previous,
-      },
-    })
-  })
-}
+  articleResult.data.allMarkdownRemark.edges.forEach(
+    ({ node, next, previous }) => {
+      createPage({
+        path: node.fields.slug,
+        component: articleTemplate,
+        context: {
+          slug: node.fields.slug,
+          next,
+          previous,
+        },
+      });
+    }
+  );
 
-_createTagPages = async (createPage, graphql, reporter) => {
-  const template = require.resolve(`./src/templates/TagTemplate.tsx`)
-  const result = await graphql(`
-    {
+  // Create tag pages
+  const tagTemplate = path.resolve(`./src/templates/tag-template.tsx`);
+  const tagResult = await graphql(`
+    query CreateTagPage {
       tags: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/articles/" } }
       ) {
-        group(field: frontmatter___tags) {
+        group(field: { frontmatter: { tags: SELECT } }) {
           tag: fieldValue
         }
       }
     }
-  `)
+  `);
 
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`[_createTagPages] Error while running GraphQL query.`, result.errors)
-    return
+  if (tagResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your tag pages`,
+      tagResult.errors
+    );
+    return;
   }
 
-  result.data.tags.group.forEach(({ tag }) => {
+  tagResult.data.tags.group.forEach(({ tag }) => {
     createPage({
       path: `/tags/${tag}`,
-      component: template,
+      component: tagTemplate,
       context: {
-        tag: tag
+        tag: tag,
       },
-    })
-  })
-}
+    });
+  });
+};
+
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ */
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode });
+
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    });
+  }
+};
+
+/**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
+
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
+    type Author {
+      name: String
+      summary: String
+    }
+
+    type Social {
+      twitter: String
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      fields: Fields
+    }
+
+    type Frontmatter {
+      title: String
+      description: String
+      date: Date @dateformat
+    }
+
+    type Fields {
+      slug: String
+    }
+  `);
+};

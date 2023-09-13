@@ -8,9 +8,10 @@ tags: ["solid", "design-principle", "oop"]
 
 **SOLID** is a set of five design principles used in object-oriented programming to make software easier to understand, flexible and maintain.
 
-Robert C. Martin introduced the theory of SOLID in year 2000 on his paper *Design Principles and Design Patterns*. Later, Micheal Feathers introduced the SOLID acronym.
+Robert C. Martin introduced the theory of SOLID in year 2000 on his paper _Design Principles and Design Patterns_. Later, Micheal Feathers introduced the SOLID acronym.
 
 SOLID stands for
+
 - **S**ingle-responsibility Principle
 - **O**pen-closed Principle
 - **L**iskov Substitution Principle
@@ -22,20 +23,21 @@ Following writing will discussed on one of the principles which is **Single-resp
 ---
 
 ## Table of contents
-* [Concept](#concept)
-* [Example](#example)
-  * [Bad Example](#bad-example)
-  * [Good Example](#good-example)
-* [Conclusion](#conclusion)
-* [References](#references)
+
+- [Concept](#concept)
+- [Example](#example)
+  - [Bad Example](#bad-example)
+  - [Good Example](#good-example)
+- [Conclusion](#conclusion)
+- [References](#references)
 
 ---
 
 <a name="concept"></a>
+
 ## Concept
 
-> "A class should have only one reason to change."<br/>
->  -*Robert C Martin*
+> "A class should have only one reason to change."<br/> -_Robert C Martin_
 
 **Single-responsibility Principle** defined that every module, class or function in software should have responsibility over single purpose in the software's functionality. Therefore, all module, class or function's services should be narrowly aligned with that responsibility.
 
@@ -48,9 +50,11 @@ Thus, a class should only have a single responsibility, that is, only changes to
 ---
 
 <a name="example"></a>
+
 ## Example
 
 <a name="bad-example"></a>
+
 ### Bad Example
 
 Below is a example of `Student` class
@@ -92,6 +96,7 @@ This is due to implementation of method `markAttendance`. By having the method i
 Any new requirement on the attendance status, we need to change the Student class, which may lead to unexpected side-effects in the future.
 
 <a name="good-example"></a>
+
 ### Good Example
 
 Therefore, we need to separate the responsibilities to each class, `Student` for Student details and `AttendanceTracker` for attendance-related functions.
@@ -126,6 +131,7 @@ public class Student {
   }
 }
 ```
+
 Above is the revised `Student` class.
 
 ```java
@@ -145,6 +151,7 @@ public class AttendanceTracker {
   }
 }
 ```
+
 And above is the new class, `AttendanceTracker` class.
 
 The `AttendanceTracker` class takes a student object as a dependency and marks the student's attendance.
@@ -154,6 +161,7 @@ Therefore, both responsibilities has been split according to each class which ad
 ---
 
 <a name="conclusion"></a>
+
 ## Conclusion
 
 In conclusion, having a class with multiple responsibilities will make implements new requirements harder. Moreover, the software's maintenance will be a growing pain as it is adding more complexity and making the classes responsibilities strongly coupled to each other.
@@ -163,8 +171,9 @@ Therefore, having a class with single responsibility is the best way to make cla
 ---
 
 <a name="references"></a>
+
 ## References
 
-* [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
-* [SOLID Design Principles Explained: The Single Responsibility Principle; stackify.com](https://stackify.com/solid-design-principles/)
-* [S.O.L.I.D: Single Responsibility Principle; abhishekprakash.com](https://blog.abhishekprakash.com/2020-03-25-s-o-l-i-d-single-responsibility-principle/)
+- [SOLID; wikipedia.org](https://en.wikipedia.org/wiki/SOLID)
+- [SOLID Design Principles Explained: The Single Responsibility Principle; stackify.com](https://stackify.com/solid-design-principles/)
+- [S.O.L.I.D: Single Responsibility Principle; abhishekprakash.com](https://blog.abhishekprakash.com/2020-03-25-s-o-l-i-d-single-responsibility-principle/)

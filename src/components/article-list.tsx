@@ -1,16 +1,17 @@
-import React from "react"
-import { Link } from "gatsby"
-import Box from "./Box"
-import Tag from "./Tag"
-import Icon from "./Icon"
-import { TArticle } from "../utils/types"
+import React from "react";
+import { Link } from "gatsby";
+import { TArticle } from "../utils/types";
+
+import Box from "./box";
+import Tag from "./tag";
+import Icon from "./icon";
 
 interface IArticleList {
-  articles: TArticle[]
-  hasNextPage: boolean
-  hasPreviousPage: boolean
-  handleNextPage?: () => void
-  handlePreviousPage?: () => void
+  articles: TArticle[];
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  handleNextPage?: () => void;
+  handlePreviousPage?: () => void;
 }
 const ArticleList: React.FC<IArticleList> = ({
   articles,
@@ -23,7 +24,7 @@ const ArticleList: React.FC<IArticleList> = ({
     <div className="columns is-multiline">
       {articles.map((article, i) => (
         <div key={`article${i}`} className="column is-6">
-          <_Article article={article} />
+          <Article article={article} />
         </div>
       ))}
     </div>
@@ -54,9 +55,9 @@ const ArticleList: React.FC<IArticleList> = ({
       </nav>
     )}
   </>
-)
+);
 
-const _Article: React.FC<{ article: TArticle }> = ({ article }) => (
+const Article: React.FC<{ article: TArticle }> = ({ article }) => (
   <Box height="100%">
     <div
       style={{
@@ -86,6 +87,6 @@ const _Article: React.FC<{ article: TArticle }> = ({ article }) => (
       </div>
     </div>
   </Box>
-)
+);
 
-export default ArticleList
+export default ArticleList;

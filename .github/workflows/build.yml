@@ -16,16 +16,16 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 16
+          - 18
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.1.0
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install, build
+      - name: npm install, build
         run: |
-          yarn install
-          yarn build
+          npm install
+          npm run build
         env:
           CI: true

@@ -1,6 +1,6 @@
-*.bak
-gatsby-starter-default-typescript/
 .vscode-server/
+.npm/
+src/gatsby-types.d.ts
 
 # Logs
 logs
@@ -55,8 +55,8 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
-.env
+# dotenv environment variable files
+.env*
 
 # gatsby files
 .cache/

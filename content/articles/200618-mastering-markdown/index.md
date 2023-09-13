@@ -12,28 +12,33 @@ Mostly, Markdown is just regular text with special characters throws such as `#`
 ---
 
 ## Table of contents
-* [Basic Syntax](#basic-syntax)
-  * [Header](#header)
-  * [Emphasis](#emphasis)
-  * [List](#list)
-  * [Image](#image)
-  * [Link](#link)
-  * [Blockquote](#blockquote)
-  * [Inline code](#inline-code)
-  * [Code block](#code-block)
-  * [Horizontal rule](#horizontal-rule)
-* [References](#references)
+
+- [Basic Syntax](#basic-syntax)
+  - [Header](#header)
+  - [Emphasis](#emphasis)
+  - [List](#list)
+  - [Image](#image)
+  - [Link](#link)
+  - [Blockquote](#blockquote)
+  - [Inline code](#inline-code)
+  - [Code block](#code-block)
+  - [Horizontal rule](#horizontal-rule)
+- [References](#references)
 
 ---
 
 <a name="basic-syntax"></a>
+
 ## Basic Syntax
+
 Following are the basic syntax used in Markdown.
 
 ---
 
 <a name="header"></a>
+
 ### Header
+
 ```
 # This is an H1 tag
 ## This is an H2 tag
@@ -46,16 +51,23 @@ Following are the basic syntax used in Markdown.
 **Result**
 
 # This is an H1 tag
+
 ## This is an H2 tag
+
 ### This is an H3 tag
+
 #### This is an H4 tag
+
 ##### This is an H5 tag
+
 ###### This is an H6 tag
 
 ---
 
 <a name="emphasis"></a>
+
 ### Emphasis
+
 ```
 *This text will be italic*
 _This will also be italic_
@@ -68,22 +80,24 @@ _You **can** combine them_
 
 **Result**
 
-*This text will be italic*
+_This text will be italic_
 
 _This will also be italic_
 
 **This text will be bold**
 
-__This will also be bold__
+**This will also be bold**
 
 _You **can** combine them_
 
 ---
 
 <a name="list"></a>
+
 ### List
 
-*Unordered*
+_Unordered_
+
 ```
 * Item 1
 * Item 2
@@ -91,10 +105,11 @@ _You **can** combine them_
 
 **Result**
 
-* Item 1
-* Item 2
+- Item 1
+- Item 2
 
-*Ordered*
+_Ordered_
+
 ```
 1. Item 1
 2. Item 2
@@ -108,7 +123,9 @@ _You **can** combine them_
 ---
 
 <a name="image"></a>
+
 ### Image
+
 ```
 ![Google Logo](url)
 ## Format: ![Alt text](URL)
@@ -121,7 +138,9 @@ _You **can** combine them_
 ---
 
 <a name="link"></a>
+
 ### Link
+
 ```
 [Google](http://google.com)
 ```
@@ -133,7 +152,9 @@ _You **can** combine them_
 ---
 
 <a name="blockquote"></a>
+
 ### Blockquote
+
 ```
 > We're living the future so
 > the present is our past.
@@ -147,7 +168,9 @@ _You **can** combine them_
 ---
 
 <a name="inline-code"></a>
+
 ### Inline Code
+
 ```
 `CTRL` + `C`
 ```
@@ -159,7 +182,9 @@ _You **can** combine them_
 ---
 
 <a name="code-block"></a>
+
 ### Code block
+
 ```
 # backtick
 '''javascript
@@ -175,8 +200,8 @@ function fancyAlert(arg) {
 
 ```javascript
 function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
+  if (arg) {
+    $.facebox({ div: "#foo" });
   }
 }
 ```
@@ -184,7 +209,9 @@ function fancyAlert(arg) {
 ---
 
 <a name="horizontal-rule"></a>
+
 ### Horizontal rule
+
 ```
 ---
 ```
@@ -195,10 +222,10 @@ function fancyAlert(arg) {
 
 ---
 
-
 <a name="references"></a>
+
 ## References
 
-* [Mastering Markdown; github.com](https://guides.github.com/features/mastering-markdown/)
-* [Markdown; daringfireball.net](https://daringfireball.net/projects/markdown)
-* [GitHub Flavored Markdown Spec; github.com](https://github.github.com/gfm/)
+- [Mastering Markdown; github.com](https://guides.github.com/features/mastering-markdown/)
+- [Markdown; daringfireball.net](https://daringfireball.net/projects/markdown)
+- [GitHub Flavored Markdown Spec; github.com](https://github.github.com/gfm/)
