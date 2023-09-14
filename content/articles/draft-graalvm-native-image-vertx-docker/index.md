@@ -15,3 +15,10 @@ Vert.x is a tool-kit for building reactive Java application rather than full-fea
 Thus, Vert.x is suitable candidate to build native image as native image compilation has several restrictions which most not apply to Vert.x core code.
 
 Below is a guide on how to build GraalVM Native Image with Vert.x and Docker.
+
+---
+
+## References
+
+* [Native Image](https://www.graalvm.org/latest/reference-manual/native-image/)
+* [Building a Vert.x Native Image](https://how-to.vertx.io/graal-native-image-howto/)
