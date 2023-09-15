@@ -40,7 +40,7 @@ const ArticleTemplate: React.FC<
       </div>
     </div>
     <div className="columns is-centered mt-2 mb-6">
-      <div className="column is-6">
+      <div className="column is-7">
         <div
           className="content"
           dangerouslySetInnerHTML={{
