@@ -177,6 +177,66 @@ Below are the structure of the folders and files for the setup.
 │   │                       └── resource-config.json
 ```
 
+### 3. Build Docker image
+
+Create a multi-stage builds Dockerfile to create the Docker image.
+The multi-stage consists of following stages:
+1. Compile the source code to Jar file
+2. Build the Jar file to GraalVM native image
+3. Run the native image
+
+```Dockerfile
+FROM maven:3.8.5-openjdk-17-slim as build-jar
+WORKDIR /workspace
+COPY src/ /workspace/src/
+COPY pom.xml /workspace/pom.xml
+RUN mvn clean package -DskipTests
+```
+_Stage 1: Compile the source code to Jar file_
+<br/><br/>
+
+```Dockerfile
+FROM ghcr.io/graalvm/native-image:ol8-java17-22.3.3 as build-nativeimage
+WORKDIR /workspace
+COPY --from=build-jar /workspace/target/nativeimage-1.0.0-SNAPSHOT-fat.jar /workspace/nativeimage-1.0.0-SNAPSHOT-fat.jar
+RUN native-image --static -jar nativeimage-1.0.0-SNAPSHOT-fat.jar nativeimage
+```
+_Stage 2: Build the Jar file to GraalVM native image_
+<br/><br/>
+
+```Dockerfile
+FROM alpine:3.18.3
+WORKDIR /workspace
+COPY --from=build-nativeimage /workspace/nativeimage /workspace/nativeimage
+EXPOSE 8888
+ENTRYPOINT ["sh", "-c"]
+CMD ["exec ./nativeimage run com.anasdidi.nativeimage.MainVerticle"]
+```
+_Stage 3: Run the native image_
+<br/><br/>
+
+Below is the complete the Dockefile.
+```Dockerfile
+FROM maven:3.8.5-openjdk-17-slim as build-jar
+WORKDIR /workspace
+COPY src/ /workspace/src/
+COPY pom.xml /workspace/pom.xml
+RUN mvn clean package -DskipTests
+
+FROM ghcr.io/graalvm/native-image:ol8-java17-22.3.3 as build-nativeimage
+WORKDIR /workspace
+COPY --from=build-jar /workspace/target/nativeimage-1.0.0-SNAPSHOT-fat.jar /workspace/nativeimage-1.0.0-SNAPSHOT-fat.jar
+RUN native-image --static -jar nativeimage-1.0.0-SNAPSHOT-fat.jar nativeimage
+
+FROM alpine:3.18.3
+WORKDIR /workspace
+COPY --from=build-nativeimage /workspace/nativeimage /workspace/nativeimage
+EXPOSE 8888
+ENTRYPOINT ["sh", "-c"]
+CMD ["exec ./nativeimage run com.anasdidi.nativeimage.MainVerticle"]
+```
+_Dockerfile_
+
 ---
 
 ## References
