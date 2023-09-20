@@ -177,7 +177,7 @@ Below are the structure of the folders and files for the setup.
 │   │                       └── resource-config.json
 ```
 
-### 3. Build Docker image
+### 3. Create Dockerfile
 
 Create a multi-stage builds Dockerfile to create the Docker image.
 The multi-stage consists of following stages:
@@ -236,6 +236,40 @@ ENTRYPOINT ["sh", "-c"]
 CMD ["exec ./nativeimage run com.anasdidi.nativeimage.MainVerticle"]
 ```
 _Dockerfile_
+
+### 4. Build and run Docker image
+
+Next, execute the Docker build command to build the image using the Dockerfile.
+
+```bash
+docker build -t test -f nativeimage.Dockerfile
+```
+_Docker build command_
+<br/><br/>
+
+After done, execute the Docker run command run the image.
+```bash
+podman run -p 8888:8888 test
+```
+_Docker run command_
+<br/><br/>
+
+Press `CTRL + C` to stop the Docker image.
+
+In case the Docker image unable to stop using keys, stop the Docker image using Docker stop command.
+
+```bash
+$ podman ps -a
+CONTAINER ID  IMAGE                                                                                                   COMMAND               CREATED        STATUS                  PORTS                   NAMES
+1efbfd8f9841  localhost/test:latest                                                                                   exec ./nativeimag...  4 minutes ago  Up 4 minutes            0.0.0.0:8888->8888/tcp  magical_clarke
+```
+_Docker ps command to get running container ID. In this case, it is **1efbfd8f9841**._
+<br/><br/>
+
+```bash
+podman container stop 1efbfd8f9841
+```
+_Docker container command to stop container using container ID_
 
 ---
 
