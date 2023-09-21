@@ -18,12 +18,25 @@ Below are the steps on how to build GraalVM Native Image with Vert.x and Docker.
 
 ---
 
+## Table Of Contents
+
+- [Steps](#steps)
+  - [1. Create a new Vert.x application](#1-create-a-new-vertx-application)
+  - [2. Setup GraalVM config files](#2-setup-graalvm-config-files)
+  - [3. Create Dockerfile](#3-create-dockerfile)
+  - [4. Build and run Docker image](#4-build-and-run-docker-image)
+- [References](#references)
+
+---
+
+<a name="steps"></a>
 ## Steps
 
 Following are the list of tools need for the project:
 - Docker
 - Maven (or Gradle)
 
+<a name="1-create-a-new-vertx-application"></a>
 ### 1. Create a new Vert.x application
 
 Create a new Vert.x applicaton using [Vert.x App Generator](https://start.vertx.io/).
@@ -35,8 +48,7 @@ In this example, following are the values used for both:
 
 ![01-generate-project](./01-generate-project.png)
 *Figure 01: Vert.x Starter - Create a new Vert.x application*
-<br/>
-<br/>
+<br/><br/>
 
 Then, create a simple Hello World Vert.x application.
 ```java
@@ -65,6 +77,7 @@ public class MainVerticle extends AbstractVerticle {
 }
 ```
 
+<a name="2-setup-graalvm-config-files"></a>
 ### 2. Setup GraalVM config files
 
 Create a new folder in path:
@@ -85,8 +98,7 @@ Next, create these files in the folder:
 []
 ```
 *META-INF/native-image/com.anasdidi/nativeimage/jni-config.json*
-<br/>
-<br/>
+<br/><br/>
 
 ```properties
 Args =\
@@ -102,8 +114,7 @@ Args =\
 -H:+ReportExceptionStackTraces
 ```
 *META-INF/native-image/com.anasdidi/nativeimage/native-image.properties*
-<br/>
-<br/>
+<br/><br/>
 
 ```json
 [
@@ -136,8 +147,7 @@ Args =\
 *META-INF/native-image/com.anasdidi/nativeimage/reflect-config.json*
 
 Replace `"name": "com.anasdidi.nativeimage.MainVerticle"` with respective Group Id and Artifact Id.
-<br/>
-<br/>
+<br/><br/>
 
 ```json
 {
@@ -153,8 +163,7 @@ Replace `"name": "com.anasdidi.nativeimage.MainVerticle"` with respective Group 
 *META-INF/native-image/com.anasdidi/nativeimage/resource-config.json*
 
 Replace `{"pattern": "META-INF/com.anasdidi.nativeimage.*"}` with respective Group Id and Artifact Id.
-<br/>
-<br/>
+<br/><br/>
 
 Below are the structure of the folders and files for the setup.
 ```bash
@@ -177,6 +186,7 @@ Below are the structure of the folders and files for the setup.
 │   │                       └── resource-config.json
 ```
 
+<a name="3-create-dockerfile"></a>
 ### 3. Create Dockerfile
 
 Create a multi-stage builds Dockerfile to create the Docker image.
@@ -237,6 +247,7 @@ CMD ["exec ./nativeimage run com.anasdidi.nativeimage.MainVerticle"]
 ```
 _Dockerfile_
 
+<a name="4-build-and-run-docker-image"></a>
 ### 4. Build and run Docker image
 
 Next, execute the Docker build command to build the image using the Dockerfile.
@@ -273,6 +284,7 @@ _Docker container command to stop container using container ID_
 
 ---
 
+<a name="references"></a>
 ## References
 
 * [Native Image](https://www.graalvm.org/latest/reference-manual/native-image/)
