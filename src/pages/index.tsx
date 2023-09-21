@@ -43,7 +43,7 @@ const IndexPage: React.FC<{}> = () => {
                       className="level-item has-text-centered mx-4">
                       <Link
                         to={route.path}
-                        className="button is-rounded is-fullwidth">
+                        className="button is-rounded is-fullwidth has-text-weight-semibold">
                         {route.label}
                       </Link>
                     </div>

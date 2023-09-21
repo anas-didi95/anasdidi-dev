@@ -62,7 +62,7 @@ const Pagination: React.FC<{
       {next && (
         <div className="has-text-right">
           <Link
-            className="has-text-primary has-text-weight-bold"
+            className="has-text-info has-text-weight-bold"
             to={next.fields.slug}>
             <div
               style={{
@@ -80,7 +80,7 @@ const Pagination: React.FC<{
       {previous && (
         <div className="has-text-left">
           <Link
-            className="has-text-primary has-text-weight-bold"
+            className="has-text-info has-text-weight-bold"
             to={previous.fields.slug}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <Icon type="previous" />
