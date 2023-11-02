@@ -13,7 +13,7 @@ module.exports = {
     description: `My personal blog developed using Gatsby and TypeScript.`,
     author: `@anasdidi95`,
     fullname: "Anas Juwaidi Bin Mohd Jeffry",
-    position: "Software Engineer",
+    position: "Senior Application Engineer",
     siteUrl: "https://anasdidi.dev/",
     social: {
       email: "anas.didi95@gmail.com",
