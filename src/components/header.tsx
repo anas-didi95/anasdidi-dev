@@ -17,7 +17,7 @@ const Header: React.FC<IHeader> = ({
 }) => (
   <header>
     <nav
-      className="navbar is-dark is-spaced"
+      className="navbar is-primary is-spaced"
       role="navigation"
       aria-label="main navigation">
       <div className="navbar-brand">

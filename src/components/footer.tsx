@@ -58,7 +58,7 @@ const ToolLink: React.FC<{ link: string; label: string }> = ({
   link,
   label,
 }) => (
-  <a className="has-text-black has-text-weight-bold" href={link}>
+  <a className="has-text-weight-bold" href={link}>
     {label}
   </a>
 );
