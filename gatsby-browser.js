@@ -6,8 +6,8 @@
 
 // You can delete this file if you're not using it
 
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700-italic.css';
+import "@fontsource/lato/400.css";
+import "@fontsource/lato/700.css";
+import "@fontsource/lato/400-italic.css";
+import "@fontsource/lato/700-italic.css";
 import "./src/styles/app.scss";
