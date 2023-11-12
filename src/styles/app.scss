@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 @import "~bulmaswatch/darkly/_variables.scss";
-$body-size: 16px;
+$body-size: 17px; //16-20 = ((16+20)/2)-1 = 17
+$body-line-height: 1.7; //1.5-2.0 = ((1.5+2.0)/2)-0.1 = 1.65 = 1.7
 //$body-background-color: hsl(0, 0%, 98%);
 //$footer-background-color: hsl(0, 0%, 86%);
 @import "~bulma/bulma.sass";
